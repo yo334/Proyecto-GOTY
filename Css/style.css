@@ -1,0 +1,818 @@
+/*
+ * Estilos globales del sitio web de premios GOTY
+ * Define reset y variables de diseño consistentes
+ */
+
+/* Aplica modelo de caja consistente en todos los elementos */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ─── VARIABLES ─────────────────────────────────────── */
+/* Define la paleta de colores y variables de tema principal */
+:root {
+    /* Color dorado principal para acentos y destacados */
+    --gold: #c9a84c;
+
+    /* Variante más clara del dorado para gradientes */
+    --gold2: #f0d080;
+
+    /* Fondo oscuro principal del sitio */
+    --bg: #080a0f;
+
+    /* Color de paneles y contenedores secundarios */
+    --panel: #0e1018;
+
+    /* Bordes sutiles con tono dorado translúcido */
+    --border: rgba(201, 168, 76, 0.25);
+
+    /* Color de texto principal */
+    --text: #dde3ec;
+
+    /* Color para textos secundarios y muted */
+    --muted: #5a6070;
+}
+
+/* ─── BASE ───────────────────────────────────────────── */
+/* Configuración base del documento HTML */
+html {
+    /* Habilita desplazamiento suave al navegar por anclas */
+    scroll-behavior: smooth;
+}
+
+/* Estilos base del body */
+body {
+    /* Fondo principal oscuro del sitio */
+    background: var(--bg);
+
+    /* Color de texto predeterminado */
+    color: var(--text);
+
+    /* Tipografía principal del sitio */
+    font-family: 'Barlow', sans-serif;
+
+    /* Peso de fuente ligero para mejor legibilidad */
+    font-weight: 300;
+
+    /* Asegura altura completa de viewport */
+    min-height: 100vh;
+
+    /* Evita desbordamiento horizontal */
+    overflow-x: hidden;
+}
+
+/* ─── GRAIN OVERLAY ─────────────────────────────────── */
+/* Capa de textura de grano sutil sobre todo el sitio */
+body::before {
+    /* Posiciona la textura como overlay fijo */
+    content: '';
+    position: fixed;
+    inset: 0;
+
+    /* Imagen SVG procedural de ruido/grano */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+
+    /* Baja opacidad para efecto sutil */
+    opacity: 0.03;
+
+    /* Evita interferir con interacciones */
+    pointer-events: none;
+
+    /* Capa superior para que cubra todo */
+    z-index: 9999;
+}
+
+/* ─── FOOTER ────────────────────────────────────────── */
+/* Estilos del pie de página */
+footer {
+    /* Línea divisoria superior con tono dorado */
+    border-top: 1px solid var(--border);
+
+    /* Espaciado interno */
+    padding: 32px 24px;
+
+    /* Centrado de contenido */
+    text-align: center;
+
+    /* Tamaño pequeño para texto secundario */
+    font-size: 0.75rem;
+
+    /* Color muted para jerarquía visual */
+    color: var(--muted);
+
+    /* Espaciado de letras para estética premium */
+    letter-spacing: 0.1em;
+}
+
+/* ─── DIVIDER ────────────────────────────────────────── */
+/* Línea decorativa divisoria entre secciones */
+.divider {
+    /* Ancho completo con máximo controlado */
+    width: 100%;
+    height: 1px;
+
+    /* Gradiente dorado sutil para elegancia */
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+
+    /* Centrado y margen inferior generoso */
+    margin: 0 auto 60px;
+    max-width: 900px;
+}
+
+/* ─── ANIMATIONS ────────────────────────────────────── */
+/* Animación de entrada suave con elevación */
+@keyframes fadeUp {
+    from {
+        /* Estado inicial: invisible y desplazado */
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        /* Estado final: visible en posición natural */
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ════════════════════════════════════════════════════════
+   INDEX PAGE
+   ════════════════════════════════════════════════════════ */
+
+/* Cabecera principal de la página de inicio */
+header {
+    /* Posicionamiento relativo para overlays */
+    position: relative;
+
+    /* Disposición vertical centrada */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* Espaciado generoso */
+    padding: 80px 20px 60px;
+
+    /* Alineación central del texto */
+    text-align: center;
+
+    /* Evita desbordamientos visuales */
+    overflow: hidden;
+}
+
+/* Efecto de iluminación radial en la cabecera */
+header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    /* Gradientes suaves dorados para profundidad */
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 168, 76, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 20% 100%, rgba(201, 168, 76, 0.05) 0%, transparent 60%);
+
+    /* Solo decorativo */
+    pointer-events: none;
+}
+
+/* Texto pequeño superior (eyebrow) */
+.header-eyebrow {
+    /* Tamaño compacto y espaciado de letras */
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+
+    /* Color dorado para jerarquía */
+    color: var(--gold);
+
+    /* Espacio inferior */
+    margin-bottom: 16px;
+
+    /* Animación de entrada */
+    animation: fadeUp 0.7s ease both;
+}
+
+/* Título principal del sitio */
+header h1 {
+    /* Tipografía impactante */
+    font-family: 'Bebas Neue', sans-serif;
+
+    /* Tamaño responsivo muy grande */
+    font-size: clamp(5rem, 18vw, 13rem);
+    line-height: 0.88;
+    letter-spacing: 0.04em;
+
+    /* Gradiente dorado metálico */
+    background: linear-gradient(160deg, #f0d080 0%, #c9a84c 45%, #7a5c1e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Animación de entrada retardada */
+    animation: fadeUp 0.7s 0.1s ease both;
+}
+
+/* Descripción debajo del título principal */
+header p {
+    /* Espacio superior */
+    margin-top: 24px;
+
+    /* Tamaño y estilo para subtítulo */
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+
+    /* Color secundario */
+    color: var(--muted);
+
+    /* Animación de entrada más retardada */
+    animation: fadeUp 0.7s 0.2s ease both;
+}
+
+/* Sección de años disponibles */
+.year-section {
+    /* Espaciado vertical y padding lateral */
+    padding: 0 24px 100px;
+}
+
+/* Título de la sección de años */
+.year-section h2 {
+    /* Tipografía condensada */
+    font-family: 'Bebas Neue', sans-serif;
+
+    /* Tamaño pequeño pero destacado */
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+
+    /* Color dorado */
+    color: var(--gold);
+
+    /* Centrado */
+    text-align: center;
+
+    /* Espacio inferior */
+    margin-bottom: 40px;
+}
+
+/* Contenedor grid de tarjetas de años */
+.year-grid {
+    /* Disposición flexible y centrada */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+
+    /* Ancho máximo controlado */
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Tarjeta individual de cada año */
+.year-card {
+    /* Posicionamiento relativo para pseudo-elementos */
+    position: relative;
+    display: block;
+
+    /* Dimensiones fijas para uniformidad */
+    width: 230px;
+    padding: 38px 20px 32px;
+
+    /* Centrado de contenido */
+    text-align: center;
+
+    /* Bordes y fondo panel */
+    border: 1px solid var(--border);
+    background: var(--panel);
+
+    /* Sin subrayado y color de texto */
+    text-decoration: none;
+    color: var(--text);
+
+    /* Oculta desbordamientos */
+    overflow: hidden;
+
+    /* Transiciones suaves en hover */
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: pointer;
+
+    /* Animación de entrada escalonada */
+    animation: fadeUp 0.5s ease both;
+}
+
+/* Efecto de brillo dorado en hover de tarjetas */
+.year-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    /* Gradiente sutil dorado */
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.08) 0%, transparent 60%);
+
+    /* Inicialmente oculto */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Estado hover de las tarjetas de año */
+.year-card:hover {
+    /* Resalta borde con color dorado */
+    border-color: var(--gold);
+
+    /* Efecto de elevación */
+    transform: translateY(-4px);
+}
+
+/* Activa el brillo en hover */
+.year-card:hover::before {
+    opacity: 1;
+}
+
+/* Número del año en la tarjeta */
+.year-card .yr {
+    /* Tipografía impactante */
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.9rem;
+    letter-spacing: 0.06em;
+    line-height: 1;
+
+    /* Gradiente dorado */
+    background: linear-gradient(160deg, var(--gold2), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Nombre del juego GOTY debajo del año */
+.year-card .goty-name {
+    /* Espacio superior pequeño */
+    margin-top: 8px;
+
+    /* Texto muy pequeño y condensado */
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    /* Color muted */
+    color: var(--muted);
+    line-height: 1.3;
+}
+
+/* Icono de trofeo en tarjetas */
+.year-card .trophy {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+
+/* Retrasos de animación para efecto cascada en tarjetas */
+.year-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.year-card:nth-child(2) {
+    animation-delay: 0.08s;
+}
+
+.year-card:nth-child(3) {
+    animation-delay: 0.11s;
+}
+
+.year-card:nth-child(4) {
+    animation-delay: 0.14s;
+}
+
+.year-card:nth-child(5) {
+    animation-delay: 0.17s;
+}
+
+.year-card:nth-child(6) {
+    animation-delay: 0.20s;
+}
+
+.year-card:nth-child(7) {
+    animation-delay: 0.23s;
+}
+
+.year-card:nth-child(8) {
+    animation-delay: 0.26s;
+}
+
+.year-card:nth-child(9) {
+    animation-delay: 0.29s;
+}
+
+.year-card:nth-child(10) {
+    animation-delay: 0.32s;
+}
+
+.year-card:nth-child(11) {
+    animation-delay: 0.35s;
+}
+
+/* ════════════════════════════════════════════════════════
+   YEAR PAGES  (nav · hero · categories)
+   ════════════════════════════════════════════════════════ */
+
+/* ─── NAV ────────────────────────────────────────────── */
+/* Barra de navegación superior en páginas de año */
+nav {
+    /* Disposición horizontal */
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    /* Espaciado interno */
+    padding: 20px 32px;
+
+    /* Borde inferior sutil */
+    border-bottom: 1px solid var(--border);
+
+    /* Fijo en la parte superior */
+    position: sticky;
+    top: 0;
+
+    /* Fondo semi-transparente con blur */
+    background: rgba(8, 10, 15, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* Capa superior */
+    z-index: 100;
+}
+
+/* Enlace de volver atrás */
+nav .back {
+    /* Estilo compacto y dorado */
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+/* Efecto hover en enlace volver */
+nav .back:hover {
+    opacity: 0.7;
+}
+
+/* Año actual en la navegación */
+nav .nav-year {
+    /* Tipografía grande y dorada */
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+
+    /* Gradiente dorado */
+    background: linear-gradient(160deg, var(--gold2), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Empuja al extremo derecho */
+    margin-left: auto;
+}
+
+/* ─── HERO ───────────────────────────────────────────── */
+/* Sección hero de cada página de año */
+.hero {
+    /* Posicionamiento relativo */
+    position: relative;
+
+    /* Espaciado vertical */
+    padding: 80px 24px 70px;
+
+    /* Centrado de contenido */
+    text-align: center;
+
+    /* Evita desbordamientos */
+    overflow: hidden;
+}
+
+/* Iluminación radial en el hero */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    /* Gradiente dorado suave */
+    background:
+        radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201, 168, 76, 0.13) 0%, transparent 70%);
+
+    pointer-events: none;
+}
+
+/* Título principal en página de año */
+.hero h1 {
+    /* Tipografía condensada grande */
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: 0.04em;
+
+    /* Gradiente dorado metálico */
+    background: linear-gradient(160deg, #f0d080 0%, #c9a84c 45%, #7a5c1e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Animación de entrada */
+    animation: fadeUp 0.6s 0.08s ease both;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+/* Ajustes para pantallas medianas y pequeñas */
+@media (max-width: 600px) {
+
+    /* Reduce padding en nav para móviles */
+    nav {
+        padding: 14px 16px;
+    }
+
+    /* Reduce padding del hero en móviles */
+    .hero {
+        padding: 50px 16px 40px;
+    }
+}
+
+/* ----------------------------------------------------------- 
+   2014.css - Winner Banner Showcase (Merged)
+   Grid layout with cards for each category winner
+   ----------------------------------------------------------- */
+
+/* Contenedor grid de banners de ganadores */
+.winners-showcase {
+    /* Grid responsivo con columnas automáticas */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 30px;
+
+    /* Ancho máximo y centrado */
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    /* Espaciado interno */
+    padding: 40px;
+}
+
+/* Banner individual de ganador */
+.winner-banner {
+    /* Posicionamiento relativo para capas */
+    position: relative;
+    width: 100%;
+    height: 350px;
+
+    /* Bordes redondeados y ocultamiento */
+    border-radius: 16px;
+    overflow: hidden;
+
+    /* Cursor interactivo */
+    cursor: pointer;
+
+    /* Alineación de contenido al fondo */
+    display: flex;
+    align-items: flex-end;
+
+    /* Sombra profunda */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    /* Transiciones suaves */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Efecto hover del banner */
+.winner-banner:hover {
+    /* Elevación y sombra dorada */
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(201, 168, 76, 0.2);
+}
+
+/* Banner especial para Game of the Year */
+.winner-banner--goty {
+    /* Ocupa toda la fila */
+    grid-column: 1 / -1;
+
+    /* Mayor altura para destacar */
+    height: 600px;
+}
+
+/* Contenedor de imagen de fondo */
+.winner-banner__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.winner-banner__bg__Title {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+/* Imagen GIF o fondo del banner */
+.winner-banner__bg img {
+    /* Cubre completamente el área */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    /* Filtro oscuro inicial */
+    filter: brightness(0.5) saturate(0.8);
+
+    /* Transiciones en hover */
+    transition: filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s ease;
+}
+
+/* Efecto hover en la imagen de fondo */
+.winner-banner:hover .winner-banner__bg img {
+    /* Aclara y satura la imagen */
+    filter: brightness(0.8) saturate(1.2);
+
+    /* Ligero zoom */
+    transform: scale(1.05);
+}
+
+/* Overlay oscuro degradado */
+.winner-banner__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    /* Gradiente oscuro desde abajo */
+    background: linear-gradient(0deg,
+            rgba(8, 10, 15, 0.95) 0%,
+            rgba(8, 10, 15, 0.6) 40%,
+            transparent 80%);
+    transition: opacity 0.6s ease;
+}
+
+/* Hover en overlay */
+.winner-banner:hover .winner-banner__overlay {
+    /* Gradiente más sutil en hover */
+    background: linear-gradient(0deg,
+            rgba(8, 10, 15, 0.85) 0%,
+            rgba(8, 10, 15, 0.4) 50%,
+            transparent 90%);
+}
+
+/* Contenido textual del banner */
+.winner-banner__content {
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    width: 100%;
+
+    /* Opacidad y posición inicial */
+    opacity: 0.9;
+    transform: translateY(5px);
+
+    /* Transición suave */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Hover en contenido */
+.winner-banner:hover .winner-banner__content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Padding mayor para GOTY banner */
+.winner-banner--goty .winner-banner__content {
+    padding: 50px;
+}
+
+/* Icono de categoría */
+.winner-banner__category-icon {
+    display: inline-block;
+    font-size: 2rem;
+    margin-bottom: 12px;
+
+    /* Sombra luminosa dorada */
+    filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.4));
+}
+
+/* Icono más grande en GOTY */
+.winner-banner--goty .winner-banner__category-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+/* Título del juego ganador */
+.winner-banner__title {
+    /* Tipografía condensada */
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+
+    /* Blanco con sombra */
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+
+    transition: text-shadow 0.5s ease;
+}
+
+/* Título más grande para GOTY */
+.winner-banner__title--goty {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    letter-spacing: 0.04em;
+}
+
+/* Hover en título */
+.winner-banner:hover .winner-banner__title {
+    /* Sombra dorada más pronunciada */
+    text-shadow: 0 2px 20px rgba(201, 168, 76, 0.4);
+}
+
+/* Etiqueta del premio (ej: "BEST GAME") */
+.winner-banner__award {
+    /* Tipografía condensada dorada */
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold, #c9a84c);
+    margin-top: 8px;
+
+    transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+/* Etiqueta más prominente para GOTY */
+.winner-banner__award--goty {
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    letter-spacing: 0.25em;
+    color: #f0d080;
+    text-shadow: 0 0 15px rgba(240, 208, 128, 0.4);
+}
+
+/* Nombre del estudio desarrollador */
+.winner-banner__studio {
+    /* Texto secundario más pequeño */
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    color: #9aa4b2;
+    margin-top: 6px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* ─── RESPONSIVE BANNERS ───────────────────────────────── */
+/* Ajustes para tablets */
+@media (max-width: 900px) {
+
+    /* Una columna en pantallas medianas */
+    .winners-showcase {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    /* Reduce altura de banners */
+    .winner-banner {
+        height: 300px;
+    }
+
+    .winner-banner--goty {
+        height: 450px;
+    }
+}
+
+/* Ajustes para móviles pequeños */
+@media (max-width: 480px) {
+    .winners-showcase {
+        padding: 15px;
+        gap: 20px;
+    }
+
+    /* Alturas aún más reducidas */
+    .winner-banner {
+        height: 250px;
+    }
+
+    .winner-banner--goty {
+        height: 350px;
+    }
+
+    /* Padding interno más compacto */
+    .winner-banner__content {
+        padding: 20px;
+    }
+
+    .winner-banner--goty .winner-banner__content {
+        padding: 25px;
+    }
+
+    /* Tamaños de texto reducidos */
+    .winner-banner__title {
+        font-size: 1.8rem;
+    }
+
+    .winner-banner__title--goty {
+        font-size: 2.5rem;
+    }
+}
