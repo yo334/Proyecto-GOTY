@@ -1,0 +1,489 @@
+/* ════════════════════════════════════════════════════════
+   INDEX PAGE
+   ════════════════════════════════════════════════════════ */
+
+/* Cabecera principal de la página de inicio */
+header {
+    /* Posicionamiento relativo para overlays */
+    position: relative;
+
+    /* Disposición vertical centrada */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* Espaciado generoso */
+    padding: 80px 20px 60px;
+
+    /* Alineación central del texto */
+    text-align: center;
+
+    /* Evita desbordamientos visuales */
+    overflow: hidden;
+}
+
+/* Efecto de iluminación radial en la cabecera */
+header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    /* Gradientes suaves dorados para profundidad */
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 168, 76, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 20% 100%, rgba(201, 168, 76, 0.05) 0%, transparent 60%);
+
+    /* Solo decorativo */
+    pointer-events: none;
+}
+
+/* Texto pequeño superior (eyebrow) */
+.header-eyebrow {
+    /* Tamaño compacto y espaciado de letras */
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+
+    /* Color dorado para jerarquía */
+    color: var(--gold);
+
+    /* Espacio inferior */
+    margin-bottom: 16px;
+
+    /* Animación de entrada */
+    animation: fadeUp 0.7s ease both;
+}
+
+/* Título principal del sitio */
+header h1 {
+    /* Tipografía impactante */
+    font-family: 'Bebas Neue', sans-serif;
+
+    /* Tamaño responsivo muy grande */
+    font-size: clamp(5rem, 18vw, 13rem);
+    line-height: 0.88;
+    letter-spacing: 0.04em;
+
+    /* Gradiente dorado metálico */
+    background: linear-gradient(160deg, #f0d080 0%, #c9a84c 45%, #7a5c1e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Animación de entrada retardada */
+    animation: fadeUp 0.7s 0.1s ease both;
+}
+
+/* Descripción debajo del título principal */
+header p {
+    /* Espacio superior */
+    margin-top: 24px;
+
+    /* Tamaño y estilo para subtítulo */
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+
+    /* Color secundario */
+    color: var(--muted);
+
+    /* Animación de entrada más retardada */
+    animation: fadeUp 0.7s 0.2s ease both;
+}
+
+/* ═══════ SURVEY BANNER ═══════ */
+/* Sección que contiene el banner de la encuesta */
+.survey-banner-section {
+    padding: 0 24px;
+    max-width: 1200px;
+    margin: 0 auto 0;
+}
+
+/* Banner principal de la encuesta */
+.survey-banner {
+    position: relative;
+    display: block;
+    padding: 32px 40px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, rgba(14, 16, 24, 0.95), rgba(201, 168, 76, 0.06));
+    text-decoration: none;
+    color: var(--text);
+    overflow: hidden;
+    transition: border-color 0.4s, transform 0.3s, box-shadow 0.4s;
+    animation: fadeUp 0.6s ease both;
+}
+
+.survey-banner:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(201, 168, 76, 0.15);
+}
+
+/* Resplandor animado de fondo */
+.survey-banner__glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 50%);
+    animation: surveyGlow 4s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes surveyGlow {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(10%, 5%);
+    }
+}
+
+/* Contenido del banner */
+.survey-banner__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.survey-banner__icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 12px rgba(201, 168, 76, 0.4));
+}
+
+.survey-banner__text {
+    flex: 1;
+}
+
+.survey-banner__title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    letter-spacing: 0.06em;
+    background: linear-gradient(160deg, var(--gold2), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+
+.survey-banner__desc {
+    margin-top: 6px;
+    font-size: 0.95rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+}
+
+.survey-banner__arrow {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+}
+
+.survey-banner:hover .survey-banner__arrow {
+    transform: translateX(8px);
+}
+
+/* ═══════ MAIN LAYOUT (2 columnas) ═══════ */
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    align-items: start;
+}
+
+.main-layout__content {
+    min-width: 0;
+}
+
+/* Título de sección */
+.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* ═══════ YEAR CARDS (más grandes) ═══════ */
+/* Contenedor grid de tarjetas de años */
+.year-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Tarjeta individual de cada año — MÁS GRANDE */
+.year-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 48px 28px 40px;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--panel);
+    text-decoration: none;
+    color: var(--text);
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    animation: fadeUp 0.5s ease both;
+}
+
+/* Efecto de brillo dorado en hover de tarjetas */
+.year-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.1) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Estado hover de las tarjetas de año */
+.year-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(201, 168, 76, 0.12);
+}
+
+/* Activa el brillo en hover */
+.year-card:hover::before {
+    opacity: 1;
+}
+
+/* Número del año en la tarjeta — MÁS GRANDE */
+.year-card .yr {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    background: linear-gradient(160deg, var(--gold2), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Nombre del juego GOTY — MÁS LEGIBLE */
+.year-card .goty-name {
+    margin-top: 12px;
+    font-size: 1.15rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.3;
+}
+
+/* Icono de trofeo en tarjetas */
+.year-card .trophy {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+/* Retrasos de animación para efecto cascada en tarjetas */
+.year-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.year-card:nth-child(2) {
+    animation-delay: 0.08s;
+}
+
+.year-card:nth-child(3) {
+    animation-delay: 0.11s;
+}
+
+.year-card:nth-child(4) {
+    animation-delay: 0.14s;
+}
+
+.year-card:nth-child(5) {
+    animation-delay: 0.17s;
+}
+
+.year-card:nth-child(6) {
+    animation-delay: 0.20s;
+}
+
+.year-card:nth-child(7) {
+    animation-delay: 0.23s;
+}
+
+.year-card:nth-child(8) {
+    animation-delay: 0.26s;
+}
+
+.year-card:nth-child(9) {
+    animation-delay: 0.29s;
+}
+
+.year-card:nth-child(10) {
+    animation-delay: 0.32s;
+}
+
+.year-card:nth-child(11) {
+    animation-delay: 0.35s;
+}
+
+/* ═══════ SEARCH PANEL ═══════ */
+.search-panel {
+    position: sticky;
+    top: 24px;
+    padding: 28px 24px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(14, 16, 24, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.search-panel__title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+
+.search-panel__hint {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+}
+
+.search-panel__input-wrap {
+    position: relative;
+}
+
+.search-panel__input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(8, 10, 15, 0.7);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-panel__input::placeholder {
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+.search-panel__input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 16px rgba(201, 168, 76, 0.15);
+}
+
+/* Contenedor de resultados de búsqueda */
+.search-panel__results {
+    margin-top: 12px;
+    display: none;
+}
+
+.search-panel__results.active {
+    display: block;
+}
+
+/* Resultado individual */
+.search-result {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.88rem;
+    transition: background 0.2s, transform 0.15s;
+    cursor: pointer;
+}
+
+.search-result:hover {
+    background: rgba(201, 168, 76, 0.1);
+    transform: translateX(4px);
+}
+
+.search-result--hint {
+    color: var(--muted);
+    cursor: default;
+    font-style: italic;
+}
+
+.search-result--empty {
+    color: var(--muted);
+    font-style: italic;
+    cursor: default;
+    padding: 16px 14px;
+    text-align: center;
+}
+
+.search-result__icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.search-result__label {
+    flex: 1;
+    line-height: 1.3;
+}
+
+/* ═══════ RESPONSIVE: MAIN LAYOUT ═══════ */
+@media (max-width: 900px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .search-panel {
+        position: static;
+        order: -1;
+    }
+
+    .year-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .survey-banner__content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .survey-banner__arrow {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .year-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .year-card .yr {
+        font-size: 4rem;
+    }
+
+    .survey-banner {
+        padding: 24px 20px;
+    }
+}

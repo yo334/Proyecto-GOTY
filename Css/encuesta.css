@@ -1,0 +1,297 @@
+/* ═══════ ENCUESTA – STYLES ═══════ */
+
+/* ── Year Tabs ──────────────────────────────── */
+.enc-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 1000px;
+    margin: 0 auto 48px;
+    padding: 0 24px;
+}
+
+.enc-tab {
+    position: relative;
+    display: block;
+    padding: 18px 14px 14px;
+    min-width: 80px;
+    text-align: center;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--muted);
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s, color 0.3s;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.enc-tab::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.08) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.enc-tab:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    color: var(--text);
+}
+
+.enc-tab:hover::before {
+    opacity: 1;
+}
+
+.enc-tab.active {
+    border-color: var(--gold);
+    color: transparent;
+    background: var(--panel);
+    background-image: linear-gradient(160deg, var(--gold2), var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.15);
+}
+
+.enc-tab.active::before {
+    opacity: 1;
+}
+
+/* ── Year Panels ────────────────────────────── */
+.enc-year-panel {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+    animation: encFadeIn 0.4s ease;
+}
+
+.enc-year-panel.active {
+    display: block;
+}
+
+@keyframes encFadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Category Block ─────────────────────────── */
+.enc-category {
+    margin-bottom: 48px;
+}
+
+.enc-cat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.enc-cat-icon {
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 6px rgba(201, 168, 76, 0.35));
+}
+
+.enc-cat-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+}
+
+/* ── Nominees Grid ──────────────────────────── */
+.enc-nominees {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 12px;
+}
+
+/* ── Nominee Card (Custom Radio) ────────────── */
+.enc-nominee {
+    position: relative;
+}
+
+.enc-nominee input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.enc-nominee label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 22px 14px;
+    min-height: 100px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text);
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.25s, box-shadow 0.35s, background 0.3s;
+    font-size: 0.88rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.35;
+}
+
+.enc-nominee label:hover {
+    border-color: rgba(201, 168, 76, 0.55);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 18px rgba(201, 168, 76, 0.1);
+}
+
+/* Selected state – gold glow */
+.enc-nominee input[type="radio"]:checked + label {
+    border-color: var(--gold);
+    box-shadow: 0 0 18px rgba(201, 168, 76, 0.25), inset 0 0 30px rgba(201, 168, 76, 0.06);
+    background: linear-gradient(160deg, rgba(201, 168, 76, 0.10) 0%, var(--panel) 80%);
+    color: var(--gold2);
+}
+
+/* ── Score / Results Bar ────────────────────── */
+.enc-actions {
+    text-align: center;
+    margin: 16px 0 0;
+}
+
+.enc-btn {
+    display: inline-block;
+    padding: 14px 48px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.18em;
+    color: var(--bg);
+    background: linear-gradient(160deg, var(--gold2), var(--gold));
+    border: none;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.3s, opacity 0.3s;
+    text-transform: uppercase;
+}
+
+.enc-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 24px rgba(201, 168, 76, 0.35);
+}
+
+.enc-btn:active {
+    transform: translateY(0);
+}
+
+/* ── Hero subtitle ──────────────────────────── */
+.enc-subtitle {
+    margin-top: 18px;
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    animation: fadeUp 0.7s 0.2s ease both;
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 600px) {
+    .enc-tabs {
+        gap: 6px;
+    }
+    .enc-tab {
+        padding: 12px 8px 10px;
+        min-width: 58px;
+        font-size: 1.25rem;
+    }
+    .enc-nominees {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 8px;
+    }
+    .enc-nominee label {
+        padding: 16px 10px;
+        min-height: 80px;
+        font-size: 0.82rem;
+    }
+    .enc-cat-name {
+        font-size: 1.2rem;
+    }
+    .enc-btn {
+        padding: 12px 32px;
+        font-size: 1.1rem;
+    }
+}
+
+/* ── Submitted State ───────────────────────────── */
+.enc-tab.submitted {
+    border-color: #4caf50;
+    color: #81c784;
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.15);
+}
+
+.enc-tab.submitted::before {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, transparent 60%);
+    opacity: 1;
+}
+
+.enc-year-panel.submitted .enc-actions .enc-btn {
+    background: linear-gradient(160deg, #81c784, #4caf50);
+}
+
+/* ── CSV Download Section ──────────────────────── */
+.enc-csv-section {
+    text-align: center;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+}
+
+.enc-csv-section .enc-csv-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+.enc-btn--csv {
+    display: inline-block;
+    padding: 16px 56px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.18em;
+    color: var(--bg);
+    background: linear-gradient(160deg, #81c784, #4caf50);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.3s, opacity 0.3s;
+    text-transform: uppercase;
+}
+
+.enc-btn--csv:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 24px rgba(76, 175, 80, 0.35);
+}
+
+.enc-btn--csv:active {
+    transform: translateY(0);
+}
+
+.enc-btn--csv.hidden {
+    display: none;
+}
+
+.enc-btn--csv:disabled {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+}

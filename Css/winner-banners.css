@@ -1,0 +1,278 @@
+/* ----------------------------------------------------------- 
+   2014.css - Winner Banner Showcase (Merged)
+   Grid layout with cards for each category winner
+   ----------------------------------------------------------- */
+
+/* Contenedor grid de banners de ganadores */
+.winners-showcase {
+    /* Grid responsivo con columnas automáticas */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 30px;
+
+    /* Ancho máximo y centrado */
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    /* Espaciado interno */
+    padding: 40px;
+}
+
+/* Banner individual de ganador */
+.winner-banner {
+    /* Posicionamiento relativo para capas */
+    position: relative;
+    width: 100%;
+    height: 350px;
+
+    /* Bordes redondeados y ocultamiento */
+    border-radius: 16px;
+    overflow: hidden;
+
+    /* Cursor interactivo */
+    cursor: pointer;
+
+    /* Alineación de contenido al fondo */
+    display: flex;
+    align-items: flex-end;
+
+    /* Sombra profunda */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    /* Transiciones suaves */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Efecto hover del banner */
+.winner-banner:hover {
+    /* Elevación y sombra dorada */
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(201, 168, 76, 0.2);
+}
+
+/* Banner especial para Game of the Year */
+.winner-banner--goty {
+    /* Ocupa toda la fila */
+    grid-column: 1 / -1;
+
+    /* Mayor altura para destacar */
+    height: 600px;
+}
+
+/* Contenedor de imagen de fondo */
+.winner-banner__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.winner-banner__bg__Title {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+/* Imagen GIF o fondo del banner */
+.winner-banner__bg img {
+    /* Cubre completamente el área */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    /* Filtro oscuro inicial */
+    filter: brightness(0.5) saturate(0.8);
+
+    /* Transiciones en hover */
+    transition: filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s ease;
+}
+
+/* Efecto hover en la imagen de fondo */
+.winner-banner:hover .winner-banner__bg img {
+    /* Aclara y satura la imagen */
+    filter: brightness(0.8) saturate(1.2);
+
+    /* Ligero zoom */
+    transform: scale(1.05);
+}
+
+/* Overlay oscuro degradado */
+.winner-banner__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    /* Gradiente oscuro desde abajo */
+    background: linear-gradient(0deg,
+            rgba(8, 10, 15, 0.95) 0%,
+            rgba(8, 10, 15, 0.6) 40%,
+            transparent 80%);
+    transition: opacity 0.6s ease;
+}
+
+/* Hover en overlay */
+.winner-banner:hover .winner-banner__overlay {
+    /* Gradiente más sutil en hover */
+    background: linear-gradient(0deg,
+            rgba(8, 10, 15, 0.85) 0%,
+            rgba(8, 10, 15, 0.4) 50%,
+            transparent 90%);
+}
+
+/* Contenido textual del banner */
+.winner-banner__content {
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    width: 100%;
+
+    /* Opacidad y posición inicial */
+    opacity: 0.9;
+    transform: translateY(5px);
+
+    /* Transición suave */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Hover en contenido */
+.winner-banner:hover .winner-banner__content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Padding mayor para GOTY banner */
+.winner-banner--goty .winner-banner__content {
+    padding: 50px;
+}
+
+/* Icono de categoría */
+.winner-banner__category-icon {
+    display: inline-block;
+    font-size: 2rem;
+    margin-bottom: 12px;
+
+    /* Sombra luminosa dorada */
+    filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.4));
+}
+
+/* Icono más grande en GOTY */
+.winner-banner--goty .winner-banner__category-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+/* Título del juego ganador */
+.winner-banner__title {
+    /* Tipografía condensada */
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+
+    /* Blanco con sombra */
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+
+    transition: text-shadow 0.5s ease;
+}
+
+/* Título más grande para GOTY */
+.winner-banner__title--goty {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    letter-spacing: 0.04em;
+}
+
+/* Hover en título */
+.winner-banner:hover .winner-banner__title {
+    /* Sombra dorada más pronunciada */
+    text-shadow: 0 2px 20px rgba(201, 168, 76, 0.4);
+}
+
+/* Etiqueta del premio (ej: "BEST GAME") */
+.winner-banner__award {
+    /* Tipografía condensada dorada */
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold, #c9a84c);
+    margin-top: 8px;
+
+    transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+/* Etiqueta más prominente para GOTY */
+.winner-banner__award--goty {
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    letter-spacing: 0.25em;
+    color: #f0d080;
+    text-shadow: 0 0 15px rgba(240, 208, 128, 0.4);
+}
+
+/* Nombre del estudio desarrollador */
+.winner-banner__studio {
+    /* Texto secundario más pequeño */
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    color: #9aa4b2;
+    margin-top: 6px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* ─── RESPONSIVE BANNERS ───────────────────────────────── */
+/* Ajustes para tablets */
+@media (max-width: 900px) {
+
+    /* Una columna en pantallas medianas */
+    .winners-showcase {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    /* Reduce altura de banners */
+    .winner-banner {
+        height: 300px;
+    }
+
+    .winner-banner--goty {
+        height: 450px;
+    }
+}
+
+/* Ajustes para móviles pequeños */
+@media (max-width: 480px) {
+    .winners-showcase {
+        padding: 15px;
+        gap: 20px;
+    }
+
+    /* Alturas aún más reducidas */
+    .winner-banner {
+        height: 250px;
+    }
+
+    .winner-banner--goty {
+        height: 350px;
+    }
+
+    /* Padding interno más compacto */
+    .winner-banner__content {
+        padding: 20px;
+    }
+
+    .winner-banner--goty .winner-banner__content {
+        padding: 25px;
+    }
+
+    /* Tamaños de texto reducidos */
+    .winner-banner__title {
+        font-size: 1.8rem;
+    }
+
+    .winner-banner__title--goty {
+        font-size: 2.5rem;
+    }
+}

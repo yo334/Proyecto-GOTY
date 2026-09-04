@@ -1,0 +1,125 @@
+/* ════════════════════════════════════════════════════════
+   YEAR PAGES  (nav · hero · categories)
+   ════════════════════════════════════════════════════════ */
+
+/* ─── NAV ────────────────────────────────────────────── */
+/* Barra de navegación superior en páginas de año */
+nav {
+    /* Disposición horizontal */
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    /* Espaciado interno */
+    padding: 20px 32px;
+
+    /* Borde inferior sutil */
+    border-bottom: 1px solid var(--border);
+
+    /* Fijo en la parte superior */
+    position: sticky;
+    top: 0;
+
+    /* Fondo semi-transparente con blur */
+    background: rgba(8, 10, 15, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* Capa superior */
+    z-index: 100;
+}
+
+/* Enlace de volver atrás */
+nav .back {
+    /* Estilo compacto y dorado */
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+/* Efecto hover en enlace volver */
+nav .back:hover {
+    opacity: 0.7;
+}
+
+/* Año actual en la navegación */
+nav .nav-year {
+    /* Tipografía grande y dorada */
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+
+    /* Gradiente dorado */
+    background: linear-gradient(160deg, var(--gold2), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Empuja al extremo derecho */
+    margin-left: auto;
+}
+
+/* ─── HERO ───────────────────────────────────────────── */
+/* Sección hero de cada página de año */
+.hero {
+    /* Posicionamiento relativo */
+    position: relative;
+
+    /* Espaciado vertical */
+    padding: 80px 24px 70px;
+
+    /* Centrado de contenido */
+    text-align: center;
+
+    /* Evita desbordamientos */
+    overflow: hidden;
+}
+
+/* Iluminación radial en el hero */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    /* Gradiente dorado suave */
+    background:
+        radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201, 168, 76, 0.13) 0%, transparent 70%);
+
+    pointer-events: none;
+}
+
+/* Título principal en página de año */
+.hero h1 {
+    /* Tipografía condensada grande */
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: 0.04em;
+
+    /* Gradiente dorado metálico */
+    background: linear-gradient(160deg, #f0d080 0%, #c9a84c 45%, #7a5c1e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Animación de entrada */
+    animation: fadeUp 0.6s 0.08s ease both;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+/* Ajustes para pantallas medianas y pequeñas */
+@media (max-width: 600px) {
+
+    /* Reduce padding en nav para móviles */
+    nav {
+        padding: 14px 16px;
+    }
+
+    /* Reduce padding del hero en móviles */
+    .hero {
+        padding: 50px 16px 40px;
+    }
+}

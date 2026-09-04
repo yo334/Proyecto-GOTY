@@ -1,0 +1,140 @@
+/*
+ * Estilos globales del sitio web de premios GOTY
+ * Define reset y variables de diseño consistentes
+ */
+
+/* Aplica modelo de caja consistente en todos los elementos */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ─── VARIABLES ─────────────────────────────────────── */
+/* Define la paleta de colores y variables de tema principal */
+:root {
+    /* Color dorado principal para acentos y destacados */
+    --gold: #c9a84c;
+
+    /* Variante más clara del dorado para gradientes */
+    --gold2: #f0d080;
+
+    /* Fondo oscuro principal del sitio */
+    --bg: #080a0f;
+
+    /* Color de paneles y contenedores secundarios */
+    --panel: #0e1018;
+
+    /* Bordes sutiles con tono dorado translúcido */
+    --border: rgba(201, 168, 76, 0.25);
+
+    /* Color de texto principal */
+    --text: #dde3ec;
+
+    /* Color para textos secundarios y muted */
+    --muted: #5a6070;
+}
+
+/* ─── BASE ───────────────────────────────────────────── */
+/* Configuración base del documento HTML */
+html {
+    /* Habilita desplazamiento suave al navegar por anclas */
+    scroll-behavior: smooth;
+}
+
+/* Estilos base del body */
+body {
+    /* Fondo principal oscuro del sitio */
+    background: var(--bg);
+
+    /* Color de texto predeterminado */
+    color: var(--text);
+
+    /* Tipografía principal del sitio */
+    font-family: 'Barlow', sans-serif;
+
+    /* Peso de fuente ligero para mejor legibilidad */
+    font-weight: 300;
+
+    /* Asegura altura completa de viewport */
+    min-height: 100vh;
+
+    /* Evita desbordamiento horizontal */
+    overflow-x: hidden;
+}
+
+/* ─── GRAIN OVERLAY ─────────────────────────────────── */
+/* Capa de textura de grano sutil sobre todo el sitio */
+body::before {
+    /* Posiciona la textura como overlay fijo */
+    content: '';
+    position: fixed;
+    inset: 0;
+
+    /* Imagen SVG procedural de ruido/grano */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+
+    /* Baja opacidad para efecto sutil */
+    opacity: 0.03;
+
+    /* Evita interferir con interacciones */
+    pointer-events: none;
+
+    /* Capa superior para que cubra todo */
+    z-index: 9999;
+}
+
+/* ─── FOOTER ────────────────────────────────────────── */
+/* Estilos del pie de página */
+footer {
+    /* Línea divisoria superior con tono dorado */
+    border-top: 1px solid var(--border);
+
+    /* Espaciado interno */
+    padding: 32px 24px;
+
+    /* Centrado de contenido */
+    text-align: center;
+
+    /* Tamaño pequeño para texto secundario */
+    font-size: 0.75rem;
+
+    /* Color muted para jerarquía visual */
+    color: var(--muted);
+
+    /* Espaciado de letras para estética premium */
+    letter-spacing: 0.1em;
+}
+
+/* ─── DIVIDER ────────────────────────────────────────── */
+/* Línea decorativa divisoria entre secciones */
+.divider {
+    /* Ancho completo con máximo controlado */
+    width: 100%;
+    height: 1px;
+
+    /* Gradiente dorado sutil para elegancia */
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+
+    /* Centrado y margen inferior generoso */
+    margin: 0 auto 60px;
+    max-width: 900px;
+}
+
+/* ─── ANIMATIONS ────────────────────────────────────── */
+/* Animación de entrada suave con elevación */
+@keyframes fadeUp {
+    from {
+        /* Estado inicial: invisible y desplazado */
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        /* Estado final: visible en posición natural */
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
