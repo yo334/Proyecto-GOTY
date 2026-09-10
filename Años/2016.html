@@ -1,163 +1,225 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GOTY 2016 – The Game Awards</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="Css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../Css/style.css" />
 </head>
-
 <body>
     <nav>
-        <a class="back" href="index.html">← Volver</a>
+        <a class="back" href="../index.html">← Volver</a>
         <span class="nav-year">2016</span>
     </nav>
     <section class="hero">
         <h1>The Game Awards<br>2016</h1>
     </section>
     <div class="divider"></div>
-    <!-- ═══════ SHOWCASE DE GANADORES ═══════ -->
+
     <section class="winners-showcase">
-<!-- GOTY -->
-        <div class="winner-banner winner-banner--goty" id="banner-goty">
-            <div class="winner-banner__bg">
-                <img src="./imagenes/2016/Gif_Overwatch.gif" alt="Overwatch gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🏆</span>
-                <h2 class="winner-banner__title winner-banner__title--goty">Overwatch</h2>
-                <p class="winner-banner__award winner-banner__award--goty">🏆 GAME OF THE YEAR</p>
-                <p class="winner-banner__studio">Blizzard Entertainment</p>
-            </div>
-        </div>
-<!-- Best Game Direction -->
-        <div class="winner-banner" id="banner-direction">
-            <div class="winner-banner__bg">
-                <img src="./imagenes/2016/Gif_Dishonored2.gif" alt="Dishonored 2 gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🎬</span>
-                <h3 class="winner-banner__title">Dishonored 2</h3>
-                <p class="winner-banner__award">Best Game Direction</p>
-                <p class="winner-banner__studio">Arkane Studios</p>
-            </div>
-        </div>
-<!-- Best Narrative -->
-        <div class="winner-banner" id="banner-narrative">
-            <div class="winner-banner__bg">
-                <img src="./imagenes/2016/Gif_Uncharted4.gif" alt="Uncharted 4 story" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">📖</span>
-                <h3 class="winner-banner__title">Uncharted 4: A Thief's End</h3>
-                <p class="winner-banner__award">Best Narrative</p>
-                <p class="winner-banner__studio">Naughty Dog</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Game of the Year</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/overwatch.jpg" alt="Overwatch" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Overwatch</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/doom.jpg" alt="Doom" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Doom</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/inside.jpg" alt="Inside" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Inside</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/titanfall_2.jpg" alt="Titanfall 2" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Titanfall 2</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/uncharted_4_a_thiefs_end.jpg" alt="Uncharted 4: A Thief's End" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Uncharted 4: A Thief's End</h3>
+                </div>
             </div>
         </div>
-<!-- Best Art Direction -->
-        <div class="winner-banner" id="banner-art">
-            <div class="winner-banner__bg">
-                <img src="./imagenes/2016/Gif_Battlefield1.gif" alt="Battlefield 1 art" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🎨</span>
-                <h3 class="winner-banner__title">Battlefield 1</h3>
-                <p class="winner-banner__award">Best Art Direction</p>
-                <p class="winner-banner__studio">DICE</p>
-            </div>
-        </div>
-<!-- Best Music -->
-        <div class="winner-banner" id="banner-music">
-            <div class="winner-banner__bg">
-                <img src="./imagenes/2016/Gif_Doom.gif" alt="Doom music" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🎵</span>
-                <h3 class="winner-banner__title">Doom</h3>
-                <p class="winner-banner__award">Best Music</p>
-                <p class="winner-banner__studio">Mick Gordon</p>
-            </div>
-        </div>
-<!-- Best Independent Game -->
-        <div class="winner-banner" id="banner-indie">
-            <div class="winner-banner__bg">
-                <img src="./imagenes/2016/Gif_Inside.gif" alt="Inside gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🌱</span>
-                <h3 class="winner-banner__title">Inside</h3>
-                <p class="winner-banner__award">Best Independent Game</p>
-                <p class="winner-banner__studio">Playdead</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Independent Game</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/inside.jpg" alt="Inside" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Inside</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/firewatch.jpg" alt="Firewatch" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Firewatch</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/hyper_light_drifter.jpg" alt="Hyper Light Drifter" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Hyper Light Drifter</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/stardew_valley.jpg" alt="Stardew Valley" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Stardew Valley</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/the_witness.jpg" alt="The Witness" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">The Witness</h3>
+                </div>
             </div>
         </div>
-<!-- Best RPG -->
-        <div class="winner-banner" id="banner-rpg">
-            <div class="winner-banner__bg">
-                <img src="./imagenes/2016/Gif_DarkSouls3.gif" alt="Dark Souls III gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">📜</span>
-                <h3 class="winner-banner__title">Dark Souls III</h3>
-                <p class="winner-banner__award">Best Role Playing Game</p>
-                <p class="winner-banner__studio">FromSoftware</p>
-            </div>
-        </div>
-<!-- Best Action/Adventure -->
-        <div class="winner-banner" id="banner-action">
-            <div class="winner-banner__bg">
-                <img src="./imagenes/2016/Gif_Dishonored2.gif" alt="Dishonored 2 action" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">⚔️</span>
-                <h3 class="winner-banner__title">Dishonored 2</h3>
-                <p class="winner-banner__award">Best Action/Adventure</p>
-                <p class="winner-banner__studio">Arkane Studios</p>
-            </div>
-        </div>
-<!-- Best Shooter -->
-        <div class="winner-banner" id="banner-shooter">
-            <div class="winner-banner__bg">
-                <img src="./imagenes/2016/Gif_Overwatch.gif" alt="Overwatch shooter" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🔫</span>
-                <h3 class="winner-banner__title">Overwatch</h3>
-                <p class="winner-banner__award">Best Shooter</p>
-                <p class="winner-banner__studio">Blizzard Entertainment</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Narrative</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/uncharted_4_a_thiefs_end.jpg" alt="Uncharted 4: A Thief's End" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Uncharted 4: A Thief's End</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/firewatch.jpg" alt="Firewatch" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Firewatch</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/inside.jpg" alt="Inside" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Inside</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/mafia_iii.jpg" alt="Mafia III" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Mafia III</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/oxenfree.jpg" alt="Oxenfree" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Oxenfree</h3>
+                </div>
             </div>
         </div>
-<!-- Most Anticipated -->
-        <div class="winner-banner" id="banner-anticipated">
-            <div class="winner-banner__bg">
-                <img src="./imagenes/2017/Gif_ZeldaBOTW.gif" alt="The Legend of Zelda: Breath of the Wild" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">⏳</span>
-                <h3 class="winner-banner__title">The Legend of Zelda: Breath of the Wild</h3>
-                <p class="winner-banner__award">Most Anticipated</p>
-                <p class="winner-banner__studio">Nintendo EPD</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Art Direction</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/inside.jpg" alt="Inside" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Inside</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/abz.jpg" alt="Abzû" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Abzû</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/firewatch.jpg" alt="Firewatch" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Firewatch</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/overwatch.jpg" alt="Overwatch" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Overwatch</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/uncharted_4_a_thiefs_end.jpg" alt="Uncharted 4: A Thief's End" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Uncharted 4: A Thief's End</h3>
+                </div>
             </div>
         </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Soundtrack</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/doom.jpg" alt="Doom" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Doom</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/battlefield_1.jpg" alt="Battlefield 1" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Battlefield 1</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/inside.jpg" alt="Inside" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Inside</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/rez_infinite.jpg" alt="Rez Infinite" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Rez Infinite</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/thumper.jpg" alt="Thumper" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Thumper</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Multiplayer</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/overwatch.jpg" alt="Overwatch" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Overwatch</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/battlefield_1.jpg" alt="Battlefield 1" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Battlefield 1</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/gears_of_war_4.jpg" alt="Gears of War 4" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Gears of War 4</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/titanfall_2.jpg" alt="Titanfall 2" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Titanfall 2</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/tom_clancys_rainbow_six_siege.jpg" alt="Tom Clancy's Rainbow Six Siege" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Tom Clancy's Rainbow Six Siege</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Game Direction</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/blizzard_entertainment.jpg" alt="Blizzard Entertainment" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Blizzard Entertainment</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/dice.jpg" alt="DICE" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">DICE</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/id_software.jpg" alt="id Software" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">id Software</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/naughty_dog.jpg" alt="Naughty Dog" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Naughty Dog</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/respawn_entertainment.jpg" alt="Respawn Entertainment" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Respawn Entertainment</h3>
+                </div>
+            </div>
+        </div>
+
     </section>
+
+    <div class="divider"></div>
+    <section class="survey-banner-section" style="width:100%;">
+        <a href="../encuesta.html?y=2016" class="survey-banner">
+            <div class="survey-banner__glow"></div>
+            <div class="survey-banner__content">
+                <div class="survey-banner__text">
+                    <h2 class="survey-banner__title">Make your voice heard</h2>
+                    <p class="survey-banner__desc">Votar por mis favoritos de 2016</p>
+                </div>
+            </div>
+        </a>
+    </section>
+
     <footer>
-        &copy; GOTY Archive &nbsp;·&nbsp; The Game Awards 2016 — 3ª Edición
+        &copy; GOTY Archive &nbsp;·&nbsp; The Game Awards 2016
     </footer>
 </body>
-
 </html>

@@ -1,163 +1,233 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GOTY 2019 – The Game Awards</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="Css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../Css/style.css" />
 </head>
-
 <body>
     <nav>
-        <a class="back" href="index.html">← Volver</a>
+        <a class="back" href="../index.html">← Volver</a>
         <span class="nav-year">2019</span>
     </nav>
     <section class="hero">
         <h1>The Game Awards<br>2019</h1>
     </section>
     <div class="divider"></div>
-    <!-- ═══════ SHOWCASE DE GANADORES ═══════ -->
+
     <section class="winners-showcase">
-        <!-- GOTY -->
-        <div class="winner-banner winner-banner--goty" id="banner-goty">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2019/Gif_Sekiro.gif" alt="Sekiro: Shadows Die Twice gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🏆</span>
-                <h2 class="winner-banner__title winner-banner__title--goty">Sekiro: Shadows Die Twice</h2>
-                <p class="winner-banner__award winner-banner__award--goty">🏆 GAME OF THE YEAR</p>
-                <p class="winner-banner__studio">FromSoftware / Activision</p>
-            </div>
-        </div>
-        <!-- Best Game Direction -->
-        <div class="winner-banner" id="banner-direction">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2019/Gif_DeathStranding.gif" alt="Death Stranding direction" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🎬</span>
-                <h3 class="winner-banner__title">Death Stranding</h3>
-                <p class="winner-banner__award">Best Game Direction</p>
-                <p class="winner-banner__studio">Kojima Productions</p>
-            </div>
-        </div>
-        <!-- Best Narrative -->
-        <div class="winner-banner" id="banner-narrative">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2019/Gif_DeathStranding.gif" alt="Death Stranding narrative" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">📖</span>
-                <h3 class="winner-banner__title">Death Stranding</h3>
-                <p class="winner-banner__award">Best Narrative</p>
-                <p class="winner-banner__studio">Kojima Productions</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Game of the Year</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/sekiro_shadows_die_twice.jpg" alt="Sekiro: Shadows Die Twice" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Sekiro: Shadows Die Twice</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/control.jpg" alt="Control" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Control</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/death_stranding.jpg" alt="Death Stranding" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Death Stranding</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/resident_evil_2.jpg" alt="Resident Evil 2" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Resident Evil 2</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/super_smash_bros_ultimate.jpg" alt="Super Smash Bros. Ultimate" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Super Smash Bros. Ultimate</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/the_outer_worlds.jpg" alt="The Outer Worlds" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">The Outer Worlds</h3>
+                </div>
             </div>
         </div>
-        <!-- Best Art Direction -->
-        <div class="winner-banner" id="banner-art">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2019/Gif_DeathStranding.gif" alt="Death Stranding art" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🎨</span>
-                <h3 class="winner-banner__title">Death Stranding</h3>
-                <p class="winner-banner__award">Best Art Direction</p>
-                <p class="winner-banner__studio">Kojima Productions</p>
-            </div>
-        </div>
-        <!-- Best Music -->
-        <div class="winner-banner" id="banner-music">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2019/Gif_DeathStranding.gif" alt="Death Stranding music" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🎵</span>
-                <h3 class="winner-banner__title">Death Stranding</h3>
-                <p class="winner-banner__award">Best Music</p>
-                <p class="winner-banner__studio">Ludvig Forssell</p>
-            </div>
-        </div>
-        <!-- Best Independent Game -->
-        <div class="winner-banner" id="banner-indie">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2019/Gif_OtherWilds.gif" alt="Outer Wilds gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🌱</span>
-                <h3 class="winner-banner__title">Outer Wilds</h3>
-                <p class="winner-banner__award">Best Independent Game</p>
-                <p class="winner-banner__studio">Mobius Digital</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Independent Game</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/disco_elysium.jpg" alt="Disco Elysium" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Disco Elysium</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/baba_is_you.jpg" alt="Baba Is You" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Baba Is You</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/katana_zero.jpg" alt="Katana Zero" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Katana Zero</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/outer_wilds.jpg" alt="Outer Wilds" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Outer Wilds</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/untitled_goose_game.jpg" alt="Untitled Goose Game" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Untitled Goose Game</h3>
+                </div>
             </div>
         </div>
-        <!-- Best RPG -->
-        <div class="winner-banner" id="banner-rpg">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2019/Gif_DiscoElysium.gif" alt="Disco Elysium gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">📜</span>
-                <h3 class="winner-banner__title">Disco Elysium</h3>
-                <p class="winner-banner__award">Best Role Playing Game</p>
-                <p class="winner-banner__studio">ZA/UM</p>
-            </div>
-        </div>
-        <!-- Best Action/Adventure -->
-        <div class="winner-banner" id="banner-action">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2019/Gif_Sekiro.gif" alt="Sekiro action" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">⚔️</span>
-                <h3 class="winner-banner__title">Sekiro: Shadows Die Twice</h3>
-                <p class="winner-banner__award">Best Action/Adventure</p>
-                <p class="winner-banner__studio">FromSoftware</p>
-            </div>
-        </div>
-        <!-- Most Anticipated -->
-        <div class="winner-banner" id="banner-anticipated">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2019/Gif_TheLastOfUs2.gif" alt="The Last of Us Part II" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">⏳</span>
-                <h3 class="winner-banner__title">The Last of Us Part II</h3>
-                <p class="winner-banner__award">Most Anticipated</p>
-                <p class="winner-banner__studio">Naughty Dog</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Narrative</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/disco_elysium.jpg" alt="Disco Elysium" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Disco Elysium</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/a_plague_tale_innocence.jpg" alt="A Plague Tale: Innocence" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">A Plague Tale: Innocence</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/control.jpg" alt="Control" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Control</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/death_stranding.jpg" alt="Death Stranding" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Death Stranding</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/the_outer_worlds.jpg" alt="The Outer Worlds" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">The Outer Worlds</h3>
+                </div>
             </div>
         </div>
-        <!-- Best Shooter -->
-        <div class="winner-banner" id="banner-shooter">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2019/" alt="Apex Legends gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🔫</span>
-                <h3 class="winner-banner__title">Apex Legends</h3>
-                <p class="winner-banner__award">Best Shooter</p>
-                <p class="winner-banner__studio">Respawn / EA</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Art Direction</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/control.jpg" alt="Control" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Control</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/death_stranding.jpg" alt="Death Stranding" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Death Stranding</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/gris.jpg" alt="Gris" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Gris</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/sayonara_wild_hearts.jpg" alt="Sayonara Wild Hearts" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Sayonara Wild Hearts</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/sekiro_shadows_die_twice.jpg" alt="Sekiro: Shadows Die Twice" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Sekiro: Shadows Die Twice</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/the_legend_of_zelda_links_awakening.jpg" alt="The Legend of Zelda: Link's Awakening" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">The Legend of Zelda: Link's Awakening</h3>
+                </div>
             </div>
         </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Soundtrack</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/death_stranding.jpg" alt="Death Stranding" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Death Stranding</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/cadence_of_hyrule.jpg" alt="Cadence of Hyrule" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Cadence of Hyrule</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/devil_may_cry_5.jpg" alt="Devil May Cry 5" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Devil May Cry 5</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/kingdom_hearts_iii.jpg" alt="Kingdom Hearts III" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Kingdom Hearts III</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/sayonara_wild_hearts.jpg" alt="Sayonara Wild Hearts" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Sayonara Wild Hearts</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Multiplayer</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/apex_legends.jpg" alt="Apex Legends" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Apex Legends</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/borderlands_3.jpg" alt="Borderlands 3" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Borderlands 3</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/call_of_duty_modern_warfare.jpg" alt="Call of Duty: Modern Warfare" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Call of Duty: Modern Warfare</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/tetris_99.jpg" alt="Tetris 99" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Tetris 99</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/tom_clancys_the_division_2.jpg" alt="Tom Clancy's The Division 2" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Tom Clancy's The Division 2</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Game Direction</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/death_stranding.jpg" alt="Death Stranding" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Death Stranding</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/control.jpg" alt="Control" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Control</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/resident_evil_2.jpg" alt="Resident Evil 2" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Resident Evil 2</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/sekiro_shadows_die_twice.jpg" alt="Sekiro: Shadows Die Twice" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Sekiro: Shadows Die Twice</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/outer_wilds.jpg" alt="Outer Wilds" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Outer Wilds</h3>
+                </div>
+            </div>
+        </div>
+
     </section>
+
+    <div class="divider"></div>
+    <section class="survey-banner-section" style="width:100%;">
+        <a href="../encuesta.html?y=2019" class="survey-banner">
+            <div class="survey-banner__glow"></div>
+            <div class="survey-banner__content">
+                <div class="survey-banner__text">
+                    <h2 class="survey-banner__title">Make your voice heard</h2>
+                    <p class="survey-banner__desc">Votar por mis favoritos de 2019</p>
+                </div>
+            </div>
+        </a>
+    </section>
+
     <footer>
-        &copy; GOTY Archive &nbsp;·&nbsp; The Game Awards 2019 — 6ª Edición
+        &copy; GOTY Archive &nbsp;·&nbsp; The Game Awards 2019
     </footer>
 </body>
-
 </html>

@@ -1,139 +1,225 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GOTY 2014 – The Game Awards</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="Css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../Css/style.css" />
 </head>
-
 <body>
     <nav>
-        <a class="back" href="index.html">← Volver</a>
+        <a class="back" href="../index.html">← Volver</a>
         <span class="nav-year">2014</span>
     </nav>
     <section class="hero">
         <h1>The Game Awards<br>2014</h1>
     </section>
     <div class="divider"></div>
-    <!-- ═══════ SHOWCASE DE GANADORES ═══════ -->
+
     <section class="winners-showcase">
-        <!-- GOTY — sección principal más grande -->
-        <div class="winner-banner winner-banner--goty" id="banner-goty">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2014/Gif_DragonAgeInquisition.gif" alt="Dragon Age: Inquisition gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🏆</span>
-                <h2 class="winner-banner__title winner-banner__title--goty">Dragon Age: Inquisition</h2>
-                <p class="winner-banner__award winner-banner__award--goty">GAME OF THE YEAR</p>
-                <p class="winner-banner__studio">BioWare / EA</p>
-            </div>
-        </div>
-        <!-- Best Action/Adventure -->
-        <div class="winner-banner" id="banner-action">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2014/Gif_ShadowofMordor.gif" alt="Shadow of Mordor gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">⚔️</span>
-                <h3 class="winner-banner__title">Shadow of Mordor</h3>
-                <p class="winner-banner__award">Best Action/Adventure</p>
-                <p class="winner-banner__studio">Monolith Productions</p>
-            </div>
-        </div>
-        <!-- Best RPG -->
-        <div class="winner-banner" id="banner-rpg">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2014/Gif_DragonAgeInquisition.gif" alt="Dragon Age: Inquisition RPG" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">📜</span>
-                <h3 class="winner-banner__title">Dragon Age: Inquisition</h3>
-                <p class="winner-banner__award">Best Role Playing Game</p>
-                <p class="winner-banner__studio">BioWare</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Game of the Year</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/dragon_age_inquisition.jpg" alt="Dragon Age: Inquisition" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Dragon Age: Inquisition</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/bayonetta_2.jpg" alt="Bayonetta 2" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Bayonetta 2</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/dark_souls_ii.jpg" alt="Dark Souls II" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Dark Souls II</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/hearthstone.jpg" alt="Hearthstone" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Hearthstone</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/middle-earth_shadow_of_mordor.jpg" alt="Middle-earth: Shadow of Mordor" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Middle-earth: Shadow of Mordor</h3>
+                </div>
             </div>
         </div>
-        <!-- Best Shooter -->
-        <div class="winner-banner" id="banner-shooter">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2014/Fig_FarCry3.webp" alt="Far Cry 4 gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🔫</span>
-                <h3 class="winner-banner__title">Far Cry 4</h3>
-                <p class="winner-banner__award">Best Shooter</p>
-                <p class="winner-banner__studio">Ubisoft Montreal</p>
-            </div>
-        </div>
-        <!-- Best Narrative -->
-        <div class="winner-banner" id="banner-narrative">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2014/Gif_TheLastOfUs.gif" alt="The Last of Us Remastered" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">📖</span>
-                <h3 class="winner-banner__title">The Last of Us Remastered</h3>
-                <p class="winner-banner__award">Best Narrative</p>
-                <p class="winner-banner__studio">Naughty Dog</p>
-            </div>
-        </div>
-        <!-- Best Music -->
-        <div class="winner-banner" id="banner-soundtrack">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2014/Gif_Destiny.gif" alt="Destiny gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🎵</span>
-                <h3 class="winner-banner__title">Destiny</h3>
-                <p class="winner-banner__award">Best Music</p>
-                <p class="winner-banner__studio">Bungie / Martin O'Donnell</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Independent Game</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/shovel_knight.jpg" alt="Shovel Knight" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Shovel Knight</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/broken_age_part_1.jpg" alt="Broken Age Part 1" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Broken Age Part 1</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/monument_valley.jpg" alt="Monument Valley" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Monument Valley</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/transistor.jpg" alt="Transistor" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Transistor</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/the_vanishing_of_ethan_carter.jpg" alt="The Vanishing of Ethan Carter" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">The Vanishing of Ethan Carter</h3>
+                </div>
             </div>
         </div>
-        <!-- Most Anticipated -->
-        <div class="winner-banner" id="banner-anticipated">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2015/Gif_TheWitcherIII.gif" alt="The Witcher 3: Wild Hunt" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">⏳</span>
-                <h3 class="winner-banner__title">The Witcher 3: Wild Hunt</h3>
-                <p class="winner-banner__award">Most Anticipated</p>
-                <p class="winner-banner__studio">CD Projekt Red</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Narrative</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/valiant_hearts_the_great_war.jpg" alt="Valiant Hearts: The Great War" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Valiant Hearts: The Great War</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/south_park_the_stick_of_truth.jpg" alt="South Park: The Stick of Truth" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">South Park: The Stick of Truth</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/the_walking_dead_season_two.jpg" alt="The Walking Dead: Season Two" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">The Walking Dead: Season Two</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/the_wolf_among_us.jpg" alt="The Wolf Among Us" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">The Wolf Among Us</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/wolfenstein_the_new_order.jpg" alt="Wolfenstein: The New Order" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Wolfenstein: The New Order</h3>
+                </div>
             </div>
         </div>
-        <!-- Best Independent Game -->
-        <div class="winner-banner" id="banner-indie">
-            <div class="winner-banner__bg">
-                <img src="imagenes/2014/Gif_ShovelKinght.gif" alt="Shovel Knight gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🌱</span>
-                <h3 class="winner-banner__title">Shovel Knight</h3>
-                <p class="winner-banner__award">Best Independent Game</p>
-                <p class="winner-banner__studio">Yacht Club Games</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Art Direction</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/monument_valley.jpg" alt="Monument Valley" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Monument Valley</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/assassins_creed_unity.jpg" alt="Assassin's Creed Unity" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Assassin's Creed Unity</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/child_of_light.jpg" alt="Child of Light" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Child of Light</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/destiny.jpg" alt="Destiny" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Destiny</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/sunset_overdrive.jpg" alt="Sunset Overdrive" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Sunset Overdrive</h3>
+                </div>
             </div>
         </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Soundtrack</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/destiny.jpg" alt="Destiny" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Destiny</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/alien_isolation.jpg" alt="Alien: Isolation" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Alien: Isolation</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/child_of_light.jpg" alt="Child of Light" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Child of Light</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/sunset_overdrive.jpg" alt="Sunset Overdrive" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Sunset Overdrive</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/transistor.jpg" alt="Transistor" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Transistor</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Multiplayer</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/destiny.jpg" alt="Destiny" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Destiny</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/call_of_duty_advanced_warfare.jpg" alt="Call of Duty: Advanced Warfare" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Call of Duty: Advanced Warfare</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/dark_souls_ii.jpg" alt="Dark Souls II" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Dark Souls II</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/hearthstone.jpg" alt="Hearthstone" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Hearthstone</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/titanfall.jpg" alt="Titanfall" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Titanfall</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Game Direction</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/nintendo.jpg" alt="Nintendo" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Nintendo</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/blizzard_entertainment.jpg" alt="Blizzard Entertainment" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Blizzard Entertainment</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/monolith_productions.jpg" alt="Monolith Productions" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Monolith Productions</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/telltale_games.jpg" alt="Telltale Games" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Telltale Games</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/ubisoft_montreal.jpg" alt="Ubisoft Montreal" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Ubisoft Montreal</h3>
+                </div>
+            </div>
+        </div>
+
     </section>
+
+    <div class="divider"></div>
+    <section class="survey-banner-section" style="width:100%;">
+        <a href="../encuesta.html?y=2014" class="survey-banner">
+            <div class="survey-banner__glow"></div>
+            <div class="survey-banner__content">
+                <div class="survey-banner__text">
+                    <h2 class="survey-banner__title">Make your voice heard</h2>
+                    <p class="survey-banner__desc">Votar por mis favoritos de 2014</p>
+                </div>
+            </div>
+        </a>
+    </section>
+
     <footer>
-        &copy; GOTY Archive &nbsp;·&nbsp; The Game Awards 2014 — 1ª Edición
+        &copy; GOTY Archive &nbsp;·&nbsp; The Game Awards 2014
     </footer>
 </body>
-
-</html>
-
 </html>

@@ -1,163 +1,229 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GOTY 2022 – The Game Awards</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="Css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../Css/style.css" />
 </head>
-
 <body>
     <nav>
-        <a class="back" href="index.html">← Volver</a>
+        <a class="back" href="../index.html">← Volver</a>
         <span class="nav-year">2022</span>
     </nav>
     <section class="hero">
         <h1>The Game Awards<br>2022</h1>
     </section>
     <div class="divider"></div>
-    <!-- ═══════ SHOWCASE DE GANADORES ═══════ -->
+
     <section class="winners-showcase">
-<!-- GOTY -->
-        <div class="winner-banner winner-banner--goty" id="banner-goty">
-            <div class="winner-banner__bg">
-                <img src="" alt="Elden Ring gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🏆</span>
-                <h2 class="winner-banner__title winner-banner__title--goty">Elden Ring</h2>
-                <p class="winner-banner__award winner-banner__award--goty">🏆 GAME OF THE YEAR</p>
-                <p class="winner-banner__studio">FromSoftware / Bandai Namco</p>
-            </div>
-        </div>
-<!-- Best Game Direction -->
-        <div class="winner-banner" id="banner-direction">
-            <div class="winner-banner__bg">
-                <img src="" alt="Elden Ring direction" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🎬</span>
-                <h3 class="winner-banner__title">Elden Ring</h3>
-                <p class="winner-banner__award">Best Game Direction</p>
-                <p class="winner-banner__studio">FromSoftware</p>
-            </div>
-        </div>
-<!-- Best Narrative -->
-        <div class="winner-banner" id="banner-narrative">
-            <div class="winner-banner__bg">
-                <img src="" alt="God of War Ragnarök narrative" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">📖</span>
-                <h3 class="winner-banner__title">God of War: Ragnarök</h3>
-                <p class="winner-banner__award">Best Narrative</p>
-                <p class="winner-banner__studio">Santa Monica Studio</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Game of the Year</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/elden_ring.jpg" alt="Elden Ring" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Elden Ring</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/a_plague_tale_requiem.jpg" alt="A Plague Tale: Requiem" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">A Plague Tale: Requiem</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/god_of_war_ragnark.jpg" alt="God of War Ragnarök" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">God of War Ragnarök</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/horizon_forbidden_west.jpg" alt="Horizon Forbidden West" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Horizon Forbidden West</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/stray.jpg" alt="Stray" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Stray</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/xenoblade_chronicles_3.jpg" alt="Xenoblade Chronicles 3" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Xenoblade Chronicles 3</h3>
+                </div>
             </div>
         </div>
-<!-- Best Art Direction -->
-        <div class="winner-banner" id="banner-art">
-            <div class="winner-banner__bg">
-                <img src="" alt="Elden Ring art" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🎨</span>
-                <h3 class="winner-banner__title">Elden Ring</h3>
-                <p class="winner-banner__award">Best Art Direction</p>
-                <p class="winner-banner__studio">FromSoftware</p>
-            </div>
-        </div>
-<!-- Best Music -->
-        <div class="winner-banner" id="banner-music">
-            <div class="winner-banner__bg">
-                <img src="" alt="God of War Ragnarök music" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🎵</span>
-                <h3 class="winner-banner__title">God of War: Ragnarök</h3>
-                <p class="winner-banner__award">Best Music</p>
-                <p class="winner-banner__studio">Bear McCreary</p>
-            </div>
-        </div>
-<!-- Best Independent Game -->
-        <div class="winner-banner" id="banner-indie">
-            <div class="winner-banner__bg">
-                <img src="" alt="Stray gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🌱</span>
-                <h3 class="winner-banner__title">Stray</h3>
-                <p class="winner-banner__award">Best Independent Game</p>
-                <p class="winner-banner__studio">BlueTwelve Studio / Annapurna Interactive</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Independent Game</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/stray.jpg" alt="Stray" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Stray</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/cult_of_the_lamb.jpg" alt="Cult of the Lamb" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Cult of the Lamb</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/neon_white.jpg" alt="Neon White" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Neon White</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/sifu.jpg" alt="Sifu" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Sifu</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/tunic.jpg" alt="Tunic" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Tunic</h3>
+                </div>
             </div>
         </div>
-<!-- Best RPG -->
-        <div class="winner-banner" id="banner-rpg">
-            <div class="winner-banner__bg">
-                <img src="" alt="Elden Ring RPG" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">📜</span>
-                <h3 class="winner-banner__title">Elden Ring</h3>
-                <p class="winner-banner__award">Best Role Playing Game</p>
-                <p class="winner-banner__studio">FromSoftware</p>
-            </div>
-        </div>
-<!-- Best Action/Adventure -->
-        <div class="winner-banner" id="banner-action">
-            <div class="winner-banner__bg">
-                <img src="" alt="God of War Ragnarök action" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">⚔️</span>
-                <h3 class="winner-banner__title">God of War: Ragnarök</h3>
-                <p class="winner-banner__award">Best Action/Adventure</p>
-                <p class="winner-banner__studio">Santa Monica Studio</p>
-            </div>
-        </div>
-<!-- Most Anticipated -->
-        <div class="winner-banner" id="banner-anticipated">
-            <div class="winner-banner__bg">
-                <img src="" alt="The Legend of Zelda: Tears of the Kingdom" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">⏳</span>
-                <h3 class="winner-banner__title">The Legend of Zelda: Tears of the Kingdom</h3>
-                <p class="winner-banner__award">Most Anticipated</p>
-                <p class="winner-banner__studio">Nintendo EPD</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Narrative</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/god_of_war_ragnark.jpg" alt="God of War Ragnarök" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">God of War Ragnarök</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/a_plague_tale_requiem.jpg" alt="A Plague Tale: Requiem" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">A Plague Tale: Requiem</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/elden_ring.jpg" alt="Elden Ring" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Elden Ring</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/horizon_forbidden_west.jpg" alt="Horizon Forbidden West" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Horizon Forbidden West</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/immortality.jpg" alt="Immortality" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Immortality</h3>
+                </div>
             </div>
         </div>
-        <!-- Best Shooter -->
-        <div class="winner-banner" id="banner-shooter">
-            <div class="winner-banner__bg">
-                <img src="" alt="Splatoon 3 gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🔫</span>
-                <h3 class="winner-banner__title">Splatoon 3</h3>
-                <p class="winner-banner__award">Best Shooter</p>
-                <p class="winner-banner__studio">Nintendo</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Art Direction</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/elden_ring.jpg" alt="Elden Ring" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Elden Ring</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/god_of_war_ragnark.jpg" alt="God of War Ragnarök" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">God of War Ragnarök</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/horizon_forbidden_west.jpg" alt="Horizon Forbidden West" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Horizon Forbidden West</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/scorn.jpg" alt="Scorn" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Scorn</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/stray.jpg" alt="Stray" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Stray</h3>
+                </div>
             </div>
         </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Soundtrack</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/god_of_war_ragnark.jpg" alt="God of War Ragnarök" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">God of War Ragnarök</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/a_plague_tale_requiem.jpg" alt="A Plague Tale: Requiem" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">A Plague Tale: Requiem</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/elden_ring.jpg" alt="Elden Ring" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Elden Ring</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/metal_hellsinger.jpg" alt="Metal: Hellsinger" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Metal: Hellsinger</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/xenoblade_chronicles_3.jpg" alt="Xenoblade Chronicles 3" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Xenoblade Chronicles 3</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Multiplayer</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/splatoon_3.jpg" alt="Splatoon 3" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Splatoon 3</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/call_of_duty_modern_warfare_ii.jpg" alt="Call of Duty: Modern Warfare II" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Call of Duty: Modern Warfare II</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/multiversus.jpg" alt="MultiVersus" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">MultiVersus</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/overwatch_2.jpg" alt="Overwatch 2" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Overwatch 2</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/teenage_mutant_ninja_turtles_shredders_revenge.jpg" alt="Teenage Mutant Ninja Turtles: Shredder's Revenge" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Teenage Mutant Ninja Turtles: Shredder's Revenge</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Game Direction</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/elden_ring.jpg" alt="Elden Ring" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Elden Ring</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/god_of_war_ragnark.jpg" alt="God of War Ragnarök" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">God of War Ragnarök</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/horizon_forbidden_west.jpg" alt="Horizon Forbidden West" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Horizon Forbidden West</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/immortality.jpg" alt="Immortality" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Immortality</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/stray.jpg" alt="Stray" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Stray</h3>
+                </div>
+            </div>
+        </div>
+
     </section>
+
+    <div class="divider"></div>
+    <section class="survey-banner-section" style="width:100%;">
+        <a href="../encuesta.html?y=2022" class="survey-banner">
+            <div class="survey-banner__glow"></div>
+            <div class="survey-banner__content">
+                <div class="survey-banner__text">
+                    <h2 class="survey-banner__title">Make your voice heard</h2>
+                    <p class="survey-banner__desc">Votar por mis favoritos de 2022</p>
+                </div>
+            </div>
+        </a>
+    </section>
+
     <footer>
-        &copy; GOTY Archive &nbsp;·&nbsp; The Game Awards 2022 — 9ª Edición
+        &copy; GOTY Archive &nbsp;·&nbsp; The Game Awards 2022
     </footer>
 </body>
-
 </html>

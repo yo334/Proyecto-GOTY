@@ -1,150 +1,233 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GOTY 2024 – The Game Awards</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="Css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../Css/style.css" />
 </head>
-
 <body>
     <nav>
-        <a class="back" href="index.html">← Volver</a>
+        <a class="back" href="../index.html">← Volver</a>
         <span class="nav-year">2024</span>
     </nav>
     <section class="hero">
         <h1>The Game Awards<br>2024</h1>
     </section>
     <div class="divider"></div>
-    <!-- ═══════ SHOWCASE DE GANADORES ═══════ -->
+
     <section class="winners-showcase">
-<!-- GOTY -->
-        <div class="winner-banner winner-banner--goty" id="banner-goty">
-            <div class="winner-banner__bg">
-                <img src="" alt="Astro Bot gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🏆</span>
-                <h2 class="winner-banner__title winner-banner__title--goty">Astro Bot</h2>
-                <p class="winner-banner__award winner-banner__award--goty">🏆 GAME OF THE YEAR</p>
-                <p class="winner-banner__studio">Team Asobi / Sony</p>
-            </div>
-        </div>
-<!-- Best Game Direction -->
-        <div class="winner-banner" id="banner-direction">
-            <div class="winner-banner__bg">
-                <img src="" alt="Astro Bot direction" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🎬</span>
-                <h3 class="winner-banner__title">Astro Bot</h3>
-                <p class="winner-banner__award">Best Game Direction</p>
-                <p class="winner-banner__studio">Team Asobi</p>
-            </div>
-        </div>
-<!-- Best Narrative -->
-        <div class="winner-banner" id="banner-narrative">
-            <div class="winner-banner__bg">
-                <img src="" alt="Final Fantasy VII Rebirth narrative" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">📖</span>
-                <h3 class="winner-banner__title">Final Fantasy VII Rebirth</h3>
-                <p class="winner-banner__award">Best Narrative</p>
-                <p class="winner-banner__studio">Square Enix</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Game of the Year</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/astro_bot.jpg" alt="Astro Bot" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Astro Bot</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/balatro.jpg" alt="Balatro" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Balatro</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/black_myth_wukong.jpg" alt="Black Myth: Wukong" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Black Myth: Wukong</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/elden_ring_shadow_of_the_erdtree.jpg" alt="Elden Ring Shadow of the Erdtree" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Elden Ring Shadow of the Erdtree</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/final_fantasy_vii_rebirth.jpg" alt="Final Fantasy VII Rebirth" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Final Fantasy VII Rebirth</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/metaphor_refantazio.jpg" alt="Metaphor: ReFantazio" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Metaphor: ReFantazio</h3>
+                </div>
             </div>
         </div>
-<!-- Best Art Direction -->
-        <div class="winner-banner" id="banner-art">
-            <div class="winner-banner__bg">
-                <img src="" alt="Astro Bot art" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🎨</span>
-                <h3 class="winner-banner__title">Astro Bot</h3>
-                <p class="winner-banner__award">Best Art Direction</p>
-                <p class="winner-banner__studio">Team Asobi</p>
-            </div>
-        </div>
-<!-- Best Music -->
-        <div class="winner-banner" id="banner-music">
-            <div class="winner-banner__bg">
-                <img src="" alt="Final Fantasy VII Rebirth music" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🎵</span>
-                <h3 class="winner-banner__title">Final Fantasy VII Rebirth</h3>
-                <p class="winner-banner__award">Best Music</p>
-                <p class="winner-banner__studio">Nobuo Uematsu / Square Enix</p>
-            </div>
-        </div>
-<!-- Best Independent Game -->
-        <div class="winner-banner" id="banner-indie">
-            <div class="winner-banner__bg">
-                <img src="" alt="Balatro gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🌱</span>
-                <h3 class="winner-banner__title">Balatro</h3>
-                <p class="winner-banner__award">Best Independent Game</p>
-                <p class="winner-banner__studio">LocalThunk</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Independent Game</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/balatro.jpg" alt="Balatro" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Balatro</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/animal_well.jpg" alt="Animal Well" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Animal Well</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/lorelei_and_the_laser_eyes.jpg" alt="Lorelei and the Laser Eyes" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Lorelei and the Laser Eyes</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/neva.jpg" alt="Neva" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Neva</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/ufo_50.jpg" alt="UFO 50" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">UFO 50</h3>
+                </div>
             </div>
         </div>
-<!-- Best RPG -->
-        <div class="winner-banner" id="banner-rpg">
-            <div class="winner-banner__bg">
-                <img src="" alt="Metaphor ReFantazio gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">📜</span>
-                <h3 class="winner-banner__title">Metaphor: ReFantazio</h3>
-                <p class="winner-banner__award">Best Role Playing Game</p>
-                <p class="winner-banner__studio">Atlus / Studio Zero</p>
-            </div>
-        </div>
-<!-- Best Action/Adventure -->
-        <div class="winner-banner" id="banner-actionadv">
-            <div class="winner-banner__bg">
-                <img src="" alt="Astro Bot action adventure" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🗺️</span>
-                <h3 class="winner-banner__title">Astro Bot</h3>
-                <p class="winner-banner__award">Best Action/Adventure</p>
-                <p class="winner-banner__studio">Team Asobi</p>
-            </div>
-        </div>
-        <!-- Best Shooter -->
-        <div class="winner-banner" id="banner-shooter">
-            <div class="winner-banner__bg">
-                <img src="" alt="Helldivers 2 gameplay" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <span class="winner-banner__category-icon">🔫</span>
-                <h3 class="winner-banner__title">Helldivers 2</h3>
-                <p class="winner-banner__award">Best Shooter</p>
-                <p class="winner-banner__studio">Arrowhead / Sony</p>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Narrative</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/metaphor_refantazio.jpg" alt="Metaphor: ReFantazio" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Metaphor: ReFantazio</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/final_fantasy_vii_rebirth.jpg" alt="Final Fantasy VII Rebirth" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Final Fantasy VII Rebirth</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/like_a_dragon_infinite_wealth.jpg" alt="Like a Dragon: Infinite Wealth" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Like a Dragon: Infinite Wealth</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/senuas_saga_hellblade_ii.jpg" alt="Senua's Saga: Hellblade II" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Senua's Saga: Hellblade II</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/silent_hill_2.jpg" alt="Silent Hill 2" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Silent Hill 2</h3>
+                </div>
             </div>
         </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Art Direction</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/metaphor_refantazio.jpg" alt="Metaphor: ReFantazio" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Metaphor: ReFantazio</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/astro_bot.jpg" alt="Astro Bot" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Astro Bot</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/black_myth_wukong.jpg" alt="Black Myth: Wukong" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Black Myth: Wukong</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/neva.jpg" alt="Neva" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Neva</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/senuas_saga_hellblade_ii.jpg" alt="Senua's Saga: Hellblade II" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Senua's Saga: Hellblade II</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Soundtrack</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/final_fantasy_vii_rebirth.jpg" alt="Final Fantasy VII Rebirth" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Final Fantasy VII Rebirth</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/astro_bot.jpg" alt="Astro Bot" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Astro Bot</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/metaphor_refantazio.jpg" alt="Metaphor: ReFantazio" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Metaphor: ReFantazio</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/silent_hill_2.jpg" alt="Silent Hill 2" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Silent Hill 2</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/stellar_blade.jpg" alt="Stellar Blade" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Stellar Blade</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Multiplayer</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/helldivers_2.jpg" alt="Helldivers 2" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Helldivers 2</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/call_of_duty_black_ops_6.jpg" alt="Call of Duty: Black Ops 6" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Call of Duty: Black Ops 6</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/super_mario_party_jamboree.jpg" alt="Super Mario Party Jamboree" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Super Mario Party Jamboree</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/tekken_8.jpg" alt="Tekken 8" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Tekken 8</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/warhammer_40000_space_marine_2.jpg" alt="Warhammer 40,000: Space Marine 2" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Warhammer 40,000: Space Marine 2</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block" style="grid-column: 1 / -1; width: 100%;">
+            <h2 class="category-title" style="text-align:center; padding: 20px 0; border-bottom: 1px solid #333;">Best Game Direction</h2>
+            <div class="candidate-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; width: 100%;">
+                <div class="candidate-card card--winner" style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/astro_bot.jpg" alt="Astro Bot" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Astro Bot</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/balatro.jpg" alt="Balatro" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Balatro</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/black_myth_wukong.jpg" alt="Black Myth: Wukong" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Black Myth: Wukong</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/elden_ring_shadow_of_the_erdtree.jpg" alt="Elden Ring Shadow of the Erdtree" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Elden Ring Shadow of the Erdtree</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/final_fantasy_vii_rebirth.jpg" alt="Final Fantasy VII Rebirth" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Final Fantasy VII Rebirth</h3>
+                </div>
+                <div class="candidate-card " style="flex: 1 1 200px; max-width: 250px;">
+                    <img src="../imagenes/covers/metaphor_refantazio.jpg" alt="Metaphor: ReFantazio" class="candidate-card__image" />
+                    <h3 class="candidate-card__title">Metaphor: ReFantazio</h3>
+                </div>
+            </div>
+        </div>
+
     </section>
+
+    <div class="divider"></div>
+    <section class="survey-banner-section" style="width:100%;">
+        <a href="../encuesta.html?y=2024" class="survey-banner">
+            <div class="survey-banner__glow"></div>
+            <div class="survey-banner__content">
+                <div class="survey-banner__text">
+                    <h2 class="survey-banner__title">Make your voice heard</h2>
+                    <p class="survey-banner__desc">Votar por mis favoritos de 2024</p>
+                </div>
+            </div>
+        </a>
+    </section>
+
     <footer>
-        &copy; GOTY Archive &nbsp;·&nbsp; The Game Awards 2024 — 11ª Edición
+        &copy; GOTY Archive &nbsp;·&nbsp; The Game Awards 2024
     </footer>
 </body>
-
 </html>
