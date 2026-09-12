@@ -1,0 +1,196 @@
+{
+    "Game of the Year": [
+        {
+            "name": "Elden Ring",
+            "isWinner": true,
+            "image": "../imagenes/covers/elden_ring.jpg"
+        },
+        {
+            "name": "A Plague Tale: Requiem",
+            "isWinner": false,
+            "image": "../imagenes/covers/a_plague_tale_requiem.jpg"
+        },
+        {
+            "name": "God of War Ragnarök",
+            "isWinner": false,
+            "image": "../imagenes/covers/god_of_war_ragnark.jpg"
+        },
+        {
+            "name": "Horizon Forbidden West",
+            "isWinner": false,
+            "image": "../imagenes/covers/horizon_forbidden_west.jpg"
+        },
+        {
+            "name": "Stray",
+            "isWinner": false,
+            "image": "../imagenes/covers/stray.jpg"
+        },
+        {
+            "name": "Xenoblade Chronicles 3",
+            "isWinner": false,
+            "image": "../imagenes/covers/xenoblade_chronicles_3.jpg"
+        }
+    ],
+    "Best Independent Game": [
+        {
+            "name": "Stray",
+            "isWinner": true,
+            "image": "../imagenes/covers/stray.jpg"
+        },
+        {
+            "name": "Cult of the Lamb",
+            "isWinner": false,
+            "image": "../imagenes/covers/cult_of_the_lamb.jpg"
+        },
+        {
+            "name": "Neon White",
+            "isWinner": false,
+            "image": "../imagenes/covers/neon_white.jpg"
+        },
+        {
+            "name": "Sifu",
+            "isWinner": false,
+            "image": "../imagenes/covers/sifu.jpg"
+        },
+        {
+            "name": "Tunic",
+            "isWinner": false,
+            "image": "../imagenes/covers/tunic.jpg"
+        }
+    ],
+    "Best Narrative": [
+        {
+            "name": "God of War Ragnarök",
+            "isWinner": true,
+            "image": "../imagenes/covers/god_of_war_ragnark.jpg"
+        },
+        {
+            "name": "A Plague Tale: Requiem",
+            "isWinner": false,
+            "image": "../imagenes/covers/a_plague_tale_requiem.jpg"
+        },
+        {
+            "name": "Elden Ring",
+            "isWinner": false,
+            "image": "../imagenes/covers/elden_ring.jpg"
+        },
+        {
+            "name": "Horizon Forbidden West",
+            "isWinner": false,
+            "image": "../imagenes/covers/horizon_forbidden_west.jpg"
+        },
+        {
+            "name": "Immortality",
+            "isWinner": false,
+            "image": "../imagenes/covers/immortality.jpg"
+        }
+    ],
+    "Best Art Direction": [
+        {
+            "name": "Elden Ring",
+            "isWinner": true,
+            "image": "../imagenes/covers/elden_ring.jpg"
+        },
+        {
+            "name": "God of War Ragnarök",
+            "isWinner": false,
+            "image": "../imagenes/covers/god_of_war_ragnark.jpg"
+        },
+        {
+            "name": "Horizon Forbidden West",
+            "isWinner": false,
+            "image": "../imagenes/covers/horizon_forbidden_west.jpg"
+        },
+        {
+            "name": "Scorn",
+            "isWinner": false,
+            "image": "../imagenes/covers/scorn.jpg"
+        },
+        {
+            "name": "Stray",
+            "isWinner": false,
+            "image": "../imagenes/covers/stray.jpg"
+        }
+    ],
+    "Best Soundtrack": [
+        {
+            "name": "God of War Ragnarök",
+            "isWinner": true,
+            "image": "../imagenes/covers/god_of_war_ragnark.jpg"
+        },
+        {
+            "name": "A Plague Tale: Requiem",
+            "isWinner": false,
+            "image": "../imagenes/covers/a_plague_tale_requiem.jpg"
+        },
+        {
+            "name": "Elden Ring",
+            "isWinner": false,
+            "image": "../imagenes/covers/elden_ring.jpg"
+        },
+        {
+            "name": "Metal: Hellsinger",
+            "isWinner": false,
+            "image": "../imagenes/covers/metal_hellsinger.jpg"
+        },
+        {
+            "name": "Xenoblade Chronicles 3",
+            "isWinner": false,
+            "image": "../imagenes/covers/xenoblade_chronicles_3.jpg"
+        }
+    ],
+    "Best Multiplayer": [
+        {
+            "name": "Splatoon 3",
+            "isWinner": true,
+            "image": "../imagenes/covers/splatoon_3.jpg"
+        },
+        {
+            "name": "Call of Duty: Modern Warfare II",
+            "isWinner": false,
+            "image": "../imagenes/covers/call_of_duty_modern_warfare_ii.jpg"
+        },
+        {
+            "name": "MultiVersus",
+            "isWinner": false,
+            "image": "../imagenes/covers/multiversus.jpg"
+        },
+        {
+            "name": "Overwatch 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/overwatch_2.jpg"
+        },
+        {
+            "name": "Teenage Mutant Ninja Turtles: Shredder's Revenge",
+            "isWinner": false,
+            "image": "../imagenes/covers/teenage_mutant_ninja_turtles_shredders_revenge.jpg"
+        }
+    ],
+    "Best Game Direction": [
+        {
+            "name": "Elden Ring",
+            "isWinner": true,
+            "image": "../imagenes/covers/elden_ring.jpg"
+        },
+        {
+            "name": "God of War Ragnarök",
+            "isWinner": false,
+            "image": "../imagenes/covers/god_of_war_ragnark.jpg"
+        },
+        {
+            "name": "Horizon Forbidden West",
+            "isWinner": false,
+            "image": "../imagenes/covers/horizon_forbidden_west.jpg"
+        },
+        {
+            "name": "Immortality",
+            "isWinner": false,
+            "image": "../imagenes/covers/immortality.jpg"
+        },
+        {
+            "name": "Stray",
+            "isWinner": false,
+            "image": "../imagenes/covers/stray.jpg"
+        }
+    ]
+}

@@ -1,0 +1,201 @@
+{
+    "Game of the Year": [
+        {
+            "name": "Sekiro: Shadows Die Twice",
+            "isWinner": true,
+            "image": "../imagenes/covers/sekiro_shadows_die_twice.jpg"
+        },
+        {
+            "name": "Control",
+            "isWinner": false,
+            "image": "../imagenes/covers/control.jpg"
+        },
+        {
+            "name": "Death Stranding",
+            "isWinner": false,
+            "image": "../imagenes/covers/death_stranding.jpg"
+        },
+        {
+            "name": "Resident Evil 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/resident_evil_2.jpg"
+        },
+        {
+            "name": "Super Smash Bros. Ultimate",
+            "isWinner": false,
+            "image": "../imagenes/covers/super_smash_bros_ultimate.jpg"
+        },
+        {
+            "name": "The Outer Worlds",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_outer_worlds.jpg"
+        }
+    ],
+    "Best Independent Game": [
+        {
+            "name": "Disco Elysium",
+            "isWinner": true,
+            "image": "../imagenes/covers/disco_elysium.jpg"
+        },
+        {
+            "name": "Baba Is You",
+            "isWinner": false,
+            "image": "../imagenes/covers/baba_is_you.jpg"
+        },
+        {
+            "name": "Katana Zero",
+            "isWinner": false,
+            "image": "../imagenes/covers/katana_zero.jpg"
+        },
+        {
+            "name": "Outer Wilds",
+            "isWinner": false,
+            "image": "../imagenes/covers/outer_wilds.jpg"
+        },
+        {
+            "name": "Untitled Goose Game",
+            "isWinner": false,
+            "image": "../imagenes/covers/untitled_goose_game.jpg"
+        }
+    ],
+    "Best Narrative": [
+        {
+            "name": "Disco Elysium",
+            "isWinner": true,
+            "image": "../imagenes/covers/disco_elysium.jpg"
+        },
+        {
+            "name": "A Plague Tale: Innocence",
+            "isWinner": false,
+            "image": "../imagenes/covers/a_plague_tale_innocence.jpg"
+        },
+        {
+            "name": "Control",
+            "isWinner": false,
+            "image": "../imagenes/covers/control.jpg"
+        },
+        {
+            "name": "Death Stranding",
+            "isWinner": false,
+            "image": "../imagenes/covers/death_stranding.jpg"
+        },
+        {
+            "name": "The Outer Worlds",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_outer_worlds.jpg"
+        }
+    ],
+    "Best Art Direction": [
+        {
+            "name": "Control",
+            "isWinner": true,
+            "image": "../imagenes/covers/control.jpg"
+        },
+        {
+            "name": "Death Stranding",
+            "isWinner": false,
+            "image": "../imagenes/covers/death_stranding.jpg"
+        },
+        {
+            "name": "Gris",
+            "isWinner": false,
+            "image": "../imagenes/covers/gris.jpg"
+        },
+        {
+            "name": "Sayonara Wild Hearts",
+            "isWinner": false,
+            "image": "../imagenes/covers/sayonara_wild_hearts.jpg"
+        },
+        {
+            "name": "Sekiro: Shadows Die Twice",
+            "isWinner": false,
+            "image": "../imagenes/covers/sekiro_shadows_die_twice.jpg"
+        },
+        {
+            "name": "The Legend of Zelda: Link's Awakening",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_legend_of_zelda_links_awakening.jpg"
+        }
+    ],
+    "Best Soundtrack": [
+        {
+            "name": "Death Stranding",
+            "isWinner": true,
+            "image": "../imagenes/covers/death_stranding.jpg"
+        },
+        {
+            "name": "Cadence of Hyrule",
+            "isWinner": false,
+            "image": "../imagenes/covers/cadence_of_hyrule.jpg"
+        },
+        {
+            "name": "Devil May Cry 5",
+            "isWinner": false,
+            "image": "../imagenes/covers/devil_may_cry_5.jpg"
+        },
+        {
+            "name": "Kingdom Hearts III",
+            "isWinner": false,
+            "image": "../imagenes/covers/kingdom_hearts_iii.jpg"
+        },
+        {
+            "name": "Sayonara Wild Hearts",
+            "isWinner": false,
+            "image": "../imagenes/covers/sayonara_wild_hearts.jpg"
+        }
+    ],
+    "Best Multiplayer": [
+        {
+            "name": "Apex Legends",
+            "isWinner": true,
+            "image": "../imagenes/covers/apex_legends.jpg"
+        },
+        {
+            "name": "Borderlands 3",
+            "isWinner": false,
+            "image": "../imagenes/covers/borderlands_3.jpg"
+        },
+        {
+            "name": "Call of Duty: Modern Warfare",
+            "isWinner": false,
+            "image": "../imagenes/covers/call_of_duty_modern_warfare.jpg"
+        },
+        {
+            "name": "Tetris 99",
+            "isWinner": false,
+            "image": "../imagenes/covers/tetris_99.jpg"
+        },
+        {
+            "name": "Tom Clancy's The Division 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/tom_clancys_the_division_2.jpg"
+        }
+    ],
+    "Best Game Direction": [
+        {
+            "name": "Death Stranding",
+            "isWinner": true,
+            "image": "../imagenes/covers/death_stranding.jpg"
+        },
+        {
+            "name": "Control",
+            "isWinner": false,
+            "image": "../imagenes/covers/control.jpg"
+        },
+        {
+            "name": "Resident Evil 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/resident_evil_2.jpg"
+        },
+        {
+            "name": "Sekiro: Shadows Die Twice",
+            "isWinner": false,
+            "image": "../imagenes/covers/sekiro_shadows_die_twice.jpg"
+        },
+        {
+            "name": "Outer Wilds",
+            "isWinner": false,
+            "image": "../imagenes/covers/outer_wilds.jpg"
+        }
+    ]
+}

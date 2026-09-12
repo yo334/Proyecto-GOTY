@@ -1,0 +1,196 @@
+{
+    "Game of the Year": [
+        {
+            "name": "Baldur's Gate 3",
+            "isWinner": true,
+            "image": "../imagenes/covers/baldurs_gate_3.jpg"
+        },
+        {
+            "name": "Alan Wake 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/alan_wake_2.jpg"
+        },
+        {
+            "name": "Marvel's Spider-Man 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/marvels_spider-man_2.jpg"
+        },
+        {
+            "name": "Resident Evil 4",
+            "isWinner": false,
+            "image": "../imagenes/covers/resident_evil_4.jpg"
+        },
+        {
+            "name": "Super Mario Bros. Wonder",
+            "isWinner": false,
+            "image": "../imagenes/covers/super_mario_bros_wonder.jpg"
+        },
+        {
+            "name": "The Legend of Zelda: Tears of the Kingdom",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_legend_of_zelda_tears_of_the_kingdom.jpg"
+        }
+    ],
+    "Best Independent Game": [
+        {
+            "name": "Sea of Stars",
+            "isWinner": true,
+            "image": "../imagenes/covers/sea_of_stars.jpg"
+        },
+        {
+            "name": "Cocoon",
+            "isWinner": false,
+            "image": "../imagenes/covers/cocoon.jpg"
+        },
+        {
+            "name": "Dave the Diver",
+            "isWinner": false,
+            "image": "../imagenes/covers/dave_the_diver.jpg"
+        },
+        {
+            "name": "Dredge",
+            "isWinner": false,
+            "image": "../imagenes/covers/dredge.jpg"
+        },
+        {
+            "name": "Viewfinder",
+            "isWinner": false,
+            "image": "../imagenes/covers/viewfinder.jpg"
+        }
+    ],
+    "Best Narrative": [
+        {
+            "name": "Alan Wake 2",
+            "isWinner": true,
+            "image": "../imagenes/covers/alan_wake_2.jpg"
+        },
+        {
+            "name": "Baldur's Gate 3",
+            "isWinner": false,
+            "image": "../imagenes/covers/baldurs_gate_3.jpg"
+        },
+        {
+            "name": "Cyberpunk 2077: Phantom Liberty",
+            "isWinner": false,
+            "image": "../imagenes/covers/cyberpunk_2077_phantom_liberty.jpg"
+        },
+        {
+            "name": "Final Fantasy XVI",
+            "isWinner": false,
+            "image": "../imagenes/covers/final_fantasy_xvi.jpg"
+        },
+        {
+            "name": "Marvel's Spider-Man 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/marvels_spider-man_2.jpg"
+        }
+    ],
+    "Best Art Direction": [
+        {
+            "name": "Alan Wake 2",
+            "isWinner": true,
+            "image": "../imagenes/covers/alan_wake_2.jpg"
+        },
+        {
+            "name": "Hi-Fi Rush",
+            "isWinner": false,
+            "image": "../imagenes/covers/hi-fi_rush.jpg"
+        },
+        {
+            "name": "Lies of P",
+            "isWinner": false,
+            "image": "../imagenes/covers/lies_of_p.jpg"
+        },
+        {
+            "name": "Super Mario Bros. Wonder",
+            "isWinner": false,
+            "image": "../imagenes/covers/super_mario_bros_wonder.jpg"
+        },
+        {
+            "name": "The Legend of Zelda: Tears of the Kingdom",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_legend_of_zelda_tears_of_the_kingdom.jpg"
+        }
+    ],
+    "Best Soundtrack": [
+        {
+            "name": "Final Fantasy XVI",
+            "isWinner": true,
+            "image": "../imagenes/covers/final_fantasy_xvi.jpg"
+        },
+        {
+            "name": "Alan Wake 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/alan_wake_2.jpg"
+        },
+        {
+            "name": "Baldur's Gate 3",
+            "isWinner": false,
+            "image": "../imagenes/covers/baldurs_gate_3.jpg"
+        },
+        {
+            "name": "Hi-Fi Rush",
+            "isWinner": false,
+            "image": "../imagenes/covers/hi-fi_rush.jpg"
+        },
+        {
+            "name": "The Legend of Zelda: Tears of the Kingdom",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_legend_of_zelda_tears_of_the_kingdom.jpg"
+        }
+    ],
+    "Best Multiplayer": [
+        {
+            "name": "Baldur's Gate 3",
+            "isWinner": true,
+            "image": "../imagenes/covers/baldurs_gate_3.jpg"
+        },
+        {
+            "name": "Diablo IV",
+            "isWinner": false,
+            "image": "../imagenes/covers/diablo_iv.jpg"
+        },
+        {
+            "name": "Party Animals",
+            "isWinner": false,
+            "image": "../imagenes/covers/party_animals.jpg"
+        },
+        {
+            "name": "Street Fighter 6",
+            "isWinner": false,
+            "image": "../imagenes/covers/street_fighter_6.jpg"
+        },
+        {
+            "name": "Super Mario Bros. Wonder",
+            "isWinner": false,
+            "image": "../imagenes/covers/super_mario_bros_wonder.jpg"
+        }
+    ],
+    "Best Game Direction": [
+        {
+            "name": "Alan Wake 2",
+            "isWinner": true,
+            "image": "../imagenes/covers/alan_wake_2.jpg"
+        },
+        {
+            "name": "Baldur's Gate 3",
+            "isWinner": false,
+            "image": "../imagenes/covers/baldurs_gate_3.jpg"
+        },
+        {
+            "name": "Marvel's Spider-Man 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/marvels_spider-man_2.jpg"
+        },
+        {
+            "name": "Super Mario Bros. Wonder",
+            "isWinner": false,
+            "image": "../imagenes/covers/super_mario_bros_wonder.jpg"
+        },
+        {
+            "name": "The Legend of Zelda: Tears of the Kingdom",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_legend_of_zelda_tears_of_the_kingdom.jpg"
+        }
+    ]
+}

@@ -5,41 +5,118 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Game Awards</title>
-    <meta name="description" content="Archivo completo de todos los ganadores de The Game Awards desde 2014. Explora cada año, categoría y vota por tu favorito." />
+    <meta name="description"
+        content="Archivo completo de todos los ganadores de The Game Awards desde 2014. Explora cada año, categoría y vota por tu favorito." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="Css/style.css" />
 </head>
 
 <body>
 
-    <header>
-        <div class="winner-banner winner-banner--goty" id="banner-goty">
-            <div class="winner-banner__bg__Title">
-                <img src="imagenes/nose.gif" alt="The Game Awards Logo" />
-            </div>
-            <div class="winner-banner__overlay"></div>
-            <div class="winner-banner__content">
-                <h2 class="winner-banner__title winner-banner__title--goty">The Game Awards</h2>
-                <p class="winner-banner__award winner-banner__award--goty">Todos los ganadores</p>
-            </div>
+    <header class="main-header">
+        <div class="hero hero--index">
+            <h1 class="hero__title">THE GAME AWARDS</h1>
+            <p class="hero__subtitle">ARCHIVO HISTÓRICO DE GANADORES (2014-2025)</p>
+        </div>
+
+        <div class="header-search-container">
+            <aside class="search-panel" id="search-panel">
+                <div class="search-panel__input-wrap">
+                    <input type="text" id="search-input" class="search-panel__input"
+                        placeholder="Buscar por juego, año, categoría..." autocomplete="off" />
+                </div>
+                <div class="search-panel__results" id="search-results"></div>
+            </aside>
         </div>
     </header>
 
     <div class="divider"></div>
 
+    <!-- ═══════ MAIN LAYOUT: YEARS ═══════ -->
+    <section class="main-layout main-layout--centered">
+
+        <!-- Year Grid -->
+        <div class="main-layout__content">
+            <h2 class="section-title">Seleccioná un año</h2>
+            <div class="year-grid">
+                <a class="year-card" href="./Años/2014.html">
+                    <div class="yr">2014</div>
+                    <div class="goty-name">Dragon Age: Inquisition</div>
+                </a>
+
+                <a class="year-card" href="./Años/2015.html">
+                    <div class="yr">2015</div>
+                    <div class="goty-name">The Witcher 3: Wild Hunt</div>
+                </a>
+
+                <a class="year-card" href="./Años/2016.html">
+                    <div class="yr">2016</div>
+                    <div class="goty-name">Overwatch</div>
+                </a>
+
+                <a class="year-card" href="./Años/2017.html">
+                    <div class="yr">2017</div>
+                    <div class="goty-name">The Legend of Zelda: BotW</div>
+                </a>
+
+                <a class="year-card" href="./Años/2018.html">
+                    <div class="yr">2018</div>
+                    <div class="goty-name">God of War</div>
+                </a>
+
+                <a class="year-card" href="./Años/2019.html">
+                    <div class="yr">2019</div>
+                    <div class="goty-name">Sekiro: Shadows Die Twice</div>
+                </a>
+
+                <a class="year-card" href="./Años/2020.html">
+                    <div class="yr">2020</div>
+                    <div class="goty-name">The Last of Us Part II</div>
+                </a>
+
+                <a class="year-card" href="./Años/2021.html">
+                    <div class="yr">2021</div>
+                    <div class="goty-name">It Takes Two</div>
+                </a>
+
+                <a class="year-card" href="./Años/2022.html">
+                    <div class="yr">2022</div>
+                    <div class="goty-name">Elden Ring</div>
+                </a>
+
+                <a class="year-card" href="./Años/2023.html">
+                    <div class="yr">2023</div>
+                    <div class="goty-name">Baldur's Gate 3</div>
+                </a>
+
+                <a class="year-card" href="./Años/2024.html">
+                    <div class="yr">2024</div>
+                    <div class="goty-name">Astro Bot</div>
+                </a>
+
+                <a class="year-card" href="./Años/2025.html">
+                    <div class="yr">2025</div>
+                    <div class="goty-name">Clair Obscur: Expedition 33</div>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="divider"></div>
+
     <!-- ═══════ ENCUESTA BANNER ═══════ -->
     <section class="survey-banner-section">
-        <a href="encuesta.html" class="survey-banner" id="survey-link">
+        <a href="seleccionar_encuesta.html" class="survey-banner" id="survey-link">
             <div class="survey-banner__glow"></div>
             <div class="survey-banner__content">
                 <span class="survey-banner__icon">🗳️</span>
                 <div class="survey-banner__text">
-                    <h2 class="survey-banner__title">¿Estás de acuerdo con los ganadores?</h2>
-                    <p class="survey-banner__desc">Votá por tu GOTY de cada año entre los nominados reales. ¡Compará tus picks con los ganadores oficiales!</p>
+                    <h2 class="survey-banner__title">¿Estás de acuerdo con los ganadores? Votá por año</h2>
                 </div>
                 <span class="survey-banner__arrow">→</span>
             </div>
@@ -48,87 +125,8 @@
 
     <div class="divider"></div>
 
-    <!-- ═══════ MAIN LAYOUT: YEARS + SEARCH ═══════ -->
-    <section class="main-layout">
-
-        <!-- LEFT: Year Grid -->
-        <div class="main-layout__content">
-            <h2 class="section-title">Seleccioná un año</h2>
-            <div class="year-grid">
-                <a class="year-card" href="2014.html">
-                    <div class="yr">2014</div>
-                    <div class="goty-name">Dragon Age: Inquisition</div>
-                </a>
-
-                <a class="year-card" href="2015.html">
-                    <div class="yr">2015</div>
-                    <div class="goty-name">The Witcher 3: Wild Hunt</div>
-                </a>
-
-                <a class="year-card" href="2016.html">
-                    <div class="yr">2016</div>
-                    <div class="goty-name">Overwatch</div>
-                </a>
-
-                <a class="year-card" href="2017.html">
-                    <div class="yr">2017</div>
-                    <div class="goty-name">The Legend of Zelda: BotW</div>
-                </a>
-
-                <a class="year-card" href="2018.html">
-                    <div class="yr">2018</div>
-                    <div class="goty-name">God of War</div>
-                </a>
-
-                <a class="year-card" href="2019.html">
-                    <div class="yr">2019</div>
-                    <div class="goty-name">Sekiro: Shadows Die Twice</div>
-                </a>
-
-                <a class="year-card" href="2020.html">
-                    <div class="yr">2020</div>
-                    <div class="goty-name">The Last of Us Part II</div>
-                </a>
-
-                <a class="year-card" href="2021.html">
-                    <div class="yr">2021</div>
-                    <div class="goty-name">It Takes Two</div>
-                </a>
-
-                <a class="year-card" href="2022.html">
-                    <div class="yr">2022</div>
-                    <div class="goty-name">Elden Ring</div>
-                </a>
-
-                <a class="year-card" href="2023.html">
-                    <div class="yr">2023</div>
-                    <div class="goty-name">Baldur's Gate 3</div>
-                </a>
-
-                <a class="year-card" href="2024.html">
-                    <div class="yr">2024</div>
-                    <div class="goty-name">Astro Bot</div>
-                </a>
-            </div>
-        </div>
-
-        <!-- RIGHT: Search Panel -->
-        <aside class="search-panel" id="search-panel">
-            <h3 class="search-panel__title">🔍 Buscador</h3>
-            <p class="search-panel__hint">Buscá por año, categoría o juego</p>
-            <div class="search-panel__input-wrap">
-                <input type="text" id="search-input" class="search-panel__input"
-                    placeholder="Ej: GOTY 2024, mejor musica, Elden Ring..." autocomplete="off" />
-            </div>
-            <div class="search-panel__results" id="search-results"></div>
-        </aside>
-
-    </section>
-
-    <div class="divider"></div>
-
     <footer>
-        &copy; 2024 GOTY Archive &nbsp;·&nbsp; Datos basados en The Game Awards
+        &copy; 2025 GOTY Archive &nbsp;·&nbsp; Datos basados en The Game Awards
     </footer>
 
     <!-- ═══════ SEARCH SCRIPT ═══════ -->

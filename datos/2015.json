@@ -1,0 +1,191 @@
+{
+    "Game of the Year": [
+        {
+            "name": "The Witcher 3: Wild Hunt",
+            "isWinner": true,
+            "image": "../imagenes/covers/the_witcher_3_wild_hunt.jpg"
+        },
+        {
+            "name": "Bloodborne",
+            "isWinner": false,
+            "image": "../imagenes/covers/bloodborne.jpg"
+        },
+        {
+            "name": "Fallout 4",
+            "isWinner": false,
+            "image": "../imagenes/covers/fallout_4.jpg"
+        },
+        {
+            "name": "Metal Gear Solid V: The Phantom Pain",
+            "isWinner": false,
+            "image": "../imagenes/covers/metal_gear_solid_v_the_phantom_pain.jpg"
+        },
+        {
+            "name": "Super Mario Maker",
+            "isWinner": false,
+            "image": "../imagenes/covers/super_mario_maker.jpg"
+        }
+    ],
+    "Best Independent Game": [
+        {
+            "name": "Rocket League",
+            "isWinner": true,
+            "image": "../imagenes/covers/rocket_league.jpg"
+        },
+        {
+            "name": "Axiom Verge",
+            "isWinner": false,
+            "image": "../imagenes/covers/axiom_verge.jpg"
+        },
+        {
+            "name": "Her Story",
+            "isWinner": false,
+            "image": "../imagenes/covers/her_story.jpg"
+        },
+        {
+            "name": "Ori and the Blind Forest",
+            "isWinner": false,
+            "image": "../imagenes/covers/ori_and_the_blind_forest.jpg"
+        },
+        {
+            "name": "Undertale",
+            "isWinner": false,
+            "image": "../imagenes/covers/undertale.jpg"
+        }
+    ],
+    "Best Narrative": [
+        {
+            "name": "Her Story",
+            "isWinner": true,
+            "image": "../imagenes/covers/her_story.jpg"
+        },
+        {
+            "name": "Life Is Strange",
+            "isWinner": false,
+            "image": "../imagenes/covers/life_is_strange.jpg"
+        },
+        {
+            "name": "Tales from the Borderlands",
+            "isWinner": false,
+            "image": "../imagenes/covers/tales_from_the_borderlands.jpg"
+        },
+        {
+            "name": "The Witcher 3: Wild Hunt",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_witcher_3_wild_hunt.jpg"
+        },
+        {
+            "name": "Until Dawn",
+            "isWinner": false,
+            "image": "../imagenes/covers/until_dawn.jpg"
+        }
+    ],
+    "Best Art Direction": [
+        {
+            "name": "Ori and the Blind Forest",
+            "isWinner": true,
+            "image": "../imagenes/covers/ori_and_the_blind_forest.jpg"
+        },
+        {
+            "name": "Batman: Arkham Knight",
+            "isWinner": false,
+            "image": "../imagenes/covers/batman_arkham_knight.jpg"
+        },
+        {
+            "name": "Bloodborne",
+            "isWinner": false,
+            "image": "../imagenes/covers/bloodborne.jpg"
+        },
+        {
+            "name": "Metal Gear Solid V: The Phantom Pain",
+            "isWinner": false,
+            "image": "../imagenes/covers/metal_gear_solid_v_the_phantom_pain.jpg"
+        },
+        {
+            "name": "The Witcher 3: Wild Hunt",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_witcher_3_wild_hunt.jpg"
+        }
+    ],
+    "Best Soundtrack": [
+        {
+            "name": "Metal Gear Solid V: The Phantom Pain",
+            "isWinner": true,
+            "image": "../imagenes/covers/metal_gear_solid_v_the_phantom_pain.jpg"
+        },
+        {
+            "name": "Fallout 4",
+            "isWinner": false,
+            "image": "../imagenes/covers/fallout_4.jpg"
+        },
+        {
+            "name": "Halo 5: Guardians",
+            "isWinner": false,
+            "image": "../imagenes/covers/halo_5_guardians.jpg"
+        },
+        {
+            "name": "Ori and the Blind Forest",
+            "isWinner": false,
+            "image": "../imagenes/covers/ori_and_the_blind_forest.jpg"
+        },
+        {
+            "name": "The Witcher 3: Wild Hunt",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_witcher_3_wild_hunt.jpg"
+        }
+    ],
+    "Best Multiplayer": [
+        {
+            "name": "Splatoon",
+            "isWinner": true,
+            "image": "../imagenes/covers/splatoon.jpg"
+        },
+        {
+            "name": "Call of Duty: Black Ops III",
+            "isWinner": false,
+            "image": "../imagenes/covers/call_of_duty_black_ops_iii.jpg"
+        },
+        {
+            "name": "Destiny: The Taken King",
+            "isWinner": false,
+            "image": "../imagenes/covers/destiny_the_taken_king.jpg"
+        },
+        {
+            "name": "Halo 5: Guardians",
+            "isWinner": false,
+            "image": "../imagenes/covers/halo_5_guardians.jpg"
+        },
+        {
+            "name": "Rocket League",
+            "isWinner": false,
+            "image": "../imagenes/covers/rocket_league.jpg"
+        }
+    ],
+    "Best Game Direction": [
+        {
+            "name": "CD Projekt Red",
+            "isWinner": true,
+            "image": "../imagenes/covers/cd_projekt_red.jpg"
+        },
+        {
+            "name": "Bethesda Game Studios",
+            "isWinner": false,
+            "image": "../imagenes/covers/bethesda_game_studios.jpg"
+        },
+        {
+            "name": "FromSoftware",
+            "isWinner": false,
+            "image": "../imagenes/covers/fromsoftware.jpg"
+        },
+        {
+            "name": "Kojima Productions",
+            "isWinner": false,
+            "image": "../imagenes/covers/kojima_productions.jpg"
+        },
+        {
+            "name": "Nintendo",
+            "isWinner": false,
+            "image": "../imagenes/covers/nintendo.jpg"
+        }
+    ]
+}

@@ -3,3 +3,365 @@
 @import url('index-page.css');
 @import url('year-pages.css');
 @import url('winner-banners.css');
+
+/* -----------------------------------------------------------
+   REDESIGN ADDITIONS & EPIC TGA STYLES
+   ----------------------------------------------------------- */
+
+/* --- EPIC BACKGROUND & HERO --- */
+body {
+    background: radial-gradient(circle at top center, #161824 0%, #0a0a0c 100%) !important;
+    background-attachment: fixed !important;
+    color: #f0f0f4;
+}
+
+.main-header {
+    text-align: center;
+    padding-top: 80px;
+    overflow: visible;
+}
+
+.hero {
+    background: linear-gradient(180deg, rgba(8,9,13,0) 0%, #0a0a0c 100%);
+    padding: 100px 20px 80px;
+    text-align: center;
+    position: relative;
+}
+
+.hero--index {
+    background: none !important;
+    padding: 0 !important;
+}
+
+.hero h1,
+.hero--index h1,
+.hero__title {
+    font-size: clamp(3.5rem, 8vw, 6rem) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--gold, #c9a84c);
+    text-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+    margin: 0;
+}
+
+.hero--index p,
+.hero__subtitle {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+/* Cabecera secundaria unificada */
+.page-header {
+    display: flex;
+    padding: 20px 32px;
+    align-items: center;
+    gap: 20px;
+    background: rgba(10, 10, 12, 0.85);
+    border-bottom: 1px solid var(--border, rgba(212, 175, 55, 0.25));
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.page-header .back {
+    margin-right: 20px;
+}
+
+.page-header__title {
+    margin: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+}
+
+/* --- HEADER SEARCH --- */
+.header-search-container {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 30px;
+    z-index: 10;
+}
+
+.header-search-container .search-panel {
+    position: relative;
+    top: auto;
+    padding: 5px 20px;
+    background: rgba(14, 16, 24, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--gold, #c9a84c);
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.15);
+}
+
+.header-search-container .search-panel__title,
+.header-search-container .search-panel__hint {
+    display: none;
+}
+
+.header-search-container .search-panel__input-wrap {
+    width: 100%;
+}
+
+.header-search-container .search-panel__input {
+    border: none;
+    background: transparent;
+    padding: 10px 0;
+    font-size: 1.05rem;
+    color: var(--text, #f0f0f0);
+    width: 100%;
+    box-shadow: none;
+}
+
+.header-search-container .search-panel__input:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+.header-search-container .search-panel__results {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    background: var(--panel, #181a25);
+    border: 1px solid var(--border, #333);
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+/* --- MAIN LAYOUT CENTERED OVERRIDE --- */
+.main-layout--centered {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+}
+.main-layout--centered .main-layout__content {
+    width: 100%;
+}
+
+/* --- CATEGORY TITLES --- */
+.category-title {
+    font-size: 3rem !important;
+    color: var(--gold, #c9a84c) !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(201, 168, 76, 0.4);
+    border-bottom: 2px solid rgba(201, 168, 76, 0.3) !important;
+    margin-bottom: 30px;
+}
+
+/* --- VERTICAL PILLS (CANDIDATE CARDS) --- */
+.candidate-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.candidate-card {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    background: linear-gradient(180deg, #181a25 0%, #0d0f16 100%) !important;
+    border: 1px solid rgba(255,255,255,0.05) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important;
+}
+
+.candidate-card:hover {
+    transform: translateY(-10px) scale(1.02) !important;
+    border-color: var(--gold, #c9a84c) !important;
+    box-shadow: 0 20px 40px rgba(201, 168, 76, 0.2) !important;
+    z-index: 10;
+}
+
+.candidate-card__image {
+    width: 100%;
+    height: 330px !important;
+    object-fit: cover;
+    border-bottom: 2px solid var(--gold, #c9a84c) !important;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+.candidate-card:hover .candidate-card__image {
+    opacity: 1;
+}
+
+.candidate-card__title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem !important;
+    color: #fff !important;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px 15px;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+/* --- WINNER & SELECTED MODIFIERS (TGA GOLD GLOW) --- */
+.card--winner {
+    border: 2px solid var(--gold, #c9a84c) !important;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.45), inset 0 0 15px rgba(212, 175, 55, 0.15) !important;
+}
+
+.card--winner:hover {
+    border-color: #f5d77f !important; /* Lighter gold */
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.55), inset 0 0 20px rgba(212, 175, 55, 0.25) !important;
+}
+
+.card--winner::before {
+    content: 'WINNER';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #f5d77f, #c9a84c);
+    color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.1em;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.card--selected,
+.candidate-card.card--selected {
+    border: 2px solid var(--gold, #c9a84c) !important;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.45), inset 0 0 15px rgba(212, 175, 55, 0.15) !important;
+    transform: translateY(-6px) scale(1.02);
+}
+
+.card--selected:hover,
+.candidate-card.card--selected:hover {
+    border-color: #f5d77f !important;
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.55), inset 0 0 20px rgba(212, 175, 55, 0.25) !important;
+}
+
+/* --- BACK BUTTON & ACTIONS --- */
+.back {
+    display: inline-block;
+    color: var(--gold, #c9a84c);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 10px 22px;
+    border: 1px solid var(--gold, #c9a84c);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    background: rgba(14, 16, 24, 0.6);
+}
+
+.back:hover {
+    background: var(--gold, #c9a84c);
+    color: #000;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Botón principal de votación */
+.btn-submit,
+.enc-btn {
+    display: inline-block;
+    padding: 16px 52px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.16em;
+    color: #000000;
+    background: linear-gradient(135deg, var(--gold-light, #f5d77f), var(--gold, #d4af37));
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-submit:hover,
+.enc-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
+    background: linear-gradient(135deg, #ffffff, var(--gold-light, #f5d77f));
+}
+
+/* --- EPIC SEARCH BAR --- */
+.header-search-container {
+    margin: 40px auto !important;
+}
+.header-search-container .search-panel {
+    background: rgba(0, 0, 0, 0.6) !important;
+    border: 2px solid var(--gold, #c9a84c) !important;
+    border-radius: 50px !important;
+    padding: 10px 30px !important;
+    box-shadow: 0 0 25px rgba(201, 168, 76, 0.3) !important;
+    transition: all 0.3s ease;
+}
+.header-search-container .search-panel:focus-within {
+    box-shadow: 0 0 40px rgba(201, 168, 76, 0.6) !important;
+    transform: scale(1.05);
+}
+.header-search-container .search-panel__input {
+    font-size: 1.2rem !important;
+    padding: 15px 0 !important;
+    color: #fff !important;
+}
+.header-search-container .search-panel__input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* --- EPIC SURVEY BANNER --- */
+.survey-banner {
+    background: linear-gradient(90deg, #0f111a 0%, #1a1c29 50%, #0f111a 100%) !important;
+    border: 1px solid var(--gold, #c9a84c) !important;
+    border-radius: 0 !important;
+    text-align: center;
+    padding: 40px 20px !important;
+    box-shadow: 0 0 30px rgba(201,168,76,0.1) !important;
+    justify-content: center !important;
+    position: relative;
+    overflow: hidden;
+}
+.survey-banner__content {
+    flex-direction: column !important;
+    gap: 15px !important;
+}
+.survey-banner__icon {
+    display: none !important;
+}
+.survey-banner__title {
+    font-family: 'Barlow', sans-serif !important;
+    font-weight: 300 !important;
+    font-size: 2.2rem !important;
+    letter-spacing: 4px;
+    color: #fff !important;
+    text-transform: uppercase;
+}
+.survey-banner__desc {
+    font-family: 'Barlow', sans-serif !important;
+    font-weight: 600 !important;
+    color: var(--gold, #c9a84c) !important;
+    font-size: 1.2rem !important;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.survey-banner:hover {
+    box-shadow: 0 0 50px rgba(201,168,76,0.3) !important;
+    transform: scale(1.02);
+}

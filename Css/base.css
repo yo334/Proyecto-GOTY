@@ -13,28 +13,38 @@
 }
 
 /* ─── VARIABLES ─────────────────────────────────────── */
-/* Define la paleta de colores y variables de tema principal */
+/* Define la paleta de colores y variables inspiradas en The Game Awards */
 :root {
-    /* Color dorado principal para acentos y destacados */
-    --gold: #c9a84c;
-
-    /* Variante más clara del dorado para gradientes */
-    --gold2: #f0d080;
-
-    /* Fondo oscuro principal del sitio */
-    --bg: #080a0f;
+    /* Fondo oscuro principal del sitio (#0a0a0c) */
+    --bg: #0a0a0c;
+    --bg-dark: #0a0a0c;
+    --bg-surface: #121216;
+    --bg-card: #161822;
 
     /* Color de paneles y contenedores secundarios */
-    --panel: #0e1018;
+    --panel: #121216;
+
+    /* Color dorado principal (#d4af37) y variantes elegantes (#c5a059, #f5d77f, #c9a84c) */
+    --gold: #d4af37;
+    --gold-primary: #c9a84c;
+    --gold-accent: #c5a059;
+    --gold-light: #f5d77f;
+    --gold2: #f0d080;
 
     /* Bordes sutiles con tono dorado translúcido */
-    --border: rgba(201, 168, 76, 0.25);
+    --border: rgba(212, 175, 55, 0.25);
+    --border-subtle: rgba(255, 255, 255, 0.08);
 
-    /* Color de texto principal */
-    --text: #dde3ec;
+    /* Color de texto principal de alto contraste y legibilidad */
+    --text: #f0f0f4;
+    --text-muted: #8e92a4;
 
     /* Color para textos secundarios y muted */
-    --muted: #5a6070;
+    --muted: #8e92a4;
+
+    /* Resplandores dorados para tarjetas */
+    --gold-glow: 0 0 25px rgba(212, 175, 55, 0.45);
+    --gold-glow-hover: 0 15px 40px rgba(212, 175, 55, 0.55);
 }
 
 /* ─── BASE ───────────────────────────────────────────── */

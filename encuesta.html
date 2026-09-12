@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Encuesta GOTY The Game Awards</title>
+    <title>Encuesta GOTY — The Game Awards</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,22 +17,30 @@
 <body>
     <nav>
         <a class="back" href="index.html">← Volver</a>
-        <span class="nav-year">Encuesta</span>
+        <span class="nav-year" id="navYearDisplay">Encuesta</span>
     </nav>
 
     <section class="hero">
         <h1>The Game Awards<br>Encuesta</h1>
-        <p class="enc-subtitle">Elegí a tus ganadores favoritos de cada año</p>
+        <p class="enc-subtitle">Elige a tus ganadores favoritos de cada año</p>
     </section>
 
     <div class="divider"></div>
 
-    <div class="enc-tabs" id="yearTabs"></div>
+    <div class="enc-tabs" id="yearTabs" role="tablist" aria-label="Selector de año de encuesta"></div>
 
-    <div id="yearPanels"></div>
+    <div id="yearPanels" class="survey-categories"></div>
+
+    <section class="enc-actions survey-actions">
+        <div class="enc-actions-buttons">
+            <button id="submit-survey" class="btn-submit enc-btn" type="button">Enviar mi votación</button>
+            <button id="reset-survey" class="enc-btn enc-btn--reset" type="button">Reiniciar votos</button>
+        </div>
+        <div id="surveyFeedback" class="survey-feedback" role="status" aria-live="polite"></div>
+    </section>
 
     <footer>
-        &copy; GOTY Archive &nbsp;·&nbsp; Encuesta interactiva The Game Awards 2014-2024
+        &copy; GOTY Archive &nbsp;·&nbsp; Encuesta interactiva The Game Awards 2014–2025
     </footer>
 
     <script src="js/encuesta.js"></script>

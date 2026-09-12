@@ -109,6 +109,133 @@ nav .nav-year {
     animation: fadeUp 0.6s 0.08s ease both;
 }
 
+/* ─── CATEGORÍAS Y CANDIDATOS ───────────────────────── */
+/* Bloque individual de categoría */
+.category-block {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.category-block:last-of-type {
+    border-bottom: none;
+}
+
+/* Título de categoría con tipografía Bebas Neue y acento dorado */
+.category-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    color: var(--gold, #d4af37);
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Cuadrícula flexible de candidatos */
+.candidate-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Tarjeta individual de nominado */
+.candidate-card {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    flex: 1 1 200px;
+    max-width: 250px;
+    box-sizing: border-box;
+    background: linear-gradient(180deg, #181a25 0%, #0d0f16 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Efecto hover con elevación suave */
+.candidate-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--gold, #d4af37);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.25);
+    z-index: 10;
+}
+
+/* Imagen de portada de la tarjeta */
+.candidate-card__image {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-bottom: 2px solid var(--gold, #d4af37);
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+    background-color: #0d0f16;
+}
+
+.candidate-card:hover .candidate-card__image {
+    opacity: 1;
+}
+
+/* Título de la tarjeta del candidato */
+.candidate-card__title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.45rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 18px 14px;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+/* Resaltado del ganador oficial con resplandor dorado TGA */
+.card--winner {
+    border: 2px solid var(--gold, #c9a84c) !important;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.45), inset 0 0 15px rgba(212, 175, 55, 0.15) !important;
+}
+
+.card--winner:hover {
+    border-color: #f5d77f !important;
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.55), inset 0 0 20px rgba(212, 175, 55, 0.25) !important;
+}
+
+.card--winner::before {
+    content: 'WINNER';
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: linear-gradient(135deg, #f5d77f, #c9a84c);
+    color: #000000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.1em;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Sección del banner de votación */
+.survey-banner-section {
+    width: 100%;
+    padding: 0 24px;
+    max-width: 1200px;
+    margin: 40px auto 60px;
+}
+
 /* ─── RESPONSIVE ─────────────────────────────────────── */
 /* Ajustes para pantallas medianas y pequeñas */
 @media (max-width: 600px) {
@@ -121,5 +248,14 @@ nav .nav-year {
     /* Reduce padding del hero en móviles */
     .hero {
         padding: 50px 16px 40px;
+    }
+
+    .category-title {
+        font-size: 2rem;
+    }
+
+    .candidate-card {
+        width: 100%;
+        max-width: 320px;
     }
 }

@@ -1,0 +1,201 @@
+{
+    "Game of the Year": [
+        {
+            "name": "Clair Obscur: Expedition 33",
+            "isWinner": true,
+            "image": "../imagenes/covers/clair_obscur_expedition_33.jpg"
+        },
+        {
+            "name": "Death Stranding 2: On the Beach",
+            "isWinner": false,
+            "image": "../imagenes/covers/death_stranding_2_on_the_beach.jpg"
+        },
+        {
+            "name": "Donkey Kong Bananza",
+            "isWinner": false,
+            "image": "../imagenes/covers/donkey_kong_bananza.jpg"
+        },
+        {
+            "name": "Hades II",
+            "isWinner": false,
+            "image": "../imagenes/covers/hades_ii.jpg"
+        },
+        {
+            "name": "Hollow Knight: Silksong",
+            "isWinner": false,
+            "image": "../imagenes/covers/hollow_knight_silksong.jpg"
+        },
+        {
+            "name": "Kingdom Come: Deliverance II",
+            "isWinner": false,
+            "image": "../imagenes/covers/kingdom_come_deliverance_ii.jpg"
+        }
+    ],
+    "Best Independent Game": [
+        {
+            "name": "Clair Obscur: Expedition 33",
+            "isWinner": true,
+            "image": "../imagenes/covers/clair_obscur_expedition_33.jpg"
+        },
+        {
+            "name": "Absolum",
+            "isWinner": false,
+            "image": "../imagenes/covers/absolum.jpg"
+        },
+        {
+            "name": "Ball x Pit",
+            "isWinner": false,
+            "image": "../imagenes/covers/ball_x_pit.jpg"
+        },
+        {
+            "name": "Blue Prince",
+            "isWinner": false,
+            "image": "../imagenes/covers/blue_prince.jpg"
+        },
+        {
+            "name": "Hades II",
+            "isWinner": false,
+            "image": "../imagenes/covers/hades_ii.jpg"
+        },
+        {
+            "name": "Hollow Knight: Silksong",
+            "isWinner": false,
+            "image": "../imagenes/covers/hollow_knight_silksong.jpg"
+        }
+    ],
+    "Best Narrative": [
+        {
+            "name": "Clair Obscur: Expedition 33",
+            "isWinner": true,
+            "image": "../imagenes/covers/clair_obscur_expedition_33.jpg"
+        },
+        {
+            "name": "Death Stranding 2: On the Beach",
+            "isWinner": false,
+            "image": "../imagenes/covers/death_stranding_2_on_the_beach.jpg"
+        },
+        {
+            "name": "Ghost of Yōtei",
+            "isWinner": false,
+            "image": "../imagenes/covers/ghost_of_yotei.jpg"
+        },
+        {
+            "name": "Kingdom Come: Deliverance II",
+            "isWinner": false,
+            "image": "../imagenes/covers/kingdom_come_deliverance_ii.jpg"
+        },
+        {
+            "name": "Silent Hill f",
+            "isWinner": false,
+            "image": "../imagenes/covers/silent_hill_f.jpg"
+        }
+    ],
+    "Best Art Direction": [
+        {
+            "name": "Clair Obscur: Expedition 33",
+            "isWinner": true,
+            "image": "../imagenes/covers/clair_obscur_expedition_33.jpg"
+        },
+        {
+            "name": "Death Stranding 2: On the Beach",
+            "isWinner": false,
+            "image": "../imagenes/covers/death_stranding_2_on_the_beach.jpg"
+        },
+        {
+            "name": "Ghost of Yōtei",
+            "isWinner": false,
+            "image": "../imagenes/covers/ghost_of_yotei.jpg"
+        },
+        {
+            "name": "Hades II",
+            "isWinner": false,
+            "image": "../imagenes/covers/hades_ii.jpg"
+        },
+        {
+            "name": "Hollow Knight: Silksong",
+            "isWinner": false,
+            "image": "../imagenes/covers/hollow_knight_silksong.jpg"
+        }
+    ],
+    "Best Soundtrack": [
+        {
+            "name": "Clair Obscur: Expedition 33",
+            "isWinner": true,
+            "image": "../imagenes/covers/clair_obscur_expedition_33.jpg"
+        },
+        {
+            "name": "Death Stranding 2: On the Beach",
+            "isWinner": false,
+            "image": "../imagenes/covers/death_stranding_2_on_the_beach.jpg"
+        },
+        {
+            "name": "Ghost of Yōtei",
+            "isWinner": false,
+            "image": "../imagenes/covers/ghost_of_yotei.jpg"
+        },
+        {
+            "name": "Hades II",
+            "isWinner": false,
+            "image": "../imagenes/covers/hades_ii.jpg"
+        },
+        {
+            "name": "Hollow Knight: Silksong",
+            "isWinner": false,
+            "image": "../imagenes/covers/hollow_knight_silksong.jpg"
+        }
+    ],
+    "Best Multiplayer": [
+        {
+            "name": "Arc Raiders",
+            "isWinner": true,
+            "image": "../imagenes/covers/arc_raiders.jpg"
+        },
+        {
+            "name": "Battlefield 6",
+            "isWinner": false,
+            "image": "../imagenes/covers/battlefield_6.jpg"
+        },
+        {
+            "name": "Elden Ring: Nightreign",
+            "isWinner": false,
+            "image": "../imagenes/covers/elden_ring_nightreign.jpg"
+        },
+        {
+            "name": "Peak",
+            "isWinner": false,
+            "image": "../imagenes/covers/peak.jpg"
+        },
+        {
+            "name": "Split Fiction",
+            "isWinner": false,
+            "image": "../imagenes/covers/split_fiction.jpg"
+        }
+    ],
+    "Best Game Direction": [
+        {
+            "name": "Clair Obscur: Expedition 33",
+            "isWinner": true,
+            "image": "../imagenes/covers/clair_obscur_expedition_33.jpg"
+        },
+        {
+            "name": "Death Stranding 2: On the Beach",
+            "isWinner": false,
+            "image": "../imagenes/covers/death_stranding_2_on_the_beach.jpg"
+        },
+        {
+            "name": "Ghost of Yōtei",
+            "isWinner": false,
+            "image": "../imagenes/covers/ghost_of_yotei.jpg"
+        },
+        {
+            "name": "Hades II",
+            "isWinner": false,
+            "image": "../imagenes/covers/hades_ii.jpg"
+        },
+        {
+            "name": "Split Fiction",
+            "isWinner": false,
+            "image": "../imagenes/covers/split_fiction.jpg"
+        }
+    ]
+}

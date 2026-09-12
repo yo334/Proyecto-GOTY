@@ -1,0 +1,196 @@
+{
+    "Game of the Year": [
+        {
+            "name": "The Last of Us Part II",
+            "isWinner": true,
+            "image": "../imagenes/covers/the_last_of_us_part_ii.jpg"
+        },
+        {
+            "name": "Animal Crossing: New Horizons",
+            "isWinner": false,
+            "image": "../imagenes/covers/animal_crossing_new_horizons.jpg"
+        },
+        {
+            "name": "Doom Eternal",
+            "isWinner": false,
+            "image": "../imagenes/covers/doom_eternal.jpg"
+        },
+        {
+            "name": "Final Fantasy VII Remake",
+            "isWinner": false,
+            "image": "../imagenes/covers/final_fantasy_vii_remake.jpg"
+        },
+        {
+            "name": "Ghost of Tsushima",
+            "isWinner": false,
+            "image": "../imagenes/covers/ghost_of_tsushima.jpg"
+        },
+        {
+            "name": "Hades",
+            "isWinner": false,
+            "image": "../imagenes/covers/hades.jpg"
+        }
+    ],
+    "Best Independent Game": [
+        {
+            "name": "Hades",
+            "isWinner": true,
+            "image": "../imagenes/covers/hades.jpg"
+        },
+        {
+            "name": "Carrion",
+            "isWinner": false,
+            "image": "../imagenes/covers/carrion.jpg"
+        },
+        {
+            "name": "Fall Guys: Ultimate Knockout",
+            "isWinner": false,
+            "image": "../imagenes/covers/fall_guys_ultimate_knockout.jpg"
+        },
+        {
+            "name": "Spelunky 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/spelunky_2.jpg"
+        },
+        {
+            "name": "Spiritfarer",
+            "isWinner": false,
+            "image": "../imagenes/covers/spiritfarer.jpg"
+        }
+    ],
+    "Best Narrative": [
+        {
+            "name": "The Last of Us Part II",
+            "isWinner": true,
+            "image": "../imagenes/covers/the_last_of_us_part_ii.jpg"
+        },
+        {
+            "name": "13 Sentinels: Aegis Rim",
+            "isWinner": false,
+            "image": "../imagenes/covers/13_sentinels_aegis_rim.jpg"
+        },
+        {
+            "name": "Final Fantasy VII Remake",
+            "isWinner": false,
+            "image": "../imagenes/covers/final_fantasy_vii_remake.jpg"
+        },
+        {
+            "name": "Ghost of Tsushima",
+            "isWinner": false,
+            "image": "../imagenes/covers/ghost_of_tsushima.jpg"
+        },
+        {
+            "name": "Hades",
+            "isWinner": false,
+            "image": "../imagenes/covers/hades.jpg"
+        }
+    ],
+    "Best Art Direction": [
+        {
+            "name": "Ghost of Tsushima",
+            "isWinner": true,
+            "image": "../imagenes/covers/ghost_of_tsushima.jpg"
+        },
+        {
+            "name": "Final Fantasy VII Remake",
+            "isWinner": false,
+            "image": "../imagenes/covers/final_fantasy_vii_remake.jpg"
+        },
+        {
+            "name": "Hades",
+            "isWinner": false,
+            "image": "../imagenes/covers/hades.jpg"
+        },
+        {
+            "name": "Ori and the Will of the Wisps",
+            "isWinner": false,
+            "image": "../imagenes/covers/ori_and_the_will_of_the_wisps.jpg"
+        },
+        {
+            "name": "The Last of Us Part II",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_last_of_us_part_ii.jpg"
+        }
+    ],
+    "Best Soundtrack": [
+        {
+            "name": "Final Fantasy VII Remake",
+            "isWinner": true,
+            "image": "../imagenes/covers/final_fantasy_vii_remake.jpg"
+        },
+        {
+            "name": "Doom Eternal",
+            "isWinner": false,
+            "image": "../imagenes/covers/doom_eternal.jpg"
+        },
+        {
+            "name": "Hades",
+            "isWinner": false,
+            "image": "../imagenes/covers/hades.jpg"
+        },
+        {
+            "name": "Ori and the Will of the Wisps",
+            "isWinner": false,
+            "image": "../imagenes/covers/ori_and_the_will_of_the_wisps.jpg"
+        },
+        {
+            "name": "The Last of Us Part II",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_last_of_us_part_ii.jpg"
+        }
+    ],
+    "Best Multiplayer": [
+        {
+            "name": "Among Us",
+            "isWinner": true,
+            "image": "../imagenes/covers/among_us.jpg"
+        },
+        {
+            "name": "Animal Crossing: New Horizons",
+            "isWinner": false,
+            "image": "../imagenes/covers/animal_crossing_new_horizons.jpg"
+        },
+        {
+            "name": "Call of Duty: Warzone",
+            "isWinner": false,
+            "image": "../imagenes/covers/call_of_duty_warzone.jpg"
+        },
+        {
+            "name": "Fall Guys: Ultimate Knockout",
+            "isWinner": false,
+            "image": "../imagenes/covers/fall_guys_ultimate_knockout.jpg"
+        },
+        {
+            "name": "Valorant",
+            "isWinner": false,
+            "image": "../imagenes/covers/valorant.jpg"
+        }
+    ],
+    "Best Game Direction": [
+        {
+            "name": "The Last of Us Part II",
+            "isWinner": true,
+            "image": "../imagenes/covers/the_last_of_us_part_ii.jpg"
+        },
+        {
+            "name": "Final Fantasy VII Remake",
+            "isWinner": false,
+            "image": "../imagenes/covers/final_fantasy_vii_remake.jpg"
+        },
+        {
+            "name": "Ghost of Tsushima",
+            "isWinner": false,
+            "image": "../imagenes/covers/ghost_of_tsushima.jpg"
+        },
+        {
+            "name": "Hades",
+            "isWinner": false,
+            "image": "../imagenes/covers/hades.jpg"
+        },
+        {
+            "name": "Half-Life: Alyx",
+            "isWinner": false,
+            "image": "../imagenes/covers/half-life_alyx.jpg"
+        }
+    ]
+}

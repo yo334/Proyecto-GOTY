@@ -1,0 +1,201 @@
+{
+    "Game of the Year": [
+        {
+            "name": "The Legend of Zelda: Breath of the Wild",
+            "isWinner": true,
+            "image": "../imagenes/covers/the_legend_of_zelda_breath_of_the_wild.jpg"
+        },
+        {
+            "name": "Horizon Zero Dawn",
+            "isWinner": false,
+            "image": "../imagenes/covers/horizon_zero_dawn.jpg"
+        },
+        {
+            "name": "Persona 5",
+            "isWinner": false,
+            "image": "../imagenes/covers/persona_5.jpg"
+        },
+        {
+            "name": "PlayerUnknown's Battlegrounds",
+            "isWinner": false,
+            "image": "../imagenes/covers/playerunknowns_battlegrounds.jpg"
+        },
+        {
+            "name": "Super Mario Odyssey",
+            "isWinner": false,
+            "image": "../imagenes/covers/super_mario_odyssey.jpg"
+        }
+    ],
+    "Best Independent Game": [
+        {
+            "name": "Cuphead",
+            "isWinner": true,
+            "image": "../imagenes/covers/cuphead.jpg"
+        },
+        {
+            "name": "Hellblade: Senua's Sacrifice",
+            "isWinner": false,
+            "image": "../imagenes/covers/hellblade_senuas_sacrifice.jpg"
+        },
+        {
+            "name": "Night in the Woods",
+            "isWinner": false,
+            "image": "../imagenes/covers/night_in_the_woods.jpg"
+        },
+        {
+            "name": "Pyre",
+            "isWinner": false,
+            "image": "../imagenes/covers/pyre.jpg"
+        },
+        {
+            "name": "What Remains of Edith Finch",
+            "isWinner": false,
+            "image": "../imagenes/covers/what_remains_of_edith_finch.jpg"
+        }
+    ],
+    "Best Narrative": [
+        {
+            "name": "What Remains of Edith Finch",
+            "isWinner": true,
+            "image": "../imagenes/covers/what_remains_of_edith_finch.jpg"
+        },
+        {
+            "name": "Hellblade: Senua's Sacrifice",
+            "isWinner": false,
+            "image": "../imagenes/covers/hellblade_senuas_sacrifice.jpg"
+        },
+        {
+            "name": "Horizon Zero Dawn",
+            "isWinner": false,
+            "image": "../imagenes/covers/horizon_zero_dawn.jpg"
+        },
+        {
+            "name": "NieR: Automata",
+            "isWinner": false,
+            "image": "../imagenes/covers/nier_automata.jpg"
+        },
+        {
+            "name": "Wolfenstein II: The New Colossus",
+            "isWinner": false,
+            "image": "../imagenes/covers/wolfenstein_ii_the_new_colossus.jpg"
+        }
+    ],
+    "Best Art Direction": [
+        {
+            "name": "Cuphead",
+            "isWinner": true,
+            "image": "../imagenes/covers/cuphead.jpg"
+        },
+        {
+            "name": "Destiny 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/destiny_2.jpg"
+        },
+        {
+            "name": "Horizon Zero Dawn",
+            "isWinner": false,
+            "image": "../imagenes/covers/horizon_zero_dawn.jpg"
+        },
+        {
+            "name": "Persona 5",
+            "isWinner": false,
+            "image": "../imagenes/covers/persona_5.jpg"
+        },
+        {
+            "name": "The Legend of Zelda: Breath of the Wild",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_legend_of_zelda_breath_of_the_wild.jpg"
+        }
+    ],
+    "Best Soundtrack": [
+        {
+            "name": "NieR: Automata",
+            "isWinner": true,
+            "image": "../imagenes/covers/nier_automata.jpg"
+        },
+        {
+            "name": "Cuphead",
+            "isWinner": false,
+            "image": "../imagenes/covers/cuphead.jpg"
+        },
+        {
+            "name": "Destiny 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/destiny_2.jpg"
+        },
+        {
+            "name": "Persona 5",
+            "isWinner": false,
+            "image": "../imagenes/covers/persona_5.jpg"
+        },
+        {
+            "name": "Super Mario Odyssey",
+            "isWinner": false,
+            "image": "../imagenes/covers/super_mario_odyssey.jpg"
+        },
+        {
+            "name": "The Legend of Zelda: Breath of the Wild",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_legend_of_zelda_breath_of_the_wild.jpg"
+        }
+    ],
+    "Best Multiplayer": [
+        {
+            "name": "PlayerUnknown's Battlegrounds",
+            "isWinner": true,
+            "image": "../imagenes/covers/playerunknowns_battlegrounds.jpg"
+        },
+        {
+            "name": "Call of Duty: WWII",
+            "isWinner": false,
+            "image": "../imagenes/covers/call_of_duty_wwii.jpg"
+        },
+        {
+            "name": "Destiny 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/destiny_2.jpg"
+        },
+        {
+            "name": "Fortnite",
+            "isWinner": false,
+            "image": "../imagenes/covers/fortnite.jpg"
+        },
+        {
+            "name": "Mario Kart 8 Deluxe",
+            "isWinner": false,
+            "image": "../imagenes/covers/mario_kart_8_deluxe.jpg"
+        },
+        {
+            "name": "Splatoon 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/splatoon_2.jpg"
+        }
+    ],
+    "Best Game Direction": [
+        {
+            "name": "The Legend of Zelda: Breath of the Wild",
+            "isWinner": true,
+            "image": "../imagenes/covers/the_legend_of_zelda_breath_of_the_wild.jpg"
+        },
+        {
+            "name": "Horizon Zero Dawn",
+            "isWinner": false,
+            "image": "../imagenes/covers/horizon_zero_dawn.jpg"
+        },
+        {
+            "name": "Resident Evil 7: Biohazard",
+            "isWinner": false,
+            "image": "../imagenes/covers/resident_evil_7_biohazard.jpg"
+        },
+        {
+            "name": "Super Mario Odyssey",
+            "isWinner": false,
+            "image": "../imagenes/covers/super_mario_odyssey.jpg"
+        },
+        {
+            "name": "Wolfenstein II: The New Colossus",
+            "isWinner": false,
+            "image": "../imagenes/covers/wolfenstein_ii_the_new_colossus.jpg"
+        }
+    ]
+}

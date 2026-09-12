@@ -19,8 +19,8 @@ header {
     /* Alineación central del texto */
     text-align: center;
 
-    /* Evita desbordamientos visuales */
-    overflow: hidden;
+    /* Permite que el desplegable de búsqueda descienda libremente sin recorte */
+    overflow: visible;
 }
 
 /* Efecto de iluminación radial en la cabecera */
@@ -395,14 +395,43 @@ header p {
     box-shadow: 0 0 16px rgba(201, 168, 76, 0.15);
 }
 
-/* Contenedor de resultados de búsqueda */
+/* Contenedor flotante de resultados de búsqueda */
 .search-panel__results {
-    margin-top: 12px;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    max-height: 420px;
+    overflow-y: auto;
+    background: rgba(15, 17, 24, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(201, 168, 76, 0.2);
+    z-index: 1000;
     display: none;
 }
 
 .search-panel__results.active {
     display: block;
+}
+
+/* Scrollbar personalizado dorado */
+.search-panel__results::-webkit-scrollbar {
+    width: 6px;
+}
+.search-panel__results::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+.search-panel__results::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 3px;
+}
+.search-panel__results::-webkit-scrollbar-thumb:hover {
+    background: #f5d77f;
 }
 
 /* Resultado individual */
@@ -419,9 +448,14 @@ header p {
     cursor: pointer;
 }
 
-.search-result:hover {
-    background: rgba(201, 168, 76, 0.1);
+.search-result:hover,
+.search-result.highlight,
+.search-result.active,
+.search-result:focus {
+    background: rgba(201, 168, 76, 0.2);
+    border-left: 3px solid var(--gold);
     transform: translateX(4px);
+    outline: none;
 }
 
 .search-result--hint {

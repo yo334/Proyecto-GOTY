@@ -1,0 +1,201 @@
+{
+    "Game of the Year": [
+        {
+            "name": "It Takes Two",
+            "isWinner": true,
+            "image": "../imagenes/covers/it_takes_two.jpg"
+        },
+        {
+            "name": "Deathloop",
+            "isWinner": false,
+            "image": "../imagenes/covers/deathloop.jpg"
+        },
+        {
+            "name": "Metroid Dread",
+            "isWinner": false,
+            "image": "../imagenes/covers/metroid_dread.jpg"
+        },
+        {
+            "name": "Psychonauts 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/psychonauts_2.jpg"
+        },
+        {
+            "name": "Ratchet & Clank: Rift Apart",
+            "isWinner": false,
+            "image": "../imagenes/covers/ratchet__clank_rift_apart.jpg"
+        },
+        {
+            "name": "Resident Evil Village",
+            "isWinner": false,
+            "image": "../imagenes/covers/resident_evil_village.jpg"
+        }
+    ],
+    "Best Independent Game": [
+        {
+            "name": "Kena: Bridge of Spirits",
+            "isWinner": true,
+            "image": "../imagenes/covers/kena_bridge_of_spirits.jpg"
+        },
+        {
+            "name": "12 Minutes",
+            "isWinner": false,
+            "image": "../imagenes/covers/12_minutes.jpg"
+        },
+        {
+            "name": "Death's Door",
+            "isWinner": false,
+            "image": "../imagenes/covers/deaths_door.jpg"
+        },
+        {
+            "name": "Inscryption",
+            "isWinner": false,
+            "image": "../imagenes/covers/inscryption.jpg"
+        },
+        {
+            "name": "Loop Hero",
+            "isWinner": false,
+            "image": "../imagenes/covers/loop_hero.jpg"
+        }
+    ],
+    "Best Narrative": [
+        {
+            "name": "Marvel's Guardians of the Galaxy",
+            "isWinner": true,
+            "image": "../imagenes/covers/marvels_guardians_of_the_galaxy.jpg"
+        },
+        {
+            "name": "Deathloop",
+            "isWinner": false,
+            "image": "../imagenes/covers/deathloop.jpg"
+        },
+        {
+            "name": "It Takes Two",
+            "isWinner": false,
+            "image": "../imagenes/covers/it_takes_two.jpg"
+        },
+        {
+            "name": "Life is Strange: True Colors",
+            "isWinner": false,
+            "image": "../imagenes/covers/life_is_strange_true_colors.jpg"
+        },
+        {
+            "name": "Psychonauts 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/psychonauts_2.jpg"
+        }
+    ],
+    "Best Art Direction": [
+        {
+            "name": "Deathloop",
+            "isWinner": true,
+            "image": "../imagenes/covers/deathloop.jpg"
+        },
+        {
+            "name": "Kena: Bridge of Spirits",
+            "isWinner": false,
+            "image": "../imagenes/covers/kena_bridge_of_spirits.jpg"
+        },
+        {
+            "name": "Psychonauts 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/psychonauts_2.jpg"
+        },
+        {
+            "name": "Ratchet & Clank: Rift Apart",
+            "isWinner": false,
+            "image": "../imagenes/covers/ratchet__clank_rift_apart.jpg"
+        },
+        {
+            "name": "The Artful Escape",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_artful_escape.jpg"
+        }
+    ],
+    "Best Soundtrack": [
+        {
+            "name": "NieR Replicant ver.1.22474487139...",
+            "isWinner": true,
+            "image": "../imagenes/covers/nier_replicant_ver122474487139.jpg"
+        },
+        {
+            "name": "Cyberpunk 2077",
+            "isWinner": false,
+            "image": "../imagenes/covers/cyberpunk_2077.jpg"
+        },
+        {
+            "name": "Deathloop",
+            "isWinner": false,
+            "image": "../imagenes/covers/deathloop.jpg"
+        },
+        {
+            "name": "Marvel's Guardians of the Galaxy",
+            "isWinner": false,
+            "image": "../imagenes/covers/marvels_guardians_of_the_galaxy.jpg"
+        },
+        {
+            "name": "The Artful Escape",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_artful_escape.jpg"
+        }
+    ],
+    "Best Multiplayer": [
+        {
+            "name": "It Takes Two",
+            "isWinner": true,
+            "image": "../imagenes/covers/it_takes_two.jpg"
+        },
+        {
+            "name": "Back 4 Blood",
+            "isWinner": false,
+            "image": "../imagenes/covers/back_4_blood.jpg"
+        },
+        {
+            "name": "Knockout City",
+            "isWinner": false,
+            "image": "../imagenes/covers/knockout_city.jpg"
+        },
+        {
+            "name": "Monster Hunter Rise",
+            "isWinner": false,
+            "image": "../imagenes/covers/monster_hunter_rise.jpg"
+        },
+        {
+            "name": "New World",
+            "isWinner": false,
+            "image": "../imagenes/covers/new_world.jpg"
+        },
+        {
+            "name": "Valheim",
+            "isWinner": false,
+            "image": "../imagenes/covers/valheim.jpg"
+        }
+    ],
+    "Best Game Direction": [
+        {
+            "name": "Deathloop",
+            "isWinner": true,
+            "image": "../imagenes/covers/deathloop.jpg"
+        },
+        {
+            "name": "It Takes Two",
+            "isWinner": false,
+            "image": "../imagenes/covers/it_takes_two.jpg"
+        },
+        {
+            "name": "Returnal",
+            "isWinner": false,
+            "image": "../imagenes/covers/returnal.jpg"
+        },
+        {
+            "name": "Psychonauts 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/psychonauts_2.jpg"
+        },
+        {
+            "name": "Ratchet & Clank: Rift Apart",
+            "isWinner": false,
+            "image": "../imagenes/covers/ratchet__clank_rift_apart.jpg"
+        }
+    ]
+}

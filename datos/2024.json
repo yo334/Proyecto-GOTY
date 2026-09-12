@@ -1,0 +1,201 @@
+{
+    "Game of the Year": [
+        {
+            "name": "Astro Bot",
+            "isWinner": true,
+            "image": "../imagenes/covers/astro_bot.jpg"
+        },
+        {
+            "name": "Balatro",
+            "isWinner": false,
+            "image": "../imagenes/covers/balatro.jpg"
+        },
+        {
+            "name": "Black Myth: Wukong",
+            "isWinner": false,
+            "image": "../imagenes/covers/black_myth_wukong.jpg"
+        },
+        {
+            "name": "Elden Ring Shadow of the Erdtree",
+            "isWinner": false,
+            "image": "../imagenes/covers/elden_ring_shadow_of_the_erdtree.jpg"
+        },
+        {
+            "name": "Final Fantasy VII Rebirth",
+            "isWinner": false,
+            "image": "../imagenes/covers/final_fantasy_vii_rebirth.jpg"
+        },
+        {
+            "name": "Metaphor: ReFantazio",
+            "isWinner": false,
+            "image": "../imagenes/covers/metaphor_refantazio.jpg"
+        }
+    ],
+    "Best Independent Game": [
+        {
+            "name": "Balatro",
+            "isWinner": true,
+            "image": "../imagenes/covers/balatro.jpg"
+        },
+        {
+            "name": "Animal Well",
+            "isWinner": false,
+            "image": "../imagenes/covers/animal_well.jpg"
+        },
+        {
+            "name": "Lorelei and the Laser Eyes",
+            "isWinner": false,
+            "image": "../imagenes/covers/lorelei_and_the_laser_eyes.jpg"
+        },
+        {
+            "name": "Neva",
+            "isWinner": false,
+            "image": "../imagenes/covers/neva.jpg"
+        },
+        {
+            "name": "UFO 50",
+            "isWinner": false,
+            "image": "../imagenes/covers/ufo_50.jpg"
+        }
+    ],
+    "Best Narrative": [
+        {
+            "name": "Metaphor: ReFantazio",
+            "isWinner": true,
+            "image": "../imagenes/covers/metaphor_refantazio.jpg"
+        },
+        {
+            "name": "Final Fantasy VII Rebirth",
+            "isWinner": false,
+            "image": "../imagenes/covers/final_fantasy_vii_rebirth.jpg"
+        },
+        {
+            "name": "Like a Dragon: Infinite Wealth",
+            "isWinner": false,
+            "image": "../imagenes/covers/like_a_dragon_infinite_wealth.jpg"
+        },
+        {
+            "name": "Senua's Saga: Hellblade II",
+            "isWinner": false,
+            "image": "../imagenes/covers/senuas_saga_hellblade_ii.jpg"
+        },
+        {
+            "name": "Silent Hill 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/silent_hill_2.jpg"
+        }
+    ],
+    "Best Art Direction": [
+        {
+            "name": "Metaphor: ReFantazio",
+            "isWinner": true,
+            "image": "../imagenes/covers/metaphor_refantazio.jpg"
+        },
+        {
+            "name": "Astro Bot",
+            "isWinner": false,
+            "image": "../imagenes/covers/astro_bot.jpg"
+        },
+        {
+            "name": "Black Myth: Wukong",
+            "isWinner": false,
+            "image": "../imagenes/covers/black_myth_wukong.jpg"
+        },
+        {
+            "name": "Neva",
+            "isWinner": false,
+            "image": "../imagenes/covers/neva.jpg"
+        },
+        {
+            "name": "Senua's Saga: Hellblade II",
+            "isWinner": false,
+            "image": "../imagenes/covers/senuas_saga_hellblade_ii.jpg"
+        }
+    ],
+    "Best Soundtrack": [
+        {
+            "name": "Final Fantasy VII Rebirth",
+            "isWinner": true,
+            "image": "../imagenes/covers/final_fantasy_vii_rebirth.jpg"
+        },
+        {
+            "name": "Astro Bot",
+            "isWinner": false,
+            "image": "../imagenes/covers/astro_bot.jpg"
+        },
+        {
+            "name": "Metaphor: ReFantazio",
+            "isWinner": false,
+            "image": "../imagenes/covers/metaphor_refantazio.jpg"
+        },
+        {
+            "name": "Silent Hill 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/silent_hill_2.jpg"
+        },
+        {
+            "name": "Stellar Blade",
+            "isWinner": false,
+            "image": "../imagenes/covers/stellar_blade.jpg"
+        }
+    ],
+    "Best Multiplayer": [
+        {
+            "name": "Helldivers 2",
+            "isWinner": true,
+            "image": "../imagenes/covers/helldivers_2.jpg"
+        },
+        {
+            "name": "Call of Duty: Black Ops 6",
+            "isWinner": false,
+            "image": "../imagenes/covers/call_of_duty_black_ops_6.jpg"
+        },
+        {
+            "name": "Super Mario Party Jamboree",
+            "isWinner": false,
+            "image": "../imagenes/covers/super_mario_party_jamboree.jpg"
+        },
+        {
+            "name": "Tekken 8",
+            "isWinner": false,
+            "image": "../imagenes/covers/tekken_8.jpg"
+        },
+        {
+            "name": "Warhammer 40,000: Space Marine 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/warhammer_40000_space_marine_2.jpg"
+        }
+    ],
+    "Best Game Direction": [
+        {
+            "name": "Astro Bot",
+            "isWinner": true,
+            "image": "../imagenes/covers/astro_bot.jpg"
+        },
+        {
+            "name": "Balatro",
+            "isWinner": false,
+            "image": "../imagenes/covers/balatro.jpg"
+        },
+        {
+            "name": "Black Myth: Wukong",
+            "isWinner": false,
+            "image": "../imagenes/covers/black_myth_wukong.jpg"
+        },
+        {
+            "name": "Elden Ring Shadow of the Erdtree",
+            "isWinner": false,
+            "image": "../imagenes/covers/elden_ring_shadow_of_the_erdtree.jpg"
+        },
+        {
+            "name": "Final Fantasy VII Rebirth",
+            "isWinner": false,
+            "image": "../imagenes/covers/final_fantasy_vii_rebirth.jpg"
+        },
+        {
+            "name": "Metaphor: ReFantazio",
+            "isWinner": false,
+            "image": "../imagenes/covers/metaphor_refantazio.jpg"
+        }
+    ]
+}

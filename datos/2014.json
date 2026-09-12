@@ -1,0 +1,191 @@
+{
+    "Game of the Year": [
+        {
+            "name": "Dragon Age: Inquisition",
+            "isWinner": true,
+            "image": "../imagenes/covers/dragon_age_inquisition.jpg"
+        },
+        {
+            "name": "Bayonetta 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/bayonetta_2.jpg"
+        },
+        {
+            "name": "Dark Souls II",
+            "isWinner": false,
+            "image": "../imagenes/covers/dark_souls_ii.jpg"
+        },
+        {
+            "name": "Hearthstone",
+            "isWinner": false,
+            "image": "../imagenes/covers/hearthstone.jpg"
+        },
+        {
+            "name": "Middle-earth: Shadow of Mordor",
+            "isWinner": false,
+            "image": "../imagenes/covers/middle-earth_shadow_of_mordor.jpg"
+        }
+    ],
+    "Best Independent Game": [
+        {
+            "name": "Shovel Knight",
+            "isWinner": true,
+            "image": "../imagenes/covers/shovel_knight.jpg"
+        },
+        {
+            "name": "Broken Age Part 1",
+            "isWinner": false,
+            "image": "../imagenes/covers/broken_age_part_1.jpg"
+        },
+        {
+            "name": "Monument Valley",
+            "isWinner": false,
+            "image": "../imagenes/covers/monument_valley.jpg"
+        },
+        {
+            "name": "Transistor",
+            "isWinner": false,
+            "image": "../imagenes/covers/transistor.jpg"
+        },
+        {
+            "name": "The Vanishing of Ethan Carter",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_vanishing_of_ethan_carter.jpg"
+        }
+    ],
+    "Best Narrative": [
+        {
+            "name": "Valiant Hearts: The Great War",
+            "isWinner": true,
+            "image": "../imagenes/covers/valiant_hearts_the_great_war.jpg"
+        },
+        {
+            "name": "South Park: The Stick of Truth",
+            "isWinner": false,
+            "image": "../imagenes/covers/south_park_the_stick_of_truth.jpg"
+        },
+        {
+            "name": "The Walking Dead: Season Two",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_walking_dead_season_two.jpg"
+        },
+        {
+            "name": "The Wolf Among Us",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_wolf_among_us.jpg"
+        },
+        {
+            "name": "Wolfenstein: The New Order",
+            "isWinner": false,
+            "image": "../imagenes/covers/wolfenstein_the_new_order.jpg"
+        }
+    ],
+    "Best Art Direction": [
+        {
+            "name": "Monument Valley",
+            "isWinner": true,
+            "image": "../imagenes/covers/monument_valley.jpg"
+        },
+        {
+            "name": "Assassin's Creed Unity",
+            "isWinner": false,
+            "image": "../imagenes/covers/assassins_creed_unity.jpg"
+        },
+        {
+            "name": "Child of Light",
+            "isWinner": false,
+            "image": "../imagenes/covers/child_of_light.jpg"
+        },
+        {
+            "name": "Destiny",
+            "isWinner": false,
+            "image": "../imagenes/covers/destiny.jpg"
+        },
+        {
+            "name": "Sunset Overdrive",
+            "isWinner": false,
+            "image": "../imagenes/covers/sunset_overdrive.jpg"
+        }
+    ],
+    "Best Soundtrack": [
+        {
+            "name": "Destiny",
+            "isWinner": true,
+            "image": "../imagenes/covers/destiny.jpg"
+        },
+        {
+            "name": "Alien: Isolation",
+            "isWinner": false,
+            "image": "../imagenes/covers/alien_isolation.jpg"
+        },
+        {
+            "name": "Child of Light",
+            "isWinner": false,
+            "image": "../imagenes/covers/child_of_light.jpg"
+        },
+        {
+            "name": "Sunset Overdrive",
+            "isWinner": false,
+            "image": "../imagenes/covers/sunset_overdrive.jpg"
+        },
+        {
+            "name": "Transistor",
+            "isWinner": false,
+            "image": "../imagenes/covers/transistor.jpg"
+        }
+    ],
+    "Best Multiplayer": [
+        {
+            "name": "Destiny",
+            "isWinner": true,
+            "image": "../imagenes/covers/destiny.jpg"
+        },
+        {
+            "name": "Call of Duty: Advanced Warfare",
+            "isWinner": false,
+            "image": "../imagenes/covers/call_of_duty_advanced_warfare.jpg"
+        },
+        {
+            "name": "Dark Souls II",
+            "isWinner": false,
+            "image": "../imagenes/covers/dark_souls_ii.jpg"
+        },
+        {
+            "name": "Hearthstone",
+            "isWinner": false,
+            "image": "../imagenes/covers/hearthstone.jpg"
+        },
+        {
+            "name": "Titanfall",
+            "isWinner": false,
+            "image": "../imagenes/covers/titanfall.jpg"
+        }
+    ],
+    "Best Game Direction": [
+        {
+            "name": "Nintendo",
+            "isWinner": true,
+            "image": "../imagenes/covers/nintendo.jpg"
+        },
+        {
+            "name": "Blizzard Entertainment",
+            "isWinner": false,
+            "image": "../imagenes/covers/blizzard_entertainment.jpg"
+        },
+        {
+            "name": "Monolith Productions",
+            "isWinner": false,
+            "image": "../imagenes/covers/monolith_productions.jpg"
+        },
+        {
+            "name": "Telltale Games",
+            "isWinner": false,
+            "image": "../imagenes/covers/telltale_games.jpg"
+        },
+        {
+            "name": "Ubisoft Montreal",
+            "isWinner": false,
+            "image": "../imagenes/covers/ubisoft_montreal.jpg"
+        }
+    ]
+}

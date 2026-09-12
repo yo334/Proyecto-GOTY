@@ -1,0 +1,191 @@
+{
+    "Game of the Year": [
+        {
+            "name": "Overwatch",
+            "isWinner": true,
+            "image": "../imagenes/covers/overwatch.jpg"
+        },
+        {
+            "name": "Doom",
+            "isWinner": false,
+            "image": "../imagenes/covers/doom.jpg"
+        },
+        {
+            "name": "Inside",
+            "isWinner": false,
+            "image": "../imagenes/covers/inside.jpg"
+        },
+        {
+            "name": "Titanfall 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/titanfall_2.jpg"
+        },
+        {
+            "name": "Uncharted 4: A Thief's End",
+            "isWinner": false,
+            "image": "../imagenes/covers/uncharted_4_a_thiefs_end.jpg"
+        }
+    ],
+    "Best Independent Game": [
+        {
+            "name": "Inside",
+            "isWinner": true,
+            "image": "../imagenes/covers/inside.jpg"
+        },
+        {
+            "name": "Firewatch",
+            "isWinner": false,
+            "image": "../imagenes/covers/firewatch.jpg"
+        },
+        {
+            "name": "Hyper Light Drifter",
+            "isWinner": false,
+            "image": "../imagenes/covers/hyper_light_drifter.jpg"
+        },
+        {
+            "name": "Stardew Valley",
+            "isWinner": false,
+            "image": "../imagenes/covers/stardew_valley.jpg"
+        },
+        {
+            "name": "The Witness",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_witness.jpg"
+        }
+    ],
+    "Best Narrative": [
+        {
+            "name": "Uncharted 4: A Thief's End",
+            "isWinner": true,
+            "image": "../imagenes/covers/uncharted_4_a_thiefs_end.jpg"
+        },
+        {
+            "name": "Firewatch",
+            "isWinner": false,
+            "image": "../imagenes/covers/firewatch.jpg"
+        },
+        {
+            "name": "Inside",
+            "isWinner": false,
+            "image": "../imagenes/covers/inside.jpg"
+        },
+        {
+            "name": "Mafia III",
+            "isWinner": false,
+            "image": "../imagenes/covers/mafia_iii.jpg"
+        },
+        {
+            "name": "Oxenfree",
+            "isWinner": false,
+            "image": "../imagenes/covers/oxenfree.jpg"
+        }
+    ],
+    "Best Art Direction": [
+        {
+            "name": "Inside",
+            "isWinner": true,
+            "image": "../imagenes/covers/inside.jpg"
+        },
+        {
+            "name": "Abzû",
+            "isWinner": false,
+            "image": "../imagenes/covers/abz.jpg"
+        },
+        {
+            "name": "Firewatch",
+            "isWinner": false,
+            "image": "../imagenes/covers/firewatch.jpg"
+        },
+        {
+            "name": "Overwatch",
+            "isWinner": false,
+            "image": "../imagenes/covers/overwatch.jpg"
+        },
+        {
+            "name": "Uncharted 4: A Thief's End",
+            "isWinner": false,
+            "image": "../imagenes/covers/uncharted_4_a_thiefs_end.jpg"
+        }
+    ],
+    "Best Soundtrack": [
+        {
+            "name": "Doom",
+            "isWinner": true,
+            "image": "../imagenes/covers/doom.jpg"
+        },
+        {
+            "name": "Battlefield 1",
+            "isWinner": false,
+            "image": "../imagenes/covers/battlefield_1.jpg"
+        },
+        {
+            "name": "Inside",
+            "isWinner": false,
+            "image": "../imagenes/covers/inside.jpg"
+        },
+        {
+            "name": "Rez Infinite",
+            "isWinner": false,
+            "image": "../imagenes/covers/rez_infinite.jpg"
+        },
+        {
+            "name": "Thumper",
+            "isWinner": false,
+            "image": "../imagenes/covers/thumper.jpg"
+        }
+    ],
+    "Best Multiplayer": [
+        {
+            "name": "Overwatch",
+            "isWinner": true,
+            "image": "../imagenes/covers/overwatch.jpg"
+        },
+        {
+            "name": "Battlefield 1",
+            "isWinner": false,
+            "image": "../imagenes/covers/battlefield_1.jpg"
+        },
+        {
+            "name": "Gears of War 4",
+            "isWinner": false,
+            "image": "../imagenes/covers/gears_of_war_4.jpg"
+        },
+        {
+            "name": "Titanfall 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/titanfall_2.jpg"
+        },
+        {
+            "name": "Tom Clancy's Rainbow Six Siege",
+            "isWinner": false,
+            "image": "../imagenes/covers/tom_clancys_rainbow_six_siege.jpg"
+        }
+    ],
+    "Best Game Direction": [
+        {
+            "name": "Blizzard Entertainment",
+            "isWinner": true,
+            "image": "../imagenes/covers/blizzard_entertainment.jpg"
+        },
+        {
+            "name": "DICE",
+            "isWinner": false,
+            "image": "../imagenes/covers/dice.jpg"
+        },
+        {
+            "name": "id Software",
+            "isWinner": false,
+            "image": "../imagenes/covers/id_software.jpg"
+        },
+        {
+            "name": "Naughty Dog",
+            "isWinner": false,
+            "image": "../imagenes/covers/naughty_dog.jpg"
+        },
+        {
+            "name": "Respawn Entertainment",
+            "isWinner": false,
+            "image": "../imagenes/covers/respawn_entertainment.jpg"
+        }
+    ]
+}

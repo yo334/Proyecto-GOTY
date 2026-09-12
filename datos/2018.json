@@ -1,0 +1,201 @@
+{
+    "Game of the Year": [
+        {
+            "name": "God of War",
+            "isWinner": true,
+            "image": "../imagenes/covers/god_of_war.jpg"
+        },
+        {
+            "name": "Assassin's Creed Odyssey",
+            "isWinner": false,
+            "image": "../imagenes/covers/assassins_creed_odyssey.jpg"
+        },
+        {
+            "name": "Celeste",
+            "isWinner": false,
+            "image": "../imagenes/covers/celeste.jpg"
+        },
+        {
+            "name": "Marvel's Spider-Man",
+            "isWinner": false,
+            "image": "../imagenes/covers/marvels_spider-man.jpg"
+        },
+        {
+            "name": "Monster Hunter: World",
+            "isWinner": false,
+            "image": "../imagenes/covers/monster_hunter_world.jpg"
+        },
+        {
+            "name": "Red Dead Redemption 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/red_dead_redemption_2.jpg"
+        }
+    ],
+    "Best Independent Game": [
+        {
+            "name": "Celeste",
+            "isWinner": true,
+            "image": "../imagenes/covers/celeste.jpg"
+        },
+        {
+            "name": "Dead Cells",
+            "isWinner": false,
+            "image": "../imagenes/covers/dead_cells.jpg"
+        },
+        {
+            "name": "Into the Breach",
+            "isWinner": false,
+            "image": "../imagenes/covers/into_the_breach.jpg"
+        },
+        {
+            "name": "Return of the Obra Dinn",
+            "isWinner": false,
+            "image": "../imagenes/covers/return_of_the_obra_dinn.jpg"
+        },
+        {
+            "name": "The Messenger",
+            "isWinner": false,
+            "image": "../imagenes/covers/the_messenger.jpg"
+        }
+    ],
+    "Best Narrative": [
+        {
+            "name": "Red Dead Redemption 2",
+            "isWinner": true,
+            "image": "../imagenes/covers/red_dead_redemption_2.jpg"
+        },
+        {
+            "name": "Detroit: Become Human",
+            "isWinner": false,
+            "image": "../imagenes/covers/detroit_become_human.jpg"
+        },
+        {
+            "name": "God of War",
+            "isWinner": false,
+            "image": "../imagenes/covers/god_of_war.jpg"
+        },
+        {
+            "name": "Life Is Strange 2: Episode 1",
+            "isWinner": false,
+            "image": "../imagenes/covers/life_is_strange_2_episode_1.jpg"
+        },
+        {
+            "name": "Marvel's Spider-Man",
+            "isWinner": false,
+            "image": "../imagenes/covers/marvels_spider-man.jpg"
+        }
+    ],
+    "Best Art Direction": [
+        {
+            "name": "Return of the Obra Dinn",
+            "isWinner": true,
+            "image": "../imagenes/covers/return_of_the_obra_dinn.jpg"
+        },
+        {
+            "name": "Assassin's Creed Odyssey",
+            "isWinner": false,
+            "image": "../imagenes/covers/assassins_creed_odyssey.jpg"
+        },
+        {
+            "name": "God of War",
+            "isWinner": false,
+            "image": "../imagenes/covers/god_of_war.jpg"
+        },
+        {
+            "name": "Octopath Traveler",
+            "isWinner": false,
+            "image": "../imagenes/covers/octopath_traveler.jpg"
+        },
+        {
+            "name": "Red Dead Redemption 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/red_dead_redemption_2.jpg"
+        }
+    ],
+    "Best Soundtrack": [
+        {
+            "name": "Red Dead Redemption 2",
+            "isWinner": true,
+            "image": "../imagenes/covers/red_dead_redemption_2.jpg"
+        },
+        {
+            "name": "Celeste",
+            "isWinner": false,
+            "image": "../imagenes/covers/celeste.jpg"
+        },
+        {
+            "name": "God of War",
+            "isWinner": false,
+            "image": "../imagenes/covers/god_of_war.jpg"
+        },
+        {
+            "name": "Marvel's Spider-Man",
+            "isWinner": false,
+            "image": "../imagenes/covers/marvels_spider-man.jpg"
+        },
+        {
+            "name": "Ni no Kuni II: Revenant Kingdom",
+            "isWinner": false,
+            "image": "../imagenes/covers/ni_no_kuni_ii_revenant_kingdom.jpg"
+        },
+        {
+            "name": "Octopath Traveler",
+            "isWinner": false,
+            "image": "../imagenes/covers/octopath_traveler.jpg"
+        }
+    ],
+    "Best Multiplayer": [
+        {
+            "name": "Fortnite",
+            "isWinner": true,
+            "image": "../imagenes/covers/fortnite.jpg"
+        },
+        {
+            "name": "Call of Duty: Black Ops 4",
+            "isWinner": false,
+            "image": "../imagenes/covers/call_of_duty_black_ops_4.jpg"
+        },
+        {
+            "name": "Destiny 2: Forsaken",
+            "isWinner": false,
+            "image": "../imagenes/covers/destiny_2_forsaken.jpg"
+        },
+        {
+            "name": "Monster Hunter: World",
+            "isWinner": false,
+            "image": "../imagenes/covers/monster_hunter_world.jpg"
+        },
+        {
+            "name": "Sea of Thieves",
+            "isWinner": false,
+            "image": "../imagenes/covers/sea_of_thieves.jpg"
+        }
+    ],
+    "Best Game Direction": [
+        {
+            "name": "God of War",
+            "isWinner": true,
+            "image": "../imagenes/covers/god_of_war.jpg"
+        },
+        {
+            "name": "A Way Out",
+            "isWinner": false,
+            "image": "../imagenes/covers/a_way_out.jpg"
+        },
+        {
+            "name": "Detroit: Become Human",
+            "isWinner": false,
+            "image": "../imagenes/covers/detroit_become_human.jpg"
+        },
+        {
+            "name": "Marvel's Spider-Man",
+            "isWinner": false,
+            "image": "../imagenes/covers/marvels_spider-man.jpg"
+        },
+        {
+            "name": "Red Dead Redemption 2",
+            "isWinner": false,
+            "image": "../imagenes/covers/red_dead_redemption_2.jpg"
+        }
+    ]
+}
