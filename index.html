@@ -17,29 +17,62 @@
 
 <body>
 
+    <!-- ═══════════════════ TOP NAV ═══════════════════ -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo-link">
+                <img src="imagenes/logo_white.png" alt="The Game Awards" class="nav-logo">
+            </a>
+        </div>
+        <div class="nav-right">
+            <!-- Inline Search Box -->
+            <div class="nav-search-container" id="nav-search-container">
+                <div class="search-panel" id="search-panel">
+                    <div class="search-panel__input-wrap">
+                        <svg class="search-panel__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input type="text" id="search-input" class="search-panel__input"
+                            placeholder="Buscar..." autocomplete="off" />
+                        <button class="search-panel__close" id="search-close" aria-label="Cerrar búsqueda">✕</button>
+                    </div>
+                    <div class="search-panel__results" id="search-results"></div>
+                </div>
+            </div>
+            
+            <button class="nav-link nav-search-toggle" id="nav-search-toggle" aria-label="Buscar">
+                <svg class="nav-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <span>BUSCAR</span>
+            </button>
+            <a href="#years-section" class="nav-link">VER GANADORES</a>
+            <a href="seleccionar_encuesta.html" class="nav-link">VOTAR</a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════ HERO (full viewport, logo only) ═══════════════════ -->
+
     <header class="main-header">
         <div class="hero hero--index">
-            <h1 class="hero__title">THE GAME AWARDS</h1>
-            <p class="hero__subtitle">ARCHIVO HISTÓRICO DE GANADORES (2014-2025)</p>
-        </div>
-
-        <div class="header-search-container">
-            <aside class="search-panel" id="search-panel">
-                <div class="search-panel__input-wrap">
-                    <input type="text" id="search-input" class="search-panel__input"
-                        placeholder="Buscar por juego, año, categoría..." autocomplete="off" />
-                </div>
-                <div class="search-panel__results" id="search-results"></div>
-            </aside>
+            <div class="hero__bg-layer hero__bg-image"></div>
+            <div class="hero__bg-layer hero__bg-glow"></div>
+            <div class="hero__bg-layer hero__bg-grid"></div>
+            <div class="hero__bg-layer hero__bg-vignette"></div>
+            <div class="hero__content">
+                <img src="imagenes/tga_logo.png" alt="The Game Awards" class="hero__logo">
+            </div>
         </div>
     </header>
 
     <div class="divider"></div>
 
-    <!-- ═══════ MAIN LAYOUT: YEARS ═══════ -->
-    <section class="main-layout main-layout--centered">
-
-        <!-- Year Grid -->
+    <!-- ═══════════════════ YEARS SECTION ═══════════════════ -->
+    <section id="years-section" class="main-layout main-layout--centered">
         <div class="main-layout__content">
             <h2 class="section-title">Seleccioná un año</h2>
             <div class="year-grid">
@@ -47,79 +80,67 @@
                     <div class="yr">2014</div>
                     <div class="goty-name">Dragon Age: Inquisition</div>
                 </a>
-
                 <a class="year-card" href="./Años/2015.html">
                     <div class="yr">2015</div>
                     <div class="goty-name">The Witcher 3: Wild Hunt</div>
                 </a>
-
                 <a class="year-card" href="./Años/2016.html">
                     <div class="yr">2016</div>
                     <div class="goty-name">Overwatch</div>
                 </a>
-
                 <a class="year-card" href="./Años/2017.html">
                     <div class="yr">2017</div>
                     <div class="goty-name">The Legend of Zelda: BotW</div>
                 </a>
-
                 <a class="year-card" href="./Años/2018.html">
                     <div class="yr">2018</div>
                     <div class="goty-name">God of War</div>
                 </a>
-
                 <a class="year-card" href="./Años/2019.html">
                     <div class="yr">2019</div>
                     <div class="goty-name">Sekiro: Shadows Die Twice</div>
                 </a>
-
                 <a class="year-card" href="./Años/2020.html">
                     <div class="yr">2020</div>
                     <div class="goty-name">The Last of Us Part II</div>
                 </a>
-
                 <a class="year-card" href="./Años/2021.html">
                     <div class="yr">2021</div>
                     <div class="goty-name">It Takes Two</div>
                 </a>
-
                 <a class="year-card" href="./Años/2022.html">
                     <div class="yr">2022</div>
                     <div class="goty-name">Elden Ring</div>
                 </a>
-
                 <a class="year-card" href="./Años/2023.html">
                     <div class="yr">2023</div>
                     <div class="goty-name">Baldur's Gate 3</div>
                 </a>
-
                 <a class="year-card" href="./Años/2024.html">
                     <div class="yr">2024</div>
                     <div class="goty-name">Astro Bot</div>
                 </a>
-
                 <a class="year-card" href="./Años/2025.html">
                     <div class="yr">2025</div>
                     <div class="goty-name">Clair Obscur: Expedition 33</div>
                 </a>
             </div>
         </div>
-
     </section>
 
     <div class="divider"></div>
 
-    <!-- ═══════ ENCUESTA BANNER ═══════ -->
+    <!-- ═══════════════════ ENCUESTA BANNER ═══════════════════ -->
     <section class="survey-banner-section">
         <a href="seleccionar_encuesta.html" class="survey-banner" id="survey-link">
             <div class="survey-banner__glow"></div>
             <div class="survey-banner__content">
-                <span class="survey-banner__icon">🗳️</span>
                 <div class="survey-banner__text">
                     <h2 class="survey-banner__title">¿Estás de acuerdo con los ganadores? Votá por año</h2>
                 </div>
-                <span class="survey-banner__arrow">→</span>
+                <span class="survey-banner__arrow">➜</span>
             </div>
+
         </a>
     </section>
 
@@ -129,8 +150,36 @@
         &copy; 2025 GOTY Archive &nbsp;·&nbsp; Datos basados en The Game Awards
     </footer>
 
-    <!-- ═══════ SEARCH SCRIPT ═══════ -->
+    <!-- Scripts -->
     <script src="js/search.js"></script>
+    <script>
+        // Search overlay toggle
+        const toggleBtn = document.getElementById('nav-search-toggle');
+        const searchContainer = document.getElementById('nav-search-container');
+        const closeBtn  = document.getElementById('search-close');
+        const input     = document.getElementById('search-input');
+
+        function openSearch() {
+            searchContainer.classList.add('active');
+            toggleBtn.style.display = 'none';
+            setTimeout(() => input.focus(), 120);
+        }
+        function closeSearch() {
+            searchContainer.classList.remove('active');
+            toggleBtn.style.display = 'flex';
+        }
+
+        toggleBtn.addEventListener('click', openSearch);
+        closeBtn.addEventListener('click', closeSearch);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
+
+        // Nav shrink on scroll
+        const topNav = document.querySelector('.top-nav');
+        window.addEventListener('scroll', () => {
+            topNav.classList.toggle('top-nav--scrolled', window.scrollY > 60);
+        });
+    </script>
+
 
 </body>
 

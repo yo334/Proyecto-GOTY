@@ -2,9 +2,9 @@
    YEAR PAGES  (nav · hero · categories)
    ════════════════════════════════════════════════════════ */
 
-/* ─── NAV ────────────────────────────────────────────── */
-/* Barra de navegación superior en páginas de año */
-nav {
+/* ─── NAV (year pages only) ──────────────────────────── */
+/* Barra de navegación en páginas de año (nav sin .top-nav) */
+nav:not(.top-nav) {
     /* Disposición horizontal */
     display: flex;
     align-items: center;
@@ -21,7 +21,7 @@ nav {
     top: 0;
 
     /* Fondo semi-transparente con blur */
-    background: rgba(8, 10, 15, 0.85);
+    background: rgba(4, 6, 14, 0.88);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 
@@ -30,7 +30,7 @@ nav {
 }
 
 /* Enlace de volver atrás */
-nav .back {
+nav:not(.top-nav) .back {
     /* Estilo compacto y dorado */
     font-size: 0.8rem;
     letter-spacing: 0.12em;
@@ -41,12 +41,12 @@ nav .back {
 }
 
 /* Efecto hover en enlace volver */
-nav .back:hover {
+nav:not(.top-nav) .back:hover {
     opacity: 0.7;
 }
 
 /* Año actual en la navegación */
-nav .nav-year {
+nav:not(.top-nav) .nav-year {
     /* Tipografía grande y dorada */
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.6rem;
@@ -86,7 +86,7 @@ nav .nav-year {
 
     /* Gradiente dorado suave */
     background:
-        radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201, 168, 76, 0.13) 0%, transparent 70%);
+        radial-gradient(ellipse 70% 55% at 50% 0%, rgba(var(--neon-cyan-rgb), 0.13) 0%, transparent 70%);
 
     pointer-events: none;
 }
@@ -100,7 +100,7 @@ nav .nav-year {
     letter-spacing: 0.04em;
 
     /* Gradiente dorado metálico */
-    background: linear-gradient(160deg, #f0d080 0%, #c9a84c 45%, #7a5c1e 100%);
+    background: linear-gradient(160deg, var(--neon-cyan-light) 0%, var(--neon-cyan) 45%, var(--neon-blue) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -116,7 +116,7 @@ nav .nav-year {
     width: 100%;
     margin-bottom: 50px;
     padding-bottom: 30px;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    border-bottom: 1px solid rgba(var(--neon-cyan-rgb), 0.2);
 }
 
 .category-block:last-of-type {
@@ -127,14 +127,14 @@ nav .nav-year {
 .category-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2.8rem;
-    color: var(--gold, #d4af37);
+    color: var(--gold, var(--neon-cyan));
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 2px;
     padding: 20px 0;
     margin-bottom: 30px;
-    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    border-bottom: 2px solid rgba(var(--neon-cyan-rgb), 0.3);
+    text-shadow: 0 0 20px rgba(var(--neon-cyan-rgb), 0.4);
 }
 
 /* Cuadrícula flexible de candidatos */
@@ -169,8 +169,8 @@ nav .nav-year {
 /* Efecto hover con elevación suave */
 .candidate-card:hover {
     transform: translateY(-8px) scale(1.02);
-    border-color: var(--gold, #d4af37);
-    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.25);
+    border-color: var(--gold, var(--neon-cyan));
+    box-shadow: 0 20px 40px rgba(var(--neon-cyan-rgb), 0.25);
     z-index: 10;
 }
 
@@ -179,7 +179,7 @@ nav .nav-year {
     width: 100%;
     height: 330px;
     object-fit: cover;
-    border-bottom: 2px solid var(--gold, #d4af37);
+    border-bottom: 2px solid var(--gold, var(--neon-cyan));
     opacity: 0.9;
     transition: opacity 0.3s ease;
     background-color: #0d0f16;
@@ -203,13 +203,13 @@ nav .nav-year {
 
 /* Resaltado del ganador oficial con resplandor dorado TGA */
 .card--winner {
-    border: 2px solid var(--gold, #c9a84c) !important;
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.45), inset 0 0 15px rgba(212, 175, 55, 0.15) !important;
+    border: 2px solid var(--gold, var(--neon-cyan)) !important;
+    box-shadow: 0 0 25px rgba(var(--neon-cyan-rgb), 0.45), inset 0 0 15px rgba(var(--neon-cyan-rgb), 0.15) !important;
 }
 
 .card--winner:hover {
-    border-color: #f5d77f !important;
-    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.55), inset 0 0 20px rgba(212, 175, 55, 0.25) !important;
+    border-color: var(--neon-cyan-light) !important;
+    box-shadow: 0 15px 40px rgba(var(--neon-cyan-rgb), 0.55), inset 0 0 20px rgba(var(--neon-cyan-rgb), 0.25) !important;
 }
 
 .card--winner::before {
@@ -217,7 +217,7 @@ nav .nav-year {
     position: absolute;
     top: 14px;
     right: 14px;
-    background: linear-gradient(135deg, #f5d77f, #c9a84c);
+    background: linear-gradient(135deg, var(--neon-cyan-light), var(--neon-cyan));
     color: #000000;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 0.85rem;
@@ -241,7 +241,7 @@ nav .nav-year {
 @media (max-width: 600px) {
 
     /* Reduce padding en nav para móviles */
-    nav {
+    nav:not(.top-nav) {
         padding: 14px 16px;
     }
 

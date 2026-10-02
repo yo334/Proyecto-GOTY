@@ -1,103 +1,14 @@
 /* ════════════════════════════════════════════════════════
-   INDEX PAGE
+   INDEX PAGE — sections below the hero
+   (Hero and nav styles are in hero-index.css / nav.css)
    ════════════════════════════════════════════════════════ */
-
-/* Cabecera principal de la página de inicio */
-header {
-    /* Posicionamiento relativo para overlays */
-    position: relative;
-
-    /* Disposición vertical centrada */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    /* Espaciado generoso */
-    padding: 80px 20px 60px;
-
-    /* Alineación central del texto */
-    text-align: center;
-
-    /* Permite que el desplegable de búsqueda descienda libremente sin recorte */
-    overflow: visible;
-}
-
-/* Efecto de iluminación radial en la cabecera */
-header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-
-    /* Gradientes suaves dorados para profundidad */
-    background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 168, 76, 0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 30% at 20% 100%, rgba(201, 168, 76, 0.05) 0%, transparent 60%);
-
-    /* Solo decorativo */
-    pointer-events: none;
-}
-
-/* Texto pequeño superior (eyebrow) */
-.header-eyebrow {
-    /* Tamaño compacto y espaciado de letras */
-    font-size: 0.75rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-
-    /* Color dorado para jerarquía */
-    color: var(--gold);
-
-    /* Espacio inferior */
-    margin-bottom: 16px;
-
-    /* Animación de entrada */
-    animation: fadeUp 0.7s ease both;
-}
-
-/* Título principal del sitio */
-header h1 {
-    /* Tipografía impactante */
-    font-family: 'Bebas Neue', sans-serif;
-
-    /* Tamaño responsivo muy grande */
-    font-size: clamp(5rem, 18vw, 13rem);
-    line-height: 0.88;
-    letter-spacing: 0.04em;
-
-    /* Gradiente dorado metálico */
-    background: linear-gradient(160deg, #f0d080 0%, #c9a84c 45%, #7a5c1e 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-
-    /* Animación de entrada retardada */
-    animation: fadeUp 0.7s 0.1s ease both;
-}
-
-/* Descripción debajo del título principal */
-header p {
-    /* Espacio superior */
-    margin-top: 24px;
-
-    /* Tamaño y estilo para subtítulo */
-    font-size: 1rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-
-    /* Color secundario */
-    color: var(--muted);
-
-    /* Animación de entrada más retardada */
-    animation: fadeUp 0.7s 0.2s ease both;
-}
 
 /* ═══════ SURVEY BANNER ═══════ */
 /* Sección que contiene el banner de la encuesta */
 .survey-banner-section {
-    padding: 0 24px;
+    padding: 60px 24px;
     max-width: 1200px;
-    margin: 0 auto 0;
+    margin: 0 auto;
 }
 
 /* Banner principal de la encuesta */
@@ -106,8 +17,10 @@ header p {
     display: block;
     padding: 32px 40px;
     border-radius: 16px;
-    border: 1px solid var(--border);
-    background: linear-gradient(135deg, rgba(14, 16, 24, 0.95), rgba(201, 168, 76, 0.06));
+    border: 1px solid rgba(var(--neon-blue-rgb), 0.25);
+    border-top: 1px solid rgba(var(--neon-cyan-rgb), 0.3);
+    /* Blue-tinted card — slightly different from year cards */
+    background: linear-gradient(135deg, #0d1832 0%, #060d1e 60%, rgba(var(--neon-blue-rgb), 0.08) 100%);
     text-decoration: none;
     color: var(--text);
     overflow: hidden;
@@ -117,30 +30,7 @@ header p {
 
 .survey-banner:hover {
     border-color: var(--gold);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(201, 168, 76, 0.15);
-}
-
-/* Resplandor animado de fondo */
-.survey-banner__glow {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at 30% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 50%);
-    animation: surveyGlow 4s ease-in-out infinite alternate;
-    pointer-events: none;
-}
-
-@keyframes surveyGlow {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    100% {
-        transform: translate(10%, 5%);
-    }
+    border-top-color: var(--gold);
 }
 
 /* Contenido del banner */
@@ -155,7 +45,7 @@ header p {
 .survey-banner__icon {
     font-size: 3rem;
     flex-shrink: 0;
-    filter: drop-shadow(0 0 12px rgba(201, 168, 76, 0.4));
+    filter: drop-shadow(0 0 12px rgba(var(--neon-cyan-rgb), 0.4));
 }
 
 .survey-banner__text {
@@ -193,19 +83,28 @@ header p {
 }
 
 /* ═══════ MAIN LAYOUT (2 columnas) ═══════ */
+/* Add a blue-tinted section background */
+#years-section {
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%,
+            rgba(var(--neon-blue-rgb), 0.08) 0%,
+            transparent 70%),
+        linear-gradient(180deg, #040b1c 0%, #020510 100%);
+    padding-top: 64px;
+    padding-bottom: 0;
+}
+
 .main-layout {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 40px;
-    max-width: 1400px;
+    display: block;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px 80px;
-    align-items: start;
 }
 
 .main-layout__content {
-    min-width: 0;
+    width: 100%;
 }
+
 
 /* Título de sección */
 .section-title {
@@ -234,37 +133,22 @@ header p {
     width: 100%;
     padding: 48px 28px 40px;
     text-align: center;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-subtle);
+    border-top: 1px solid rgba(var(--neon-blue-rgb), 0.3);
     border-radius: 12px;
-    background: var(--panel);
+    /* Blue-tinted card background */
+    background: linear-gradient(160deg, #0c1530 0%, #080f22 100%);
     text-decoration: none;
     color: var(--text);
     overflow: hidden;
     transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    animation: fadeUp 0.5s ease both;
-}
-
-/* Efecto de brillo dorado en hover de tarjetas */
-.year-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(201, 168, 76, 0.1) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s;
 }
 
 /* Estado hover de las tarjetas de año */
 .year-card:hover {
     border-color: var(--gold);
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(201, 168, 76, 0.12);
-}
-
-/* Activa el brillo en hover */
-.year-card:hover::before {
-    opacity: 1;
+    border-top-color: var(--gold);
 }
 
 /* Número del año en la tarjeta — MÁS GRANDE */
@@ -295,50 +179,6 @@ header p {
     margin-bottom: 8px;
 }
 
-/* Retrasos de animación para efecto cascada en tarjetas */
-.year-card:nth-child(1) {
-    animation-delay: 0.05s;
-}
-
-.year-card:nth-child(2) {
-    animation-delay: 0.08s;
-}
-
-.year-card:nth-child(3) {
-    animation-delay: 0.11s;
-}
-
-.year-card:nth-child(4) {
-    animation-delay: 0.14s;
-}
-
-.year-card:nth-child(5) {
-    animation-delay: 0.17s;
-}
-
-.year-card:nth-child(6) {
-    animation-delay: 0.20s;
-}
-
-.year-card:nth-child(7) {
-    animation-delay: 0.23s;
-}
-
-.year-card:nth-child(8) {
-    animation-delay: 0.26s;
-}
-
-.year-card:nth-child(9) {
-    animation-delay: 0.29s;
-}
-
-.year-card:nth-child(10) {
-    animation-delay: 0.32s;
-}
-
-.year-card:nth-child(11) {
-    animation-delay: 0.35s;
-}
 
 /* ═══════ SEARCH PANEL ═══════ */
 .search-panel {
@@ -392,7 +232,7 @@ header p {
 
 .search-panel__input:focus {
     border-color: var(--gold);
-    box-shadow: 0 0 16px rgba(201, 168, 76, 0.15);
+    box-shadow: 0 0 16px rgba(var(--neon-cyan-rgb), 0.15);
 }
 
 /* Contenedor flotante de resultados de búsqueda */
@@ -409,7 +249,7 @@ header p {
     border: 1px solid var(--gold);
     border-radius: 12px;
     padding: 8px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(201, 168, 76, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(var(--neon-cyan-rgb), 0.2);
     z-index: 1000;
     display: none;
 }
@@ -431,7 +271,7 @@ header p {
     border-radius: 3px;
 }
 .search-panel__results::-webkit-scrollbar-thumb:hover {
-    background: #f5d77f;
+    background: var(--neon-cyan-light);
 }
 
 /* Resultado individual */
@@ -452,7 +292,7 @@ header p {
 .search-result.highlight,
 .search-result.active,
 .search-result:focus {
-    background: rgba(201, 168, 76, 0.2);
+    background: rgba(var(--neon-cyan-rgb), 0.2);
     border-left: 3px solid var(--gold);
     transform: translateX(4px);
     outline: none;

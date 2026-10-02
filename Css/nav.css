@@ -1,0 +1,260 @@
+/* ════════════════════════════════════════════════════════
+   NAV.CSS — Minimalist TGA-style top navigation
+   White text, gold on hover, glass-morphism background
+   ════════════════════════════════════════════════════════ */
+
+/* ─── TOP NAV CONTAINER ────────────────────────────────── */
+.top-nav {
+    /* Layout */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 72px;
+
+    /* Glass effect */
+    background: rgba(4, 6, 14, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    /* Subtle bottom border */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    /* Fixed at top, above everything */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    /* Smooth transition when scrolled */
+    transition: background 0.4s ease, border-color 0.4s ease, padding 0.3s ease;
+}
+
+/* Scrolled state: more opaque + slightly smaller */
+.top-nav--scrolled {
+    background: rgba(4, 6, 14, 0.92);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* ─── LEFT SIDE: LOGO ──────────────────────────────────── */
+.nav-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.nav-logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    outline: none;
+}
+
+.nav-logo-link:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+.nav-logo {
+    height: 44px;
+    width: auto;
+    display: block;
+    transition: opacity 0.25s ease, filter 0.25s ease;
+    filter: brightness(1);
+}
+
+.nav-logo-link:hover .nav-logo {
+    opacity: 0.85;
+}
+
+/* ─── RIGHT SIDE: NAV LINKS ────────────────────────────── */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+/* Base link / button style */
+.nav-link {
+    /* Reset button styles */
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    /* Typography */
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #ffffff;
+
+    /* Layout for icon + text search button */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    /* Subtle underline animation */
+    position: relative;
+    padding-bottom: 2px;
+
+    /* Transition */
+    transition: color 0.25s ease;
+}
+
+/* Underline using ::after */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold, #d4af37);
+    transition: width 0.3s ease;
+}
+
+/* Hover: turn gold, expand underline */
+.nav-link:hover,
+.nav-link:focus-visible {
+    color: var(--gold, #d4af37);
+    outline: none;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+    width: 100%;
+}
+
+/* Search icon size */
+.nav-search-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    transition: color 0.25s ease;
+}
+
+/* ─── INLINE SEARCH CONTAINER ────────────────────────────── */
+.nav-search-container {
+    display: flex;
+    align-items: center;
+    width: 0;
+    opacity: 0;
+    overflow: visible; /* to allow results dropdown */
+    transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
+    margin-right: -16px;
+    pointer-events: none;
+    position: relative;
+}
+
+.nav-search-container.active {
+    width: 280px;
+    opacity: 1;
+    margin-right: 0;
+    pointer-events: auto;
+}
+
+/* Override existing search panel styles for inline context */
+.nav-search-container .search-panel {
+    width: 100%;
+    margin: 0;
+    background: transparent;
+    border: none;
+    padding: 0;
+    position: relative;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+.nav-search-container .search-panel__input-wrap {
+    height: 40px;
+    border: 1px solid rgba(0, 200, 232, 0.8);
+    border-radius: 4px;
+    background: rgba(4, 6, 14, 0.8);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+}
+
+.nav-search-container .search-panel__input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    font-size: 0.85rem;
+    font-family: 'Barlow', sans-serif;
+    padding: 0 8px;
+}
+
+.nav-search-container .search-panel__icon {
+    display: none;
+}
+
+.nav-search-container .search-panel__close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0 4px;
+}
+
+.nav-search-container .search-panel__close:hover {
+    color: #fff;
+}
+
+.nav-search-container .search-panel__results {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 320px;
+    background: rgba(10, 12, 24, 0.98);
+    border: 1px solid rgba(0, 200, 232, 0.3);
+    border-radius: 6px;
+    max-height: 60vh;
+    overflow-y: auto;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7);
+}
+
+/* ─── BODY OFFSET for fixed nav ─────────────────────────── */
+body {
+    padding-top: 72px;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 680px) {
+    .top-nav {
+        padding: 0 20px;
+        height: 60px;
+    }
+
+    body {
+        padding-top: 60px;
+    }
+
+    .nav-logo {
+        height: 36px;
+    }
+
+    .nav-right {
+        gap: 20px;
+    }
+
+    .nav-link span,
+    .nav-link:not(.nav-search-toggle) {
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+    }
+
+    /* Hide "BUSCAR" text on mobile, show only icon */
+    .nav-search-toggle span {
+        display: none;
+    }
+}
