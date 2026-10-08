@@ -36,76 +36,13 @@
     grid-template-columns: unset !important;
 }
 
+
 /* ─── LAYER 1: HERO IMAGE ──────────────────────────────── */
 .hero__bg-image {
     position: absolute;
     inset: 0;
     background: url('../imagenes/hero_bg.png') center center / cover no-repeat;
-    opacity: 0.6;
-}
-
-/* ─── LAYER 2: RADIAL GLOW ORBS ────────────────────────── */
-.hero__bg-glow {
-    position: absolute;
-    inset: 0;
-    background:
-        /* Central large blue glow */
-        radial-gradient(ellipse 80% 60% at 50% 50%,
-            rgba(30, 80, 200, 0.35) 0%,
-            transparent 60%),
-        /* Upper-left soft cyan glow */
-        radial-gradient(ellipse 50% 40% at 15% 20%,
-            rgba(0, 180, 220, 0.18) 0%,
-            transparent 55%),
-        /* Lower-right deep blue glow */
-        radial-gradient(ellipse 45% 35% at 85% 80%,
-            rgba(20, 40, 160, 0.22) 0%,
-            transparent 60%),
-        /* Bottom base — very dark navy */
-        linear-gradient(180deg, #020510 0%, #04091c 40%, #020510 100%);
-}
-
-/* ─── LAYER 3: GRID / LINE PATTERN ─────────────────────── */
-.hero__bg-grid {
-    position: absolute;
-    inset: 0;
-    /* SVG grid: fine horizontal + vertical lines in different blue tones */
-    background-image:
-        /* Horizontal lines - subtle */
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 79px,
-            rgba(50, 100, 220, 0.06) 79px,
-            rgba(50, 100, 220, 0.06) 80px
-        ),
-        /* Vertical lines - very subtle */
-        repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 119px,
-            rgba(30, 70, 180, 0.04) 119px,
-            rgba(30, 70, 180, 0.04) 120px
-        );
-    /* Diagonal subtle scan lines */
-    background-size: 120px 80px;
-    opacity: 0.9;
-}
-
-/* ─── LAYER 4: VIGNETTE OVERLAY ─────────────────────────── */
-.hero__bg-vignette {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 100% 100% at 50% 50%,
-        transparent 40%,
-        rgba(2, 5, 16, 0.6) 70%,
-        rgba(2, 5, 16, 0.95) 100%);
-}
-
-/* ─── HERO BACKGROUND LAYER BASE ────────────────────────── */
-.hero__bg-layer {
-    position: absolute;
-    inset: 0;
+    opacity: 0.5; /* Ajustado para que el logo blanco destaque sin filtros raros */
     pointer-events: none;
 }
 
@@ -128,11 +65,8 @@
     height: auto;
     display: block;
 
-    /* Glow effect: blue/cyan matching TGA brand */
-    filter:
-        drop-shadow(0 0 24px rgba(30, 120, 220, 0.6))
-        drop-shadow(0 0 60px rgba(20, 80, 200, 0.35))
-        drop-shadow(0 4px 16px rgba(0, 0, 0, 0.8));
+    /* Effects removed as requested */
+    filter: none;
 
     /* Entrance animation */
     animation: heroLogoFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;

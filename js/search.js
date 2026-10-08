@@ -464,9 +464,7 @@ const searchIndex = [
 ];
 
 // Determinación del contexto de ruta: raíz (index.html, encuesta.html) vs subcarpeta (Años/*.html)
-const isSubfolder = window.location.pathname.includes('/Años/') ||
-                    window.location.pathname.includes('/A%C3%B1os/') ||
-                    window.location.pathname.includes('/Anos/');
+const isSubfolder = window.location.href.match(/\/(A[^\/]*os)\//i) !== null && !window.location.href.toLowerCase().includes('encuesta.html');
 
 /**
  * Resuelve la URL relativa adecuada según la ubicación actual.
@@ -483,8 +481,16 @@ function resolveUrl(rawUrl, label) {
         }
     }
 
+    const isEncuesta = window.location.href.toLowerCase().includes('encuesta.html');
+    if (isEncuesta && target.includes('/')) {
+        const yearMatch = target.match(/(\d{4})\.html(#.*)?/);
+        if (yearMatch) {
+            target = 'encuesta.html?y=' + yearMatch[1] + (yearMatch[2] || '');
+        }
+    }
+
     if (isSubfolder) {
-        if (target.startsWith('Años/')) {
+        if (target.includes('/')) {
             return target.substring(5);
         } else {
             return '../' + target;
@@ -597,7 +603,7 @@ if (input && resultsContainer) {
                 e.preventDefault();
                 const targetItem = resultItems[selectedIndex];
                 if (targetItem && targetItem.href) {
-                    window.location.href = targetItem.href;
+                    targetItem.click();
                 } else if (targetItem) {
                     targetItem.click();
                 }
@@ -612,7 +618,39 @@ if (input && resultsContainer) {
     resultsContainer.addEventListener('click', function (e) {
         const link = e.target.closest('a.search-result');
         if (!link) return;
+        
         const href = link.getAttribute('href');
+        
+        // SPA Interception para encuesta.html
+        const isEncuesta = window.location.href.toLowerCase().includes('encuesta.html');
+        if (isEncuesta && href && href.includes('encuesta.html?y=')) {
+            e.preventDefault();
+            
+            let targetYear = null;
+            const yMatch = href.match(/y=(\d{4})/);
+            if (yMatch) targetYear = parseInt(yMatch[1]);
+            
+            let hash = '';
+            if (href.includes('#')) {
+                hash = href.substring(href.indexOf('#'));
+            }
+            
+            resultsContainer.classList.remove('active');
+            selectedIndex = -1;
+            
+            if (targetYear && typeof switchYear === 'function') {
+                switchYear(targetYear).then(() => {
+                    if (hash) {
+                        const targetEl = document.querySelector(hash);
+                        if (targetEl) {
+                            targetEl.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            }
+            return;
+        }
+
         if (href && href.includes('#')) {
             const hash = href.substring(href.indexOf('#'));
             const targetEl = document.querySelector(hash);

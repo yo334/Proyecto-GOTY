@@ -15,9 +15,42 @@
 </head>
 
 <body>
-    <nav>
-        <a class="back" href="../index.html">← Volver</a>
-        <span class="nav-year">2017</span>
+        <!-- ═══════════════════ TOP NAV ═══════════════════ -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-logo-link">
+                <img src="../imagenes/logo_white.png" alt="The Game Awards" class="nav-logo">
+            </a>
+        </div>
+        <div class="nav-right">
+            <!-- Inline Search Box -->
+            <div class="nav-search-container" id="nav-search-container">
+                <div class="search-panel" id="search-panel">
+                    <div class="search-panel__input-wrap">
+                        <svg class="search-panel__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input type="text" id="search-input" class="search-panel__input"
+                            placeholder="Buscar..." autocomplete="off" />
+                        <button class="search-panel__close" id="search-close" aria-label="Cerrar búsqueda">✕</button>
+                    </div>
+                    <div class="search-panel__results" id="search-results"></div>
+                </div>
+            </div>
+            
+            <button class="nav-link nav-search-toggle" id="nav-search-toggle" aria-label="Buscar">
+                <svg class="nav-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <span>BUSCAR</span>
+            </button>
+            <a href="../index.html#years-section" class="nav-link">VER GANADORES</a>
+            <a href="../seleccionar_encuesta.html" class="nav-link">VOTAR</a>
+        </div>
     </nav>
     <section class="hero">
         <h1>The Game Awards<br />2017</h1>
@@ -239,7 +272,7 @@
             <div class="survey-banner__glow"></div>
             <div class="survey-banner__content">
                 <div class="survey-banner__text">
-                    <h2 class="survey-banner__title">Make your voice heard</h2>
+                    <h2 class="survey-banner__title">¿Estás de acuerdo con los ganadores? Votá por tus ganadores acá</h2>
                     <p class="survey-banner__desc">Votar por mis favoritos de 2017</p>
                 </div>
             </div>
@@ -248,6 +281,39 @@
     <footer>
         © GOTY Archive  ·  The Game Awards 2017
     </footer>
+    <!-- Scripts -->
+    <script src="../js/search.js"></script>
+    <script>
+        // Search overlay toggle
+        const toggleBtn = document.getElementById('nav-search-toggle');
+        const searchContainer = document.getElementById('nav-search-container');
+        const closeBtn  = document.getElementById('search-close');
+        const navSearchInput = document.getElementById('search-input');
+
+        function openSearch(e) {
+            if (e) { e.preventDefault(); e.stopPropagation(); }
+            searchContainer.classList.add('active');
+            
+            setTimeout(() => navSearchInput.focus(), 120);
+        }
+        function closeSearch(e) {
+            if (e) { e.preventDefault(); e.stopPropagation(); }
+            searchContainer.classList.remove('active');
+            
+        }
+
+        if(toggleBtn) toggleBtn.addEventListener('click', openSearch);
+        if(closeBtn) closeBtn.addEventListener('click', closeSearch);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
+
+        // Nav shrink on scroll
+        const topNav = document.querySelector('.top-nav');
+        if(topNav) {
+            window.addEventListener('scroll', () => {
+                topNav.classList.toggle('top-nav--scrolled', window.scrollY > 60);
+            });
+        }
+    </script>
 </body>
 
 </html>

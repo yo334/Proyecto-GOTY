@@ -68,8 +68,8 @@ nav:not(.top-nav) .nav-year {
     /* Posicionamiento relativo */
     position: relative;
 
-    /* Espaciado vertical */
-    padding: 80px 24px 70px;
+    /* Espaciado vertical - top padding aumentado por el nav fijo */
+    padding: 140px 24px 70px;
 
     /* Centrado de contenido */
     text-align: center;
@@ -168,7 +168,6 @@ nav:not(.top-nav) .nav-year {
 
 /* Efecto hover con elevación suave */
 .candidate-card:hover {
-    transform: translateY(-8px) scale(1.02);
     border-color: var(--gold, var(--neon-cyan));
     box-shadow: 0 20px 40px rgba(var(--neon-cyan-rgb), 0.25);
     z-index: 10;
