@@ -1,2847 +1,514 @@
 // ═══════════════════════════════════════════════════════════════════
 //  SISTEMA DE ENCUESTAS INTERACTIVAS (2014–2025)
 //  The Game Awards Archive
+//
+//  Los nominados se leen de /datos/AAAA.json y los votos se envían
+//  al servidor con un POST a /api/vote.
+//  Usa PRIMER_ANIO, ULTIMO_ANIO e INFO_CATEGORIAS de search.js
+//  (por eso search.js se carga antes que este archivo).
+//  Esas tres son constantes globales: en search.js están definidas
+//  con const (PRIMER_ANIO = 2014, ULTIMO_ANIO = 2025 e INFO_CATEGORIAS,
+//  un objeto con datos de cada categoría, entre ellos el "ancla" que
+//  usamos como id). Como los dos scripts comparten la misma página,
+//  acá las podemos usar sin importarlas ni declararlas de nuevo.
 // ═══════════════════════════════════════════════════════════════════
 
-/**
- * Categorías canónicas de The Game Awards (orden secuencial exacto)
- */
-const CANONICAL_CATEGORIES = [
-    'Game of the Year',
-    'Best Independent Game',
-    'Best Narrative',
-    'Best Art Direction',
-    'Best Soundtrack',
-    'Best Multiplayer',
-    'Best Game Direction'
-];
+// ───────────────── ESTADO DE LA PÁGINA ─────────────────
+
+// Año que se está mostrando. Se lee de la URL (?y=AAAA); si no es válido, se usa el último.
+// URLSearchParams es una clase del navegador que sabe leer los parámetros de la URL.
+// window.location.search es la parte de la URL que va desde el "?" (ej: "?y=2020").
+// Acá armo el lector y después le pido el parámetro "y".
+const parametrosUrl = new URLSearchParams(window.location.search);
+// parametrosUrl.get('y') devuelve el valor como texto ("2020") o null si no existe.
+// parseInt lo convierte a número entero; si no se puede (por ej. null o "hola") da NaN
+// (NaN = "Not a Number", un valor raro que no es mayor ni menor que nada).
+// Uso let (y no const) porque abajo este valor se puede reemplazar.
+let activeYear = parseInt(parametrosUrl.get('y'));
+// Si el año NO está entre el primero y el último, lo corrijo.
+// Con NaN las dos comparaciones dan false, así que también cae en este if.
+if (!(activeYear >= PRIMER_ANIO && activeYear <= ULTIMO_ANIO)) {
+    activeYear = ULTIMO_ANIO; // año inválido: uso el último año disponible
+} // fin del if
+
+// Votos elegidos en cada año.
+// Ejemplo: { 2025: { 'Game of the Year': 'Nombre del juego', 'Best Narrative': null, ... } }
+const currentVotes = {}; // objeto vacío; acá se van guardando los votos de cada año a medida que se cargan
+
+// Datos de cada año ya descargados, para no pedirlos dos veces
+const yearDataCache = {}; // objeto vacío que hace de "memoria": clave = año, valor = los datos de ese año
+
+// ───────────────── CARGA DE DATOS ─────────────────
 
 /**
- * Identificadores de anclaje para navegación e integración con el buscador
- */
-const CATEGORY_ANCHOR_MAP = {
-    'Game of the Year': 'cat-goty',
-    'Best Independent Game': 'cat-indie',
-    'Best Narrative': 'cat-narrative',
-    'Best Art Direction': 'cat-art',
-    'Best Soundtrack': 'cat-soundtrack',
-    'Best Multiplayer': 'cat-multiplayer',
-    'Best Game Direction': 'cat-direction'
-};
-
-/**
- * Registro de respaldo embebido de nominados (2014 a 2025)
- * Permite renderizado instantáneo y funcionamiento offline / protocolo file://
- */
-const FALLBACK_GOTY_DATA = {
-  "2014": {
-    "Game of the Year": [
-      {
-        "name": "Dragon Age: Inquisition",
-        "isWinner": true,
-        "image": "../imagenes/covers/dragon_age_inquisition.jpg"
-      },
-      {
-        "name": "Bayonetta 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/bayonetta_2.jpg"
-      },
-      {
-        "name": "Dark Souls II",
-        "isWinner": false,
-        "image": "../imagenes/covers/dark_souls_ii.jpg"
-      },
-      {
-        "name": "Hearthstone",
-        "isWinner": false,
-        "image": "../imagenes/covers/hearthstone.jpg"
-      },
-      {
-        "name": "Middle-earth: Shadow of Mordor",
-        "isWinner": false,
-        "image": "../imagenes/covers/middle-earth_shadow_of_mordor.jpg"
-      }
-    ],
-    "Best Independent Game": [
-      {
-        "name": "Shovel Knight",
-        "isWinner": true,
-        "image": "../imagenes/covers/shovel_knight.jpg"
-      },
-      {
-        "name": "Broken Age Part 1",
-        "isWinner": false,
-        "image": "../imagenes/covers/broken_age_part_1.jpg"
-      },
-      {
-        "name": "Monument Valley",
-        "isWinner": false,
-        "image": "../imagenes/covers/monument_valley.jpg"
-      },
-      {
-        "name": "Transistor",
-        "isWinner": false,
-        "image": "../imagenes/covers/transistor.jpg"
-      },
-      {
-        "name": "The Vanishing of Ethan Carter",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_vanishing_of_ethan_carter.jpg"
-      }
-    ],
-    "Best Narrative": [
-      {
-        "name": "Valiant Hearts: The Great War",
-        "isWinner": true,
-        "image": "../imagenes/covers/valiant_hearts_the_great_war.jpg"
-      },
-      {
-        "name": "South Park: The Stick of Truth",
-        "isWinner": false,
-        "image": "../imagenes/covers/south_park_the_stick_of_truth.jpg"
-      },
-      {
-        "name": "The Walking Dead: Season Two",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_walking_dead_season_two.jpg"
-      },
-      {
-        "name": "The Wolf Among Us",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_wolf_among_us.jpg"
-      },
-      {
-        "name": "Wolfenstein: The New Order",
-        "isWinner": false,
-        "image": "../imagenes/covers/wolfenstein_the_new_order.jpg"
-      }
-    ],
-    "Best Art Direction": [
-      {
-        "name": "Monument Valley",
-        "isWinner": true,
-        "image": "../imagenes/covers/monument_valley.jpg"
-      },
-      {
-        "name": "Assassin's Creed Unity",
-        "isWinner": false,
-        "image": "../imagenes/covers/assassins_creed_unity.jpg"
-      },
-      {
-        "name": "Child of Light",
-        "isWinner": false,
-        "image": "../imagenes/covers/child_of_light.jpg"
-      },
-      {
-        "name": "Destiny",
-        "isWinner": false,
-        "image": "../imagenes/covers/destiny.jpg"
-      },
-      {
-        "name": "Sunset Overdrive",
-        "isWinner": false,
-        "image": "../imagenes/covers/sunset_overdrive.jpg"
-      }
-    ],
-    "Best Soundtrack": [
-      {
-        "name": "Destiny",
-        "isWinner": true,
-        "image": "../imagenes/covers/destiny.jpg"
-      },
-      {
-        "name": "Alien: Isolation",
-        "isWinner": false,
-        "image": "../imagenes/covers/alien_isolation.jpg"
-      },
-      {
-        "name": "Child of Light",
-        "isWinner": false,
-        "image": "../imagenes/covers/child_of_light.jpg"
-      },
-      {
-        "name": "Sunset Overdrive",
-        "isWinner": false,
-        "image": "../imagenes/covers/sunset_overdrive.jpg"
-      },
-      {
-        "name": "Transistor",
-        "isWinner": false,
-        "image": "../imagenes/covers/transistor.jpg"
-      }
-    ],
-    "Best Multiplayer": [
-      {
-        "name": "Destiny",
-        "isWinner": true,
-        "image": "../imagenes/covers/destiny.jpg"
-      },
-      {
-        "name": "Call of Duty: Advanced Warfare",
-        "isWinner": false,
-        "image": "../imagenes/covers/call_of_duty_advanced_warfare.jpg"
-      },
-      {
-        "name": "Dark Souls II",
-        "isWinner": false,
-        "image": "../imagenes/covers/dark_souls_ii.jpg"
-      },
-      {
-        "name": "Hearthstone",
-        "isWinner": false,
-        "image": "../imagenes/covers/hearthstone.jpg"
-      },
-      {
-        "name": "Titanfall",
-        "isWinner": false,
-        "image": "../imagenes/covers/titanfall.jpg"
-      }
-    ],
-    "Best Game Direction": [
-      {
-        "name": "Nintendo",
-        "isWinner": true,
-        "image": "../imagenes/covers/nintendo.jpg"
-      },
-      {
-        "name": "Blizzard Entertainment",
-        "isWinner": false,
-        "image": "../imagenes/covers/blizzard_entertainment.jpg"
-      },
-      {
-        "name": "Monolith Productions",
-        "isWinner": false,
-        "image": "../imagenes/covers/monolith_productions.jpg"
-      },
-      {
-        "name": "Telltale Games",
-        "isWinner": false,
-        "image": "../imagenes/covers/telltale_games.jpg"
-      },
-      {
-        "name": "Ubisoft Montreal",
-        "isWinner": false,
-        "image": "../imagenes/covers/ubisoft_montreal.jpg"
-      }
-    ]
-  },
-  "2015": {
-    "Game of the Year": [
-      {
-        "name": "The Witcher 3: Wild Hunt",
-        "isWinner": true,
-        "image": "../imagenes/covers/the_witcher_3_wild_hunt.jpg"
-      },
-      {
-        "name": "Bloodborne",
-        "isWinner": false,
-        "image": "../imagenes/covers/bloodborne.jpg"
-      },
-      {
-        "name": "Fallout 4",
-        "isWinner": false,
-        "image": "../imagenes/covers/fallout_4.jpg"
-      },
-      {
-        "name": "Metal Gear Solid V: The Phantom Pain",
-        "isWinner": false,
-        "image": "../imagenes/covers/metal_gear_solid_v_the_phantom_pain.jpg"
-      },
-      {
-        "name": "Super Mario Maker",
-        "isWinner": false,
-        "image": "../imagenes/covers/super_mario_maker.jpg"
-      }
-    ],
-    "Best Independent Game": [
-      {
-        "name": "Rocket League",
-        "isWinner": true,
-        "image": "../imagenes/covers/rocket_league.jpg"
-      },
-      {
-        "name": "Axiom Verge",
-        "isWinner": false,
-        "image": "../imagenes/covers/axiom_verge.jpg"
-      },
-      {
-        "name": "Her Story",
-        "isWinner": false,
-        "image": "../imagenes/covers/her_story.jpg"
-      },
-      {
-        "name": "Ori and the Blind Forest",
-        "isWinner": false,
-        "image": "../imagenes/covers/ori_and_the_blind_forest.jpg"
-      },
-      {
-        "name": "Undertale",
-        "isWinner": false,
-        "image": "../imagenes/covers/undertale.jpg"
-      }
-    ],
-    "Best Narrative": [
-      {
-        "name": "Her Story",
-        "isWinner": true,
-        "image": "../imagenes/covers/her_story.jpg"
-      },
-      {
-        "name": "Life Is Strange",
-        "isWinner": false,
-        "image": "../imagenes/covers/life_is_strange.jpg"
-      },
-      {
-        "name": "Tales from the Borderlands",
-        "isWinner": false,
-        "image": "../imagenes/covers/tales_from_the_borderlands.jpg"
-      },
-      {
-        "name": "The Witcher 3: Wild Hunt",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_witcher_3_wild_hunt.jpg"
-      },
-      {
-        "name": "Until Dawn",
-        "isWinner": false,
-        "image": "../imagenes/covers/until_dawn.jpg"
-      }
-    ],
-    "Best Art Direction": [
-      {
-        "name": "Ori and the Blind Forest",
-        "isWinner": true,
-        "image": "../imagenes/covers/ori_and_the_blind_forest.jpg"
-      },
-      {
-        "name": "Batman: Arkham Knight",
-        "isWinner": false,
-        "image": "../imagenes/covers/batman_arkham_knight.jpg"
-      },
-      {
-        "name": "Bloodborne",
-        "isWinner": false,
-        "image": "../imagenes/covers/bloodborne.jpg"
-      },
-      {
-        "name": "Metal Gear Solid V: The Phantom Pain",
-        "isWinner": false,
-        "image": "../imagenes/covers/metal_gear_solid_v_the_phantom_pain.jpg"
-      },
-      {
-        "name": "The Witcher 3: Wild Hunt",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_witcher_3_wild_hunt.jpg"
-      }
-    ],
-    "Best Soundtrack": [
-      {
-        "name": "Metal Gear Solid V: The Phantom Pain",
-        "isWinner": true,
-        "image": "../imagenes/covers/metal_gear_solid_v_the_phantom_pain.jpg"
-      },
-      {
-        "name": "Fallout 4",
-        "isWinner": false,
-        "image": "../imagenes/covers/fallout_4.jpg"
-      },
-      {
-        "name": "Halo 5: Guardians",
-        "isWinner": false,
-        "image": "../imagenes/covers/halo_5_guardians.jpg"
-      },
-      {
-        "name": "Ori and the Blind Forest",
-        "isWinner": false,
-        "image": "../imagenes/covers/ori_and_the_blind_forest.jpg"
-      },
-      {
-        "name": "The Witcher 3: Wild Hunt",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_witcher_3_wild_hunt.jpg"
-      }
-    ],
-    "Best Multiplayer": [
-      {
-        "name": "Splatoon",
-        "isWinner": true,
-        "image": "../imagenes/covers/splatoon.jpg"
-      },
-      {
-        "name": "Call of Duty: Black Ops III",
-        "isWinner": false,
-        "image": "../imagenes/covers/call_of_duty_black_ops_iii.jpg"
-      },
-      {
-        "name": "Destiny: The Taken King",
-        "isWinner": false,
-        "image": "../imagenes/covers/destiny_the_taken_king.jpg"
-      },
-      {
-        "name": "Halo 5: Guardians",
-        "isWinner": false,
-        "image": "../imagenes/covers/halo_5_guardians.jpg"
-      },
-      {
-        "name": "Rocket League",
-        "isWinner": false,
-        "image": "../imagenes/covers/rocket_league.jpg"
-      }
-    ],
-    "Best Game Direction": [
-      {
-        "name": "CD Projekt Red",
-        "isWinner": true,
-        "image": "../imagenes/covers/cd_projekt_red.jpg"
-      },
-      {
-        "name": "Bethesda Game Studios",
-        "isWinner": false,
-        "image": "../imagenes/covers/bethesda_game_studios.jpg"
-      },
-      {
-        "name": "FromSoftware",
-        "isWinner": false,
-        "image": "../imagenes/covers/fromsoftware.jpg"
-      },
-      {
-        "name": "Kojima Productions",
-        "isWinner": false,
-        "image": "../imagenes/covers/kojima_productions.jpg"
-      },
-      {
-        "name": "Nintendo",
-        "isWinner": false,
-        "image": "../imagenes/covers/nintendo.jpg"
-      }
-    ]
-  },
-  "2016": {
-    "Game of the Year": [
-      {
-        "name": "Overwatch",
-        "isWinner": true,
-        "image": "../imagenes/covers/overwatch.jpg"
-      },
-      {
-        "name": "Doom",
-        "isWinner": false,
-        "image": "../imagenes/covers/doom.jpg"
-      },
-      {
-        "name": "Inside",
-        "isWinner": false,
-        "image": "../imagenes/covers/inside.jpg"
-      },
-      {
-        "name": "Titanfall 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/titanfall_2.jpg"
-      },
-      {
-        "name": "Uncharted 4: A Thief's End",
-        "isWinner": false,
-        "image": "../imagenes/covers/uncharted_4_a_thiefs_end.jpg"
-      }
-    ],
-    "Best Independent Game": [
-      {
-        "name": "Inside",
-        "isWinner": true,
-        "image": "../imagenes/covers/inside.jpg"
-      },
-      {
-        "name": "Firewatch",
-        "isWinner": false,
-        "image": "../imagenes/covers/firewatch.jpg"
-      },
-      {
-        "name": "Hyper Light Drifter",
-        "isWinner": false,
-        "image": "../imagenes/covers/hyper_light_drifter.jpg"
-      },
-      {
-        "name": "Stardew Valley",
-        "isWinner": false,
-        "image": "../imagenes/covers/stardew_valley.jpg"
-      },
-      {
-        "name": "The Witness",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_witness.jpg"
-      }
-    ],
-    "Best Narrative": [
-      {
-        "name": "Uncharted 4: A Thief's End",
-        "isWinner": true,
-        "image": "../imagenes/covers/uncharted_4_a_thiefs_end.jpg"
-      },
-      {
-        "name": "Firewatch",
-        "isWinner": false,
-        "image": "../imagenes/covers/firewatch.jpg"
-      },
-      {
-        "name": "Inside",
-        "isWinner": false,
-        "image": "../imagenes/covers/inside.jpg"
-      },
-      {
-        "name": "Mafia III",
-        "isWinner": false,
-        "image": "../imagenes/covers/mafia_iii.jpg"
-      },
-      {
-        "name": "Oxenfree",
-        "isWinner": false,
-        "image": "../imagenes/covers/oxenfree.jpg"
-      }
-    ],
-    "Best Art Direction": [
-      {
-        "name": "Inside",
-        "isWinner": true,
-        "image": "../imagenes/covers/inside.jpg"
-      },
-      {
-        "name": "Abzû",
-        "isWinner": false,
-        "image": "../imagenes/covers/abz.jpg"
-      },
-      {
-        "name": "Firewatch",
-        "isWinner": false,
-        "image": "../imagenes/covers/firewatch.jpg"
-      },
-      {
-        "name": "Overwatch",
-        "isWinner": false,
-        "image": "../imagenes/covers/overwatch.jpg"
-      },
-      {
-        "name": "Uncharted 4: A Thief's End",
-        "isWinner": false,
-        "image": "../imagenes/covers/uncharted_4_a_thiefs_end.jpg"
-      }
-    ],
-    "Best Soundtrack": [
-      {
-        "name": "Doom",
-        "isWinner": true,
-        "image": "../imagenes/covers/doom.jpg"
-      },
-      {
-        "name": "Battlefield 1",
-        "isWinner": false,
-        "image": "../imagenes/covers/battlefield_1.jpg"
-      },
-      {
-        "name": "Inside",
-        "isWinner": false,
-        "image": "../imagenes/covers/inside.jpg"
-      },
-      {
-        "name": "Rez Infinite",
-        "isWinner": false,
-        "image": "../imagenes/covers/rez_infinite.jpg"
-      },
-      {
-        "name": "Thumper",
-        "isWinner": false,
-        "image": "../imagenes/covers/thumper.jpg"
-      }
-    ],
-    "Best Multiplayer": [
-      {
-        "name": "Overwatch",
-        "isWinner": true,
-        "image": "../imagenes/covers/overwatch.jpg"
-      },
-      {
-        "name": "Battlefield 1",
-        "isWinner": false,
-        "image": "../imagenes/covers/battlefield_1.jpg"
-      },
-      {
-        "name": "Gears of War 4",
-        "isWinner": false,
-        "image": "../imagenes/covers/gears_of_war_4.jpg"
-      },
-      {
-        "name": "Titanfall 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/titanfall_2.jpg"
-      },
-      {
-        "name": "Tom Clancy's Rainbow Six Siege",
-        "isWinner": false,
-        "image": "../imagenes/covers/tom_clancys_rainbow_six_siege.jpg"
-      }
-    ],
-    "Best Game Direction": [
-      {
-        "name": "Blizzard Entertainment",
-        "isWinner": true,
-        "image": "../imagenes/covers/blizzard_entertainment.jpg"
-      },
-      {
-        "name": "DICE",
-        "isWinner": false,
-        "image": "../imagenes/covers/dice.jpg"
-      },
-      {
-        "name": "id Software",
-        "isWinner": false,
-        "image": "../imagenes/covers/id_software.jpg"
-      },
-      {
-        "name": "Naughty Dog",
-        "isWinner": false,
-        "image": "../imagenes/covers/naughty_dog.jpg"
-      },
-      {
-        "name": "Respawn Entertainment",
-        "isWinner": false,
-        "image": "../imagenes/covers/respawn_entertainment.jpg"
-      }
-    ]
-  },
-  "2017": {
-    "Game of the Year": [
-      {
-        "name": "The Legend of Zelda: Breath of the Wild",
-        "isWinner": true,
-        "image": "../imagenes/covers/the_legend_of_zelda_breath_of_the_wild.jpg"
-      },
-      {
-        "name": "Horizon Zero Dawn",
-        "isWinner": false,
-        "image": "../imagenes/covers/horizon_zero_dawn.jpg"
-      },
-      {
-        "name": "Persona 5",
-        "isWinner": false,
-        "image": "../imagenes/covers/persona_5.jpg"
-      },
-      {
-        "name": "PlayerUnknown's Battlegrounds",
-        "isWinner": false,
-        "image": "../imagenes/covers/playerunknowns_battlegrounds.jpg"
-      },
-      {
-        "name": "Super Mario Odyssey",
-        "isWinner": false,
-        "image": "../imagenes/covers/super_mario_odyssey.jpg"
-      }
-    ],
-    "Best Independent Game": [
-      {
-        "name": "Cuphead",
-        "isWinner": true,
-        "image": "../imagenes/covers/cuphead.jpg"
-      },
-      {
-        "name": "Hellblade: Senua's Sacrifice",
-        "isWinner": false,
-        "image": "../imagenes/covers/hellblade_senuas_sacrifice.jpg"
-      },
-      {
-        "name": "Night in the Woods",
-        "isWinner": false,
-        "image": "../imagenes/covers/night_in_the_woods.jpg"
-      },
-      {
-        "name": "Pyre",
-        "isWinner": false,
-        "image": "../imagenes/covers/pyre.jpg"
-      },
-      {
-        "name": "What Remains of Edith Finch",
-        "isWinner": false,
-        "image": "../imagenes/covers/what_remains_of_edith_finch.jpg"
-      }
-    ],
-    "Best Narrative": [
-      {
-        "name": "What Remains of Edith Finch",
-        "isWinner": true,
-        "image": "../imagenes/covers/what_remains_of_edith_finch.jpg"
-      },
-      {
-        "name": "Hellblade: Senua's Sacrifice",
-        "isWinner": false,
-        "image": "../imagenes/covers/hellblade_senuas_sacrifice.jpg"
-      },
-      {
-        "name": "Horizon Zero Dawn",
-        "isWinner": false,
-        "image": "../imagenes/covers/horizon_zero_dawn.jpg"
-      },
-      {
-        "name": "NieR: Automata",
-        "isWinner": false,
-        "image": "../imagenes/covers/nier_automata.jpg"
-      },
-      {
-        "name": "Wolfenstein II: The New Colossus",
-        "isWinner": false,
-        "image": "../imagenes/covers/wolfenstein_ii_the_new_colossus.jpg"
-      }
-    ],
-    "Best Art Direction": [
-      {
-        "name": "Cuphead",
-        "isWinner": true,
-        "image": "../imagenes/covers/cuphead.jpg"
-      },
-      {
-        "name": "Destiny 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/destiny_2.jpg"
-      },
-      {
-        "name": "Horizon Zero Dawn",
-        "isWinner": false,
-        "image": "../imagenes/covers/horizon_zero_dawn.jpg"
-      },
-      {
-        "name": "Persona 5",
-        "isWinner": false,
-        "image": "../imagenes/covers/persona_5.jpg"
-      },
-      {
-        "name": "The Legend of Zelda: Breath of the Wild",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_legend_of_zelda_breath_of_the_wild.jpg"
-      }
-    ],
-    "Best Soundtrack": [
-      {
-        "name": "NieR: Automata",
-        "isWinner": true,
-        "image": "../imagenes/covers/nier_automata.jpg"
-      },
-      {
-        "name": "Cuphead",
-        "isWinner": false,
-        "image": "../imagenes/covers/cuphead.jpg"
-      },
-      {
-        "name": "Destiny 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/destiny_2.jpg"
-      },
-      {
-        "name": "Persona 5",
-        "isWinner": false,
-        "image": "../imagenes/covers/persona_5.jpg"
-      },
-      {
-        "name": "Super Mario Odyssey",
-        "isWinner": false,
-        "image": "../imagenes/covers/super_mario_odyssey.jpg"
-      },
-      {
-        "name": "The Legend of Zelda: Breath of the Wild",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_legend_of_zelda_breath_of_the_wild.jpg"
-      }
-    ],
-    "Best Multiplayer": [
-      {
-        "name": "PlayerUnknown's Battlegrounds",
-        "isWinner": true,
-        "image": "../imagenes/covers/playerunknowns_battlegrounds.jpg"
-      },
-      {
-        "name": "Call of Duty: WWII",
-        "isWinner": false,
-        "image": "../imagenes/covers/call_of_duty_wwii.jpg"
-      },
-      {
-        "name": "Destiny 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/destiny_2.jpg"
-      },
-      {
-        "name": "Fortnite",
-        "isWinner": false,
-        "image": "../imagenes/covers/fortnite.jpg"
-      },
-      {
-        "name": "Mario Kart 8 Deluxe",
-        "isWinner": false,
-        "image": "../imagenes/covers/mario_kart_8_deluxe.jpg"
-      },
-      {
-        "name": "Splatoon 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/splatoon_2.jpg"
-      }
-    ],
-    "Best Game Direction": [
-      {
-        "name": "The Legend of Zelda: Breath of the Wild",
-        "isWinner": true,
-        "image": "../imagenes/covers/the_legend_of_zelda_breath_of_the_wild.jpg"
-      },
-      {
-        "name": "Horizon Zero Dawn",
-        "isWinner": false,
-        "image": "../imagenes/covers/horizon_zero_dawn.jpg"
-      },
-      {
-        "name": "Resident Evil 7: Biohazard",
-        "isWinner": false,
-        "image": "../imagenes/covers/resident_evil_7_biohazard.jpg"
-      },
-      {
-        "name": "Super Mario Odyssey",
-        "isWinner": false,
-        "image": "../imagenes/covers/super_mario_odyssey.jpg"
-      },
-      {
-        "name": "Wolfenstein II: The New Colossus",
-        "isWinner": false,
-        "image": "../imagenes/covers/wolfenstein_ii_the_new_colossus.jpg"
-      }
-    ]
-  },
-  "2018": {
-    "Game of the Year": [
-      {
-        "name": "God of War",
-        "isWinner": true,
-        "image": "../imagenes/covers/god_of_war.jpg"
-      },
-      {
-        "name": "Assassin's Creed Odyssey",
-        "isWinner": false,
-        "image": "../imagenes/covers/assassins_creed_odyssey.jpg"
-      },
-      {
-        "name": "Celeste",
-        "isWinner": false,
-        "image": "../imagenes/covers/celeste.jpg"
-      },
-      {
-        "name": "Marvel's Spider-Man",
-        "isWinner": false,
-        "image": "../imagenes/covers/marvels_spider-man.jpg"
-      },
-      {
-        "name": "Monster Hunter: World",
-        "isWinner": false,
-        "image": "../imagenes/covers/monster_hunter_world.jpg"
-      },
-      {
-        "name": "Red Dead Redemption 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/red_dead_redemption_2.jpg"
-      }
-    ],
-    "Best Independent Game": [
-      {
-        "name": "Celeste",
-        "isWinner": true,
-        "image": "../imagenes/covers/celeste.jpg"
-      },
-      {
-        "name": "Dead Cells",
-        "isWinner": false,
-        "image": "../imagenes/covers/dead_cells.jpg"
-      },
-      {
-        "name": "Into the Breach",
-        "isWinner": false,
-        "image": "../imagenes/covers/into_the_breach.jpg"
-      },
-      {
-        "name": "Return of the Obra Dinn",
-        "isWinner": false,
-        "image": "../imagenes/covers/return_of_the_obra_dinn.jpg"
-      },
-      {
-        "name": "The Messenger",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_messenger.jpg"
-      }
-    ],
-    "Best Narrative": [
-      {
-        "name": "Red Dead Redemption 2",
-        "isWinner": true,
-        "image": "../imagenes/covers/red_dead_redemption_2.jpg"
-      },
-      {
-        "name": "Detroit: Become Human",
-        "isWinner": false,
-        "image": "../imagenes/covers/detroit_become_human.jpg"
-      },
-      {
-        "name": "God of War",
-        "isWinner": false,
-        "image": "../imagenes/covers/god_of_war.jpg"
-      },
-      {
-        "name": "Life Is Strange 2: Episode 1",
-        "isWinner": false,
-        "image": "../imagenes/covers/life_is_strange_2_episode_1.jpg"
-      },
-      {
-        "name": "Marvel's Spider-Man",
-        "isWinner": false,
-        "image": "../imagenes/covers/marvels_spider-man.jpg"
-      }
-    ],
-    "Best Art Direction": [
-      {
-        "name": "Return of the Obra Dinn",
-        "isWinner": true,
-        "image": "../imagenes/covers/return_of_the_obra_dinn.jpg"
-      },
-      {
-        "name": "Assassin's Creed Odyssey",
-        "isWinner": false,
-        "image": "../imagenes/covers/assassins_creed_odyssey.jpg"
-      },
-      {
-        "name": "God of War",
-        "isWinner": false,
-        "image": "../imagenes/covers/god_of_war.jpg"
-      },
-      {
-        "name": "Octopath Traveler",
-        "isWinner": false,
-        "image": "../imagenes/covers/octopath_traveler.jpg"
-      },
-      {
-        "name": "Red Dead Redemption 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/red_dead_redemption_2.jpg"
-      }
-    ],
-    "Best Soundtrack": [
-      {
-        "name": "Red Dead Redemption 2",
-        "isWinner": true,
-        "image": "../imagenes/covers/red_dead_redemption_2.jpg"
-      },
-      {
-        "name": "Celeste",
-        "isWinner": false,
-        "image": "../imagenes/covers/celeste.jpg"
-      },
-      {
-        "name": "God of War",
-        "isWinner": false,
-        "image": "../imagenes/covers/god_of_war.jpg"
-      },
-      {
-        "name": "Marvel's Spider-Man",
-        "isWinner": false,
-        "image": "../imagenes/covers/marvels_spider-man.jpg"
-      },
-      {
-        "name": "Ni no Kuni II: Revenant Kingdom",
-        "isWinner": false,
-        "image": "../imagenes/covers/ni_no_kuni_ii_revenant_kingdom.jpg"
-      },
-      {
-        "name": "Octopath Traveler",
-        "isWinner": false,
-        "image": "../imagenes/covers/octopath_traveler.jpg"
-      }
-    ],
-    "Best Multiplayer": [
-      {
-        "name": "Fortnite",
-        "isWinner": true,
-        "image": "../imagenes/covers/fortnite.jpg"
-      },
-      {
-        "name": "Call of Duty: Black Ops 4",
-        "isWinner": false,
-        "image": "../imagenes/covers/call_of_duty_black_ops_4.jpg"
-      },
-      {
-        "name": "Destiny 2: Forsaken",
-        "isWinner": false,
-        "image": "../imagenes/covers/destiny_2_forsaken.jpg"
-      },
-      {
-        "name": "Monster Hunter: World",
-        "isWinner": false,
-        "image": "../imagenes/covers/monster_hunter_world.jpg"
-      },
-      {
-        "name": "Sea of Thieves",
-        "isWinner": false,
-        "image": "../imagenes/covers/sea_of_thieves.jpg"
-      }
-    ],
-    "Best Game Direction": [
-      {
-        "name": "God of War",
-        "isWinner": true,
-        "image": "../imagenes/covers/god_of_war.jpg"
-      },
-      {
-        "name": "A Way Out",
-        "isWinner": false,
-        "image": "../imagenes/covers/a_way_out.jpg"
-      },
-      {
-        "name": "Detroit: Become Human",
-        "isWinner": false,
-        "image": "../imagenes/covers/detroit_become_human.jpg"
-      },
-      {
-        "name": "Marvel's Spider-Man",
-        "isWinner": false,
-        "image": "../imagenes/covers/marvels_spider-man.jpg"
-      },
-      {
-        "name": "Red Dead Redemption 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/red_dead_redemption_2.jpg"
-      }
-    ]
-  },
-  "2019": {
-    "Game of the Year": [
-      {
-        "name": "Sekiro: Shadows Die Twice",
-        "isWinner": true,
-        "image": "../imagenes/covers/sekiro_shadows_die_twice.jpg"
-      },
-      {
-        "name": "Control",
-        "isWinner": false,
-        "image": "../imagenes/covers/control.jpg"
-      },
-      {
-        "name": "Death Stranding",
-        "isWinner": false,
-        "image": "../imagenes/covers/death_stranding.jpg"
-      },
-      {
-        "name": "Resident Evil 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/resident_evil_2.jpg"
-      },
-      {
-        "name": "Super Smash Bros. Ultimate",
-        "isWinner": false,
-        "image": "../imagenes/covers/super_smash_bros_ultimate.jpg"
-      },
-      {
-        "name": "The Outer Worlds",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_outer_worlds.jpg"
-      }
-    ],
-    "Best Independent Game": [
-      {
-        "name": "Disco Elysium",
-        "isWinner": true,
-        "image": "../imagenes/covers/disco_elysium.jpg"
-      },
-      {
-        "name": "Baba Is You",
-        "isWinner": false,
-        "image": "../imagenes/covers/baba_is_you.jpg"
-      },
-      {
-        "name": "Katana Zero",
-        "isWinner": false,
-        "image": "../imagenes/covers/katana_zero.jpg"
-      },
-      {
-        "name": "Outer Wilds",
-        "isWinner": false,
-        "image": "../imagenes/covers/outer_wilds.jpg"
-      },
-      {
-        "name": "Untitled Goose Game",
-        "isWinner": false,
-        "image": "../imagenes/covers/untitled_goose_game.jpg"
-      }
-    ],
-    "Best Narrative": [
-      {
-        "name": "Disco Elysium",
-        "isWinner": true,
-        "image": "../imagenes/covers/disco_elysium.jpg"
-      },
-      {
-        "name": "A Plague Tale: Innocence",
-        "isWinner": false,
-        "image": "../imagenes/covers/a_plague_tale_innocence.jpg"
-      },
-      {
-        "name": "Control",
-        "isWinner": false,
-        "image": "../imagenes/covers/control.jpg"
-      },
-      {
-        "name": "Death Stranding",
-        "isWinner": false,
-        "image": "../imagenes/covers/death_stranding.jpg"
-      },
-      {
-        "name": "The Outer Worlds",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_outer_worlds.jpg"
-      }
-    ],
-    "Best Art Direction": [
-      {
-        "name": "Control",
-        "isWinner": true,
-        "image": "../imagenes/covers/control.jpg"
-      },
-      {
-        "name": "Death Stranding",
-        "isWinner": false,
-        "image": "../imagenes/covers/death_stranding.jpg"
-      },
-      {
-        "name": "Gris",
-        "isWinner": false,
-        "image": "../imagenes/covers/gris.jpg"
-      },
-      {
-        "name": "Sayonara Wild Hearts",
-        "isWinner": false,
-        "image": "../imagenes/covers/sayonara_wild_hearts.jpg"
-      },
-      {
-        "name": "Sekiro: Shadows Die Twice",
-        "isWinner": false,
-        "image": "../imagenes/covers/sekiro_shadows_die_twice.jpg"
-      },
-      {
-        "name": "The Legend of Zelda: Link's Awakening",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_legend_of_zelda_links_awakening.jpg"
-      }
-    ],
-    "Best Soundtrack": [
-      {
-        "name": "Death Stranding",
-        "isWinner": true,
-        "image": "../imagenes/covers/death_stranding.jpg"
-      },
-      {
-        "name": "Cadence of Hyrule",
-        "isWinner": false,
-        "image": "../imagenes/covers/cadence_of_hyrule.jpg"
-      },
-      {
-        "name": "Devil May Cry 5",
-        "isWinner": false,
-        "image": "../imagenes/covers/devil_may_cry_5.jpg"
-      },
-      {
-        "name": "Kingdom Hearts III",
-        "isWinner": false,
-        "image": "../imagenes/covers/kingdom_hearts_iii.jpg"
-      },
-      {
-        "name": "Sayonara Wild Hearts",
-        "isWinner": false,
-        "image": "../imagenes/covers/sayonara_wild_hearts.jpg"
-      }
-    ],
-    "Best Multiplayer": [
-      {
-        "name": "Apex Legends",
-        "isWinner": true,
-        "image": "../imagenes/covers/apex_legends.jpg"
-      },
-      {
-        "name": "Borderlands 3",
-        "isWinner": false,
-        "image": "../imagenes/covers/borderlands_3.jpg"
-      },
-      {
-        "name": "Call of Duty: Modern Warfare",
-        "isWinner": false,
-        "image": "../imagenes/covers/call_of_duty_modern_warfare.jpg"
-      },
-      {
-        "name": "Tetris 99",
-        "isWinner": false,
-        "image": "../imagenes/covers/tetris_99.jpg"
-      },
-      {
-        "name": "Tom Clancy's The Division 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/tom_clancys_the_division_2.jpg"
-      }
-    ],
-    "Best Game Direction": [
-      {
-        "name": "Death Stranding",
-        "isWinner": true,
-        "image": "../imagenes/covers/death_stranding.jpg"
-      },
-      {
-        "name": "Control",
-        "isWinner": false,
-        "image": "../imagenes/covers/control.jpg"
-      },
-      {
-        "name": "Resident Evil 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/resident_evil_2.jpg"
-      },
-      {
-        "name": "Sekiro: Shadows Die Twice",
-        "isWinner": false,
-        "image": "../imagenes/covers/sekiro_shadows_die_twice.jpg"
-      },
-      {
-        "name": "Outer Wilds",
-        "isWinner": false,
-        "image": "../imagenes/covers/outer_wilds.jpg"
-      }
-    ]
-  },
-  "2020": {
-    "Game of the Year": [
-      {
-        "name": "The Last of Us Part II",
-        "isWinner": true,
-        "image": "../imagenes/covers/the_last_of_us_part_ii.jpg"
-      },
-      {
-        "name": "Animal Crossing: New Horizons",
-        "isWinner": false,
-        "image": "../imagenes/covers/animal_crossing_new_horizons.jpg"
-      },
-      {
-        "name": "Doom Eternal",
-        "isWinner": false,
-        "image": "../imagenes/covers/doom_eternal.jpg"
-      },
-      {
-        "name": "Final Fantasy VII Remake",
-        "isWinner": false,
-        "image": "../imagenes/covers/final_fantasy_vii_remake.jpg"
-      },
-      {
-        "name": "Ghost of Tsushima",
-        "isWinner": false,
-        "image": "../imagenes/covers/ghost_of_tsushima.jpg"
-      },
-      {
-        "name": "Hades",
-        "isWinner": false,
-        "image": "../imagenes/covers/hades.jpg"
-      }
-    ],
-    "Best Independent Game": [
-      {
-        "name": "Hades",
-        "isWinner": true,
-        "image": "../imagenes/covers/hades.jpg"
-      },
-      {
-        "name": "Carrion",
-        "isWinner": false,
-        "image": "../imagenes/covers/carrion.jpg"
-      },
-      {
-        "name": "Fall Guys: Ultimate Knockout",
-        "isWinner": false,
-        "image": "../imagenes/covers/fall_guys_ultimate_knockout.jpg"
-      },
-      {
-        "name": "Spelunky 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/spelunky_2.jpg"
-      },
-      {
-        "name": "Spiritfarer",
-        "isWinner": false,
-        "image": "../imagenes/covers/spiritfarer.jpg"
-      }
-    ],
-    "Best Narrative": [
-      {
-        "name": "The Last of Us Part II",
-        "isWinner": true,
-        "image": "../imagenes/covers/the_last_of_us_part_ii.jpg"
-      },
-      {
-        "name": "13 Sentinels: Aegis Rim",
-        "isWinner": false,
-        "image": "../imagenes/covers/13_sentinels_aegis_rim.jpg"
-      },
-      {
-        "name": "Final Fantasy VII Remake",
-        "isWinner": false,
-        "image": "../imagenes/covers/final_fantasy_vii_remake.jpg"
-      },
-      {
-        "name": "Ghost of Tsushima",
-        "isWinner": false,
-        "image": "../imagenes/covers/ghost_of_tsushima.jpg"
-      },
-      {
-        "name": "Hades",
-        "isWinner": false,
-        "image": "../imagenes/covers/hades.jpg"
-      }
-    ],
-    "Best Art Direction": [
-      {
-        "name": "Ghost of Tsushima",
-        "isWinner": true,
-        "image": "../imagenes/covers/ghost_of_tsushima.jpg"
-      },
-      {
-        "name": "Final Fantasy VII Remake",
-        "isWinner": false,
-        "image": "../imagenes/covers/final_fantasy_vii_remake.jpg"
-      },
-      {
-        "name": "Hades",
-        "isWinner": false,
-        "image": "../imagenes/covers/hades.jpg"
-      },
-      {
-        "name": "Ori and the Will of the Wisps",
-        "isWinner": false,
-        "image": "../imagenes/covers/ori_and_the_will_of_the_wisps.jpg"
-      },
-      {
-        "name": "The Last of Us Part II",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_last_of_us_part_ii.jpg"
-      }
-    ],
-    "Best Soundtrack": [
-      {
-        "name": "Final Fantasy VII Remake",
-        "isWinner": true,
-        "image": "../imagenes/covers/final_fantasy_vii_remake.jpg"
-      },
-      {
-        "name": "Doom Eternal",
-        "isWinner": false,
-        "image": "../imagenes/covers/doom_eternal.jpg"
-      },
-      {
-        "name": "Hades",
-        "isWinner": false,
-        "image": "../imagenes/covers/hades.jpg"
-      },
-      {
-        "name": "Ori and the Will of the Wisps",
-        "isWinner": false,
-        "image": "../imagenes/covers/ori_and_the_will_of_the_wisps.jpg"
-      },
-      {
-        "name": "The Last of Us Part II",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_last_of_us_part_ii.jpg"
-      }
-    ],
-    "Best Multiplayer": [
-      {
-        "name": "Among Us",
-        "isWinner": true,
-        "image": "../imagenes/covers/among_us.jpg"
-      },
-      {
-        "name": "Animal Crossing: New Horizons",
-        "isWinner": false,
-        "image": "../imagenes/covers/animal_crossing_new_horizons.jpg"
-      },
-      {
-        "name": "Call of Duty: Warzone",
-        "isWinner": false,
-        "image": "../imagenes/covers/call_of_duty_warzone.jpg"
-      },
-      {
-        "name": "Fall Guys: Ultimate Knockout",
-        "isWinner": false,
-        "image": "../imagenes/covers/fall_guys_ultimate_knockout.jpg"
-      },
-      {
-        "name": "Valorant",
-        "isWinner": false,
-        "image": "../imagenes/covers/valorant.jpg"
-      }
-    ],
-    "Best Game Direction": [
-      {
-        "name": "The Last of Us Part II",
-        "isWinner": true,
-        "image": "../imagenes/covers/the_last_of_us_part_ii.jpg"
-      },
-      {
-        "name": "Final Fantasy VII Remake",
-        "isWinner": false,
-        "image": "../imagenes/covers/final_fantasy_vii_remake.jpg"
-      },
-      {
-        "name": "Ghost of Tsushima",
-        "isWinner": false,
-        "image": "../imagenes/covers/ghost_of_tsushima.jpg"
-      },
-      {
-        "name": "Hades",
-        "isWinner": false,
-        "image": "../imagenes/covers/hades.jpg"
-      },
-      {
-        "name": "Half-Life: Alyx",
-        "isWinner": false,
-        "image": "../imagenes/covers/half-life_alyx.jpg"
-      }
-    ]
-  },
-  "2021": {
-    "Game of the Year": [
-      {
-        "name": "It Takes Two",
-        "isWinner": true,
-        "image": "../imagenes/covers/it_takes_two.jpg"
-      },
-      {
-        "name": "Deathloop",
-        "isWinner": false,
-        "image": "../imagenes/covers/deathloop.jpg"
-      },
-      {
-        "name": "Metroid Dread",
-        "isWinner": false,
-        "image": "../imagenes/covers/metroid_dread.jpg"
-      },
-      {
-        "name": "Psychonauts 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/psychonauts_2.jpg"
-      },
-      {
-        "name": "Ratchet & Clank: Rift Apart",
-        "isWinner": false,
-        "image": "../imagenes/covers/ratchet__clank_rift_apart.jpg"
-      },
-      {
-        "name": "Resident Evil Village",
-        "isWinner": false,
-        "image": "../imagenes/covers/resident_evil_village.jpg"
-      }
-    ],
-    "Best Independent Game": [
-      {
-        "name": "Kena: Bridge of Spirits",
-        "isWinner": true,
-        "image": "../imagenes/covers/kena_bridge_of_spirits.jpg"
-      },
-      {
-        "name": "12 Minutes",
-        "isWinner": false,
-        "image": "../imagenes/covers/12_minutes.jpg"
-      },
-      {
-        "name": "Death's Door",
-        "isWinner": false,
-        "image": "../imagenes/covers/deaths_door.jpg"
-      },
-      {
-        "name": "Inscryption",
-        "isWinner": false,
-        "image": "../imagenes/covers/inscryption.jpg"
-      },
-      {
-        "name": "Loop Hero",
-        "isWinner": false,
-        "image": "../imagenes/covers/loop_hero.jpg"
-      }
-    ],
-    "Best Narrative": [
-      {
-        "name": "Marvel's Guardians of the Galaxy",
-        "isWinner": true,
-        "image": "../imagenes/covers/marvels_guardians_of_the_galaxy.jpg"
-      },
-      {
-        "name": "Deathloop",
-        "isWinner": false,
-        "image": "../imagenes/covers/deathloop.jpg"
-      },
-      {
-        "name": "It Takes Two",
-        "isWinner": false,
-        "image": "../imagenes/covers/it_takes_two.jpg"
-      },
-      {
-        "name": "Life is Strange: True Colors",
-        "isWinner": false,
-        "image": "../imagenes/covers/life_is_strange_true_colors.jpg"
-      },
-      {
-        "name": "Psychonauts 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/psychonauts_2.jpg"
-      }
-    ],
-    "Best Art Direction": [
-      {
-        "name": "Deathloop",
-        "isWinner": true,
-        "image": "../imagenes/covers/deathloop.jpg"
-      },
-      {
-        "name": "Kena: Bridge of Spirits",
-        "isWinner": false,
-        "image": "../imagenes/covers/kena_bridge_of_spirits.jpg"
-      },
-      {
-        "name": "Psychonauts 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/psychonauts_2.jpg"
-      },
-      {
-        "name": "Ratchet & Clank: Rift Apart",
-        "isWinner": false,
-        "image": "../imagenes/covers/ratchet__clank_rift_apart.jpg"
-      },
-      {
-        "name": "The Artful Escape",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_artful_escape.jpg"
-      }
-    ],
-    "Best Soundtrack": [
-      {
-        "name": "NieR Replicant ver.1.22474487139...",
-        "isWinner": true,
-        "image": "../imagenes/covers/nier_replicant_ver122474487139.jpg"
-      },
-      {
-        "name": "Cyberpunk 2077",
-        "isWinner": false,
-        "image": "../imagenes/covers/cyberpunk_2077.jpg"
-      },
-      {
-        "name": "Deathloop",
-        "isWinner": false,
-        "image": "../imagenes/covers/deathloop.jpg"
-      },
-      {
-        "name": "Marvel's Guardians of the Galaxy",
-        "isWinner": false,
-        "image": "../imagenes/covers/marvels_guardians_of_the_galaxy.jpg"
-      },
-      {
-        "name": "The Artful Escape",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_artful_escape.jpg"
-      }
-    ],
-    "Best Multiplayer": [
-      {
-        "name": "It Takes Two",
-        "isWinner": true,
-        "image": "../imagenes/covers/it_takes_two.jpg"
-      },
-      {
-        "name": "Back 4 Blood",
-        "isWinner": false,
-        "image": "../imagenes/covers/back_4_blood.jpg"
-      },
-      {
-        "name": "Knockout City",
-        "isWinner": false,
-        "image": "../imagenes/covers/knockout_city.jpg"
-      },
-      {
-        "name": "Monster Hunter Rise",
-        "isWinner": false,
-        "image": "../imagenes/covers/monster_hunter_rise.jpg"
-      },
-      {
-        "name": "New World",
-        "isWinner": false,
-        "image": "../imagenes/covers/new_world.jpg"
-      },
-      {
-        "name": "Valheim",
-        "isWinner": false,
-        "image": "../imagenes/covers/valheim.jpg"
-      }
-    ],
-    "Best Game Direction": [
-      {
-        "name": "Deathloop",
-        "isWinner": true,
-        "image": "../imagenes/covers/deathloop.jpg"
-      },
-      {
-        "name": "It Takes Two",
-        "isWinner": false,
-        "image": "../imagenes/covers/it_takes_two.jpg"
-      },
-      {
-        "name": "Returnal",
-        "isWinner": false,
-        "image": "../imagenes/covers/returnal.jpg"
-      },
-      {
-        "name": "Psychonauts 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/psychonauts_2.jpg"
-      },
-      {
-        "name": "Ratchet & Clank: Rift Apart",
-        "isWinner": false,
-        "image": "../imagenes/covers/ratchet__clank_rift_apart.jpg"
-      }
-    ]
-  },
-  "2022": {
-    "Game of the Year": [
-      {
-        "name": "Elden Ring",
-        "isWinner": true,
-        "image": "../imagenes/covers/elden_ring.jpg"
-      },
-      {
-        "name": "A Plague Tale: Requiem",
-        "isWinner": false,
-        "image": "../imagenes/covers/a_plague_tale_requiem.jpg"
-      },
-      {
-        "name": "God of War Ragnarök",
-        "isWinner": false,
-        "image": "../imagenes/covers/god_of_war_ragnark.jpg"
-      },
-      {
-        "name": "Horizon Forbidden West",
-        "isWinner": false,
-        "image": "../imagenes/covers/horizon_forbidden_west.jpg"
-      },
-      {
-        "name": "Stray",
-        "isWinner": false,
-        "image": "../imagenes/covers/stray.jpg"
-      },
-      {
-        "name": "Xenoblade Chronicles 3",
-        "isWinner": false,
-        "image": "../imagenes/covers/xenoblade_chronicles_3.jpg"
-      }
-    ],
-    "Best Independent Game": [
-      {
-        "name": "Stray",
-        "isWinner": true,
-        "image": "../imagenes/covers/stray.jpg"
-      },
-      {
-        "name": "Cult of the Lamb",
-        "isWinner": false,
-        "image": "../imagenes/covers/cult_of_the_lamb.jpg"
-      },
-      {
-        "name": "Neon White",
-        "isWinner": false,
-        "image": "../imagenes/covers/neon_white.jpg"
-      },
-      {
-        "name": "Sifu",
-        "isWinner": false,
-        "image": "../imagenes/covers/sifu.jpg"
-      },
-      {
-        "name": "Tunic",
-        "isWinner": false,
-        "image": "../imagenes/covers/tunic.jpg"
-      }
-    ],
-    "Best Narrative": [
-      {
-        "name": "God of War Ragnarök",
-        "isWinner": true,
-        "image": "../imagenes/covers/god_of_war_ragnark.jpg"
-      },
-      {
-        "name": "A Plague Tale: Requiem",
-        "isWinner": false,
-        "image": "../imagenes/covers/a_plague_tale_requiem.jpg"
-      },
-      {
-        "name": "Elden Ring",
-        "isWinner": false,
-        "image": "../imagenes/covers/elden_ring.jpg"
-      },
-      {
-        "name": "Horizon Forbidden West",
-        "isWinner": false,
-        "image": "../imagenes/covers/horizon_forbidden_west.jpg"
-      },
-      {
-        "name": "Immortality",
-        "isWinner": false,
-        "image": "../imagenes/covers/immortality.jpg"
-      }
-    ],
-    "Best Art Direction": [
-      {
-        "name": "Elden Ring",
-        "isWinner": true,
-        "image": "../imagenes/covers/elden_ring.jpg"
-      },
-      {
-        "name": "God of War Ragnarök",
-        "isWinner": false,
-        "image": "../imagenes/covers/god_of_war_ragnark.jpg"
-      },
-      {
-        "name": "Horizon Forbidden West",
-        "isWinner": false,
-        "image": "../imagenes/covers/horizon_forbidden_west.jpg"
-      },
-      {
-        "name": "Scorn",
-        "isWinner": false,
-        "image": "../imagenes/covers/scorn.jpg"
-      },
-      {
-        "name": "Stray",
-        "isWinner": false,
-        "image": "../imagenes/covers/stray.jpg"
-      }
-    ],
-    "Best Soundtrack": [
-      {
-        "name": "God of War Ragnarök",
-        "isWinner": true,
-        "image": "../imagenes/covers/god_of_war_ragnark.jpg"
-      },
-      {
-        "name": "A Plague Tale: Requiem",
-        "isWinner": false,
-        "image": "../imagenes/covers/a_plague_tale_requiem.jpg"
-      },
-      {
-        "name": "Elden Ring",
-        "isWinner": false,
-        "image": "../imagenes/covers/elden_ring.jpg"
-      },
-      {
-        "name": "Metal: Hellsinger",
-        "isWinner": false,
-        "image": "../imagenes/covers/metal_hellsinger.jpg"
-      },
-      {
-        "name": "Xenoblade Chronicles 3",
-        "isWinner": false,
-        "image": "../imagenes/covers/xenoblade_chronicles_3.jpg"
-      }
-    ],
-    "Best Multiplayer": [
-      {
-        "name": "Splatoon 3",
-        "isWinner": true,
-        "image": "../imagenes/covers/splatoon_3.jpg"
-      },
-      {
-        "name": "Call of Duty: Modern Warfare II",
-        "isWinner": false,
-        "image": "../imagenes/covers/call_of_duty_modern_warfare_ii.jpg"
-      },
-      {
-        "name": "MultiVersus",
-        "isWinner": false,
-        "image": "../imagenes/covers/multiversus.jpg"
-      },
-      {
-        "name": "Overwatch 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/overwatch_2.jpg"
-      },
-      {
-        "name": "Teenage Mutant Ninja Turtles: Shredder's Revenge",
-        "isWinner": false,
-        "image": "../imagenes/covers/teenage_mutant_ninja_turtles_shredders_revenge.jpg"
-      }
-    ],
-    "Best Game Direction": [
-      {
-        "name": "Elden Ring",
-        "isWinner": true,
-        "image": "../imagenes/covers/elden_ring.jpg"
-      },
-      {
-        "name": "God of War Ragnarök",
-        "isWinner": false,
-        "image": "../imagenes/covers/god_of_war_ragnark.jpg"
-      },
-      {
-        "name": "Horizon Forbidden West",
-        "isWinner": false,
-        "image": "../imagenes/covers/horizon_forbidden_west.jpg"
-      },
-      {
-        "name": "Immortality",
-        "isWinner": false,
-        "image": "../imagenes/covers/immortality.jpg"
-      },
-      {
-        "name": "Stray",
-        "isWinner": false,
-        "image": "../imagenes/covers/stray.jpg"
-      }
-    ]
-  },
-  "2023": {
-    "Game of the Year": [
-      {
-        "name": "Baldur's Gate 3",
-        "isWinner": true,
-        "image": "../imagenes/covers/baldurs_gate_3.jpg"
-      },
-      {
-        "name": "Alan Wake 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/alan_wake_2.jpg"
-      },
-      {
-        "name": "Marvel's Spider-Man 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/marvels_spider-man_2.jpg"
-      },
-      {
-        "name": "Resident Evil 4",
-        "isWinner": false,
-        "image": "../imagenes/covers/resident_evil_4.jpg"
-      },
-      {
-        "name": "Super Mario Bros. Wonder",
-        "isWinner": false,
-        "image": "../imagenes/covers/super_mario_bros_wonder.jpg"
-      },
-      {
-        "name": "The Legend of Zelda: Tears of the Kingdom",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_legend_of_zelda_tears_of_the_kingdom.jpg"
-      }
-    ],
-    "Best Independent Game": [
-      {
-        "name": "Sea of Stars",
-        "isWinner": true,
-        "image": "../imagenes/covers/sea_of_stars.jpg"
-      },
-      {
-        "name": "Cocoon",
-        "isWinner": false,
-        "image": "../imagenes/covers/cocoon.jpg"
-      },
-      {
-        "name": "Dave the Diver",
-        "isWinner": false,
-        "image": "../imagenes/covers/dave_the_diver.jpg"
-      },
-      {
-        "name": "Dredge",
-        "isWinner": false,
-        "image": "../imagenes/covers/dredge.jpg"
-      },
-      {
-        "name": "Viewfinder",
-        "isWinner": false,
-        "image": "../imagenes/covers/viewfinder.jpg"
-      }
-    ],
-    "Best Narrative": [
-      {
-        "name": "Alan Wake 2",
-        "isWinner": true,
-        "image": "../imagenes/covers/alan_wake_2.jpg"
-      },
-      {
-        "name": "Baldur's Gate 3",
-        "isWinner": false,
-        "image": "../imagenes/covers/baldurs_gate_3.jpg"
-      },
-      {
-        "name": "Cyberpunk 2077: Phantom Liberty",
-        "isWinner": false,
-        "image": "../imagenes/covers/cyberpunk_2077_phantom_liberty.jpg"
-      },
-      {
-        "name": "Final Fantasy XVI",
-        "isWinner": false,
-        "image": "../imagenes/covers/final_fantasy_xvi.jpg"
-      },
-      {
-        "name": "Marvel's Spider-Man 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/marvels_spider-man_2.jpg"
-      }
-    ],
-    "Best Art Direction": [
-      {
-        "name": "Alan Wake 2",
-        "isWinner": true,
-        "image": "../imagenes/covers/alan_wake_2.jpg"
-      },
-      {
-        "name": "Hi-Fi Rush",
-        "isWinner": false,
-        "image": "../imagenes/covers/hi-fi_rush.jpg"
-      },
-      {
-        "name": "Lies of P",
-        "isWinner": false,
-        "image": "../imagenes/covers/lies_of_p.jpg"
-      },
-      {
-        "name": "Super Mario Bros. Wonder",
-        "isWinner": false,
-        "image": "../imagenes/covers/super_mario_bros_wonder.jpg"
-      },
-      {
-        "name": "The Legend of Zelda: Tears of the Kingdom",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_legend_of_zelda_tears_of_the_kingdom.jpg"
-      }
-    ],
-    "Best Soundtrack": [
-      {
-        "name": "Final Fantasy XVI",
-        "isWinner": true,
-        "image": "../imagenes/covers/final_fantasy_xvi.jpg"
-      },
-      {
-        "name": "Alan Wake 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/alan_wake_2.jpg"
-      },
-      {
-        "name": "Baldur's Gate 3",
-        "isWinner": false,
-        "image": "../imagenes/covers/baldurs_gate_3.jpg"
-      },
-      {
-        "name": "Hi-Fi Rush",
-        "isWinner": false,
-        "image": "../imagenes/covers/hi-fi_rush.jpg"
-      },
-      {
-        "name": "The Legend of Zelda: Tears of the Kingdom",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_legend_of_zelda_tears_of_the_kingdom.jpg"
-      }
-    ],
-    "Best Multiplayer": [
-      {
-        "name": "Baldur's Gate 3",
-        "isWinner": true,
-        "image": "../imagenes/covers/baldurs_gate_3.jpg"
-      },
-      {
-        "name": "Diablo IV",
-        "isWinner": false,
-        "image": "../imagenes/covers/diablo_iv.jpg"
-      },
-      {
-        "name": "Party Animals",
-        "isWinner": false,
-        "image": "../imagenes/covers/party_animals.jpg"
-      },
-      {
-        "name": "Street Fighter 6",
-        "isWinner": false,
-        "image": "../imagenes/covers/street_fighter_6.jpg"
-      },
-      {
-        "name": "Super Mario Bros. Wonder",
-        "isWinner": false,
-        "image": "../imagenes/covers/super_mario_bros_wonder.jpg"
-      }
-    ],
-    "Best Game Direction": [
-      {
-        "name": "Alan Wake 2",
-        "isWinner": true,
-        "image": "../imagenes/covers/alan_wake_2.jpg"
-      },
-      {
-        "name": "Baldur's Gate 3",
-        "isWinner": false,
-        "image": "../imagenes/covers/baldurs_gate_3.jpg"
-      },
-      {
-        "name": "Marvel's Spider-Man 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/marvels_spider-man_2.jpg"
-      },
-      {
-        "name": "Super Mario Bros. Wonder",
-        "isWinner": false,
-        "image": "../imagenes/covers/super_mario_bros_wonder.jpg"
-      },
-      {
-        "name": "The Legend of Zelda: Tears of the Kingdom",
-        "isWinner": false,
-        "image": "../imagenes/covers/the_legend_of_zelda_tears_of_the_kingdom.jpg"
-      }
-    ]
-  },
-  "2024": {
-    "Game of the Year": [
-      {
-        "name": "Astro Bot",
-        "isWinner": true,
-        "image": "../imagenes/covers/astro_bot.jpg"
-      },
-      {
-        "name": "Balatro",
-        "isWinner": false,
-        "image": "../imagenes/covers/balatro.jpg"
-      },
-      {
-        "name": "Black Myth: Wukong",
-        "isWinner": false,
-        "image": "../imagenes/covers/black_myth_wukong.jpg"
-      },
-      {
-        "name": "Elden Ring Shadow of the Erdtree",
-        "isWinner": false,
-        "image": "../imagenes/covers/elden_ring_shadow_of_the_erdtree.jpg"
-      },
-      {
-        "name": "Final Fantasy VII Rebirth",
-        "isWinner": false,
-        "image": "../imagenes/covers/final_fantasy_vii_rebirth.jpg"
-      },
-      {
-        "name": "Metaphor: ReFantazio",
-        "isWinner": false,
-        "image": "../imagenes/covers/metaphor_refantazio.jpg"
-      }
-    ],
-    "Best Independent Game": [
-      {
-        "name": "Balatro",
-        "isWinner": true,
-        "image": "../imagenes/covers/balatro.jpg"
-      },
-      {
-        "name": "Animal Well",
-        "isWinner": false,
-        "image": "../imagenes/covers/animal_well.jpg"
-      },
-      {
-        "name": "Lorelei and the Laser Eyes",
-        "isWinner": false,
-        "image": "../imagenes/covers/lorelei_and_the_laser_eyes.jpg"
-      },
-      {
-        "name": "Neva",
-        "isWinner": false,
-        "image": "../imagenes/covers/neva.jpg"
-      },
-      {
-        "name": "UFO 50",
-        "isWinner": false,
-        "image": "../imagenes/covers/ufo_50.jpg"
-      }
-    ],
-    "Best Narrative": [
-      {
-        "name": "Metaphor: ReFantazio",
-        "isWinner": true,
-        "image": "../imagenes/covers/metaphor_refantazio.jpg"
-      },
-      {
-        "name": "Final Fantasy VII Rebirth",
-        "isWinner": false,
-        "image": "../imagenes/covers/final_fantasy_vii_rebirth.jpg"
-      },
-      {
-        "name": "Like a Dragon: Infinite Wealth",
-        "isWinner": false,
-        "image": "../imagenes/covers/like_a_dragon_infinite_wealth.jpg"
-      },
-      {
-        "name": "Senua's Saga: Hellblade II",
-        "isWinner": false,
-        "image": "../imagenes/covers/senuas_saga_hellblade_ii.jpg"
-      },
-      {
-        "name": "Silent Hill 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/silent_hill_2.jpg"
-      }
-    ],
-    "Best Art Direction": [
-      {
-        "name": "Metaphor: ReFantazio",
-        "isWinner": true,
-        "image": "../imagenes/covers/metaphor_refantazio.jpg"
-      },
-      {
-        "name": "Astro Bot",
-        "isWinner": false,
-        "image": "../imagenes/covers/astro_bot.jpg"
-      },
-      {
-        "name": "Black Myth: Wukong",
-        "isWinner": false,
-        "image": "../imagenes/covers/black_myth_wukong.jpg"
-      },
-      {
-        "name": "Neva",
-        "isWinner": false,
-        "image": "../imagenes/covers/neva.jpg"
-      },
-      {
-        "name": "Senua's Saga: Hellblade II",
-        "isWinner": false,
-        "image": "../imagenes/covers/senuas_saga_hellblade_ii.jpg"
-      }
-    ],
-    "Best Soundtrack": [
-      {
-        "name": "Final Fantasy VII Rebirth",
-        "isWinner": true,
-        "image": "../imagenes/covers/final_fantasy_vii_rebirth.jpg"
-      },
-      {
-        "name": "Astro Bot",
-        "isWinner": false,
-        "image": "../imagenes/covers/astro_bot.jpg"
-      },
-      {
-        "name": "Metaphor: ReFantazio",
-        "isWinner": false,
-        "image": "../imagenes/covers/metaphor_refantazio.jpg"
-      },
-      {
-        "name": "Silent Hill 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/silent_hill_2.jpg"
-      },
-      {
-        "name": "Stellar Blade",
-        "isWinner": false,
-        "image": "../imagenes/covers/stellar_blade.jpg"
-      }
-    ],
-    "Best Multiplayer": [
-      {
-        "name": "Helldivers 2",
-        "isWinner": true,
-        "image": "../imagenes/covers/helldivers_2.jpg"
-      },
-      {
-        "name": "Call of Duty: Black Ops 6",
-        "isWinner": false,
-        "image": "../imagenes/covers/call_of_duty_black_ops_6.jpg"
-      },
-      {
-        "name": "Super Mario Party Jamboree",
-        "isWinner": false,
-        "image": "../imagenes/covers/super_mario_party_jamboree.jpg"
-      },
-      {
-        "name": "Tekken 8",
-        "isWinner": false,
-        "image": "../imagenes/covers/tekken_8.jpg"
-      },
-      {
-        "name": "Warhammer 40,000: Space Marine 2",
-        "isWinner": false,
-        "image": "../imagenes/covers/warhammer_40000_space_marine_2.jpg"
-      }
-    ],
-    "Best Game Direction": [
-      {
-        "name": "Astro Bot",
-        "isWinner": true,
-        "image": "../imagenes/covers/astro_bot.jpg"
-      },
-      {
-        "name": "Balatro",
-        "isWinner": false,
-        "image": "../imagenes/covers/balatro.jpg"
-      },
-      {
-        "name": "Black Myth: Wukong",
-        "isWinner": false,
-        "image": "../imagenes/covers/black_myth_wukong.jpg"
-      },
-      {
-        "name": "Elden Ring Shadow of the Erdtree",
-        "isWinner": false,
-        "image": "../imagenes/covers/elden_ring_shadow_of_the_erdtree.jpg"
-      },
-      {
-        "name": "Final Fantasy VII Rebirth",
-        "isWinner": false,
-        "image": "../imagenes/covers/final_fantasy_vii_rebirth.jpg"
-      },
-      {
-        "name": "Metaphor: ReFantazio",
-        "isWinner": false,
-        "image": "../imagenes/covers/metaphor_refantazio.jpg"
-      }
-    ]
-  },
-  "2025": {
-    "Game of the Year": [
-      {
-        "name": "Clair Obscur: Expedition 33",
-        "isWinner": true,
-        "image": "../imagenes/covers/clair_obscur_expedition_33.jpg"
-      },
-      {
-        "name": "Death Stranding 2: On the Beach",
-        "isWinner": false,
-        "image": "../imagenes/covers/death_stranding_2_on_the_beach.jpg"
-      },
-      {
-        "name": "Donkey Kong Bananza",
-        "isWinner": false,
-        "image": "../imagenes/covers/donkey_kong_bananza.jpg"
-      },
-      {
-        "name": "Hades II",
-        "isWinner": false,
-        "image": "../imagenes/covers/hades_ii.jpg"
-      },
-      {
-        "name": "Hollow Knight: Silksong",
-        "isWinner": false,
-        "image": "../imagenes/covers/hollow_knight_silksong.jpg"
-      },
-      {
-        "name": "Kingdom Come: Deliverance II",
-        "isWinner": false,
-        "image": "../imagenes/covers/kingdom_come_deliverance_ii.jpg"
-      }
-    ],
-    "Best Independent Game": [
-      {
-        "name": "Clair Obscur: Expedition 33",
-        "isWinner": true,
-        "image": "../imagenes/covers/clair_obscur_expedition_33.jpg"
-      },
-      {
-        "name": "Absolum",
-        "isWinner": false,
-        "image": "../imagenes/covers/absolum.jpg"
-      },
-      {
-        "name": "Ball x Pit",
-        "isWinner": false,
-        "image": "../imagenes/covers/ball_x_pit.jpg"
-      },
-      {
-        "name": "Blue Prince",
-        "isWinner": false,
-        "image": "../imagenes/covers/blue_prince.jpg"
-      },
-      {
-        "name": "Hades II",
-        "isWinner": false,
-        "image": "../imagenes/covers/hades_ii.jpg"
-      },
-      {
-        "name": "Hollow Knight: Silksong",
-        "isWinner": false,
-        "image": "../imagenes/covers/hollow_knight_silksong.jpg"
-      }
-    ],
-    "Best Narrative": [
-      {
-        "name": "Clair Obscur: Expedition 33",
-        "isWinner": true,
-        "image": "../imagenes/covers/clair_obscur_expedition_33.jpg"
-      },
-      {
-        "name": "Death Stranding 2: On the Beach",
-        "isWinner": false,
-        "image": "../imagenes/covers/death_stranding_2_on_the_beach.jpg"
-      },
-      {
-        "name": "Ghost of Yōtei",
-        "isWinner": false,
-        "image": "../imagenes/covers/ghost_of_yotei.jpg"
-      },
-      {
-        "name": "Kingdom Come: Deliverance II",
-        "isWinner": false,
-        "image": "../imagenes/covers/kingdom_come_deliverance_ii.jpg"
-      },
-      {
-        "name": "Silent Hill f",
-        "isWinner": false,
-        "image": "../imagenes/covers/silent_hill_f.jpg"
-      }
-    ],
-    "Best Art Direction": [
-      {
-        "name": "Clair Obscur: Expedition 33",
-        "isWinner": true,
-        "image": "../imagenes/covers/clair_obscur_expedition_33.jpg"
-      },
-      {
-        "name": "Death Stranding 2: On the Beach",
-        "isWinner": false,
-        "image": "../imagenes/covers/death_stranding_2_on_the_beach.jpg"
-      },
-      {
-        "name": "Ghost of Yōtei",
-        "isWinner": false,
-        "image": "../imagenes/covers/ghost_of_yotei.jpg"
-      },
-      {
-        "name": "Hades II",
-        "isWinner": false,
-        "image": "../imagenes/covers/hades_ii.jpg"
-      },
-      {
-        "name": "Hollow Knight: Silksong",
-        "isWinner": false,
-        "image": "../imagenes/covers/hollow_knight_silksong.jpg"
-      }
-    ],
-    "Best Soundtrack": [
-      {
-        "name": "Clair Obscur: Expedition 33",
-        "isWinner": true,
-        "image": "../imagenes/covers/clair_obscur_expedition_33.jpg"
-      },
-      {
-        "name": "Death Stranding 2: On the Beach",
-        "isWinner": false,
-        "image": "../imagenes/covers/death_stranding_2_on_the_beach.jpg"
-      },
-      {
-        "name": "Ghost of Yōtei",
-        "isWinner": false,
-        "image": "../imagenes/covers/ghost_of_yotei.jpg"
-      },
-      {
-        "name": "Hades II",
-        "isWinner": false,
-        "image": "../imagenes/covers/hades_ii.jpg"
-      },
-      {
-        "name": "Hollow Knight: Silksong",
-        "isWinner": false,
-        "image": "../imagenes/covers/hollow_knight_silksong.jpg"
-      }
-    ],
-    "Best Multiplayer": [
-      {
-        "name": "Arc Raiders",
-        "isWinner": true,
-        "image": "../imagenes/covers/arc_raiders.jpg"
-      },
-      {
-        "name": "Battlefield 6",
-        "isWinner": false,
-        "image": "../imagenes/covers/battlefield_6.jpg"
-      },
-      {
-        "name": "Elden Ring: Nightreign",
-        "isWinner": false,
-        "image": "../imagenes/covers/elden_ring_nightreign.jpg"
-      },
-      {
-        "name": "Peak",
-        "isWinner": false,
-        "image": "../imagenes/covers/peak.jpg"
-      },
-      {
-        "name": "Split Fiction",
-        "isWinner": false,
-        "image": "../imagenes/covers/split_fiction.jpg"
-      }
-    ],
-    "Best Game Direction": [
-      {
-        "name": "Clair Obscur: Expedition 33",
-        "isWinner": true,
-        "image": "../imagenes/covers/clair_obscur_expedition_33.jpg"
-      },
-      {
-        "name": "Death Stranding 2: On the Beach",
-        "isWinner": false,
-        "image": "../imagenes/covers/death_stranding_2_on_the_beach.jpg"
-      },
-      {
-        "name": "Ghost of Yōtei",
-        "isWinner": false,
-        "image": "../imagenes/covers/ghost_of_yotei.jpg"
-      },
-      {
-        "name": "Hades II",
-        "isWinner": false,
-        "image": "../imagenes/covers/hades_ii.jpg"
-      },
-      {
-        "name": "Split Fiction",
-        "isWinner": false,
-        "image": "../imagenes/covers/split_fiction.jpg"
-      }
-    ]
-  }
-};
-
-// ═══════════════════════════════════════════════════════════════════
-//  ESTADO GLOBAL DE LA APLICACIÓN
-// ═══════════════════════════════════════════════════════════════════
-
-/**
- * Lista ordenada de todos los años soportados (2014 a 2025)
- */
-const ALL_YEARS = [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025].sort((a, b) => a - b);
-
-// Lectura de parámetro de año desde la URL (?y=YYYY)
-const params = new URLSearchParams(window.location.search);
-let activeYear = parseInt(params.get('y')) || 2025;
-if (activeYear < 2014 || activeYear > 2025) {
-    activeYear = 2025;
-}
-
-/**
- * Almacenamiento en memoria de votos emitidos por año
- * Estructura: { 2025: { 'Game of the Year': 'Nombre del Juego', ... }, ... }
- */
-const currentVotes = {};
-ALL_YEARS.forEach(y => {
-    currentVotes[y] = {};
-    CANONICAL_CATEGORIES.forEach(cat => {
-        currentVotes[y][cat] = null;
-    });
-});
-
-/**
- * Caché de datos cargados dinámicamente desde datos/{year}.json
- */
-const yearDataCache = {};
-
-/**
- * Registro de años ya enviados con éxito
- */
-const submittedYears = {};
-
-// ═══════════════════════════════════════════════════════════════════
-//  FUNCIONES DE CARGA DE DATOS
-// ═══════════════════════════════════════════════════════════════════
-
-/**
- * Carga dinámica de datos desde datos/{year}.json con fallback local
+ * Descarga los nominados de un año desde /datos/AAAA.json.
+ * Devuelve null si no se pudieron cargar.
+ *
+ * Recibe: year (número, por ej. 2025).
+ * Devuelve: una Promise (una "promesa": un resultado que todavía no está
+ * listo y llega más tarde) que al final entrega el objeto con los nominados,
+ * o null si falló. Por eso la función es async: así puede usar await adentro,
+ * que significa "frená acá hasta que llegue la respuesta, pero sin trabar
+ * el resto de la página".
+ * Se llama desde renderYearPanel, cuando hay que armar el panel de un año.
  */
 async function loadYearData(year) {
+    // si ya bajé este año antes, el cache tiene datos y me los ahorro de pedir otra vez
     if (yearDataCache[year]) {
-        return yearDataCache[year];
+        return yearDataCache[year]; // devuelvo lo guardado y la función termina acá
     }
 
-    try {
+    try { // try/catch: intento hacer algo que puede fallar (red caída, archivo faltante); si falla salta al catch en vez de romper todo
+        // fetch pide un archivo por internet (o al servidor local). Devuelve una Promise,
+        // por eso uso await. Ej: fetch('datos/2025.json') trae la respuesta con los nominados de 2025.
         const response = await fetch('datos/' + year + '.json');
-        if (response.ok) {
-            const data = await response.json();
-            yearDataCache[year] = data;
-            return data;
+        // response.ok es true si el servidor contestó bien (códigos 200-299); false si dio error, por ej. 404 = no existe
+        if (!response.ok) {
+            return null; // no se pudo: devuelvo null para avisar que no hay datos
         }
-    } catch (err) {
-        console.warn('[Encuesta] No se pudo obtener datos/' + year + '.json por red, recurriendo a datos locales:', err);
+        // JSON es un formato de texto para guardar datos (parecido a los objetos de JS).
+        // response.json() lee el texto y lo convierte en un objeto de verdad; también es una Promise.
+        const data = await response.json();
+        yearDataCache[year] = data; // lo guardo en el cache para la próxima vez
+        return data; // devuelvo los datos ya listos
+    } catch (error) { // si algo de arriba tiró un error, entra acá (error trae el detalle)
+        // console.error escribe un error en la consola del navegador (F12); sirve para que el programador lo vea
+        console.error('[Encuesta] Error al cargar datos/' + year + '.json', error);
+        return null; // devuelvo null para avisar que falló
     }
-
-    if (FALLBACK_GOTY_DATA && FALLBACK_GOTY_DATA[year]) {
-        yearDataCache[year] = FALLBACK_GOTY_DATA[year];
-        return FALLBACK_GOTY_DATA[year];
-    }
-
-    return null;
 }
 
-// ═══════════════════════════════════════════════════════════════════
-//  CONSTRUCCIÓN Y RENDERIZADO DE LA INTERFAZ
-// ═══════════════════════════════════════════════════════════════════
+// ───────────────── INTERFAZ ─────────────────
 
 /**
- * Inicialización principal de la página de encuesta
+ * Arranca la página: crea las pestañas de años, conecta los botones
+ * y muestra el año inicial.
+ *
+ * No recibe nada ni devuelve nada.
+ * Se llama una sola vez, al final del archivo (ver sección INICIO).
+ *
+ * Paso a paso:
+ * 1. Busca en el HTML el contenedor donde van las pestañas.
+ * 2. Con un for, crea una pestaña (un div) por cada año, de PRIMER_ANIO
+ *    a ULTIMO_ANIO (ambos vienen de search.js), y la mete en el contenedor.
+ * 3. Cada pestaña queda escuchando el clic para cambiar de año.
+ * 4. Conecta los botones de enviar y de reiniciar.
+ * 5. Llama a switchYear con el año inicial para que se vea algo.
  */
-async function init() {
+function init() {
+    // getElementById busca en el HTML el elemento que tenga ese id (acá el contenedor de las pestañas)
     const tabsContainer = document.getElementById('yearTabs');
 
-    // ── 1. Construir pestañas selectoras de año (2014-2025) ──
-    if (tabsContainer) {
-        tabsContainer.innerHTML = '';
-        ALL_YEARS.forEach(year => {
-            const tab = document.createElement('div');
-            tab.className = 'enc-tab' + (year === activeYear ? ' active' : '');
-            tab.textContent = year;
-            tab.dataset.year = year;
-            tab.setAttribute('role', 'tab');
-            tab.setAttribute('aria-selected', year === activeYear ? 'true' : 'false');
-            tab.addEventListener('click', () => switchYear(year));
-            tabsContainer.appendChild(tab);
-        });
-    }
+    // Una pestaña por cada año
+    // arranco en el primer año y subo de a uno (year++ suma 1) hasta llegar al último inclusive
+    for (let year = PRIMER_ANIO; year <= ULTIMO_ANIO; year++) {
+        const tab = document.createElement('div'); // creo un div nuevo, todavía suelto (no está en la página)
+        tab.className = 'enc-tab'; // le pongo la clase CSS 'enc-tab' para que tome el estilo de pestaña
+        // textContent es el texto que se ve dentro del elemento; acá el número del año (ej: 2018)
+        tab.textContent = year;
+        // dataset permite guardar datos propios en el elemento: esto crea el atributo data-year="2018" en el HTML.
+        // Después lo leo para saber a qué año corresponde cada pestaña.
+        tab.dataset.year = year;
+        tab.setAttribute('role', 'tab'); // atributo role='tab' para que los lectores de pantalla sepan que es una pestaña
+        // addEventListener le dice al elemento "cuando pase tal evento, ejecutá esta función".
+        // Acá el evento es 'click'. La función de adentro es un callback (una función que se
+        // pasa para que se ejecute más tarde, no ahora).
+        tab.addEventListener('click', function () {
+            switchYear(year); // al hacer clic, voy a este año (year queda recordado porque el let del for es nuevo en cada vuelta)
+        }); // fin del callback del clic
+        tabsContainer.appendChild(tab); // meto la pestaña dentro del contenedor, así aparece en la página
+    } // fin del for
 
-    // ── 2. Asociar eventos a los botones de acción ──
-    const submitBtn = document.getElementById('submit-survey');
-    if (submitBtn) {
-        submitBtn.addEventListener('click', submitSurvey);
-    }
+    // al botón de enviar le asigno submitSurvey: cuando lo clickean, se corre esa función (sin paréntesis: paso la función, no la ejecuto)
+    document.getElementById('submit-survey').addEventListener('click', submitSurvey);
+    // al botón de reiniciar le asigno una función que borra los votos del año que esté activo en ese momento
+    document.getElementById('reset-survey').addEventListener('click', function () {
+        resetYear(activeYear); // uso activeYear dentro del callback para tomar el año vigente al momento del clic, no el de cuando se armó la página
+    }); // fin del callback
 
-    const resetBtn = document.getElementById('reset-survey');
-    if (resetBtn) {
-        resetBtn.addEventListener('click', () => resetYear(activeYear));
-    }
-
-    // ── 3. Cargar y mostrar el año activo inicial ──
-    await switchYear(activeYear);
+    // muestro el año inicial (el de la URL o el último)
+    switchYear(activeYear);
 }
 
 /**
- * Cambia el año visible en la encuesta y actualiza el estado de navegación
+ * Cambia el año visible: actualiza la URL, la pestaña activa y el panel.
+ * (También la usa search.js para saltar de año sin recargar.)
+ *
+ * Recibe: year (número del año al que se quiere ir).
+ * No devuelve nada útil (por ser async devuelve una Promise vacía).
+ * Se llama al hacer clic en una pestaña, desde init y desde search.js.
+ *
+ * Paso a paso:
+ * 1. Guarda el año nuevo como año activo y esconde mensajes viejos.
+ * 2. Cambia la URL sin recargar la página.
+ * 3. Marca como activa solo la pestaña de ese año.
+ * 4. Esconde todos los paneles.
+ * 5. Busca el panel del año; si no existe, lo crea (esto tarda porque descarga datos).
+ * 6. Si mientras tanto el usuario cambió a otro año, no muestra este.
+ * 7. Si no, le pone la clase 'active' al panel para que se vea.
  */
 async function switchYear(year) {
-    activeYear = year;
+    activeYear = year; // guardo el año nuevo en la variable global
+    hideFeedback(); // borro cualquier mensaje de aviso que hubiera quedado
 
-    // Actualizar URL en barra de direcciones sin recargar
-    try {
-        const newUrl = new URL(window.location.href);
-        newUrl.searchParams.set('y', year);
-        window.history.pushState({ year: year }, '', newUrl.toString());
-    } catch (e) {
-        // En entornos restrictivos de iframe ignorar
-    }
+    // Actualizar la URL sin recargar la página
+    // history.replaceState cambia la URL de la barra del navegador sin recargar la página
+    // y sin agregar una entrada nueva al historial (no se llena el botón "atrás").
+    // Sus 3 parámetros: datos de estado (acá null = nada), título (no se usa, queda vacío) y la URL nueva.
+    window.history.replaceState(null, '', 'encuesta.html?y=' + year);
 
-    // Actualizar encabezado del navegador
-    const navYearDisplay = document.getElementById('navYearDisplay');
-    if (navYearDisplay) {
-        navYearDisplay.textContent = 'Encuesta ' + year;
-    }
+    // Marcar la pestaña del año elegido
+    // querySelectorAll devuelve la lista de todos los elementos que coinciden con el selector CSS; forEach recorre uno por uno
+    document.querySelectorAll('.enc-tab').forEach(function (tab) {
+        // Number() convierte el texto de dataset.year a número, así puedo compararlo con year.
+        // esActual vale true solo en la pestaña del año elegido.
+        const esActual = Number(tab.dataset.year) === year;
+        // classList.toggle('active', condición) agrega la clase si la condición es true y la saca si es false.
+        // Así solo la pestaña actual queda con 'active' (que en el CSS la pinta distinta).
+        tab.classList.toggle('active', esActual);
+        // aria-selected es un atributo de accesibilidad: le avisa a lectores de pantalla cuál pestaña está elegida. Pide el texto 'true'/'false'; el ? : es un if corto
+        tab.setAttribute('aria-selected', esActual ? 'true' : 'false');
+    }); // fin del forEach de pestañas
 
-    // Actualizar estado activo en pestañas
-    document.querySelectorAll('.enc-tab').forEach(t => {
-        const isCurrent = Number(t.dataset.year) === year;
-        t.classList.toggle('active', isCurrent);
-        t.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
-    });
+    // Ocultar todos los paneles
+    // recorro todos los paneles de años que ya existen
+    document.querySelectorAll('.enc-year-panel').forEach(function (panel) {
+        panel.classList.remove('active'); // classList.remove saca la clase 'active' (el CSS lo oculta)
+    }); // fin del forEach de paneles
 
-    // Ocultar todos los paneles existentes
-    document.querySelectorAll('.enc-year-panel').forEach(p => {
-        p.classList.remove('active');
-    });
-
-    // Buscar o construir panel del año seleccionado
-    let panel = document.getElementById('panel-' + year);
+    // Mostrar el panel del año (si todavía no existe, se crea)
+    let panel = document.getElementById('panel-' + year); // busco el panel de este año; si no existe, getElementById devuelve null
+    // !panel es true cuando panel es null (o sea no existe todavía)
     if (!panel) {
+        // await espera a que renderYearPanel termine de bajar los datos y armar el panel.
+        // Mientras tanto la página sigue andando; después la función continúa desde acá.
         panel = await renderYearPanel(year);
+    } // fin del if (panel inexistente)
+    // Si mientras cargaba el usuario eligió otro año, no mostrar este panel.
+    // Mientras esperábamos, activeYear pudo cambiar (el usuario clickeó otra pestaña).
+    // En ese caso este año ya no corresponde y salgo sin mostrarlo.
+    if (activeYear !== year) {
+        return; // return corta la función acá
     }
-
+    // panel puede ser null si falló la descarga; solo si existe le pongo 'active' para mostrarlo
     if (panel) {
-        panel.classList.add('active');
+        panel.classList.add('active'); // classList.add agrega la clase 'active' (el CSS lo hace visible)
     }
-
-    hideFeedback();
 }
 
 /**
- * Genera el DOM del panel para un año con todas sus tarjetas de candidatos
+ * Crea el panel de un año con una sección por categoría y una tarjeta por nominado.
+ *
+ * Recibe: year (número del año).
+ * Devuelve (como Promise): el div del panel ya insertado en la página,
+ * o null si no se pudieron cargar los datos.
+ * Se llama desde switchYear, solo la primera vez que se entra a un año.
+ *
+ * Paso a paso:
+ * 1. Muestra "Cargando..." y espera los datos del año (loadYearData).
+ * 2. Si no hay datos, muestra un error y devuelve null.
+ * 3. Prepara el lugar para los votos de ese año.
+ * 4. Crea el div del panel.
+ * 5. Por cada categoría del JSON: anota que su voto es null (nada elegido todavía),
+ *    crea el bloque con su título y una grilla, y mete una tarjeta por cada nominado.
+ * 6. Antes de insertar revisa que otro clic no haya creado ya el mismo panel
+ *    (si hubo dos cargas en paralelo); si es así, devuelve el que ya estaba.
+ * 7. Inserta el panel en la página y lo devuelve.
  */
 async function renderYearPanel(year) {
-    const panelsContainer = document.getElementById('yearPanels');
-    if (!panelsContainer) return null;
-
+    // aviso al usuario que se están cargando los datos ('info' es el tipo de mensaje)
     showFeedback('Cargando nominados del año ' + year + '...', 'info');
+    // espero los nominados del año; data es un objeto donde cada clave es una categoría y su valor la lista de nominados
     const data = await loadYearData(year);
-    hideFeedback();
 
+    // !data es true si data es null, o sea si falló la descarga
     if (!data) {
-        showFeedback('No fue posible cargar los nominados del año ' + year + '.', 'error');
-        return null;
-    }
+        // mensaje de error para el usuario (largo, por eso va en una sola línea aparte)
+        showFeedback('No se pudieron cargar los nominados del año ' + year + '. Revisá que el servidor esté funcionando y recargá la página.', 'error');
+        return null; // devuelvo null: no hay panel para mostrar
+    } // fin del if (sin datos)
+    hideFeedback(); // los datos llegaron bien, saco el cartel de 'Cargando'
 
+    // Al principio no hay ningún voto en este año:
+    // creo un objeto vacío para los votos de este año; las claves se agregan abajo, una por categoría
+    currentVotes[year] = {};
+
+    // creo el div del panel (todavía no está en la página)
     const panel = document.createElement('div');
-    panel.className = 'enc-year-panel';
-    panel.id = 'panel-' + year;
+    panel.className = 'enc-year-panel'; // clase CSS para darle estilo al panel
+    panel.id = 'panel-' + year; // id único, por ej. 'panel-2025'; así después lo encuentro con getElementById
 
-    // Generar las 7 categorías canónicas
-    CANONICAL_CATEGORIES.forEach(categoryName => {
-        const nominees = data[categoryName] || [];
-        if (!nominees || nominees.length === 0) return;
+    // Las categorías salen del propio JSON, en el mismo orden
+    // for...in recorre las CLAVES de un objeto; acá categoryName va tomando cada nombre
+    // de categoría ('Game of the Year', etc.), en el orden en que están en el JSON.
+    for (const categoryName in data) {
+        currentVotes[year][categoryName] = null; // al principio no hay voto en esa categoría: null significa 'ningún valor / nada elegido'
 
-        const block = document.createElement('div');
-        block.className = 'category-block';
-        block.dataset.category = categoryName;
-        if (CATEGORY_ANCHOR_MAP[categoryName]) {
-            block.id = CATEGORY_ANCHOR_MAP[categoryName];
-        }
+        const block = document.createElement('div'); // div que agrupa título y tarjetas de la categoría
+        block.className = 'category-block'; // clase CSS del bloque
+        // INFO_CATEGORIAS viene de search.js; si esta categoría figura ahí, uso su dato 'ancla'
+        if (INFO_CATEGORIAS[categoryName]) {
+            // le pongo ese id al bloque para que el buscador pueda saltar directo a esta categoría
+            block.id = INFO_CATEGORIAS[categoryName].ancla; // para que el buscador pueda saltar acá
+        } // fin del if
 
-        const title = document.createElement('h2');
-        title.className = 'category-title';
-        title.textContent = categoryName;
-        block.appendChild(title);
+        const title = document.createElement('h2'); // h2 = título de la sección
+        title.className = 'category-title'; // clase CSS del título
+        title.textContent = categoryName; // el texto del título es el nombre de la categoría
+        block.appendChild(title); // meto el título dentro del bloque (appendChild agrega un elemento hijo al final)
 
-        const grid = document.createElement('div');
-        grid.className = 'candidate-grid';
+        const grid = document.createElement('div'); // div que va a contener las tarjetas en forma de grilla
+        grid.className = 'candidate-grid'; // clase CSS de la grilla
 
-        nominees.forEach(nom => {
-            const card = document.createElement('div');
-            card.className = 'candidate-card survey-card';
-            card.dataset.category = categoryName;
-            card.dataset.nominee = nom.name;
+        // data[categoryName] es la lista (array) de nominados de esta categoría; forEach pasa uno por uno como 'nominee'
+        data[categoryName].forEach(function (nominee) {
+            // createCard arma la tarjeta de ese nominado y la meto en la grilla
+            grid.appendChild(createCard(nominee, categoryName, year));
+        }); // fin del forEach de nominados
 
-            // Comprobar si ya estaba seleccionado previamente
-            if (currentVotes[year] && currentVotes[year][categoryName] === nom.name) {
-                card.classList.add('card--selected');
-            }
+        block.appendChild(grid); // pongo la grilla dentro del bloque
+        panel.appendChild(block); // pongo el bloque terminado dentro del panel
+    } // fin del for de categorías
 
-            // Normalizar ruta de portada
-            let imagePath = nom.image || '';
-            if (imagePath.startsWith('../')) {
-                imagePath = imagePath.slice(3);
-            }
-
-            const img = document.createElement('img');
-            img.className = 'candidate-card__image';
-            img.src = imagePath;
-            img.alt = nom.name;
-            img.loading = 'lazy';
-            card.appendChild(img);
-
-            const h3 = document.createElement('h3');
-            h3.className = 'candidate-card__title';
-            h3.textContent = nom.name;
-            card.appendChild(h3);
-
-            // ── Evento de Selección / Exclusión Mutua / Deselección ──
-            card.addEventListener('click', () => {
-                handleCardClick(card, categoryName, nom.name, year);
-            });
-
-            grid.appendChild(card);
-        });
-
-        block.appendChild(grid);
-        panel.appendChild(block);
-    });
-
-    panelsContainer.appendChild(panel);
-    return panel;
+    // Si dos clics cargaron el mismo año a la vez, usar el panel que ya se creó (así no queda un panel duplicado)
+    const panelExistente = document.getElementById('panel-' + year); // busco si ya hay un panel con ese id en la página
+    if (panelExistente) { // si ya existe...
+        return panelExistente; // ...devuelvo ese y tiro el que acabo de armar
+    } // fin del if
+    // busco el contenedor general de paneles y le agrego este
+    document.getElementById('yearPanels').appendChild(panel);
+    return panel; // devuelvo el panel nuevo
 }
 
-// ═══════════════════════════════════════════════════════════════════
-//  INTERACCIÓN: SELECCIÓN, EXCLUSIÓN MUTUA Y DESELECCIÓN
-// ═══════════════════════════════════════════════════════════════════
+/**
+ * Crea la tarjeta de un nominado (imagen + nombre) que se puede elegir con un clic.
+ *
+ * Recibe: nominee (objeto con al menos 'name' e 'image'), categoryName (texto
+ * con el nombre de la categoría) y year (número del año).
+ * Devuelve: el div de la tarjeta, listo para meter en la grilla.
+ * Se llama desde renderYearPanel, una vez por cada nominado.
+ */
+function createCard(nominee, categoryName, year) {
+    const card = document.createElement('div'); // div de la tarjeta
+    card.className = 'candidate-card'; // clase CSS de la tarjeta
+
+    // En el JSON la imagen viene como "../imagenes/...", la pasamos a "imagenes/..." (todas las páginas están en la raíz)
+    const img = document.createElement('img'); // elemento <img> para la foto
+    img.className = 'candidate-card__image'; // clase CSS de la imagen
+    // .replace('../', '') reemplaza el primer '../' del texto por nada, o sea lo borra; src es la dirección de la imagen
+    img.src = nominee.image.replace('../', '');
+    // alt es el texto alternativo: se lee si la imagen no carga o con lector de pantalla
+    img.alt = nominee.name;
+    // loading = 'lazy': el navegador baja la imagen recién cuando está por verse (ahorra datos)
+    img.loading = 'lazy';
+    card.appendChild(img); // pongo la imagen dentro de la tarjeta
+
+    const title = document.createElement('h3'); // h3 = nombre del juego
+    title.className = 'candidate-card__title'; // clase CSS del título de la tarjeta
+    title.textContent = nominee.name; // el texto es el nombre del nominado
+    card.appendChild(title); // título adentro de la tarjeta
+
+    // al hacer clic en la tarjeta se ejecuta el callback, que llama a handleCardClick con los datos de esta tarjeta
+    card.addEventListener('click', function () {
+        handleCardClick(card, categoryName, nominee.name, year); // paso la tarjeta, la categoría, el nombre y el año
+    }); // fin del callback
+
+    return card; // devuelvo la tarjeta terminada
+}
 
 /**
- * Controla la selección interactiva de una tarjeta de candidato.
- * - Si ya está seleccionada: se deselecciona (toggle off) y el voto queda en null.
- * - Si no está seleccionada: deselecciona cualquier otra en la misma categoría y la marca.
+ * Selección de una tarjeta:
+ * - Si ya estaba elegida, se desmarca y el voto de esa categoría vuelve a null.
+ * - Si no, se desmarca la otra elegida de la misma categoría y se marca esta.
+ *
+ * Recibe: card (el div clickeado), categoryName (categoría), nomineeName (nombre
+ * del nominado) y year (año).
+ * No devuelve nada (solo cambia clases del HTML y el objeto currentVotes).
+ * Se llama desde el clic de cada tarjeta (ver createCard).
+ * Como en cada categoría se puede elegir un solo nominado, es como un "radio button".
+ *
+ * Paso a paso:
+ * 1. Mira si la tarjeta ya tiene la clase 'card--selected'.
+ * 2. Si la tiene: se la saca, anota null en el voto y termina (return).
+ * 3. Si no: sube hasta el bloque de la categoría con closest.
+ * 4. Le saca 'card--selected' a todas las tarjetas de ese bloque.
+ * 5. Se la pone a esta y guarda el nombre como voto.
  */
 function handleCardClick(card, categoryName, nomineeName, year) {
-    const isAlreadySelected = card.classList.contains('card--selected');
-    const categoryBlock = card.closest('.category-block');
+    // classList.contains devuelve true si el elemento tiene esa clase; acá, si esta tarjeta ya estaba elegida
+    if (card.classList.contains('card--selected')) {
+        card.classList.remove('card--selected'); // la desmarco (saco la clase)
+        currentVotes[year][categoryName] = null; // el voto de esta categoría vuelve a 'nada elegido'
+        return; // salgo: no hay nada más que hacer
+    } // fin del if
 
-    if (isAlreadySelected) {
-        // Deselección / Toggle off: se remueve la clase y se asigna null
-        card.classList.remove('card--selected');
-        if (!currentVotes[year]) currentVotes[year] = {};
-        currentVotes[year][categoryName] = null;
-    } else {
-        // Exclusión mutua: remover selección previa en este bloque de categoría
-        if (categoryBlock) {
-            const previousCards = categoryBlock.querySelectorAll('.candidate-card.card--selected');
-            previousCards.forEach(c => c.classList.remove('card--selected'));
-        }
-        // Marcar la nueva tarjeta seleccionada
-        card.classList.add('card--selected');
-        if (!currentVotes[year]) currentVotes[year] = {};
-        currentVotes[year][categoryName] = nomineeName;
-    }
+    // closest sube por los elementos padre hasta encontrar el primero que coincida con el selector; acá, el bloque de la categoría
+    const block = card.closest('.category-block');
+    // busco dentro del bloque las tarjetas que estén elegidas (debería haber una sola o ninguna) y las recorro
+    block.querySelectorAll('.card--selected').forEach(function (otherCard) {
+        otherCard.classList.remove('card--selected'); // desmarco la otra tarjeta
+    }); // fin del forEach
+
+    card.classList.add('card--selected'); // marco esta tarjeta como elegida
+    currentVotes[year][categoryName] = nomineeName; // guardo el nombre del nominado como voto de esta categoría y año
 }
 
-// ═══════════════════════════════════════════════════════════════════
-//  ENVÍO DE VOTACIÓN AL BACKEND (POST /api/vote)
-// ═══════════════════════════════════════════════════════════════════
+// ───────────────── ENVÍO DE VOTOS (POST /api/vote) ─────────────────
 
 /**
- * Recopila los votos de las 7 categorías canónicas y los envía al backend
+ * Envía los votos del año activo al servidor.
+ * Formato: { "year": 2025, "votes": { "Game of the Year": "Nombre" o null, ... } }
+ * Siempre van las 7 categorías; las que no se eligieron van como null.
+ *
+ * No recibe nada. No devuelve nada útil (es async, devuelve una Promise vacía).
+ * Se llama al hacer clic en el botón "Enviar mi votación" (conectado en init).
+ *
+ * Paso a paso:
+ * 1. Toma el año activo y sus votos; si todavía no se cargaron, avisa y corta.
+ * 2. Arma el payload (paquete de datos) con el año y los votos.
+ * 3. Deshabilita el botón y cambia su texto para que no lo aprieten dos veces.
+ * 4. Hace un POST a 'api/vote' con el paquete convertido a texto JSON.
+ *    (POST = mandar datos al servidor; GET, que es lo normal de fetch, es pedirlos.)
+ * 5. Si el servidor contesta bien: mensaje de éxito y marca el año como enviado.
+ * 6. Si contesta con error: intenta leer su mensaje; si no puede, usa uno genérico.
+ * 7. Si no hubo conexión (el fetch tira error): avisa que no se pudo conectar.
+ * 8. Pase lo que pase, vuelve a habilitar el botón y le restaura el texto.
  */
 async function submitSurvey() {
-    const submitBtn = document.getElementById('submit-survey');
-    const year = activeYear;
+    const year = activeYear; // el año que está activo ahora
+    const votes = currentVotes[year]; // los votos de ese año (puede ser undefined si todavía no se creó el panel)
 
-    // Asegurar estructura con las 7 categorías canónicas
-    // Las no seleccionadas se serializan explícitamente como null
-    const yearVotes = currentVotes[year] || {};
-    const votesPayload = {};
-    CANONICAL_CATEGORIES.forEach(cat => {
-        const val = yearVotes[cat];
-        votesPayload[cat] = (val !== undefined && val !== null && val !== '') ? val : null;
-    });
+    // !votes es true si no hay votos cargados: es que el panel de ese año aún no se armó
+    if (!votes) {
+        // aviso al usuario con tipo 'error' (se pinta distinto)
+        showFeedback('Todavía no se cargaron los nominados del año ' + year + '.', 'error');
+        return; // salgo sin enviar nada
+    } // fin del if
 
+    // payload = el paquete de datos que viaja al servidor; es un objeto con 2 propiedades
     const payload = {
-        year: year,
-        votes: votesPayload
-    };
+        year: year, // year: year es lo mismo que year, la clave se llama igual que la variable
+        votes: votes // los votos del año
+    }; // fin del objeto payload
 
-    // Resolver URL del endpoint del servidor backend
-    let apiEndpoint = '/api/vote';
-    if (!window.location.origin || window.location.origin === 'null' || window.location.protocol === 'file:') {
-        apiEndpoint = 'http://localhost:8000/api/vote';
-    }
-
-    // Feedback visual y bloqueo del botón durante la petición
-    if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Enviando votación...';
-    }
-    showFeedback('Enviando tus votos para el año ' + year + ' al servidor...', 'info');
+    // Bloqueamos el botón mientras se envía (así no lo aprietan dos veces seguidas)
+    const submitBtn = document.getElementById('submit-survey'); // busco el botón en el HTML
+    submitBtn.disabled = true; // disabled = true hace que el botón no se pueda clickear
+    submitBtn.textContent = 'Enviando votación...'; // cambio el texto del botón para que se vea que está trabajando
+    showFeedback('Enviando tus votos para el año ' + year + ' al servidor...', 'info'); // mensaje de aviso tipo 'info'
 
     try {
-        const response = await fetch(apiEndpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+        // fetch, esta vez para ENVIAR: await espera la respuesta del servidor; el segundo parámetro es un objeto con las opciones del pedido
+        const response = await fetch('api/vote', {
+            method: 'POST', // method: 'POST' = quiero mandar datos, no pedirlos
+            // headers son datos extra del pedido; Content-Type avisa al servidor que lo que mando está en formato JSON
+            headers: { 'Content-Type': 'application/json' },
+            // JSON.stringify convierte el objeto payload en texto JSON (ej: '{"year":2025,"votes":{...}}') porque por internet viajan textos, no objetos; body es el contenido del pedido
             body: JSON.stringify(payload)
-        });
+        }); // fin de las opciones de fetch
 
-        if (response.ok) {
-            const result = await response.json().catch(() => ({}));
-            submittedYears[year] = votesPayload;
+        if (response.ok) { // ok = el servidor aceptó el voto
+            showFeedback('¡Votación para ' + year + ' guardada con éxito! Muchas gracias por participar.', 'success'); // mensaje de éxito (tipo 'success')
+            markSubmitted(year, true); // marco el panel y la pestaña del año como 'enviado'
+        } else { // si no fue ok...
+            // Si el servidor manda un mensaje de error, lo mostramos
+            let message = 'Error del servidor (' + response.status + ')'; // armo un mensaje genérico con el código del error (ej: 500 = falló el servidor); response.status es ese número
+            // el servidor a veces manda un JSON con un 'message'; lo intento leer, pero puede no ser JSON y por eso va otro try
+            try {
+                const errorData = await response.json(); // leo la respuesta como JSON (si no es JSON, tira error y salta al catch)
+                // si existe errorData.message (no es vacío ni undefined)...
+                if (errorData.message) {
+                    message = errorData.message; // ...uso el mensaje que mandó el servidor
+                } // fin del if
+            } catch (error) { // no era JSON; no hago nada
+                // La respuesta no era JSON: dejamos el mensaje genérico
+            }
+            showFeedback('⚠️ No se pudo registrar la votación: ' + message, 'error'); // aviso el error al usuario, con el motivo
+        } // fin del if/else de response.ok
+    } catch (error) { // este catch agarra errores de red (sin internet, servidor apagado)
+        console.error('[Encuesta] Error al enviar a /api/vote', error); // dejo el detalle técnico en la consola
+        showFeedback('⚠️ No se pudo conectar con el servidor. Revisá que esté funcionando.', 'error'); // aviso al usuario que no hubo conexión
+    } // fin del try/catch
 
-            // Retroalimentación de éxito
-            showFeedback('¡Votación para ' + year + ' guardada con éxito! Muchas gracias por participar.', 'success');
+    submitBtn.disabled = false; // vuelvo a habilitar el botón (corre siempre, haya salido bien o mal)
+    submitBtn.textContent = 'Enviar mi votación'; // le devuelvo su texto original
+}
 
-            // Marcar visualmente el panel y la pestaña como enviados
-            const panel = document.getElementById('panel-' + year);
-            if (panel) panel.classList.add('submitted');
-            const tab = document.querySelector('.enc-tab[data-year="' + year + '"]');
-            if (tab) tab.classList.add('submitted');
-
-            updateCSVButton();
-        } else {
-            const errorData = await response.json().catch(() => null);
-            const msg = errorData && errorData.message ? errorData.message : ('Error del servidor (' + response.status + ')');
-            showFeedback('⚠️ No se pudo registrar la votación: ' + msg, 'error');
-        }
-    } catch (err) {
-        console.error('[Encuesta] Error en fetch a /api/vote:', err);
-        showFeedback('⚠️ No se pudo conectar con el servidor local (/api/vote). Asegúrate de que el servidor backend esté corriendo en el puerto 8000.', 'error');
-    } finally {
-        if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Enviar mi votación';
-        }
+/**
+ * Marca (o desmarca) el panel y la pestaña de un año como "enviado".
+ *
+ * Recibe: year (número del año) y submitted (true para marcar, false para desmarcar).
+ * No devuelve nada; solo cambia clases CSS (el CSS usa 'submitted' para mostrar el estado).
+ * Se llama desde submitSurvey (con true) y resetYear (con false).
+ */
+function markSubmitted(year, submitted) {
+    const panel = document.getElementById('panel-' + year); // busco el panel del año por su id (null si todavía no existe)
+    // busco la pestaña con un selector de atributo: .enc-tab[data-year="2025"] es el elemento con clase enc-tab y data-year igual a 2025
+    const tab = document.querySelector('.enc-tab[data-year="' + year + '"]');
+    // reviso que existan antes de usarlos, para que no explote con null
+    if (panel) {
+        // toggle con segundo parámetro: pone la clase si submitted es true y la saca si es false
+        panel.classList.toggle('submitted', submitted);
+    }
+    if (tab) {
+        // lo mismo para la pestaña
+        tab.classList.toggle('submitted', submitted);
     }
 }
 
 /**
- * Reinicia las selecciones del año especificado, borrando el resaltado dorado
+ * Borra todas las selecciones del año indicado.
+ *
+ * Recibe: year (número del año).
+ * No devuelve nada. Se llama desde el botón de reiniciar (ver init).
+ * Saca las marcas de la pantalla y también pone los votos en null en currentVotes.
  */
 function resetYear(year) {
-    const panel = document.getElementById('panel-' + year);
+    const panel = document.getElementById('panel-' + year); // busco el panel de ese año
+    // si el panel existe, desmarco todas sus tarjetas elegidas
     if (panel) {
-        panel.querySelectorAll('.candidate-card.card--selected').forEach(c => {
-            c.classList.remove('card--selected');
-        });
-        panel.classList.remove('submitted');
-    }
+        panel.querySelectorAll('.card--selected').forEach(function (card) { // recorro las tarjetas elegidas
+            card.classList.remove('card--selected'); // le saco la marca visual
+        }); // fin del forEach
+    } // fin del if
+    markSubmitted(year, false); // le saco también la marca de 'enviado'
 
-    const tab = document.querySelector('.enc-tab[data-year="' + year + '"]');
-    if (tab) tab.classList.remove('submitted');
+    // Todos los votos del año vuelven a null
+    const votes = currentVotes[year]; // el objeto con los votos de ese año
+    // recorro cada categoría del objeto de votos (for...in da las claves)
+    for (const categoryName in votes) {
+        votes[categoryName] = null; // vuelvo cada voto a null
+    } // fin del for
 
-    // Restablecer valores a null
-    if (!currentVotes[year]) currentVotes[year] = {};
-    CANONICAL_CATEGORIES.forEach(cat => {
-        currentVotes[year][cat] = null;
-    });
-
-    delete submittedYears[year];
-    updateCSVButton();
-    showFeedback('Se han reiniciado los votos para el año ' + year + '.', 'info');
+    showFeedback('Se han reiniciado los votos para el año ' + year + '.', 'info'); // aviso al usuario que se reinició
 }
+
+// ───────────────── MENSAJES DE AVISO ─────────────────
 
 /**
- * Actualiza la visibilidad y estado del botón de descarga CSV
+ * Muestra un mensaje debajo de los botones. "type" puede ser info, success o error.
+ *
+ * Recibe: message (el texto a mostrar) y type (cuál estilo usar).
+ * No devuelve nada. Se llama desde casi todas las funciones de arriba.
  */
-function updateCSVButton() {
-    const csvBtn = document.getElementById('csvBtn');
-    if (!csvBtn) return;
-    const hasSubmissions = Object.keys(submittedYears).length > 0;
-    csvBtn.disabled = !hasSubmissions;
-    csvBtn.classList.toggle('hidden', !hasSubmissions);
-}
-
-/**
- * Descarga local en formato CSV de todos los votos emitidos
- */
-function downloadCSV() {
-    const BOM = '\uFEFF';
-    const header = '"Año","Categoría","Mi Voto"';
-    const rows = [header];
-
-    const sortedYears = Object.keys(submittedYears).map(Number).sort();
-    sortedYears.forEach(year => {
-        const picks = submittedYears[year];
-        CANONICAL_CATEGORIES.forEach(cat => {
-            const pick = picks[cat] !== null ? picks[cat] : 'NaN';
-            const escapedPick = String(pick).replace(/"/g, '""');
-            rows.push('"' + year + '","' + cat + '","' + escapedPick + '"');
-        });
-    });
-
-    const csvContent = BOM + rows.join('\r\n');
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'votos_encuesta_goty.csv';
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-}
-
-// ═══════════════════════════════════════════════════════════════════
-//  UTILIDADES DE MENSAJES DE FEEDBACK
-// ═══════════════════════════════════════════════════════════════════
-
 function showFeedback(message, type) {
-    const feedbackEl = document.getElementById('surveyFeedback');
-    if (!feedbackEl) return;
-    feedbackEl.textContent = message;
-    feedbackEl.className = 'survey-feedback show ' + (type || 'info');
+    const feedback = document.getElementById('surveyFeedback'); // busco el div donde se muestran los avisos
+    feedback.textContent = message; // pongo el texto del mensaje
+    // className reemplaza todas las clases del elemento; 'show' lo hace visible y type (info/success/error) le da el color
+    feedback.className = 'survey-feedback show ' + type;
 }
 
+/**
+ * Esconde el mensaje de aviso: vacía el texto y deja solo la clase base.
+ * No recibe ni devuelve nada. Se llama al cambiar de año y cuando terminan de cargar los datos.
+ */
 function hideFeedback() {
-    const feedbackEl = document.getElementById('surveyFeedback');
-    if (!feedbackEl) return;
-    feedbackEl.textContent = '';
-    feedbackEl.className = 'survey-feedback';
+    const feedback = document.getElementById('surveyFeedback'); // busco el div de avisos
+    feedback.textContent = ''; // borro el texto (string vacío)
+    feedback.className = 'survey-feedback'; // sin 'show' no se ve
 }
 
-// ═══════════════════════════════════════════════════════════════════
-//  INICIALIZACIÓN AL CARGAR EL DOCUMENTO
-// ═══════════════════════════════════════════════════════════════════
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-} else {
-    init();
-}
+// ───────────────── INICIO ─────────────────
+// El script se carga al final del <body>, así que el HTML ya existe.
+// llamo a init para que arranque todo: esta es la línea que pone en marcha el archivo
+init();

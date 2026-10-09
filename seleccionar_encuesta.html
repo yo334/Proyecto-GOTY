@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <!-- ═══════════════════ TOP NAV ═══════════════════ -->
+    <!-- ═════════════════════════════════════ MENÚ SUPERIOR ═════════════════════════════════════ -->
     <nav class="top-nav">
         <div class="nav-left">
             <a href="index.html" class="nav-logo-link">
@@ -22,7 +22,7 @@
             </a>
         </div>
         <div class="nav-right">
-            <!-- Inline Search Box -->
+            <!-- Buscador del menú -->
             <div class="nav-search-container" id="nav-search-container">
                 <div class="search-panel" id="search-panel">
                     <div class="search-panel__input-wrap">
@@ -52,8 +52,8 @@
             <a href="seleccionar_encuesta.html" class="nav-link">VOTAR</a>
         </div>
     </nav>
-    <section class="main-layout main-layout--centered">
-        <div class="main-layout__content">
+    <section class="main-layout">
+        <div>
             <h2 class="section-title">Seleccionar Año de Encuesta</h2>
             <div class="year-grid">
                 <a class="year-card" href="encuesta.html?y=2014">
@@ -98,37 +98,7 @@
     <footer>
         &copy; GOTY Archive &nbsp;·&nbsp; The Game Awards 2014–2025
     </footer>
-    <!-- Scripts -->
     <script src="js/search.js"></script>
-    <script>
-        // Search overlay toggle
-        const toggleBtn = document.getElementById('nav-search-toggle');
-        const searchContainer = document.getElementById('nav-search-container');
-        const closeBtn = document.getElementById('search-close');
-        const navSearchInput = document.getElementById('search-input');
-
-        function openSearch(e) {
-            if (e) { e.preventDefault(); e.stopPropagation(); }
-            searchContainer.classList.add('active');
-            setTimeout(() => navSearchInput.focus(), 120);
-        }
-        function closeSearch(e) {
-            if (e) { e.preventDefault(); e.stopPropagation(); }
-            searchContainer.classList.remove('active');
-        }
-
-        if (toggleBtn) toggleBtn.addEventListener('click', openSearch);
-        if (closeBtn) closeBtn.addEventListener('click', closeSearch);
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
-
-        // Nav shrink on scroll
-        const topNav = document.querySelector('.top-nav');
-        if (topNav) {
-            window.addEventListener('scroll', () => {
-                topNav.classList.toggle('top-nav--scrolled', window.scrollY > 60);
-            });
-        }
-    </script>
 </body>
 
 </html>

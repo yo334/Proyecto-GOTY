@@ -1,7 +1,5 @@
-/* Main entry point - imports all CSS modules */
+/* Punto de entrada: importa todos los módulos de CSS (el orden importa) */
 @import url('base.css');
 @import url('nav.css');
-@import url('hero-index.css');
-@import url('index-page.css');
 @import url('year-pages.css');
-@import url('winner-banners.css');
+@import url('index-page.css');

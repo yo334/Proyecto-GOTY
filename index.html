@@ -17,7 +17,7 @@
 
 <body>
 
-    <!-- ═══════════════════ TOP NAV ═══════════════════ -->
+    <!-- ═════════════════════════════════════ MENÚ SUPERIOR ═════════════════════════════════════ -->
     <nav class="top-nav">
         <div class="nav-left">
             <a href="index.html" class="nav-logo-link">
@@ -25,7 +25,7 @@
             </a>
         </div>
         <div class="nav-right">
-            <!-- Inline Search Box -->
+            <!-- Buscador del menú -->
             <div class="nav-search-container" id="nav-search-container">
                 <div class="search-panel" id="search-panel">
                     <div class="search-panel__input-wrap">
@@ -56,9 +56,9 @@
         </div>
     </nav>
 
-    <!-- ═══════════════════ HERO (full viewport, logo only) ═══════════════════ -->
+    <!-- ═══════════════════ PORTADA (pantalla completa, solo el logo) ═══════════════════ -->
 
-    <header class="main-header">
+    <header>
         <div class="hero hero--index">
             <div class="hero__bg-image"></div>
             <div class="hero__content">
@@ -69,56 +69,56 @@
 
     <div class="divider"></div>
 
-    <!-- ═══════════════════ YEARS SECTION ═══════════════════ -->
-    <section id="years-section" class="main-layout main-layout--centered">
-        <div class="main-layout__content">
+    <!-- ═══════════════════ SECCIÓN DE AÑOS ═══════════════════ -->
+    <section id="years-section" class="main-layout">
+        <div>
             <h2 class="section-title">Seleccioná un año</h2>
             <div class="year-grid">
-                <a class="year-card" href="./Años/2014.html">
+                <a class="year-card" href="años.html?y=2014">
                     <div class="yr">2014</div>
                     <div class="goty-name">Dragon Age: Inquisition</div>
                 </a>
-                <a class="year-card" href="./Años/2015.html">
+                <a class="year-card" href="años.html?y=2015">
                     <div class="yr">2015</div>
                     <div class="goty-name">The Witcher 3: Wild Hunt</div>
                 </a>
-                <a class="year-card" href="./Años/2016.html">
+                <a class="year-card" href="años.html?y=2016">
                     <div class="yr">2016</div>
                     <div class="goty-name">Overwatch</div>
                 </a>
-                <a class="year-card" href="./Años/2017.html">
+                <a class="year-card" href="años.html?y=2017">
                     <div class="yr">2017</div>
                     <div class="goty-name">The Legend of Zelda: BotW</div>
                 </a>
-                <a class="year-card" href="./Años/2018.html">
+                <a class="year-card" href="años.html?y=2018">
                     <div class="yr">2018</div>
                     <div class="goty-name">God of War</div>
                 </a>
-                <a class="year-card" href="./Años/2019.html">
+                <a class="year-card" href="años.html?y=2019">
                     <div class="yr">2019</div>
                     <div class="goty-name">Sekiro: Shadows Die Twice</div>
                 </a>
-                <a class="year-card" href="./Años/2020.html">
+                <a class="year-card" href="años.html?y=2020">
                     <div class="yr">2020</div>
                     <div class="goty-name">The Last of Us Part II</div>
                 </a>
-                <a class="year-card" href="./Años/2021.html">
+                <a class="year-card" href="años.html?y=2021">
                     <div class="yr">2021</div>
                     <div class="goty-name">It Takes Two</div>
                 </a>
-                <a class="year-card" href="./Años/2022.html">
+                <a class="year-card" href="años.html?y=2022">
                     <div class="yr">2022</div>
                     <div class="goty-name">Elden Ring</div>
                 </a>
-                <a class="year-card" href="./Años/2023.html">
+                <a class="year-card" href="años.html?y=2023">
                     <div class="yr">2023</div>
                     <div class="goty-name">Baldur's Gate 3</div>
                 </a>
-                <a class="year-card" href="./Años/2024.html">
+                <a class="year-card" href="años.html?y=2024">
                     <div class="yr">2024</div>
                     <div class="goty-name">Astro Bot</div>
                 </a>
-                <a class="year-card" href="./Años/2025.html">
+                <a class="year-card" href="años.html?y=2025">
                     <div class="yr">2025</div>
                     <div class="goty-name">Clair Obscur: Expedition 33</div>
                 </a>
@@ -129,7 +129,7 @@
 
     <div class="divider"></div>
 
-    <!-- ═══════════════════ ENCUESTA BANNER ═══════════════════ -->
+    <!-- ═══════════════════ BANNER DE LA ENCUESTA ═══════════════════ -->
     <section class="survey-banner-section">
         <a href="seleccionar_encuesta.html" class="survey-banner" id="survey-link">
             <h2 class="survey-banner__title">¿Estás de acuerdo con los ganadores? Votá por tus ganadores acá</h2>
@@ -142,35 +142,7 @@
         &copy; 2025 GOTY Archive &nbsp;·&nbsp; Datos basados en The Game Awards
     </footer>
 
-    <!-- Scripts -->
     <script src="js/search.js"></script>
-    <script>
-        // Search overlay toggle
-        const toggleBtn = document.getElementById('nav-search-toggle');
-        const searchContainer = document.getElementById('nav-search-container');
-        const closeBtn = document.getElementById('search-close');
-        const navSearchInput = document.getElementById('search-input');
-
-        function openSearch(e) {
-            if (e) { e.preventDefault(); e.stopPropagation(); }
-            searchContainer.classList.add('active');
-            setTimeout(() => navSearchInput.focus(), 120);
-        }
-        function closeSearch(e) {
-            if (e) { e.preventDefault(); e.stopPropagation(); }
-            searchContainer.classList.remove('active');
-        }
-
-        toggleBtn.addEventListener('click', openSearch);
-        closeBtn.addEventListener('click', closeSearch);
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
-
-        // Nav shrink on scroll
-        const topNav = document.querySelector('.top-nav');
-        window.addEventListener('scroll', () => {
-            topNav.classList.toggle('top-nav--scrolled', window.scrollY > 60);
-        });
-    </script>
 
 
 </body>

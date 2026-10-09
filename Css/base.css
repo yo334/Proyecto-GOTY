@@ -1,9 +1,10 @@
 /*
- * Estilos globales del sitio web de premios GOTY
- * Define reset y variables de diseño consistentes
+ * BASE.CSS — Estilos globales del sitio GOTY
+ * Reset, variables (colores, sombras, radios), body, footer,
+ * foco del teclado y el estilo compartido de las tarjetas.
  */
 
-/* Aplica modelo de caja consistente en todos los elementos */
+/* Todos los elementos miden igual (borde incluido) y arrancan sin márgenes */
 *,
 *::before,
 *::after {
@@ -13,155 +14,163 @@
 }
 
 /* ─── VARIABLES ─────────────────────────────────────── */
-/* Define la paleta de colores y variables inspiradas en The Game Awards */
 :root {
-    /* ── BACKGROUNDS (blue-navy TGA palette) ── */
-    --bg:          #020510;       /* Deepest navy - hero base */
-    --bg-dark:     #020510;
-    --bg-surface:  #060c1e;       /* Slightly lighter navy */
-    --bg-card:     #0a1228;       /* Card backgrounds - blue-tinted */
-    --bg-section:  #060d20;       /* Section backgrounds */
+    /* Fondos azul marino */
+    --bg: #020510;
+    --bg-card: #0a1228;
 
-    /* ── PANELS ── */
-    --panel:       #0a1228;
+    /* Acentos cyan (neón) */
+    --neon-cyan: #00c8e8;
+    --neon-cyan-light: #60e0f8;
+    --neon-blue: #1450c8;
 
-    /* ── BLUE ACCENT PALETTE (TGA glow tones) ── */
-    --neon-cyan:        #00c8e8;
-    --neon-cyan-light:  #60e0f8;
-    --neon-cyan-dim:    #0090b0;
-    --neon-blue:        #1450c8;
-    --neon-blue-light:  #2060e0;
-    --neon-blue-dim:    #0a2880;
-    --neon-cyan-rgb:    0, 200, 232;    /* For rgba() usage */
-    --neon-blue-rgb:    20, 80, 200;
+    /* Acentos dorados */
+    --gold: #d4af37;
+    --gold-light: #f3d069;
 
-    /* ── GOLD ACCENT PALETTE ── */
-    --gold:         #d4af37;
-    --gold-primary: #c9a84c;
-    --gold-accent:  #c5a059;
-    --gold-light:   #f5d77f;
-    --gold2:        #f0d080;
+    /* Textos */
+    --text: #f0f0f4;
+    --muted: #7a84a0;
 
-    /* ── BORDERS ── */
-    --border:        rgba(212, 175, 55, 0.25);
-    --border-subtle: rgba(255, 255, 255, 0.06);
-    --border-blue:   rgba(0, 200, 232, 0.15);
+    /* Bordes */
+    --border: rgba(212, 175, 55, 0.25);      /* dorado suave */
+    --borde-cyan: rgba(0, 200, 232, 0.2);    /* cyan suave */
 
-    /* ── TEXT ── */
-    --text:       #f0f0f4;
-    --text-muted: #7a84a0;
-    --muted:      #7a84a0;
+    /* Sombras (solo tres en todo el sitio) */
+    --sombra-suave: 0 16px 48px rgba(0, 0, 0, 0.7);
+    --sombra-brillo: 0 0 24px rgba(0, 200, 232, 0.45);
+    --sombra-dorada: 0 0 24px rgba(212, 175, 55, 0.45);
 
-    /* ── GLOW SHADOWS ── */
-    --gold-glow:       0 0 25px rgba(212, 175, 55, 0.45);
-    --gold-glow-hover: 0 15px 40px rgba(212, 175, 55, 0.55);
-    --blue-glow:       0 0 25px rgba(0, 200, 232, 0.3);
+    /* Radios de las esquinas */
+    --radio-chico: 4px;
+    --radio-medio: 8px;
+    --radio-grande: 12px;
+
+    /* Transición única para todos los efectos */
+    --transicion: 0.3s ease;
+
+    /* Tipografía de los títulos */
+    --fuente-titulo: 'Bebas Neue', sans-serif;
 }
 
-
 /* ─── BASE ───────────────────────────────────────────── */
-/* Configuración base del documento HTML */
 html {
-    /* Habilita desplazamiento suave al navegar por anclas */
+    /* Desplazamiento suave al ir a una ancla (#seccion) */
     scroll-behavior: smooth;
 }
 
-/* Estilos base del body */
 body {
-    /* Fondo principal — gradiente azul navy TGA */
-    background:
-        radial-gradient(ellipse 120% 60% at 50% -10%,
-            rgba(20, 60, 180, 0.18) 0%,
-            transparent 60%),
-        linear-gradient(180deg, #020510 0%, #040918 50%, #020510 100%);
-    background-attachment: fixed;
-
-    /* Color de texto predeterminado */
+    background: var(--bg);
     color: var(--text);
-
-    /* Tipografía principal del sitio */
     font-family: 'Barlow', sans-serif;
-
-    /* Peso de fuente ligero para mejor legibilidad */
     font-weight: 300;
-
-    /* Asegura altura completa de viewport */
     min-height: 100vh;
-
-    /* Evita desbordamiento horizontal */
     overflow-x: hidden;
+
+    /* Deja lugar para la barra de navegación fija */
+    padding-top: 72px;
 }
 
-/* ─── GRAIN OVERLAY ─────────────────────────────────── */
-/* Capa de textura de grano sutil sobre todo el sitio */
-body::before {
-    /* Posiciona la textura como overlay fijo */
+/* Foco visible para quien navega con el teclado (un solo estilo para todo) */
+:focus-visible {
+    outline: 2px solid var(--neon-cyan);
+    outline-offset: 4px;
+}
+
+/* ─── TARJETAS (estilo compartido) ──────────────────── */
+/* Tarjetas de año, nominados, banner de encuesta y pestañas de año */
+.year-card,
+.candidate-card,
+.survey-banner,
+.enc-tab {
+    background: var(--bg-card);
+    border: 1px solid var(--borde-cyan);
+    border-radius: var(--radio-grande);
+    color: var(--text);
+    text-decoration: none;
+    transition: transform var(--transicion), border-color var(--transicion), box-shadow var(--transicion);
+}
+
+/* Al pasar el mouse (o con foco de teclado): se eleva, borde dorado y brillo cyan */
+.year-card:hover,
+.year-card:focus-visible,
+.candidate-card:hover,
+.survey-banner:hover,
+.survey-banner:focus-visible,
+.enc-tab:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    box-shadow: var(--sombra-brillo);
+}
+
+/* ─── SUBRAYADO ANIMADO (links del nav y botones de la encuesta) ── */
+.nav-link,
+.enc-btn {
+    position: relative;
+    transition: color var(--transicion);
+}
+
+/* Línea dorada que crece desde la izquierda */
+.nav-link::after,
+.enc-btn::after {
     content: '';
-    position: fixed;
-    inset: 0;
-
-    /* Imagen SVG procedural de ruido/grano */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-
-    /* Baja opacidad para efecto sutil */
-    opacity: 0.03;
-
-    /* Evita interferir con interacciones */
-    pointer-events: none;
-
-    /* Capa superior para que cubra todo */
-    z-index: 9999;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width var(--transicion);
 }
 
-/* ─── FOOTER ────────────────────────────────────────── */
-/* Estilos del pie de página */
+.nav-link:hover,
+.nav-link:focus-visible,
+.enc-btn:hover,
+.enc-btn:focus-visible {
+    color: var(--gold);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.enc-btn:hover::after,
+.enc-btn:focus-visible::after {
+    width: 100%;
+}
+
+/* ─── DIVISOR Y FOOTER ───────────────────────────────── */
+/* Línea dorada que separa secciones */
+.divider {
+    max-width: 900px;
+    height: 1px;
+    margin: 0 auto 64px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
 footer {
-    /* Línea divisoria superior con tono dorado */
     border-top: 1px solid var(--border);
-
-    /* Espaciado interno */
     padding: 32px 24px;
-
-    /* Centrado de contenido */
     text-align: center;
-
-    /* Tamaño pequeño para texto secundario */
     font-size: 0.75rem;
-
-    /* Color muted para jerarquía visual */
     color: var(--muted);
-
-    /* Espaciado de letras para estética premium */
     letter-spacing: 0.1em;
 }
 
-/* ─── DIVIDER ────────────────────────────────────────── */
-/* Línea decorativa divisoria entre secciones */
-.divider {
-    /* Ancho completo con máximo controlado */
-    width: 100%;
-    height: 1px;
-
-    /* Gradiente dorado sutil para elegancia */
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-
-    /* Centrado y margen inferior generoso */
-    margin: 0 auto 60px;
-    max-width: 900px;
-}
-
-/* ─── ANIMATIONS ────────────────────────────────────── */
-/* Animación de entrada suave con elevación */
-@keyframes fadeUp {
+/* ─── ANIMACIÓN DE ENTRADA ───────────────────────────── */
+/* Aparece subiendo un poco (logo, títulos y paneles de la encuesta) */
+@keyframes aparecer {
     from {
-        /* Estado inicial: invisible y desplazado */
         opacity: 0;
         transform: translateY(20px);
     }
 
     to {
-        /* Estado final: visible en posición natural */
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
     }
 }

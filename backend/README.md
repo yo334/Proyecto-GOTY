@@ -1,54 +1,50 @@
 # Backend - Proyecto GOTY
 
-Este es el servidor web en Python (Flask) para procesar la votación del proyecto GOTY.
-
-## Requisitos
-- Python 3.8+
+Servidor en Python con Flask. Sirve todo el sitio (HTML, CSS, JS, imágenes),
+arma las páginas de cada año y guarda los votos de la encuesta.
 
 ## Instalación
 
-1. Crea un entorno virtual (opcional pero recomendado):
-   ```bash
-   python -m venv venv
-   # En Windows:
-   venv\Scripts\activate
-   # En macOS/Linux:
-   source venv/bin/activate
-   ```
-
-2. Instala las dependencias:
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r backend/requirements.txt
+```
 
 ## Ejecución
 
-Inicia el servidor ejecutando:
+Desde la carpeta raíz del proyecto:
+
 ```bash
-python app.py
+python backend/app.py
 ```
 
-El servidor estará corriendo en `http://localhost:5000`.
+El sitio queda en `http://localhost:5000`. Para usar otro puerto: `PORT=5055 python backend/app.py`.
+
+## Páginas de los años
+
+Hay una sola página para todos los años: `años.html?y=2015` muestra 2015.
+`js/anio.js` la arma con los datos de `datos/AAAA.json` (igual que `encuesta.html`),
+así que funciona tanto con Flask como con Live Server.
+Para cambiar un nominado o una portada, se edita el JSON del año.
 
 ## Endpoints
 
-### 1. `POST /api/vote`
-Recibe los votos en formato JSON y los guarda en un archivo `votes.jsonl`. 
-Las respuestas se adjuntan línea por línea.
+| Método | Ruta          | Qué hace |
+|--------|---------------|----------|
+| POST   | `/api/vote`   | Guarda un voto en `datos/votos_encuestas.json`. Responde 201, o 400 si el voto es inválido. |
+| GET    | `/api/votes`  | Devuelve todos los votos en JSON. |
+| GET    | `/api/export` | Descarga todos los votos como CSV (`timestamp,year` + las 7 categorías; sin respuesta = `NaN`). |
 
-**Ejemplo de Payload:**
+Formato del voto (es el que manda `js/encuesta.js`):
+
 ```json
 {
-  "2023": {
-    "Acción": "Juego A",
-    "RPG": "Juego B"
-  },
-  "2022": {
-    "Aventura": "Juego C"
+  "year": 2025,
+  "votes": {
+    "Game of the Year": "Clair Obscur: Expedition 33",
+    "Best Independent Game": null
   }
 }
 ```
 
-### 2. `GET /api/export`
-Lee el archivo `votes.jsonl`, extrae todas las categorías votadas y genera un archivo `.csv` unificado.
-Si para una entrada faltan votos en alguna categoría de algún año, esos campos quedarán vacíos en el CSV (equivalente a NaN). Devuelve el archivo `votes_export.csv` para descargar.
+- `year`: número entero entre 2014 y 2025.
+- `votes`: solo las 7 categorías oficiales; el valor es el nombre elegido o `null` si no se respondió.

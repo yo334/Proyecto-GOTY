@@ -7,6 +7,7 @@ Este es un proyecto web escolar para la materia Laboratorio de Aplicaciones. El 
 - HTML5 (Estructura)
 - CSS (Estilos, metidos en la carpeta `/Css`, lo se, totalmente inesperado)
 - Vanilla JavaScript (Lógica, metido en la carpeta `/js`)
+- Python + Flask (Servidor y votos, en la carpeta `/backend`; para levantarlo: `python backend/app.py`, ver `backend/README.md`)
 
 ## Reglas de las carpetas
 - Todos los estilos van separados por páginas en la carpeta `/Css`.

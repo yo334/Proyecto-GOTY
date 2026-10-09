@@ -1,231 +1,87 @@
-/* ═══════════════════════════════════════════════════════════════════
-   ESTILOS DE ENCUESTA INTERACTIVA — THE GAME AWARDS (2014–2025)
-   Estética oscura (#0a0a0c) con acentos dorados (#c9a84c, #f3d069)
-   ═══════════════════════════════════════════════════════════════════ */
+/*
+ * ENCUESTA.CSS — Encuesta interactiva (solo encuesta.html)
+ * Pestañas de años, paneles, botones y mensajes.
+ * Las categorías y tarjetas usan los estilos de year-pages.css;
+ * acá solo están las diferencias.
+ */
 
-/* ── Pestañas Selectoras de Años ─────────────────────────────── */
+/* ─── SUBTÍTULO DEL HERO ─────────────────────────────── */
+.enc-subtitle {
+    margin-top: 16px;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* ─── PESTAÑAS DE AÑOS ───────────────────────────────── */
 .enc-tabs {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     max-width: 1100px;
-    margin: 0 auto 36px;
+    margin: 0 auto 40px;
     padding: 0 20px;
 }
 
+/* El fondo, borde y hover vienen de "TARJETAS" en base.css */
 .enc-tab {
-    position: relative;
-    display: block;
-    padding: 14px 16px 12px;
     min-width: 76px;
-    text-align: center;
-    border: 1px solid var(--border, #2a2b36);
-    background: var(--panel, #141622);
-    color: var(--muted, #8e92a4);
-    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: var(--radio-medio);
+    color: var(--muted);
     cursor: pointer;
-    overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s, color 0.3s, box-shadow 0.3s;
-    font-family: 'Bebas Neue', sans-serif;
+    user-select: none;
+    font-family: var(--fuente-titulo);
     font-size: 1.5rem;
     letter-spacing: 0.05em;
     line-height: 1;
-    -webkit-user-select: none;
-    user-select: none;
-    border-radius: 6px;
+    text-align: center;
 }
 
-.enc-tab::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(201, 168, 76, 0.12) 0%, transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.enc-tab:hover {
-    border-color: var(--gold, #c9a84c);
-    transform: translateY(-3px);
-    color: #ffffff;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-}
-
-.enc-tab:hover::before {
-    opacity: 1;
-}
-
+/* Año que se está mostrando */
 .enc-tab.active {
-    border-color: var(--gold, #c9a84c);
-    background: var(--panel, #141622);
-    color: var(--gold, #c9a84c);
-    box-shadow: 0 0 22px rgba(201, 168, 76, 0.35);
+    border-color: var(--gold);
+    color: var(--gold);
+    box-shadow: var(--sombra-dorada);
 }
 
-.enc-tab.active::before {
-    opacity: 1;
+/* Año con los votos ya enviados (verde) */
+.enc-tab.submitted {
+    border-color: #4caf50;
+    color: #81c784;
 }
 
-/* ── Paneles de Encuesta por Año ──────────────────────────────── */
+/* ─── PANEL DE CADA AÑO ──────────────────────────────── */
+/* Solo se ve el panel con .active */
 .enc-year-panel {
     display: none;
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 24px 40px;
-    animation: encFadeIn 0.4s ease;
 }
 
 .enc-year-panel.active {
     display: block;
+    animation: aparecer 0.6s ease;
 }
 
-@keyframes encFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(16px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ── Bloque de Categoría ─────────────────────────────────────── */
-.category-block {
-    width: 100%;
-    margin-bottom: 50px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
-}
-
-.category-block:last-of-type {
-    border-bottom: none;
-}
-
-.category-title {
-    font-family: 'Bebas Neue', sans-serif;
+/* Títulos de categoría un poco más chicos que en las páginas de año */
+.enc-year-panel .category-title {
     font-size: 2.2rem;
-    letter-spacing: 0.08em;
-    color: var(--gold, #c9a84c);
-    text-align: center;
-    padding: 16px 0 18px;
-    margin: 0 0 20px;
-    text-transform: uppercase;
-    text-shadow: 0 0 15px rgba(201, 168, 76, 0.3);
 }
 
-/* ── Cuadrícula de Candidatos ─────────────────────────────────── */
-.candidate-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
-    padding: 10px 0 20px;
-    width: 100%;
-}
-
-/* ── Tarjeta de Candidato Interactiva ─────────────────────────── */
-.candidate-card {
-    display: flex;
-    flex-direction: column;
-    width: 220px;
-    max-width: 250px;
-    flex: 1 1 200px;
-    box-sizing: border-box;
-    background: linear-gradient(180deg, #181a25 0%, #0d0f16 100%);
-    border: 2px solid rgba(255, 255, 255, 0.06);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+/* En la encuesta las tarjetas se eligen con un clic */
+.enc-year-panel .candidate-card {
     cursor: pointer;
-    text-decoration: none;
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    -webkit-user-select: none;
     user-select: none;
 }
 
-.candidate-card:hover {
-    border-color: rgba(201, 168, 76, 0.6);
-    box-shadow: 0 16px 32px rgba(201, 168, 76, 0.25);
-    z-index: 5;
-}
-
-.candidate-card__image {
-    width: 100%;
-    height: 310px;
-    object-fit: cover;
-    border-bottom: 2px solid var(--gold, #c9a84c);
-    opacity: 0.9;
-    transition: opacity 0.3s;
-    display: block;
-    background-color: #0d0f16;
-}
-
-.candidate-card:hover .candidate-card__image {
-    opacity: 1;
-}
-
-.candidate-card__title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.35rem;
-    color: #ffffff;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 16px 12px;
-    margin: 0;
-    letter-spacing: 0.05em;
-    line-height: 1.25;
-}
-
-/* ── Estado Seleccionado (Borde Dorado y Resplandor TGA) ───────── */
-.candidate-card.card--selected,
-.card--selected {
-    border: 2px solid var(--gold, #c9a84c) !important;
-    box-shadow: 0 0 25px rgba(201, 168, 76, 0.45), inset 0 0 15px rgba(201, 168, 76, 0.15) !important;
-    transform: translateY(-6px) scale(1.02);
-}
-
-.candidate-card.card--selected:hover,
-.card--selected:hover {
-    border-color: #f3d069 !important;
-    box-shadow: 0 15px 40px rgba(201, 168, 76, 0.55), inset 0 0 20px rgba(201, 168, 76, 0.25) !important;
-}
-
-.candidate-card.card--selected .candidate-card__image,
-.card--selected .candidate-card__image {
-    opacity: 1;
-}
-
-/* Insignia visual "TU VOTO" en la esquina superior derecha */
-.candidate-card.card--selected::before,
-.card--selected::before {
-    content: 'TU VOTO';
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: linear-gradient(135deg, #f3d069, #c9a84c);
-    color: #000000;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.85rem;
-    padding: 4px 12px;
-    border-radius: 20px;
-    letter-spacing: 0.1em;
-    z-index: 10;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-}
-
-/* ── Sección de Acciones y Botón de Envío ─────────────────────── */
-.enc-actions,
-.survey-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
+/* ─── BOTONES ────────────────────────────────────────── */
+.enc-actions {
     max-width: 800px;
-    margin: 40px auto 60px;
+    margin: 40px auto 64px;
     padding: 0 20px;
     text-align: center;
 }
@@ -237,180 +93,107 @@
     gap: 16px;
 }
 
-/* Botón principal de votación */
-.btn-submit,
+/* El subrayado dorado animado está en base.css */
 .enc-btn {
-    display: inline-block;
-    padding: 16px 52px;
-    font-family: 'Bebas Neue', sans-serif;
+    padding: 16px 48px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    border-radius: var(--radio-chico);
+    cursor: pointer;
+    font-family: var(--fuente-titulo);
     font-size: 1.4rem;
     letter-spacing: 0.16em;
-    color: #ffffff;
-    background: transparent;
-    border: 1px solid var(--gold, #c9a84c);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: color 0.25s ease, border-color 0.25s ease;
     text-transform: uppercase;
-    text-decoration: none;
-    position: relative;
+    color: #ffffff;
 }
 
-.btn-submit::after,
-.enc-btn::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gold, #d4af37);
-    transition: width 0.3s ease;
-}
-
-.btn-submit:hover,
-.enc-btn:hover {
-    color: var(--gold, #c9a84c);
-}
-
-.btn-submit:hover::after,
-.enc-btn:hover::after {
-    width: 100%;
-}
-
-.btn-submit:disabled,
+/* Mientras se envían los votos */
 .enc-btn:disabled {
     opacity: 0.45;
-    cursor: not-allowed;
     pointer-events: none;
 }
 
-/* Botón secundario para reiniciar selección */
+/* Botón de reiniciar: gris, y rojo al pasar el mouse */
 .enc-btn--reset {
-    border: 1px solid var(--border, #2a2b36);
-    color: var(--muted, #8e92a4);
+    border-color: var(--border);
+    color: var(--muted);
 }
 
 .enc-btn--reset::after {
     background: #ef5350;
 }
 
-.enc-btn--reset:hover {
-    border-color: #f44336;
+.enc-btn--reset:hover,
+.enc-btn--reset:focus-visible {
+    border-color: #ef5350;
     color: #ef5350;
 }
 
-/* Botón de descarga de CSV */
-.enc-btn--csv {
-    background: linear-gradient(135deg, #81c784, #4caf50);
-    color: #000000;
-}
-
-.enc-btn--csv:hover {
-    box-shadow: 0 6px 24px rgba(76, 175, 80, 0.45);
-}
-
-.enc-btn--csv.hidden {
-    display: none;
-}
-
-/* ── Panel de Mensajes y Feedback ─────────────────────────────── */
+/* ─── MENSAJES (los muestra encuesta.js) ─────────────── */
 .survey-feedback {
     display: none;
-    width: 100%;
     max-width: 650px;
-    margin: 12px auto 0;
-    padding: 16px 22px;
-    border-radius: 8px;
+    margin: 24px auto 0;
+    padding: 16px 24px;
+    border: 1px solid;
+    border-radius: var(--radio-medio);
     font-size: 1.05rem;
     letter-spacing: 0.03em;
-    font-family: 'Barlow', sans-serif;
     line-height: 1.4;
-    text-align: center;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
 }
 
 .survey-feedback.show {
     display: block;
-    animation: encFadeIn 0.3s ease;
 }
 
+/* Cada tipo usa su color para el borde, el texto y un fondo transparente */
 .survey-feedback.success {
     background: rgba(76, 175, 80, 0.15);
-    border: 1px solid #4caf50;
+    border-color: #4caf50;
     color: #a5d6a7;
-    box-shadow: 0 0 20px rgba(76, 175, 80, 0.25);
 }
 
 .survey-feedback.error {
     background: rgba(244, 67, 54, 0.15);
-    border: 1px solid #f44336;
+    border-color: #f44336;
     color: #ef9a9a;
-    box-shadow: 0 0 20px rgba(244, 67, 54, 0.25);
 }
 
 .survey-feedback.info {
-    background: rgba(201, 168, 76, 0.15);
-    border: 1px solid var(--gold, #c9a84c);
-    color: #f3d069;
-    box-shadow: 0 0 20px rgba(201, 168, 76, 0.25);
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--gold);
+    color: var(--gold-light);
 }
 
-/* ── Subtítulo del Hero ───────────────────────────────────────── */
-.enc-subtitle {
-    margin-top: 16px;
-    font-size: 1rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted, #8e92a4);
-}
-
-/* ── Estados de Año Enviado ───────────────────────────────────── */
-.enc-tab.submitted {
-    border-color: #4caf50;
-    color: #81c784;
-    box-shadow: 0 0 14px rgba(76, 175, 80, 0.25);
-}
-
-.enc-tab.submitted::before {
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.12) 0%, transparent 70%);
-    opacity: 1;
-}
-
-.enc-year-panel.submitted .btn-submit,
-.enc-year-panel.submitted .enc-btn {
-    background: linear-gradient(135deg, #81c784, #4caf50);
-}
-
-/* ── Diseño Responsivo ────────────────────────────────────────── */
+/* ─── CELULAR ────────────────────────────────────────── */
+/* Dos tarjetas por fila */
 @media (max-width: 768px) {
-    .enc-tabs {
-        gap: 8px;
-    }
     .enc-tab {
-        padding: 10px 12px 8px;
         min-width: 60px;
+        padding: 8px 12px;
         font-size: 1.25rem;
     }
-    .category-title {
+
+    .enc-year-panel .category-title {
         font-size: 1.8rem;
     }
-    .candidate-card {
-        width: 160px;
-        max-width: 190px;
+
+    .enc-year-panel .candidate-card {
         flex: 1 1 150px;
+        max-width: 190px;
     }
-    .candidate-card__image {
+
+    .enc-year-panel .candidate-card__image {
         height: 230px;
     }
-    .candidate-card__title {
-        font-size: 1.15rem;
+
+    .enc-year-panel .candidate-card__title {
         padding: 12px 8px;
+        font-size: 1.15rem;
     }
-    .btn-submit,
+
     .enc-btn {
-        padding: 14px 36px;
+        padding: 12px 32px;
         font-size: 1.2rem;
     }
 }

@@ -1,252 +1,148 @@
-/* ════════════════════════════════════════════════════════
-   YEAR PAGES  (nav · hero · categories)
-   ════════════════════════════════════════════════════════ */
+/*
+ * YEAR-PAGES.CSS — Páginas de cada año (/Años/AAAA.html) y tarjetas de nominados
+ * El título grande (.hero), las categorías y las tarjetas también
+ * se usan en encuesta.html.
+ */
 
-/* ─── NAV (year pages only) ──────────────────────────── */
-/* Barra de navegación en páginas de año (nav sin .top-nav) */
-nav:not(.top-nav) {
-    /* Disposición horizontal */
-    display: flex;
-    align-items: center;
-    gap: 16px;
-
-    /* Espaciado interno */
-    padding: 20px 32px;
-
-    /* Borde inferior sutil */
-    border-bottom: 1px solid var(--border);
-
-    /* Fijo en la parte superior */
-    position: sticky;
-    top: 0;
-
-    /* Fondo semi-transparente con blur */
-    background: rgba(4, 6, 14, 0.88);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    /* Capa superior */
-    z-index: 100;
-}
-
-/* Enlace de volver atrás */
-nav:not(.top-nav) .back {
-    /* Estilo compacto y dorado */
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    text-decoration: none;
-    transition: opacity 0.2s;
-}
-
-/* Efecto hover en enlace volver */
-nav:not(.top-nav) .back:hover {
-    opacity: 0.7;
-}
-
-/* Año actual en la navegación */
-nav:not(.top-nav) .nav-year {
-    /* Tipografía grande y dorada */
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    letter-spacing: 0.08em;
-
-    /* Gradiente dorado */
-    background: linear-gradient(160deg, var(--gold2), var(--gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-
-    /* Empuja al extremo derecho */
-    margin-left: auto;
-}
-
-/* ─── HERO ───────────────────────────────────────────── */
-/* Sección hero de cada página de año */
+/* ─── TÍTULO GRANDE DE LA PÁGINA ─────────────────────── */
 .hero {
-    /* Posicionamiento relativo */
     position: relative;
-
-    /* Espaciado vertical - top padding aumentado por el nav fijo */
-    padding: 140px 24px 70px;
-
-    /* Centrado de contenido */
+    overflow: hidden;
+    padding: 136px 24px 72px;
     text-align: center;
 
-    /* Evita desbordamientos */
-    overflow: hidden;
+    /* Brillo cyan que baja desde arriba */
+    background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0, 200, 232, 0.13), transparent 70%);
 }
 
-/* Iluminación radial en el hero */
-.hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-
-    /* Gradiente dorado suave */
-    background:
-        radial-gradient(ellipse 70% 55% at 50% 0%, rgba(var(--neon-cyan-rgb), 0.13) 0%, transparent 70%);
-
-    pointer-events: none;
-}
-
-/* Título principal en página de año */
+/* Título con degradé cyan → azul */
 .hero h1 {
-    /* Tipografía condensada grande */
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: var(--fuente-titulo);
     font-size: clamp(3rem, 10vw, 7rem);
     line-height: 0.92;
     letter-spacing: 0.04em;
-
-    /* Gradiente dorado metálico */
-    background: linear-gradient(160deg, var(--neon-cyan-light) 0%, var(--neon-cyan) 45%, var(--neon-blue) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: linear-gradient(160deg, var(--neon-cyan-light), var(--neon-cyan) 45%, var(--neon-blue));
+    -webkit-background-clip: text; /* Safari todavía necesita el prefijo */
     background-clip: text;
-
-    /* Animación de entrada */
-    animation: fadeUp 0.6s 0.08s ease both;
+    color: transparent;
+    animation: aparecer 0.6s ease both;
 }
 
-/* ─── CATEGORÍAS Y CANDIDATOS ───────────────────────── */
-/* Bloque individual de categoría */
+/* ─── CATEGORÍAS ─────────────────────────────────────── */
+/* Contenedor de todas las categorías de la página del año */
+.winners-showcase {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
 .category-block {
-    grid-column: 1 / -1;
-    width: 100%;
-    margin-bottom: 50px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid rgba(var(--neon-cyan-rgb), 0.2);
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--borde-cyan);
 }
 
 .category-block:last-of-type {
     border-bottom: none;
 }
 
-/* Título de categoría con tipografía Bebas Neue y acento dorado */
 .category-title {
-    font-family: 'Bebas Neue', sans-serif;
+    margin-bottom: 32px;
+    padding: 20px 0;
+    border-bottom: 2px solid var(--borde-cyan);
+    font-family: var(--fuente-titulo);
     font-size: 2.8rem;
-    color: var(--gold, var(--neon-cyan));
+    letter-spacing: 2px;
+    color: var(--gold);
     text-transform: uppercase;
     text-align: center;
-    letter-spacing: 2px;
-    padding: 20px 0;
-    margin-bottom: 30px;
-    border-bottom: 2px solid rgba(var(--neon-cyan-rgb), 0.3);
-    text-shadow: 0 0 20px rgba(var(--neon-cyan-rgb), 0.4);
 }
 
-/* Cuadrícula flexible de candidatos */
+/* ─── TARJETAS DE NOMINADOS ──────────────────────────── */
 .candidate-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 24px;
-    padding: 20px;
-    width: 100%;
+    padding: 20px 0;
 }
 
-/* Tarjeta individual de nominado */
+/* El fondo, borde y hover vienen de "TARJETAS" en base.css */
 .candidate-card {
+    position: relative;
     display: flex;
     flex-direction: column;
-    width: 220px;
     flex: 1 1 200px;
     max-width: 250px;
-    box-sizing: border-box;
-    background: linear-gradient(180deg, #181a25 0%, #0d0f16 100%);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Efecto hover con elevación suave */
-.candidate-card:hover {
-    border-color: var(--gold, var(--neon-cyan));
-    box-shadow: 0 20px 40px rgba(var(--neon-cyan-rgb), 0.25);
-    z-index: 10;
-}
-
-/* Imagen de portada de la tarjeta */
+/* Portada del juego */
 .candidate-card__image {
+    display: block;
     width: 100%;
     height: 330px;
     object-fit: cover;
-    border-bottom: 2px solid var(--gold, var(--neon-cyan));
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
+    border-bottom: 2px solid var(--gold);
     background-color: #0d0f16;
 }
 
-.candidate-card:hover .candidate-card__image {
-    opacity: 1;
-}
-
-/* Título de la tarjeta del candidato */
 .candidate-card__title {
-    font-family: 'Bebas Neue', sans-serif;
+    padding: 16px 12px;
+    font-family: var(--fuente-titulo);
     font-size: 1.45rem;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
     color: #ffffff;
     text-transform: uppercase;
     text-align: center;
-    padding: 18px 14px;
-    letter-spacing: 0.05em;
-    line-height: 1.2;
 }
 
-/* Resaltado del ganador oficial con resplandor dorado TGA */
-.card--winner {
-    border: 2px solid var(--gold, var(--neon-cyan)) !important;
-    box-shadow: 0 0 25px rgba(var(--neon-cyan-rgb), 0.45), inset 0 0 15px rgba(var(--neon-cyan-rgb), 0.15) !important;
+/* Ganador oficial: borde dorado y brillo cyan */
+.candidate-card.card--winner {
+    border: 2px solid var(--gold);
+    box-shadow: var(--sombra-brillo);
 }
 
-.card--winner:hover {
-    border-color: var(--neon-cyan-light) !important;
-    box-shadow: 0 15px 40px rgba(var(--neon-cyan-rgb), 0.55), inset 0 0 20px rgba(var(--neon-cyan-rgb), 0.25) !important;
+/* Elegido en la encuesta: borde dorado, brillo dorado y un poco más arriba */
+.candidate-card.card--selected {
+    border: 2px solid var(--gold);
+    box-shadow: var(--sombra-dorada);
+    transform: translateY(-8px);
+}
+
+/* Etiqueta en la esquina: "WINNER" o "TU VOTO" */
+.card--winner::before,
+.card--selected::before {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-family: var(--fuente-titulo);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: #000000;
 }
 
 .card--winner::before {
     content: 'WINNER';
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    background: linear-gradient(135deg, var(--neon-cyan-light), var(--neon-cyan));
-    color: #000000;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.85rem;
-    padding: 4px 12px;
-    border-radius: 20px;
-    letter-spacing: 0.1em;
-    z-index: 2;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    background: var(--neon-cyan);
 }
 
-/* Sección del banner de votación */
-.survey-banner-section {
-    width: 100%;
-    padding: 0 24px;
-    max-width: 1200px;
-    margin: 40px auto 60px;
+.card--selected::before {
+    content: 'TU VOTO';
+    background: var(--gold);
 }
 
-/* ─── RESPONSIVE ─────────────────────────────────────── */
-/* Ajustes para pantallas medianas y pequeñas */
-@media (max-width: 600px) {
-
-    /* Reduce padding en nav para móviles */
-    nav:not(.top-nav) {
-        padding: 14px 16px;
+/* ─── CELULAR ────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .hero {
+        padding: 48px 16px 40px;
     }
 
-    /* Reduce padding del hero en móviles */
-    .hero {
-        padding: 50px 16px 40px;
+    .winners-showcase {
+        padding: 16px;
     }
 
     .category-title {
@@ -254,7 +150,6 @@ nav:not(.top-nav) .nav-year {
     }
 
     .candidate-card {
-        width: 100%;
         max-width: 320px;
     }
 }

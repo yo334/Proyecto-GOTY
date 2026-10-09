@@ -15,7 +15,7 @@
 </head>
 
 <body>
-        <!-- ═══════════════════ TOP NAV ═══════════════════ -->
+    <!-- ═════════════════════════════════════ MENÚ SUPERIOR ═════════════════════════════════════ -->
     <nav class="top-nav">
         <div class="nav-left">
             <a href="index.html" class="nav-logo-link">
@@ -23,23 +23,24 @@
             </a>
         </div>
         <div class="nav-right">
-            <!-- Inline Search Box -->
+            <!-- Buscador del menú -->
             <div class="nav-search-container" id="nav-search-container">
                 <div class="search-panel" id="search-panel">
                     <div class="search-panel__input-wrap">
-                        <svg class="search-panel__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="search-panel__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                            stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8" />
                             <line x1="21" y1="21" x2="16.65" y2="16.65" />
                         </svg>
-                        <input type="text" id="search-input" class="search-panel__input"
-                            placeholder="Buscar..." autocomplete="off" />
+                        <input type="text" id="search-input" class="search-panel__input" placeholder="Buscar..."
+                            autocomplete="off" />
                         <button class="search-panel__close" id="search-close" aria-label="Cerrar búsqueda">✕</button>
                     </div>
                     <div class="search-panel__results" id="search-results"></div>
                 </div>
             </div>
-            
+
             <button class="nav-link nav-search-toggle" id="nav-search-toggle" aria-label="Buscar">
                 <svg class="nav-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -62,11 +63,11 @@
 
     <div class="enc-tabs" id="yearTabs" role="tablist" aria-label="Selector de año de encuesta"></div>
 
-    <div id="yearPanels" class="survey-categories"></div>
+    <div id="yearPanels"></div>
 
-    <section class="enc-actions survey-actions">
+    <section class="enc-actions">
         <div class="enc-actions-buttons">
-            <button id="submit-survey" class="btn-submit enc-btn" type="button">Enviar mi votación</button>
+            <button id="submit-survey" class="enc-btn" type="button">Enviar mi votación</button>
             <button id="reset-survey" class="enc-btn enc-btn--reset" type="button">Reiniciar votos</button>
         </div>
         <div id="surveyFeedback" class="survey-feedback" role="status" aria-live="polite"></div>
@@ -76,38 +77,9 @@
         &copy; GOTY Archive &nbsp;·&nbsp; Encuesta interactiva The Game Awards 2014–2025
     </footer>
 
-    <script src="js/encuesta.js"></script>
-    <!-- Scripts -->
+    <!-- search.js va primero: encuesta.js usa sus constantes (años y categorías) -->
     <script src="js/search.js"></script>
-    <script>
-        // Search overlay toggle
-        const toggleBtn = document.getElementById('nav-search-toggle');
-        const searchContainer = document.getElementById('nav-search-container');
-        const closeBtn  = document.getElementById('search-close');
-        const navSearchInput = document.getElementById('search-input');
-
-        function openSearch(e) {
-            if (e) { e.preventDefault(); e.stopPropagation(); }
-            searchContainer.classList.add('active');
-            setTimeout(() => navSearchInput.focus(), 120);
-        }
-        function closeSearch(e) {
-            if (e) { e.preventDefault(); e.stopPropagation(); }
-            searchContainer.classList.remove('active');
-        }
-
-        if(toggleBtn) toggleBtn.addEventListener('click', openSearch);
-        if(closeBtn) closeBtn.addEventListener('click', closeSearch);
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
-
-        // Nav shrink on scroll
-        const topNav = document.querySelector('.top-nav');
-        if(topNav) {
-            window.addEventListener('scroll', () => {
-                topNav.classList.toggle('top-nav--scrolled', window.scrollY > 60);
-            });
-        }
-    </script>
+    <script src="js/encuesta.js"></script>
 </body>
 
 </html>
