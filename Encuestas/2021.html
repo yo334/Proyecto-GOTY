@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encuesta GOTY 2021 — The Game Awards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../Css/style.css" />
+    <link rel="stylesheet" href="../Css/encuesta.css" />
+</head>
+
+<body>
+    <!-- ═════════════════════════════════════ MENÚ SUPERIOR ═════════════════════════════════════ -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-logo-link">
+                <img src="../imagenes/logo_white.png" alt="The Game Awards" class="nav-logo">
+            </a>
+        </div>
+        <div class="nav-right">
+            <!-- Buscador del menú -->
+            <div class="nav-search-container" id="nav-search-container">
+                <div class="search-panel" id="search-panel">
+                    <div class="search-panel__input-wrap">
+                        <svg class="search-panel__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input type="text" id="search-input" class="search-panel__input" placeholder="Buscar..."
+                            autocomplete="off" />
+                        <button class="search-panel__close" id="search-close" aria-label="Cerrar búsqueda">✕</button>
+                    </div>
+                    <div class="search-panel__results" id="search-results"></div>
+                </div>
+            </div>
+
+            <button class="nav-link nav-search-toggle" id="nav-search-toggle" aria-label="Buscar">
+                <svg class="nav-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <span>BUSCAR</span>
+            </button>
+            <a href="../index.html#years-section" class="nav-link">VER GANADORES</a>
+            <a href="../seleccionar_encuesta.html" class="nav-link">VOTAR</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>The Game Awards<br>Encuesta</h1>
+        <p class="enc-subtitle">Elige a tus ganadores favoritos de cada año</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <div class="enc-tabs" id="yearTabs" role="tablist" aria-label="Selector de año de encuesta">
+        <a class="enc-tab" href="2014.html" data-year="2014" role="tab">2014</a>
+        <a class="enc-tab" href="2015.html" data-year="2015" role="tab">2015</a>
+        <a class="enc-tab" href="2016.html" data-year="2016" role="tab">2016</a>
+        <a class="enc-tab" href="2017.html" data-year="2017" role="tab">2017</a>
+        <a class="enc-tab" href="2018.html" data-year="2018" role="tab">2018</a>
+        <a class="enc-tab" href="2019.html" data-year="2019" role="tab">2019</a>
+        <a class="enc-tab" href="2020.html" data-year="2020" role="tab">2020</a>
+        <a class="enc-tab active" href="2021.html" data-year="2021" role="tab" aria-selected="true">2021</a>
+        <a class="enc-tab" href="2022.html" data-year="2022" role="tab">2022</a>
+        <a class="enc-tab" href="2023.html" data-year="2023" role="tab">2023</a>
+        <a class="enc-tab" href="2024.html" data-year="2024" role="tab">2024</a>
+        <a class="enc-tab" href="2025.html" data-year="2025" role="tab">2025</a>
+    </div>
+
+    <div id="panel-2021" class="enc-year-panel active" data-year="2021">
+        <div class="category-block" id="cat-goty">
+            <h2 class="category-title">Game of the Year</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Game of the Year" data-name="It Takes Two">
+                    <img alt="It Takes Two" class="candidate-card__image" src="../imagenes/covers/it_takes_two.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">It Takes Two</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Deathloop">
+                    <img alt="Deathloop" class="candidate-card__image" src="../imagenes/covers/deathloop.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Deathloop</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Metroid Dread">
+                    <img alt="Metroid Dread" class="candidate-card__image" src="../imagenes/covers/metroid_dread.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Metroid Dread</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Psychonauts 2">
+                    <img alt="Psychonauts 2" class="candidate-card__image" src="../imagenes/covers/psychonauts_2.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Psychonauts 2</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Ratchet & Clank: Rift Apart">
+                    <img alt="Ratchet & Clank: Rift Apart" class="candidate-card__image" src="../imagenes/covers/ratchet__clank_rift_apart.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Ratchet & Clank: Rift Apart</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Resident Evil Village">
+                    <img alt="Resident Evil Village" class="candidate-card__image" src="../imagenes/covers/resident_evil_village.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Resident Evil Village</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-indie">
+            <h2 class="category-title">Best Independent Game</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Independent Game" data-name="Kena: Bridge of Spirits">
+                    <img alt="Kena: Bridge of Spirits" class="candidate-card__image" src="../imagenes/covers/kena_bridge_of_spirits.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Kena: Bridge of Spirits</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Independent Game" data-name="12 Minutes">
+                    <img alt="12 Minutes" class="candidate-card__image" src="../imagenes/covers/12_minutes.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">12 Minutes</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Independent Game" data-name="Death's Door">
+                    <img alt="Death's Door" class="candidate-card__image" src="../imagenes/covers/deaths_door.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Death's Door</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Independent Game" data-name="Inscryption">
+                    <img alt="Inscryption" class="candidate-card__image" src="../imagenes/covers/inscryption.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Inscryption</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Independent Game" data-name="Loop Hero">
+                    <img alt="Loop Hero" class="candidate-card__image" src="../imagenes/covers/loop_hero.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Loop Hero</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-narrative">
+            <h2 class="category-title">Best Narrative</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Narrative" data-name="Marvel's Guardians of the Galaxy">
+                    <img alt="Marvel's Guardians of the Galaxy" class="candidate-card__image" src="../imagenes/covers/marvels_guardians_of_the_galaxy.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Marvel's Guardians of the Galaxy</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Narrative" data-name="Deathloop">
+                    <img alt="Deathloop" class="candidate-card__image" src="../imagenes/covers/deathloop.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Deathloop</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Narrative" data-name="It Takes Two">
+                    <img alt="It Takes Two" class="candidate-card__image" src="../imagenes/covers/it_takes_two.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">It Takes Two</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Narrative" data-name="Life is Strange: True Colors">
+                    <img alt="Life is Strange: True Colors" class="candidate-card__image" src="../imagenes/covers/life_is_strange_true_colors.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Life is Strange: True Colors</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Narrative" data-name="Psychonauts 2">
+                    <img alt="Psychonauts 2" class="candidate-card__image" src="../imagenes/covers/psychonauts_2.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Psychonauts 2</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-art">
+            <h2 class="category-title">Best Art Direction</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Art Direction" data-name="Deathloop">
+                    <img alt="Deathloop" class="candidate-card__image" src="../imagenes/covers/deathloop.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Deathloop</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Art Direction" data-name="Kena: Bridge of Spirits">
+                    <img alt="Kena: Bridge of Spirits" class="candidate-card__image" src="../imagenes/covers/kena_bridge_of_spirits.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Kena: Bridge of Spirits</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Art Direction" data-name="Psychonauts 2">
+                    <img alt="Psychonauts 2" class="candidate-card__image" src="../imagenes/covers/psychonauts_2.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Psychonauts 2</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Art Direction" data-name="Ratchet & Clank: Rift Apart">
+                    <img alt="Ratchet & Clank: Rift Apart" class="candidate-card__image" src="../imagenes/covers/ratchet__clank_rift_apart.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Ratchet & Clank: Rift Apart</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Art Direction" data-name="The Artful Escape">
+                    <img alt="The Artful Escape" class="candidate-card__image" src="../imagenes/covers/the_artful_escape.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">The Artful Escape</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-soundtrack">
+            <h2 class="category-title">Best Soundtrack</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="NieR Replicant ver.1.22474487139...">
+                    <img alt="NieR Replicant ver.1.22474487139..." class="candidate-card__image" src="../imagenes/covers/nier_replicant_ver122474487139.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">NieR Replicant ver.1.22474487139...</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="Cyberpunk 2077">
+                    <img alt="Cyberpunk 2077" class="candidate-card__image" src="../imagenes/covers/cyberpunk_2077.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Cyberpunk 2077</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="Deathloop">
+                    <img alt="Deathloop" class="candidate-card__image" src="../imagenes/covers/deathloop.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Deathloop</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="Marvel's Guardians of the Galaxy">
+                    <img alt="Marvel's Guardians of the Galaxy" class="candidate-card__image" src="../imagenes/covers/marvels_guardians_of_the_galaxy.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Marvel's Guardians of the Galaxy</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="The Artful Escape">
+                    <img alt="The Artful Escape" class="candidate-card__image" src="../imagenes/covers/the_artful_escape.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">The Artful Escape</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-multiplayer">
+            <h2 class="category-title">Best Multiplayer</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="It Takes Two">
+                    <img alt="It Takes Two" class="candidate-card__image" src="../imagenes/covers/it_takes_two.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">It Takes Two</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Back 4 Blood">
+                    <img alt="Back 4 Blood" class="candidate-card__image" src="../imagenes/covers/back_4_blood.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Back 4 Blood</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Knockout City">
+                    <img alt="Knockout City" class="candidate-card__image" src="../imagenes/covers/knockout_city.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Knockout City</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Monster Hunter Rise">
+                    <img alt="Monster Hunter Rise" class="candidate-card__image" src="../imagenes/covers/monster_hunter_rise.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Monster Hunter Rise</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="New World">
+                    <img alt="New World" class="candidate-card__image" src="../imagenes/covers/new_world.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">New World</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Valheim">
+                    <img alt="Valheim" class="candidate-card__image" src="../imagenes/covers/valheim.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Valheim</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-direction">
+            <h2 class="category-title">Best Game Direction</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Game Direction" data-name="Deathloop">
+                    <img alt="Deathloop" class="candidate-card__image" src="../imagenes/covers/deathloop.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Deathloop</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Game Direction" data-name="It Takes Two">
+                    <img alt="It Takes Two" class="candidate-card__image" src="../imagenes/covers/it_takes_two.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">It Takes Two</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Game Direction" data-name="Returnal">
+                    <img alt="Returnal" class="candidate-card__image" src="../imagenes/covers/returnal.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Returnal</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Game Direction" data-name="Psychonauts 2">
+                    <img alt="Psychonauts 2" class="candidate-card__image" src="../imagenes/covers/psychonauts_2.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Psychonauts 2</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Game Direction" data-name="Ratchet & Clank: Rift Apart">
+                    <img alt="Ratchet & Clank: Rift Apart" class="candidate-card__image" src="../imagenes/covers/ratchet__clank_rift_apart.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Ratchet & Clank: Rift Apart</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="enc-actions">
+        <div class="enc-actions-buttons">
+            <button id="submit-survey" class="enc-btn" type="button">Enviar mi votación</button>
+            <button id="reset-survey" class="enc-btn enc-btn--reset" type="button">Reiniciar votos</button>
+        </div>
+        <div id="surveyFeedback" class="survey-feedback" role="status" aria-live="polite"></div>
+    </section>
+
+    <footer>
+        &copy; GOTY Archive &nbsp;·&nbsp; Encuesta interactiva The Game Awards 2014–2025
+    </footer>
+
+    <script src="../js/search.js"></script>
+    <script src="../js/encuesta.js"></script>
+</body>
+
+</html>

@@ -19,12 +19,13 @@ python backend/app.py
 
 El sitio queda en `http://localhost:5000`. Para usar otro puerto: `PORT=5055 python backend/app.py`.
 
-## Páginas de los años
+## Páginas de los años y encuestas
 
-Hay una sola página para todos los años: `años.html?y=2015` muestra 2015.
-`js/anio.js` la arma con los datos de `datos/AAAA.json` (igual que `encuesta.html`),
-así que funciona tanto con Flask como con Live Server.
-Para cambiar un nominado o una portada, se edita el JSON del año.
+Cada año tiene su propia página HTML estática independiente:
+- Ganadores: `Años/AAAA.html` (ej. `Años/2015.html`).
+- Encuestas: `Encuestas/AAAA.html` (ej. `Encuestas/2015.html`).
+Las páginas funcionan tanto con Flask como con Live Server o abriéndolas directamente en el navegador.
+Para cambiar un nominado o una portada, se edita el HTML o el JSON del año correspondiente.
 
 ## Endpoints
 

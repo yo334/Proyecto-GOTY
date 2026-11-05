@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>GOTY 2023 – The Game Awards</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:ital,wght@0,300;0,400;0,600;1,300&amp;display=swap"
+        rel="stylesheet" />
+    <link href="../Css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+        <!-- ═══════════════════ TOP NAV ═══════════════════ -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-logo-link">
+                <img src="../imagenes/logo_white.png" alt="The Game Awards" class="nav-logo">
+            </a>
+        </div>
+        <div class="nav-right">
+            <!-- Inline Search Box -->
+            <div class="nav-search-container" id="nav-search-container">
+                <div class="search-panel" id="search-panel">
+                    <div class="search-panel__input-wrap">
+                        <svg class="search-panel__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input type="text" id="search-input" class="search-panel__input"
+                            placeholder="Buscar..." autocomplete="off" />
+                        <button class="search-panel__close" id="search-close" aria-label="Cerrar búsqueda">✕</button>
+                    </div>
+                    <div class="search-panel__results" id="search-results"></div>
+                </div>
+            </div>
+            
+            <button class="nav-link nav-search-toggle" id="nav-search-toggle" aria-label="Buscar">
+                <svg class="nav-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <span>BUSCAR</span>
+            </button>
+            <a href="../index.html#years-section" class="nav-link">VER GANADORES</a>
+            <a href="../seleccionar_encuesta.html" class="nav-link">VOTAR</a>
+        </div>
+    </nav>
+    <section class="hero">
+        <h1>The Game Awards<br />2023</h1>
+    </section>
+    <div class="divider"></div>
+    <section class="winners-showcase">
+        <div class="category-block" id="cat-goty">
+            <h2 class="category-title">Game of the Year</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card card--winner">
+                    <img alt="Baldur's Gate 3" class="candidate-card__image"
+                        src="../imagenes/covers/baldurs_gate_3.jpg" />
+                    <h3 class="candidate-card__title">Baldur's Gate 3</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Alan Wake 2" class="candidate-card__image" src="../imagenes/covers/alan_wake_2.jpg" />
+                    <h3 class="candidate-card__title">Alan Wake 2</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Marvel's Spider-Man 2" class="candidate-card__image"
+                        src="../imagenes/covers/marvels_spider-man_2.jpg" />
+                    <h3 class="candidate-card__title">Marvel's Spider-Man 2</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Resident Evil 4" class="candidate-card__image"
+                        src="../imagenes/covers/resident_evil_4.jpg" />
+                    <h3 class="candidate-card__title">Resident Evil 4</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Super Mario Bros. Wonder" class="candidate-card__image"
+                        src="../imagenes/covers/super_mario_bros_wonder.jpg" />
+                    <h3 class="candidate-card__title">Super Mario Bros. Wonder</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="The Legend of Zelda: Tears of the Kingdom" class="candidate-card__image"
+                        src="../imagenes/covers/the_legend_of_zelda_tears_of_the_kingdom.jpg" />
+                    <h3 class="candidate-card__title">The Legend of Zelda: Tears of the Kingdom</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-indie">
+            <h2 class="category-title">Best Independent Game</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card card--winner">
+                    <img alt="Sea of Stars" class="candidate-card__image" src="../imagenes/covers/sea_of_stars.jpg" />
+                    <h3 class="candidate-card__title">Sea of Stars</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Cocoon" class="candidate-card__image" src="../imagenes/covers/cocoon.jpg" />
+                    <h3 class="candidate-card__title">Cocoon</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Dave the Diver" class="candidate-card__image"
+                        src="../imagenes/covers/dave_the_diver.jpg" />
+                    <h3 class="candidate-card__title">Dave the Diver</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Dredge" class="candidate-card__image" src="../imagenes/covers/dredge.jpg" />
+                    <h3 class="candidate-card__title">Dredge</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Viewfinder" class="candidate-card__image" src="../imagenes/covers/viewfinder.jpg" />
+                    <h3 class="candidate-card__title">Viewfinder</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-narrative">
+            <h2 class="category-title">Best Narrative</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card card--winner">
+                    <img alt="Alan Wake 2" class="candidate-card__image" src="../imagenes/covers/alan_wake_2.jpg" />
+                    <h3 class="candidate-card__title">Alan Wake 2</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Baldur's Gate 3" class="candidate-card__image"
+                        src="../imagenes/covers/baldurs_gate_3.jpg" />
+                    <h3 class="candidate-card__title">Baldur's Gate 3</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Cyberpunk 2077: Phantom Liberty" class="candidate-card__image"
+                        src="../imagenes/covers/cyberpunk_2077_phantom_liberty.jpg" />
+                    <h3 class="candidate-card__title">Cyberpunk 2077: Phantom Liberty</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Final Fantasy XVI" class="candidate-card__image"
+                        src="../imagenes/covers/final_fantasy_xvi.jpg" />
+                    <h3 class="candidate-card__title">Final Fantasy XVI</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Marvel's Spider-Man 2" class="candidate-card__image"
+                        src="../imagenes/covers/marvels_spider-man_2.jpg" />
+                    <h3 class="candidate-card__title">Marvel's Spider-Man 2</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-art">
+            <h2 class="category-title">Best Art Direction</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card card--winner">
+                    <img alt="Alan Wake 2" class="candidate-card__image" src="../imagenes/covers/alan_wake_2.jpg" />
+                    <h3 class="candidate-card__title">Alan Wake 2</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Hi-Fi Rush" class="candidate-card__image" src="../imagenes/covers/hi-fi_rush.jpg" />
+                    <h3 class="candidate-card__title">Hi-Fi Rush</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Lies of P" class="candidate-card__image" src="../imagenes/covers/lies_of_p.jpg" />
+                    <h3 class="candidate-card__title">Lies of P</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Super Mario Bros. Wonder" class="candidate-card__image"
+                        src="../imagenes/covers/super_mario_bros_wonder.jpg" />
+                    <h3 class="candidate-card__title">Super Mario Bros. Wonder</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="The Legend of Zelda: Tears of the Kingdom" class="candidate-card__image"
+                        src="../imagenes/covers/the_legend_of_zelda_tears_of_the_kingdom.jpg" />
+                    <h3 class="candidate-card__title">The Legend of Zelda: Tears of the Kingdom</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-soundtrack">
+            <h2 class="category-title">Best Soundtrack</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card card--winner">
+                    <img alt="Final Fantasy XVI" class="candidate-card__image"
+                        src="../imagenes/covers/final_fantasy_xvi.jpg" />
+                    <h3 class="candidate-card__title">Final Fantasy XVI</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Alan Wake 2" class="candidate-card__image" src="../imagenes/covers/alan_wake_2.jpg" />
+                    <h3 class="candidate-card__title">Alan Wake 2</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Baldur's Gate 3" class="candidate-card__image"
+                        src="../imagenes/covers/baldurs_gate_3.jpg" />
+                    <h3 class="candidate-card__title">Baldur's Gate 3</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Hi-Fi Rush" class="candidate-card__image" src="../imagenes/covers/hi-fi_rush.jpg" />
+                    <h3 class="candidate-card__title">Hi-Fi Rush</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="The Legend of Zelda: Tears of the Kingdom" class="candidate-card__image"
+                        src="../imagenes/covers/the_legend_of_zelda_tears_of_the_kingdom.jpg" />
+                    <h3 class="candidate-card__title">The Legend of Zelda: Tears of the Kingdom</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-multiplayer">
+            <h2 class="category-title">Best Multiplayer</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card card--winner">
+                    <img alt="Baldur's Gate 3" class="candidate-card__image"
+                        src="../imagenes/covers/baldurs_gate_3.jpg" />
+                    <h3 class="candidate-card__title">Baldur's Gate 3</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Diablo IV" class="candidate-card__image" src="../imagenes/covers/diablo_iv.jpg" />
+                    <h3 class="candidate-card__title">Diablo IV</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Party Animals" class="candidate-card__image" src="../imagenes/covers/party_animals.jpg" />
+                    <h3 class="candidate-card__title">Party Animals</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Street Fighter 6" class="candidate-card__image"
+                        src="../imagenes/covers/street_fighter_6.jpg" />
+                    <h3 class="candidate-card__title">Street Fighter 6</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Super Mario Bros. Wonder" class="candidate-card__image"
+                        src="../imagenes/covers/super_mario_bros_wonder.jpg" />
+                    <h3 class="candidate-card__title">Super Mario Bros. Wonder</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-direction">
+            <h2 class="category-title">Best Game Direction</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card card--winner">
+                    <img alt="Alan Wake 2" class="candidate-card__image" src="../imagenes/covers/alan_wake_2.jpg" />
+                    <h3 class="candidate-card__title">Alan Wake 2</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Baldur's Gate 3" class="candidate-card__image"
+                        src="../imagenes/covers/baldurs_gate_3.jpg" />
+                    <h3 class="candidate-card__title">Baldur's Gate 3</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Marvel's Spider-Man 2" class="candidate-card__image"
+                        src="../imagenes/covers/marvels_spider-man_2.jpg" />
+                    <h3 class="candidate-card__title">Marvel's Spider-Man 2</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="Super Mario Bros. Wonder" class="candidate-card__image"
+                        src="../imagenes/covers/super_mario_bros_wonder.jpg" />
+                    <h3 class="candidate-card__title">Super Mario Bros. Wonder</h3>
+                </div>
+                <div class="candidate-card">
+                    <img alt="The Legend of Zelda: Tears of the Kingdom" class="candidate-card__image"
+                        src="../imagenes/covers/the_legend_of_zelda_tears_of_the_kingdom.jpg" />
+                    <h3 class="candidate-card__title">The Legend of Zelda: Tears of the Kingdom</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <section class="survey-banner-section">
+        <a class="survey-banner" href="../Encuestas/2023.html">
+            <div class="survey-banner__glow"></div>
+            <div class="survey-banner__content">
+                <div class="survey-banner__text">
+                    <h2 class="survey-banner__title">¿Estás de acuerdo con los ganadores? Votá por tus ganadores acá</h2>
+                    <p class="survey-banner__desc">Votar por mis favoritos de 2023</p>
+                </div>
+            </div>
+        </a>
+    </section>
+    <footer>
+        © GOTY Archive  ·  The Game Awards 2023
+    </footer>
+    <!-- Scripts -->
+    <script src="../js/search.js"></script>
+    <script>
+        // Search overlay toggle
+        const toggleBtn = document.getElementById('nav-search-toggle');
+        const searchContainer = document.getElementById('nav-search-container');
+        const closeBtn  = document.getElementById('search-close');
+        const navSearchInput = document.getElementById('search-input');
+
+        function openSearch(e) {
+            if (e) { e.preventDefault(); e.stopPropagation(); }
+            searchContainer.classList.add('active');
+            
+            setTimeout(() => navSearchInput.focus(), 120);
+        }
+        function closeSearch(e) {
+            if (e) { e.preventDefault(); e.stopPropagation(); }
+            searchContainer.classList.remove('active');
+            
+        }
+
+        if(toggleBtn) toggleBtn.addEventListener('click', openSearch);
+        if(closeBtn) closeBtn.addEventListener('click', closeSearch);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
+
+        // Nav shrink on scroll
+        const topNav = document.querySelector('.top-nav');
+        if(topNav) {
+            window.addEventListener('scroll', () => {
+                topNav.classList.toggle('top-nav--scrolled', window.scrollY > 60);
+            });
+        }
+    </script>
+</body>
+
+</html>

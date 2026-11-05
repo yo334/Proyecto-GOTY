@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encuesta GOTY 2014 — The Game Awards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../Css/style.css" />
+    <link rel="stylesheet" href="../Css/encuesta.css" />
+</head>
+
+<body>
+    <!-- ═════════════════════════════════════ MENÚ SUPERIOR ═════════════════════════════════════ -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-logo-link">
+                <img src="../imagenes/logo_white.png" alt="The Game Awards" class="nav-logo">
+            </a>
+        </div>
+        <div class="nav-right">
+            <!-- Buscador del menú -->
+            <div class="nav-search-container" id="nav-search-container">
+                <div class="search-panel" id="search-panel">
+                    <div class="search-panel__input-wrap">
+                        <svg class="search-panel__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input type="text" id="search-input" class="search-panel__input" placeholder="Buscar..."
+                            autocomplete="off" />
+                        <button class="search-panel__close" id="search-close" aria-label="Cerrar búsqueda">✕</button>
+                    </div>
+                    <div class="search-panel__results" id="search-results"></div>
+                </div>
+            </div>
+
+            <button class="nav-link nav-search-toggle" id="nav-search-toggle" aria-label="Buscar">
+                <svg class="nav-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <span>BUSCAR</span>
+            </button>
+            <a href="../index.html#years-section" class="nav-link">VER GANADORES</a>
+            <a href="../seleccionar_encuesta.html" class="nav-link">VOTAR</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>The Game Awards<br>Encuesta</h1>
+        <p class="enc-subtitle">Elige a tus ganadores favoritos de cada año</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <div class="enc-tabs" id="yearTabs" role="tablist" aria-label="Selector de año de encuesta">
+        <a class="enc-tab active" href="2014.html" data-year="2014" role="tab" aria-selected="true">2014</a>
+        <a class="enc-tab" href="2015.html" data-year="2015" role="tab">2015</a>
+        <a class="enc-tab" href="2016.html" data-year="2016" role="tab">2016</a>
+        <a class="enc-tab" href="2017.html" data-year="2017" role="tab">2017</a>
+        <a class="enc-tab" href="2018.html" data-year="2018" role="tab">2018</a>
+        <a class="enc-tab" href="2019.html" data-year="2019" role="tab">2019</a>
+        <a class="enc-tab" href="2020.html" data-year="2020" role="tab">2020</a>
+        <a class="enc-tab" href="2021.html" data-year="2021" role="tab">2021</a>
+        <a class="enc-tab" href="2022.html" data-year="2022" role="tab">2022</a>
+        <a class="enc-tab" href="2023.html" data-year="2023" role="tab">2023</a>
+        <a class="enc-tab" href="2024.html" data-year="2024" role="tab">2024</a>
+        <a class="enc-tab" href="2025.html" data-year="2025" role="tab">2025</a>
+    </div>
+
+    <div id="panel-2014" class="enc-year-panel active" data-year="2014">
+        <div class="category-block" id="cat-goty">
+            <h2 class="category-title">Game of the Year</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Game of the Year" data-name="Dragon Age: Inquisition">
+                    <img alt="Dragon Age: Inquisition" class="candidate-card__image" src="../imagenes/covers/dragon_age_inquisition.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Dragon Age: Inquisition</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Bayonetta 2">
+                    <img alt="Bayonetta 2" class="candidate-card__image" src="../imagenes/covers/bayonetta_2.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Bayonetta 2</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Dark Souls II">
+                    <img alt="Dark Souls II" class="candidate-card__image" src="../imagenes/covers/dark_souls_ii.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Dark Souls II</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Hearthstone">
+                    <img alt="Hearthstone" class="candidate-card__image" src="../imagenes/covers/hearthstone.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Hearthstone</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Middle-earth: Shadow of Mordor">
+                    <img alt="Middle-earth: Shadow of Mordor" class="candidate-card__image" src="../imagenes/covers/middle-earth_shadow_of_mordor.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Middle-earth: Shadow of Mordor</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-indie">
+            <h2 class="category-title">Best Independent Game</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Independent Game" data-name="Shovel Knight">
+                    <img alt="Shovel Knight" class="candidate-card__image" src="../imagenes/covers/shovel_knight.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Shovel Knight</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Independent Game" data-name="Broken Age Part 1">
+                    <img alt="Broken Age Part 1" class="candidate-card__image" src="../imagenes/covers/broken_age_part_1.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Broken Age Part 1</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Independent Game" data-name="Monument Valley">
+                    <img alt="Monument Valley" class="candidate-card__image" src="../imagenes/covers/monument_valley.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Monument Valley</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Independent Game" data-name="Transistor">
+                    <img alt="Transistor" class="candidate-card__image" src="../imagenes/covers/transistor.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Transistor</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Independent Game" data-name="The Vanishing of Ethan Carter">
+                    <img alt="The Vanishing of Ethan Carter" class="candidate-card__image" src="../imagenes/covers/the_vanishing_of_ethan_carter.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">The Vanishing of Ethan Carter</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-narrative">
+            <h2 class="category-title">Best Narrative</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Narrative" data-name="Valiant Hearts: The Great War">
+                    <img alt="Valiant Hearts: The Great War" class="candidate-card__image" src="../imagenes/covers/valiant_hearts_the_great_war.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Valiant Hearts: The Great War</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Narrative" data-name="South Park: The Stick of Truth">
+                    <img alt="South Park: The Stick of Truth" class="candidate-card__image" src="../imagenes/covers/south_park_the_stick_of_truth.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">South Park: The Stick of Truth</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Narrative" data-name="The Walking Dead: Season Two">
+                    <img alt="The Walking Dead: Season Two" class="candidate-card__image" src="../imagenes/covers/the_walking_dead_season_two.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">The Walking Dead: Season Two</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Narrative" data-name="The Wolf Among Us">
+                    <img alt="The Wolf Among Us" class="candidate-card__image" src="../imagenes/covers/the_wolf_among_us.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">The Wolf Among Us</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Narrative" data-name="Wolfenstein: The New Order">
+                    <img alt="Wolfenstein: The New Order" class="candidate-card__image" src="../imagenes/covers/wolfenstein_the_new_order.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Wolfenstein: The New Order</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-art">
+            <h2 class="category-title">Best Art Direction</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Art Direction" data-name="Monument Valley">
+                    <img alt="Monument Valley" class="candidate-card__image" src="../imagenes/covers/monument_valley.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Monument Valley</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Art Direction" data-name="Assassin's Creed Unity">
+                    <img alt="Assassin's Creed Unity" class="candidate-card__image" src="../imagenes/covers/assassins_creed_unity.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Assassin's Creed Unity</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Art Direction" data-name="Child of Light">
+                    <img alt="Child of Light" class="candidate-card__image" src="../imagenes/covers/child_of_light.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Child of Light</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Art Direction" data-name="Destiny">
+                    <img alt="Destiny" class="candidate-card__image" src="../imagenes/covers/destiny.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Destiny</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Art Direction" data-name="Sunset Overdrive">
+                    <img alt="Sunset Overdrive" class="candidate-card__image" src="../imagenes/covers/sunset_overdrive.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Sunset Overdrive</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-soundtrack">
+            <h2 class="category-title">Best Soundtrack</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="Destiny">
+                    <img alt="Destiny" class="candidate-card__image" src="../imagenes/covers/destiny.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Destiny</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="Alien: Isolation">
+                    <img alt="Alien: Isolation" class="candidate-card__image" src="../imagenes/covers/alien_isolation.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Alien: Isolation</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="Child of Light">
+                    <img alt="Child of Light" class="candidate-card__image" src="../imagenes/covers/child_of_light.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Child of Light</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="Sunset Overdrive">
+                    <img alt="Sunset Overdrive" class="candidate-card__image" src="../imagenes/covers/sunset_overdrive.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Sunset Overdrive</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="Transistor">
+                    <img alt="Transistor" class="candidate-card__image" src="../imagenes/covers/transistor.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Transistor</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-multiplayer">
+            <h2 class="category-title">Best Multiplayer</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Destiny">
+                    <img alt="Destiny" class="candidate-card__image" src="../imagenes/covers/destiny.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Destiny</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Call of Duty: Advanced Warfare">
+                    <img alt="Call of Duty: Advanced Warfare" class="candidate-card__image" src="../imagenes/covers/call_of_duty_advanced_warfare.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Call of Duty: Advanced Warfare</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Dark Souls II">
+                    <img alt="Dark Souls II" class="candidate-card__image" src="../imagenes/covers/dark_souls_ii.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Dark Souls II</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Hearthstone">
+                    <img alt="Hearthstone" class="candidate-card__image" src="../imagenes/covers/hearthstone.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Hearthstone</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Titanfall">
+                    <img alt="Titanfall" class="candidate-card__image" src="../imagenes/covers/titanfall.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Titanfall</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-direction">
+            <h2 class="category-title">Best Game Direction</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Game Direction" data-name="Nintendo">
+                    <img alt="Nintendo" class="candidate-card__image" src="../imagenes/covers/nintendo.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Nintendo</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Game Direction" data-name="Blizzard Entertainment">
+                    <img alt="Blizzard Entertainment" class="candidate-card__image" src="../imagenes/covers/blizzard_entertainment.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Blizzard Entertainment</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Game Direction" data-name="Monolith Productions">
+                    <img alt="Monolith Productions" class="candidate-card__image" src="../imagenes/covers/monolith_productions.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Monolith Productions</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Game Direction" data-name="Telltale Games">
+                    <img alt="Telltale Games" class="candidate-card__image" src="../imagenes/covers/telltale_games.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Telltale Games</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Game Direction" data-name="Ubisoft Montreal">
+                    <img alt="Ubisoft Montreal" class="candidate-card__image" src="../imagenes/covers/ubisoft_montreal.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Ubisoft Montreal</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="enc-actions">
+        <div class="enc-actions-buttons">
+            <button id="submit-survey" class="enc-btn" type="button">Enviar mi votación</button>
+            <button id="reset-survey" class="enc-btn enc-btn--reset" type="button">Reiniciar votos</button>
+        </div>
+        <div id="surveyFeedback" class="survey-feedback" role="status" aria-live="polite"></div>
+    </section>
+
+    <footer>
+        &copy; GOTY Archive &nbsp;·&nbsp; Encuesta interactiva The Game Awards 2014–2025
+    </footer>
+
+    <script src="../js/search.js"></script>
+    <script src="../js/encuesta.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encuesta GOTY 2018 — The Game Awards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../Css/style.css" />
+    <link rel="stylesheet" href="../Css/encuesta.css" />
+</head>
+
+<body>
+    <!-- ═════════════════════════════════════ MENÚ SUPERIOR ═════════════════════════════════════ -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-logo-link">
+                <img src="../imagenes/logo_white.png" alt="The Game Awards" class="nav-logo">
+            </a>
+        </div>
+        <div class="nav-right">
+            <!-- Buscador del menú -->
+            <div class="nav-search-container" id="nav-search-container">
+                <div class="search-panel" id="search-panel">
+                    <div class="search-panel__input-wrap">
+                        <svg class="search-panel__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input type="text" id="search-input" class="search-panel__input" placeholder="Buscar..."
+                            autocomplete="off" />
+                        <button class="search-panel__close" id="search-close" aria-label="Cerrar búsqueda">✕</button>
+                    </div>
+                    <div class="search-panel__results" id="search-results"></div>
+                </div>
+            </div>
+
+            <button class="nav-link nav-search-toggle" id="nav-search-toggle" aria-label="Buscar">
+                <svg class="nav-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <span>BUSCAR</span>
+            </button>
+            <a href="../index.html#years-section" class="nav-link">VER GANADORES</a>
+            <a href="../seleccionar_encuesta.html" class="nav-link">VOTAR</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>The Game Awards<br>Encuesta</h1>
+        <p class="enc-subtitle">Elige a tus ganadores favoritos de cada año</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <div class="enc-tabs" id="yearTabs" role="tablist" aria-label="Selector de año de encuesta">
+        <a class="enc-tab" href="2014.html" data-year="2014" role="tab">2014</a>
+        <a class="enc-tab" href="2015.html" data-year="2015" role="tab">2015</a>
+        <a class="enc-tab" href="2016.html" data-year="2016" role="tab">2016</a>
+        <a class="enc-tab" href="2017.html" data-year="2017" role="tab">2017</a>
+        <a class="enc-tab active" href="2018.html" data-year="2018" role="tab" aria-selected="true">2018</a>
+        <a class="enc-tab" href="2019.html" data-year="2019" role="tab">2019</a>
+        <a class="enc-tab" href="2020.html" data-year="2020" role="tab">2020</a>
+        <a class="enc-tab" href="2021.html" data-year="2021" role="tab">2021</a>
+        <a class="enc-tab" href="2022.html" data-year="2022" role="tab">2022</a>
+        <a class="enc-tab" href="2023.html" data-year="2023" role="tab">2023</a>
+        <a class="enc-tab" href="2024.html" data-year="2024" role="tab">2024</a>
+        <a class="enc-tab" href="2025.html" data-year="2025" role="tab">2025</a>
+    </div>
+
+    <div id="panel-2018" class="enc-year-panel active" data-year="2018">
+        <div class="category-block" id="cat-goty">
+            <h2 class="category-title">Game of the Year</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Game of the Year" data-name="God of War">
+                    <img alt="God of War" class="candidate-card__image" src="../imagenes/covers/god_of_war.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">God of War</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Assassin's Creed Odyssey">
+                    <img alt="Assassin's Creed Odyssey" class="candidate-card__image" src="../imagenes/covers/assassins_creed_odyssey.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Assassin's Creed Odyssey</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Celeste">
+                    <img alt="Celeste" class="candidate-card__image" src="../imagenes/covers/celeste.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Celeste</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Marvel's Spider-Man">
+                    <img alt="Marvel's Spider-Man" class="candidate-card__image" src="../imagenes/covers/marvels_spider-man.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Marvel's Spider-Man</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Monster Hunter: World">
+                    <img alt="Monster Hunter: World" class="candidate-card__image" src="../imagenes/covers/monster_hunter_world.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Monster Hunter: World</h3>
+                </div>
+                <div class="candidate-card" data-category="Game of the Year" data-name="Red Dead Redemption 2">
+                    <img alt="Red Dead Redemption 2" class="candidate-card__image" src="../imagenes/covers/red_dead_redemption_2.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Red Dead Redemption 2</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-indie">
+            <h2 class="category-title">Best Independent Game</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Independent Game" data-name="Celeste">
+                    <img alt="Celeste" class="candidate-card__image" src="../imagenes/covers/celeste.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Celeste</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Independent Game" data-name="Dead Cells">
+                    <img alt="Dead Cells" class="candidate-card__image" src="../imagenes/covers/dead_cells.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Dead Cells</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Independent Game" data-name="Into the Breach">
+                    <img alt="Into the Breach" class="candidate-card__image" src="../imagenes/covers/into_the_breach.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Into the Breach</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Independent Game" data-name="Return of the Obra Dinn">
+                    <img alt="Return of the Obra Dinn" class="candidate-card__image" src="../imagenes/covers/return_of_the_obra_dinn.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Return of the Obra Dinn</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Independent Game" data-name="The Messenger">
+                    <img alt="The Messenger" class="candidate-card__image" src="../imagenes/covers/the_messenger.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">The Messenger</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-narrative">
+            <h2 class="category-title">Best Narrative</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Narrative" data-name="Red Dead Redemption 2">
+                    <img alt="Red Dead Redemption 2" class="candidate-card__image" src="../imagenes/covers/red_dead_redemption_2.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Red Dead Redemption 2</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Narrative" data-name="Detroit: Become Human">
+                    <img alt="Detroit: Become Human" class="candidate-card__image" src="../imagenes/covers/detroit_become_human.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Detroit: Become Human</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Narrative" data-name="God of War">
+                    <img alt="God of War" class="candidate-card__image" src="../imagenes/covers/god_of_war.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">God of War</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Narrative" data-name="Life Is Strange 2: Episode 1">
+                    <img alt="Life Is Strange 2: Episode 1" class="candidate-card__image" src="../imagenes/covers/life_is_strange_2_episode_1.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Life Is Strange 2: Episode 1</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Narrative" data-name="Marvel's Spider-Man">
+                    <img alt="Marvel's Spider-Man" class="candidate-card__image" src="../imagenes/covers/marvels_spider-man.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Marvel's Spider-Man</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-art">
+            <h2 class="category-title">Best Art Direction</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Art Direction" data-name="Return of the Obra Dinn">
+                    <img alt="Return of the Obra Dinn" class="candidate-card__image" src="../imagenes/covers/return_of_the_obra_dinn.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Return of the Obra Dinn</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Art Direction" data-name="Assassin's Creed Odyssey">
+                    <img alt="Assassin's Creed Odyssey" class="candidate-card__image" src="../imagenes/covers/assassins_creed_odyssey.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Assassin's Creed Odyssey</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Art Direction" data-name="God of War">
+                    <img alt="God of War" class="candidate-card__image" src="../imagenes/covers/god_of_war.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">God of War</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Art Direction" data-name="Octopath Traveler">
+                    <img alt="Octopath Traveler" class="candidate-card__image" src="../imagenes/covers/octopath_traveler.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Octopath Traveler</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Art Direction" data-name="Red Dead Redemption 2">
+                    <img alt="Red Dead Redemption 2" class="candidate-card__image" src="../imagenes/covers/red_dead_redemption_2.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Red Dead Redemption 2</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-soundtrack">
+            <h2 class="category-title">Best Soundtrack</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="Red Dead Redemption 2">
+                    <img alt="Red Dead Redemption 2" class="candidate-card__image" src="../imagenes/covers/red_dead_redemption_2.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Red Dead Redemption 2</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="Celeste">
+                    <img alt="Celeste" class="candidate-card__image" src="../imagenes/covers/celeste.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Celeste</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="God of War">
+                    <img alt="God of War" class="candidate-card__image" src="../imagenes/covers/god_of_war.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">God of War</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="Marvel's Spider-Man">
+                    <img alt="Marvel's Spider-Man" class="candidate-card__image" src="../imagenes/covers/marvels_spider-man.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Marvel's Spider-Man</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="Ni no Kuni II: Revenant Kingdom">
+                    <img alt="Ni no Kuni II: Revenant Kingdom" class="candidate-card__image" src="../imagenes/covers/ni_no_kuni_ii_revenant_kingdom.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Ni no Kuni II: Revenant Kingdom</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Soundtrack" data-name="Octopath Traveler">
+                    <img alt="Octopath Traveler" class="candidate-card__image" src="../imagenes/covers/octopath_traveler.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Octopath Traveler</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-multiplayer">
+            <h2 class="category-title">Best Multiplayer</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Fortnite">
+                    <img alt="Fortnite" class="candidate-card__image" src="../imagenes/covers/fortnite.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Fortnite</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Call of Duty: Black Ops 4">
+                    <img alt="Call of Duty: Black Ops 4" class="candidate-card__image" src="../imagenes/covers/call_of_duty_black_ops_4.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Call of Duty: Black Ops 4</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Destiny 2: Forsaken">
+                    <img alt="Destiny 2: Forsaken" class="candidate-card__image" src="../imagenes/covers/destiny_2_forsaken.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Destiny 2: Forsaken</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Monster Hunter: World">
+                    <img alt="Monster Hunter: World" class="candidate-card__image" src="../imagenes/covers/monster_hunter_world.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Monster Hunter: World</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Multiplayer" data-name="Sea of Thieves">
+                    <img alt="Sea of Thieves" class="candidate-card__image" src="../imagenes/covers/sea_of_thieves.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Sea of Thieves</h3>
+                </div>
+            </div>
+        </div>
+        <div class="category-block" id="cat-direction">
+            <h2 class="category-title">Best Game Direction</h2>
+            <div class="candidate-grid">
+                <div class="candidate-card" data-category="Best Game Direction" data-name="God of War">
+                    <img alt="God of War" class="candidate-card__image" src="../imagenes/covers/god_of_war.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">God of War</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Game Direction" data-name="A Way Out">
+                    <img alt="A Way Out" class="candidate-card__image" src="../imagenes/covers/a_way_out.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">A Way Out</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Game Direction" data-name="Detroit: Become Human">
+                    <img alt="Detroit: Become Human" class="candidate-card__image" src="../imagenes/covers/detroit_become_human.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Detroit: Become Human</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Game Direction" data-name="Marvel's Spider-Man">
+                    <img alt="Marvel's Spider-Man" class="candidate-card__image" src="../imagenes/covers/marvels_spider-man.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Marvel's Spider-Man</h3>
+                </div>
+                <div class="candidate-card" data-category="Best Game Direction" data-name="Red Dead Redemption 2">
+                    <img alt="Red Dead Redemption 2" class="candidate-card__image" src="../imagenes/covers/red_dead_redemption_2.jpg" loading="lazy" />
+                    <h3 class="candidate-card__title">Red Dead Redemption 2</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="enc-actions">
+        <div class="enc-actions-buttons">
+            <button id="submit-survey" class="enc-btn" type="button">Enviar mi votación</button>
+            <button id="reset-survey" class="enc-btn enc-btn--reset" type="button">Reiniciar votos</button>
+        </div>
+        <div id="surveyFeedback" class="survey-feedback" role="status" aria-live="polite"></div>
+    </section>
+
+    <footer>
+        &copy; GOTY Archive &nbsp;·&nbsp; Encuesta interactiva The Game Awards 2014–2025
+    </footer>
+
+    <script src="../js/search.js"></script>
+    <script src="../js/encuesta.js"></script>
+</body>
+
+</html>

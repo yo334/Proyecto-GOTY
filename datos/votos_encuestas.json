@@ -12,5 +12,103 @@
       "Best Multiplayer": null,
       "Best Game Direction": null
     }
+  },
+  {
+    "id": 2,
+    "timestamp": "2026-10-30T13:06:31.160445",
+    "year": 2018,
+    "votes": {
+      "Game of the Year": null,
+      "Best Independent Game": null,
+      "Best Narrative": null,
+      "Best Art Direction": null,
+      "Best Soundtrack": null,
+      "Best Multiplayer": "Destiny 2: Forsaken",
+      "Best Game Direction": null
+    }
+  },
+  {
+    "id": 3,
+    "timestamp": "2026-10-30T13:12:19.863781",
+    "year": 2018,
+    "votes": {
+      "Game of the Year": "Red Dead Redemption 2",
+      "Best Independent Game": null,
+      "Best Narrative": null,
+      "Best Art Direction": null,
+      "Best Soundtrack": null,
+      "Best Multiplayer": null,
+      "Best Game Direction": null
+    }
+  },
+  {
+    "id": 4,
+    "timestamp": "2026-10-30T13:28:56.958054",
+    "year": 2024,
+    "votes": {
+      "Game of the Year": "Elden Ring Shadow of the Erdtree",
+      "Best Independent Game": "Balatro",
+      "Best Narrative": null,
+      "Best Art Direction": "Neva",
+      "Best Soundtrack": "Stellar Blade",
+      "Best Multiplayer": "Helldivers 2",
+      "Best Game Direction": "Elden Ring Shadow of the Erdtree"
+    }
+  },
+  {
+    "id": 5,
+    "timestamp": "2026-10-30T13:55:25.275370",
+    "year": 2025,
+    "votes": {
+      "Game of the Year": "Hollow Knight: Silksong",
+      "Best Independent Game": "Hollow Knight: Silksong",
+      "Best Narrative": null,
+      "Best Art Direction": "Hollow Knight: Silksong",
+      "Best Soundtrack": "Hollow Knight: Silksong",
+      "Best Multiplayer": null,
+      "Best Game Direction": null
+    }
+  },
+  {
+    "id": 6,
+    "timestamp": "2026-10-30T14:02:10.566807",
+    "year": 2024,
+    "votes": {
+      "Game of the Year": "Black Myth: Wukong",
+      "Best Independent Game": null,
+      "Best Narrative": null,
+      "Best Art Direction": null,
+      "Best Soundtrack": null,
+      "Best Multiplayer": null,
+      "Best Game Direction": null
+    }
+  },
+  {
+    "id": 7,
+    "timestamp": "2026-10-30T14:09:07.890468",
+    "year": 2025,
+    "votes": {
+      "Game of the Year": "Hades II",
+      "Best Independent Game": null,
+      "Best Narrative": null,
+      "Best Art Direction": null,
+      "Best Soundtrack": null,
+      "Best Multiplayer": null,
+      "Best Game Direction": null
+    }
+  },
+  {
+    "id": 8,
+    "timestamp": "2026-10-30T14:36:41.606659",
+    "year": 2025,
+    "votes": {
+      "Game of the Year": "Kingdom Come: Deliverance II",
+      "Best Independent Game": null,
+      "Best Narrative": "Kingdom Come: Deliverance II",
+      "Best Art Direction": null,
+      "Best Soundtrack": null,
+      "Best Multiplayer": null,
+      "Best Game Direction": null
+    }
   }
 ]

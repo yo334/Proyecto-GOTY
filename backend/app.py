@@ -3,7 +3,7 @@
 Servidor del Proyecto GOTY hecho con Flask.
 
 Hace dos cosas:
-1. Sirve los archivos del sitio (index.html, años.html, Css/, js/, imagenes/, datos/).
+1. Sirve los archivos del sitio (index.html, Años/, Encuestas/, Css/, js/, imagenes/, datos/).
 2. Guarda los votos de la encuesta en datos/votos_encuestas.json.
 
 Las páginas se ven también con Live Server; Flask solo hace falta para votar.
@@ -64,7 +64,7 @@ CATEGORIAS_OFICIALES = [
 # La primera parte de la URL ("/js/search.js" -> "js") tiene que estar en esta lista.
 # El "" (texto vacío) es para la dirección "/" sola, o sea la página principal.
 RUTAS_PUBLICAS = ["", "index.html", "años.html", "encuesta.html", "seleccionar_encuesta.html",
-                  "Css", "js", "imagenes", "datos", "api"]
+                  "Css", "js", "imagenes", "datos", "api", "Años", "años", "Encuestas", "encuestas"]
 
 # Creamos el servidor. Flask(...) es el objeto que recibe los pedidos del navegador.
 # static_folder apunta a la raíz: así /Css/style.css sirve el archivo Css/style.css
@@ -276,8 +276,10 @@ def bloquear_archivos_privados():
     """Solo deja pasar los pedidos a RUTAS_PUBLICAS (backend/, .git/, etc. dan 404)."""
     # normpath resuelve trucos como /Css/../backend/app.py -> /backend/app.py
     ruta = posixpath.normpath(request.path)  # limpio la ruta del pedido, resolviendo los ".." y las barras repetidas
-    primera_parte = ruta.split("/")[1]  # corto la ruta por las "/" y me quedo con el segundo pedazo ("/js/a.js" -> ["", "js", "a.js"] -> "js")
-    if primera_parte not in RUTAS_PUBLICAS:  # si esa carpeta o archivo no es público...
+    partes = [p for p in ruta.split("/") if p]
+    primera_parte = partes[0] if partes else ""
+    rutas_lower = [r.lower() for r in RUTAS_PUBLICAS]
+    if primera_parte.lower() not in rutas_lower:  # si esa carpeta o archivo no es público...
         abort(404)  # ...corto el pedido acá con "no encontrado" (finge que no existe)
 
 
